@@ -67,6 +67,10 @@ class LogParser:
         return self.template_miner.drain.id_to_cluster, self.log_ids
 
 
+    # parse a single log line
+    def parse_line(self, line: str):
+        result = self.template_miner.add_log_message(line)
+        return result
 
     # return current templates
     def get_templates(self):

@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 
-"""
-use k8s configmap as storage backend
-
-"""
-
-class ConfigMapStore:
+class Config:
     def __init__(self) -> None:
         pass
 
+
+def load(config_file: str):
+    return Config()
+    
