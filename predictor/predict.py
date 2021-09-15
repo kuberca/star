@@ -9,17 +9,19 @@ steps:  preprocess to log template
         check if feedback has it
         if not, use model to predict 
 """
+from results.result import Result
 
 class Predictor:
-    def __init__(self, preper, model, feedback):
+    def __init__(self, preper, model):
         self.preper = preper
         self.model = model
-        self.feedback = feedback
 
     def predict(self, input: str):
-        template = self.preper.process(input)
-        out = self.feedback.get(template)
-        if out is None:
-            out = self.model.predict(template)
-        return out
+        id, template = self.preper.process(input)
+
+        label = self.model.predict(template)
+
+        result = Result(input=input, label=label, template=template, template_id=id)
+
+        return result
 

@@ -38,6 +38,11 @@ class LogParser:
         self.logger = logging.getLogger(__name__)
         logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(message)s')
 
+    # interface for preper, userd by predictor, input is single line
+    def process(self, line: str):
+        result = self.parse_line(line)
+        return result["cluster_id"], result["template_mined"]
+
     # parse_file parse a given file
     # return: 
     #   templates:   template clusters
@@ -71,6 +76,8 @@ class LogParser:
     def parse_line(self, line: str):
         result = self.template_miner.add_log_message(line)
         return result
+
+
 
     # return current templates
     def get_templates(self):

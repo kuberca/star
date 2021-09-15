@@ -11,13 +11,17 @@ Error data: the system predict as normal, but user manually label as error
 Normal data:  system predict as error, but user reject the prediction so it should be treated as normal
 """
 
+from results.result import Result
+
+
 class FeedbackMgr:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, remote_url: str) -> None:
+        if not remote_url:
+            self.initialize(remote_url)
 
     # download feedbacks from remote_url and put into local cache
     def initialize(self, remote_url: str):
-        pass
+        print("fake initialize from %s" % (remote_url))
 
     # take an array of user feedbacks and update local cache
     def update(self, feedbacks):
@@ -27,8 +31,10 @@ class FeedbackMgr:
     def update_remote(self, remote_url):
         pass
 
-    # get all feedbacks from local cache
-    def get(self):
-        pass
+    # get feedback from local cache for the given template
+    # if exist, then the feedback is treated as ground truth
+    # if not, return None, then predictor need to take further actions
+    def get(self, template_id: int) -> Result:
+        return None
 
 

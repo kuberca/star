@@ -31,6 +31,9 @@ class Labeler:
         # ordered list of labelers with higher priority from the begining
         # self.labelers = [self.gt, self.hu, self.nv]
 
+    # interface to be used by predictor
+    def predict(self, tpl: str):
+        return self.get_label_for_tpl(tpl)
 
     # given an input template, return the label
     def get_label_for_tpl(self, tpl: str): 
