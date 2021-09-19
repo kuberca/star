@@ -6,27 +6,17 @@ start backendServer
 start apiserver
 """
 
+from web import app
 
-import argparse
+from web import result
+
+with app.app_context():
+    print("run context start backend")
+    result.start_backend()
+
+def run():
+    app.run(debug=True, use_reloader=False)
 
 
-from config import config
-from api import api
-from backend import backend
-
-parser = argparse.ArgumentParser(description='Auto Root Cause Analysis for Developers.')
-
-parser.add_argument('config', metavar='config', type=str, help='configuration file')
-args = parser.parse_args()
-config_file = args.config
-
-cfg = config.load(config_file)
-
-# start backend server
-backendServer = backend.Server(cfg)
-backendServer.start()
-
-# start apiserver
-apiServer = api.Server(cfg)
-apiServer.start()
-
+if __name__ == "__main__":
+    run()

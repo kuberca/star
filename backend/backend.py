@@ -33,9 +33,14 @@ class Server():
         self.predictor = Predictor(preper=self.preper, model=self.labler)
         self.watcher = Watcher(config=config, callback=self.watch_callback)
     
-    # start in back ground
+    
     def start(self):
         self.watcher.start()
+
+
+    # start in back ground
+    def start_in_gb(self):
+        self.watcher.start_in_bg()
 
     def watch_callback(self, line: str):
         text, context = self.split_line(line)

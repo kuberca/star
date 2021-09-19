@@ -141,7 +141,7 @@ class TemplateMiner:
             self.profiler.start_section("save_state")
             snapshot_reason = self.get_snapshot_reason(change_type, cluster.cluster_id)
             if snapshot_reason:
-                # self.save_state(snapshot_reason)
+                self.save_state(snapshot_reason)
                 self.last_save_time = time.time()
             self.profiler.end_section()
 

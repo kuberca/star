@@ -10,9 +10,9 @@ from os import path
 from os.path import dirname
 import argparse
 
-from prep.drain3 import TemplateMiner
-from prep.drain3.template_miner_config import TemplateMinerConfig
-from prep.drain3.file_persistence import FilePersistence
+from .drain3 import TemplateMiner
+from .drain3.template_miner_config import TemplateMinerConfig
+from .drain3.file_persistence import FilePersistence
 
 def var_has_digit(token: str):
     return any(i == '/' or i == '-' or i.isdigit() for i in token)

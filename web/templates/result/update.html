@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Resolve {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <p class="body"><b>Log text</b>: {{ result['input'] }}</p>
+
+  <form method="result">
+
+    <label for="label">Predict Label</label>
+    <input name="label" id="label" value="{{ request.form['label'] or result['label'] }}" required>
+
+    <label for="analysis">Root Cause Analysis</label>
+    <textarea name="analysis" id="analysis">{{ request.form['analysis'] or result['analysis'] }}</textarea>
+
+    <input type="submit" value="Save" formmethod="post">
+  </form>
+  <hr>
+
+{% endblock %}

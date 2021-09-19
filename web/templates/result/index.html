@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+  <h1>Results Unresolved</h1> 
+  {% for result in unresolved %}
+    <article class="result">
+      <header>
+        <div>
+          <div class="about"> Happened <b>{{ result['count'] }} </b> times.</div>
+        </div>
+
+      </header>
+      <p class="body"><b>Log text</b>: {{ result['context']['info'] }} {{ result['input'] }}</p>
+      <p class="body"><b>Analysis</b>: {{ result['analysis'] }}</p>
+
+      <a class="action" href="{{ url_for('result.update', id=result['template_id']) }}">Resolve</a>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+<span></span>
+
+
+{% block content2 %}
+  <h1>Results Resolved</h1> 
+  {% for result in resolved %}
+    <article class="result">
+      <header>
+        <div>
+          <div class="about"> Happened <b>{{ result['count'] }} </b> times.</div>
+        </div>
+
+      </header>
+      <p class="body"><b>Log text</b>: {{ result['context']['info'] }} {{ result['input'] }}</p>
+      <p class="body"><b>Analysis</b>: {{ result['analysis'] }}</p>
+
+      <a class="action" href="{{ url_for('result.update', id=result['template_id']) }}">Resolve</a>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}
+
+

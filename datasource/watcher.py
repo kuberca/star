@@ -28,7 +28,12 @@ class Watcher():
     def get_key(self, pod: str, container : str):
         return "%s_%s" % (pod, container)
 
+    def start_in_bg(self):
+        th = threading.Thread(target=self.start)
+        th.start()
+
     def start(self):
+        print("watcher starting")
         config.load_kube_config()
         w = watch.Watch()
         v1 = client.CoreV1Api()
