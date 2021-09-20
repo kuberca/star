@@ -26,10 +26,11 @@ class Server():
         self.config = config
         prepcfg = config["drain3"]
 
+        store = SqliteStore()
         self.preper = LogParser(config_file=prepcfg["config_file"], persist=True, persist_dir=prepcfg["persist_dir"])
         self.labler = Labeler(naive=True, datadir=prepcfg["persist_dir"])
-        self.feedback = FeedbackMgr(remote_url="")
-        self.results = ResultMgr(fbmgr=self.feedback, store=SqliteStore())
+        self.feedback = FeedbackMgr(remote_url="", store=store)
+        self.results = ResultMgr(fbmgr=self.feedback, store=store)
 
         self.predictor = Predictor(preper=self.preper, model=self.labler)
         self.watcher = Watcher(config=config, callback=self.watch_callback)

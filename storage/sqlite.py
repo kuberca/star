@@ -29,6 +29,16 @@ CREATE TABLE IF NOT EXISTS resolved (
   count INTEGER
 );
 
+CREATE TABLE IF NOT EXISTS feedback (
+  template_id INTEGER PRIMARY KEY,
+  input TEXT NOT NULL,
+  template TEXT NOT NULL,
+  label TEXT NOT NULL,
+  analysis TEXT,
+  context TEXT,
+  count INTEGER
+);
+
 """
 
 g_create_sql = """
@@ -55,6 +65,7 @@ class SqliteStore:
             schema = g_schema
 
         self.db.executescript(schema)
+        self.db.commit()
 
     # save into storage  
     def save_unresolved(self, result: Result):
@@ -63,12 +74,21 @@ class SqliteStore:
             sql,  
             (result.template_id, result.input, result.template, result.label, result.analysis, result.context, result.count)
         )
+        self.db.commit()
 
     def save_resolved(self, result: Result):
         self.db.execute(
             g_create_sql.format("resolved"),  
             (result.template_id, result.input, result.template, result.label, result.analysis, result.context, result.count)
         )
+        self.db.commit()
+
+    def save_feedback(self, result: Result):
+        self.db.execute(
+            g_create_sql.format("feedback"),  
+            (result.template_id, result.input, result.template, result.label, result.analysis, result.context, result.count)
+        )
+        self.db.commit()
 
     # get un resolved results from storage, so user can look at it and take action
     def get_unresolved(self, template_id: int) -> Result:
@@ -83,14 +103,6 @@ class SqliteStore:
         result = self.get_result_from_sql(unresolved)
         return result
 
-    # get all un resolved results from storage, so user can look at it and take action
-    def get_all_unresolved(self):
-        unresolved = self.db.execute(
-            'SELECT * FROM unresolved'
-        ).fetchall()
-
-        return unresolved
-
     # get un resolved results from storage, so user can look at it and take action
     def get_resolved(self, template_id: int) -> Result:
         resolved = self.db.execute(
@@ -103,6 +115,26 @@ class SqliteStore:
 
         result = self.get_result_from_sql(resolved)
         return result
+
+    def get_feedback(self, template_id: int) -> Result:
+        feedback = self.db.execute(
+            'SELECT * FROM feedback WHERE template_id = ?',
+            (template_id,)
+        ).fetchone()
+
+        if feedback is None:
+            return None
+
+        result = self.get_result_from_sql(feedback)
+        return result
+
+    # get all un resolved results from storage, so user can look at it and take action
+    def get_all_unresolved(self):
+        unresolved = self.db.execute(
+            'SELECT * FROM unresolved'
+        ).fetchall()
+
+        return unresolved
 
     # get all resolved results from storage, could be used for statictics
     def get_all_resolved(self):
@@ -125,10 +157,12 @@ class SqliteStore:
             'DELETE FROM unresolved WHERE template_id = ?',
             (result.template_id,)
         )
+        self.db.commit()
         self.db.execute(
             g_create_sql.format("resolved"),  
             (result.template_id, result.input, result.template, result.label, result.analysis, result.context, result.count)
         )
+        self.db.commit()
 
     def get_result_from_sql(self, obj:dict) -> Result:
         result = Result(input=obj["input"], template_id=obj["template_id"], template=obj["template"], 
