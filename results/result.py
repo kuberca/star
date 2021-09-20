@@ -11,8 +11,9 @@ class Result:
                 template: str,
                 template_id: int,
                 label: str,
-                analysis: str = "",
-                context: dict = None) -> None:
+                analysis: str = "NA",
+                context: str = "NA",
+                count: int = 1) -> None:
 
         self.input = input
         self.template = template
@@ -20,10 +21,10 @@ class Result:
         self.label = label
         self.analysis = analysis
         self.context = context
-        self.count = 1
+        self.count = count
 
     def __str__(self) -> str:
         return "%s %s %s %s %d %d" % (self.label, self.analysis, self.input, self.template, self.template_id, self.count)
 
     def is_error(self):
-        return self.label != "__label__Normal"
+        return self.label != "Normal"

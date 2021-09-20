@@ -13,7 +13,7 @@
         </div>
 
       </header>
-      <p class="body"><b>Log text</b>: {{ result['context']['info'] }} {{ result['input'] }}</p>
+      <p class="body"><b>Log text</b>: {{ result['context'] }} {{ result['input'] }}</p>
       <p class="body"><b>Analysis</b>: {{ result['analysis'] }}</p>
 
       <a class="action" href="{{ url_for('result.update', id=result['template_id']) }}">Resolve</a>
@@ -36,10 +36,10 @@
         </div>
 
       </header>
-      <p class="body"><b>Log text</b>: {{ result['context']['info'] }} {{ result['input'] }}</p>
+      <p class="body"><b>Log text</b>: {{ result['context'] }} {{ result['input'] }}</p>
       <p class="body"><b>Analysis</b>: {{ result['analysis'] }}</p>
 
-      <a class="action" href="{{ url_for('result.update', id=result['template_id']) }}">Resolve</a>
+      <a class="action" href="{{ url_for('result.update', id=result['template_id'], resolved='true') }}">Resolve</a>
     </article>
     {% if not loop.last %}
       <hr>

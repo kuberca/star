@@ -11,11 +11,14 @@ Error data: the system predict as normal, but user manually label as error
 Normal data:  system predict as error, but user reject the prediction so it should be treated as normal
 """
 
+from storage.mem import MemStore
 from results.result import Result
 
 
 class FeedbackMgr:
-    def __init__(self, remote_url: str) -> None:
+    def __init__(self, remote_url: str, store = None) -> None:
+        if store is None:
+            self.store = MemStore()
         if not remote_url:
             self.initialize(remote_url)
 
@@ -24,8 +27,8 @@ class FeedbackMgr:
         print("fake initialize from %s" % (remote_url))
 
     # take an array of user feedbacks and update local cache
-    def update(self, feedbacks):
-        pass
+    def save(self, result):
+        self.store.save_resolved(result)
 
     # update changes in local cache to upstream remote_url
     def update_remote(self, remote_url):
@@ -35,6 +38,6 @@ class FeedbackMgr:
     # if exist, then the feedback is treated as ground truth
     # if not, return None, then predictor need to take further actions
     def get(self, template_id: int) -> Result:
-        return None
+        return self.store.get_resolved(template_id)
 
 

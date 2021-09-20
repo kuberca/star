@@ -18,7 +18,11 @@ def index():
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 def update(id):
-    result = get_result(id)
+    is_resolved = request.args.get('resolved')
+    if is_resolved == "true":
+        result = get_resolved(id)
+    else:
+        result = get_result(id)
 
     if request.method == 'POST':
         analysis = request.form['analysis']
@@ -34,6 +38,9 @@ def update(id):
 
 def get_result(id: int):
     return get_server().results.get_unresolved(id)
+
+def get_resolved(id: int):
+    return get_server().results.get_resolved(id)
 
 def get_results():
     return get_server().results.get_all()

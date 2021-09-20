@@ -15,6 +15,7 @@ from label.labeler import Labeler
 from feedback.fb_mgr import FeedbackMgr
 from results.result_mgr import ResultMgr
 from results.result import Result
+from storage.sqlite import SqliteStore
 
 
 def is_result_error(result: str):
@@ -28,7 +29,7 @@ class Server():
         self.preper = LogParser(config_file=prepcfg["config_file"], persist=True, persist_dir=prepcfg["persist_dir"])
         self.labler = Labeler(naive=True, datadir=prepcfg["persist_dir"])
         self.feedback = FeedbackMgr(remote_url="")
-        self.results = ResultMgr(fbmgr=self.feedback, store=None)
+        self.results = ResultMgr(fbmgr=self.feedback, store=SqliteStore())
 
         self.predictor = Predictor(preper=self.preper, model=self.labler)
         self.watcher = Watcher(config=config, callback=self.watch_callback)
@@ -55,7 +56,7 @@ class Server():
         k8s_log = re.compile("(.*) \"msg\"=(.*)")
         m = k8s_log.match(line)
         if m:
-            context = {"info":m.group(1)}
+            context = m.group(1)
             text = m.group(2)
         else:
             text = line
