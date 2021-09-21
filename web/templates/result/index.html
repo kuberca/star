@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block header %}
+  <a class="action" href="{{ url_for('result.upload') }}">Upload Log File </a>
+{% endblock %}
+
 
 
 {% block content %}

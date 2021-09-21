@@ -1,0 +1,18 @@
+
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Upload Log file {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+  <form  method = "POST" 
+    enctype = "multipart/form-data">
+    <input type = "file" name = "file" />
+    <input type = "submit"/>
+  </form>   
+  <hr>
+
+{% endblock %}

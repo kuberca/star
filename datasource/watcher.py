@@ -33,7 +33,7 @@ class Watcher():
         th.start()
 
     def start(self):
-        print("watcher starting")
+        print()
         config.load_kube_config()
         w = watch.Watch()
         v1 = client.CoreV1Api()

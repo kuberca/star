@@ -10,6 +10,7 @@ import re
 from config.config import Config
 from predictor.predict import Predictor
 from datasource.watcher import Watcher
+from datasource.batcher import Batcher
 from prep.log_parser import LogParser
 from label.labeler import Labeler
 from feedback.fb_mgr import FeedbackMgr
@@ -33,18 +34,22 @@ class Server():
         self.results = ResultMgr(fbmgr=self.feedback, store=store)
 
         self.predictor = Predictor(preper=self.preper, model=self.labler)
-        self.watcher = Watcher(config=config, callback=self.watch_callback)
+        self.watcher = Watcher(config=config, callback=self.process_line)
+        self.batcher = Batcher(config=config, callback=self.process_line)
     
     
-    def start(self):
+    def start_watch(self):
         self.watcher.start()
 
+    # start batcher in back ground
+    def start_batch_in_bg(self, file: str):
+        self.batcher.start_in_bg(file)
 
-    # start in back ground
-    def start_in_gb(self):
+    # start watcher in back ground
+    def start_in_bg(self):
         self.watcher.start_in_bg()
 
-    def watch_callback(self, line: str):
+    def process_line(self, line: str):
         text, context = self.split_line(line)
 
         result = self.predictor.predict(text)
