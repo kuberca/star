@@ -16,8 +16,9 @@ from config.config import Config
 
 def tail_log(api, namespace, pod, container, callback):
     w = watch.Watch()
+    meta = {"namespace":namespace, "pod":pod, "container": container}
     for line in w.stream(api.read_namespaced_pod_log, name=pod, namespace=namespace, container=container):
-        callback(line)
+        callback(line, meta)
 
 class Watcher():
     def __init__(self, config: Config, callback) -> None:

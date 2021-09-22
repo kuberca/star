@@ -2,6 +2,8 @@
 
 {% block header %}
   <a class="action" href="{{ url_for('result.upload') }}">Upload Log File </a>
+
+  <a class="action" href="{{ url_for('result.templates') }}">Log Templates </a>
 {% endblock %}
 
 
@@ -13,14 +15,16 @@
     <article class="result">
       <header>
         <div>
-          <div class="about"> Happened <b>{{ result['count'] }} </b> times.</div>
+          <div class="about"> Happened <b>{{ result['count'] }} </b> times. </div>
+          
         </div>
 
       </header>
-      <p class="body"><b>Log text</b>: {{ result['context'] }} {{ result['input'] }}</p>
+      <p class="body"><b>Context</b>: {{ result['context'] }} </p>
+      <p class="body"><b>Log text</b>:  {{ result['input'] }}</p>
       <p class="body"><b>Analysis</b>: {{ result['analysis'] }}</p>
-
       <a class="action" href="{{ url_for('result.update', id=result['template_id']) }}">Resolve</a>
+      
     </article>
     {% if not loop.last %}
       <hr>
@@ -40,7 +44,8 @@
         </div>
 
       </header>
-      <p class="body"><b>Log text</b>: {{ result['context'] }} {{ result['input'] }}</p>
+      <p class="body"><b>Context</b>: {{ result['context'] }} </p>
+      <p class="body"><b>Log text</b>:  {{ result['input'] }}</p>
       <p class="body"><b>Analysis</b>: {{ result['analysis'] }}</p>
 
       <a class="action" href="{{ url_for('result.update', id=result['template_id'], resolved='true') }}">Resolve</a>

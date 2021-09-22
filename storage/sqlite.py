@@ -2,6 +2,7 @@
 use in sqlite as storage backend 
 """
 import sqlite3
+import json
 
 from results.result import Result
 
@@ -72,21 +73,21 @@ class SqliteStore:
         sql = g_create_sql.format("unresolved")
         self.db.execute(
             sql,  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context, result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.context), result.count)
         )
         self.db.commit()
 
     def save_resolved(self, result: Result):
         self.db.execute(
             g_create_sql.format("resolved"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context, result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.context), result.count)
         )
         self.db.commit()
 
     def save_feedback(self, result: Result):
         self.db.execute(
             g_create_sql.format("feedback"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context, result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.context), result.count)
         )
         self.db.commit()
 
@@ -160,12 +161,18 @@ class SqliteStore:
         self.db.commit()
         self.db.execute(
             g_create_sql.format("resolved"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context, result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.context), result.count)
         )
         self.db.commit()
 
     def get_result_from_sql(self, obj:dict) -> Result:
         result = Result(input=obj["input"], template_id=obj["template_id"], template=obj["template"], 
-            label=obj["label"], analysis=obj["analysis"], context=obj["context"], count=obj["count"] 
+            label=obj["label"], analysis=obj["analysis"], count=obj["count"] 
         )
+        if obj["context"]:
+            try:
+                result.context=json.loads(obj["context"])
+            except:
+                pass
+
         return result

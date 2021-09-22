@@ -19,7 +19,9 @@ UPLOAD_FOLDER = "/tmp"
 @bp.route('/')
 def index():
     unresolved, resolved = get_results()
-    return render_template('result/index.html', unresolved=unresolved, resolved=resolved)
+    sorted_unresolved = sorted(unresolved, key=lambda it: it["count"], reverse=True)
+    sorted_resolved = sorted(resolved, key=lambda it: it["count"], reverse=True)
+    return render_template('result/index.html', unresolved=sorted_unresolved, resolved=sorted_resolved)
 
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
@@ -55,6 +57,11 @@ def upload():
         return redirect(url_for('index'))
 
     return render_template('result/upload.html')
+
+@bp.route('/templates')
+def templates():
+    templates = get_server().preper.get_templates()
+    return render_template('result/logtpl.html', templates=templates)
 
 
 def get_result(id: int):

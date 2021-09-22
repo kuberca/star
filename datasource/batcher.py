@@ -38,36 +38,30 @@ class Batcher():
             return
         if fm == "text/plain":
             with open(file, 'r') as f:
+                meta={"file":os.path.basename(file)}
                 for line in f:
-                    self.callback(line)
+                    self.callback(line, meta)
+
         elif fm == "application/x-tar":
             tar = tarfile.open(file)
             for f in tar: 
                 ft = tar.extractfile(f.name)
+                meta={"file":f.name}
                 for line in ft:
-                    try: 
-                        linedecode = line.decode('utf-8')
-                        self.callback(linedecode)
-                    except:
-                        pass
+                    self.decode_proc(line, meta)
+
         elif fm == "application/zip":
             zip = zipfile.ZipFile(file)
             for zf in zip.namelist():
+                meta={"file":zf}
                 for line in zip.open(zf):
-                    try: 
-                        linedecode = line.decode('utf-8')
-                        self.callback(linedecode)
-                    except:
-                        pass
+                    self.decode_proc(line, meta)
 
         elif fm == "application/gzip":
             zip = gzip.GzipFile(file)
+            meta={"file":zip}
             for line in zip:
-                try: 
-                    linedecode = line.decode('utf-8')
-                    self.callback(linedecode)
-                except:
-                    pass
+                self.decode_proc(line, meta)
 
     def get_file_format(self, file: str): 
         try:
@@ -82,6 +76,12 @@ class Batcher():
         except :
             return None
 
+    def decode_proc(self, line: str, meta: dict):
+        try: 
+            linedecode = line.decode('utf-8')
+            self.callback(linedecode, meta)
+        except:
+            pass
 
 if __name__ == "__main__":
     batcher = Batcher(config=None, callback=print)

@@ -81,7 +81,9 @@ class LogParser:
 
     # return current templates
     def get_templates(self):
-        return self.template_miner.drain.clusters
+        clusters = self.template_miner.drain.clusters
+        sorted_clusters = sorted(clusters, key=lambda it: it.size, reverse=True)
+        return sorted_clusters
 
     # return stats includes how many templates, how many lines parsed etc
     def get_stats(self):

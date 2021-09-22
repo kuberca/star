@@ -49,24 +49,31 @@ class Server():
     def start_in_bg(self):
         self.watcher.start_in_bg()
 
-    def process_line(self, line: str):
+    def process_line(self, line: str, meta: dict):
         text, context = self.split_line(line)
 
         result = self.predictor.predict(text)
         
         if result.is_error():
-            result.context = context
+            meta.update({"info":context})
+            result.context = str(meta)
             self.results.add(result)
 
     def split_line(self, line: str):
-        k8s_log = re.compile("(.*) \"msg\"=(.*)")
-        m = k8s_log.match(line)
+        msg_log = re.compile("(.*) \"msg\"=(.*)")
+        dot_go_log = re.compile("(.*\.go[: ]\d+[:\]])(.*)")
+        m = msg_log.match(line)
         if m:
             context = m.group(1)
             text = m.group(2)
         else:
-            text = line
-            context = {}
+            m = dot_go_log.match(line)
+            if m:
+                context = m.group(1)
+                text = m.group(2)
+            else:
+                text = line
+                context = {}
         return text, context
 
 if __name__ == "__main__":
