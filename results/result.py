@@ -4,7 +4,12 @@
 # template/template_id:  parsed result of original
 # label: output of predictor
 # analysis: root cause analysis, if this error have appeared before and user have provided userful feedback on how to resolve it
-# context: context of original, useful to backtrace to where it happened
+# meta: meta info of the log line, useful to backtrace to where it happened
+# context: context info of the log line, useful to deep analysis, examples could include: 
+#   N lines before and after the log line
+#   useful events at time of log happened
+#   useful k8s data for related objects at time of log 
+#   and others? 
 class Result:
     def __init__(self, 
                 input: str,
@@ -12,6 +17,7 @@ class Result:
                 template_id: int,
                 label: str,
                 analysis: str = "NA",
+                meta: dict = {}, 
                 context: dict = {},
                 count: int = 1) -> None:
 
@@ -20,6 +26,7 @@ class Result:
         self.template_id = template_id
         self.label = label
         self.analysis = analysis
+        self.meta = meta
         self.context = context
         self.count = count
 

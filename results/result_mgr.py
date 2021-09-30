@@ -39,7 +39,7 @@ class ResultMgr:
         if res is not None:
             res.count += 1
             res.input = result.input
-            res.context = self.merge_context(res.context, result.context)
+            res.meta = self.merge_meta(res.meta, result.meta)
             self.store.save_unresolved(res)
         else:
             if fb is not None:
@@ -87,7 +87,7 @@ class ResultMgr:
         self.store.resolve(result)
 
 
-    def merge_context(self, old: dict, n : dict) -> dict:
+    def merge_meta(self, old: dict, n : dict) -> dict:
 
         # if same log appears in multiple pods or containers or files, merge them
         keys = ["file", "pod", "container"]

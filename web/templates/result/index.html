@@ -20,7 +20,7 @@
         </div>
 
       </header>
-      <p class="body"><b>Context</b>: {{ result['context'] }} </p>
+      <p class="body"><b>Meta</b>: {{ result['meta'] }} </p>
       <p class="body"><b>Log text</b>:  {{ result['input'] }}</p>
       <p class="body"><b>Analysis</b>: {{ result['analysis'] }}</p>
       <a class="action" href="{{ url_for('result.update', id=result['template_id']) }}">Resolve</a>
@@ -44,7 +44,7 @@
         </div>
 
       </header>
-      <p class="body"><b>Context</b>: {{ result['context'] }} </p>
+      <p class="body"><b>Meta</b>: {{ result['meta'] }} </p>
       <p class="body"><b>Log text</b>:  {{ result['input'] }}</p>
       <p class="body"><b>Analysis</b>: {{ result['analysis'] }}</p>
 

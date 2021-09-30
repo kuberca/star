@@ -16,6 +16,7 @@ CREATE TABLE IF NOT EXISTS unresolved (
   template TEXT NOT NULL,
   label TEXT NOT NULL,
   analysis TEXT,
+  meta JSON,
   context JSON,
   count INTEGER
 );
@@ -26,6 +27,7 @@ CREATE TABLE IF NOT EXISTS resolved (
   template TEXT NOT NULL,
   label TEXT NOT NULL,
   analysis TEXT,
+  meta JSON,
   context JSON,
   count INTEGER
 );
@@ -36,6 +38,7 @@ CREATE TABLE IF NOT EXISTS feedback (
   template TEXT NOT NULL,
   label TEXT NOT NULL,
   analysis TEXT,
+  meta JSON,
   context JSON,
   count INTEGER
 );
@@ -43,13 +46,14 @@ CREATE TABLE IF NOT EXISTS feedback (
 """
 
 g_create_sql = """
-INSERT INTO {}  (template_id, input, template, label, analysis, context, count) 
- VALUES (?, ?, ?, ?, ?, ?, ?)  
+INSERT INTO {}  (template_id, input, template, label, analysis, meta, context, count) 
+ VALUES (?, ?, ?, ?, ?, ?, ?, ?)  
 ON CONFLICT(template_id) DO UPDATE SET
     input     = excluded.input,
     template  = excluded.template,
     label     = excluded.label,
     analysis  = excluded.analysis,
+    meta      = excluded.meta,
     context   = excluded.context,
     count     = excluded.count
 """
@@ -73,21 +77,21 @@ class SqliteStore:
         sql = g_create_sql.format("unresolved")
         self.db.execute(
             sql,  
-            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.context), result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.meta), json.dumps(result.context), result.count)
         )
         self.db.commit()
 
     def save_resolved(self, result: Result):
         self.db.execute(
             g_create_sql.format("resolved"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.context), result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.meta), json.dumps(result.context), result.count)
         )
         self.db.commit()
 
     def save_feedback(self, result: Result):
         self.db.execute(
             g_create_sql.format("feedback"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.context), result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.meta), json.dumps(result.context), result.count)
         )
         self.db.commit()
 
@@ -161,7 +165,7 @@ class SqliteStore:
         self.db.commit()
         self.db.execute(
             g_create_sql.format("resolved"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.context), result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, json.dumps(result.meta), json.dumps(result.context), result.count)
         )
         self.db.commit()
 
@@ -169,10 +173,10 @@ class SqliteStore:
         result = Result(input=obj["input"], template_id=obj["template_id"], template=obj["template"], 
             label=obj["label"], analysis=obj["analysis"], count=obj["count"] 
         )
-        if obj["context"]:
-            try:
-                result.context=json.loads(obj["context"])
-            except:
-                pass
+        try:
+            result.meta=json.loads(obj["meta"])
+            result.context=json.loads(obj["context"])
+        except:
+            pass
 
         return result

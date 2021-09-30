@@ -16,11 +16,7 @@ from config.config import Config
 
 def tail_log(api, namespace, pod, container, callback):
     w = watch.Watch()
-    # meta = {"namespace":namespace, "pod":pod, "container": container}
-    meta = {}
-    meta["namespace"] = namespace
-    meta["pod"] = pod
-    meta["container"] = container
+    meta = {"namespace":namespace, "pod":pod, "container": container}
 
     print(json.dumps(meta))
 
