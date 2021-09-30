@@ -5,7 +5,7 @@ backend server
 initialize all classes (watcher/preper/results/feedback/model)
 start watcher
 """
-import re
+import re, json
 
 from config.config import Config
 from predictor.predict import Predictor
@@ -56,11 +56,11 @@ class Server():
         
         if result.is_error():
             meta.update({"info":context})
-            result.context = str(meta)
+            result.context = meta
             self.results.add(result)
 
     def split_line(self, line: str):
-        msg_log = re.compile("(.*) \"msg\"=(.*)")
+        msg_log = re.compile("(.*) \"?msg\"?=(.*)")
         dot_go_log = re.compile("(.*\.go[: ]\d+[:\]])(.*)")
         m = msg_log.match(line)
         if m:

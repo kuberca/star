@@ -12,7 +12,7 @@ class Result:
                 template_id: int,
                 label: str,
                 analysis: str = "NA",
-                context: str = "{}",
+                context: dict = {},
                 count: int = 1) -> None:
 
         self.input = input

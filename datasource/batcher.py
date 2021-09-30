@@ -45,6 +45,8 @@ class Batcher():
         elif fm == "application/x-tar":
             tar = tarfile.open(file)
             for f in tar: 
+                if f.name.endswith(".yaml") or f.name.endswith(".json"):
+                    continue
                 ft = tar.extractfile(f.name)
                 meta={"file":f.name}
                 for line in ft:
@@ -53,6 +55,8 @@ class Batcher():
         elif fm == "application/zip":
             zip = zipfile.ZipFile(file)
             for zf in zip.namelist():
+                if zf.endswith(".yaml") or zf.endswith(".json"):
+                    continue
                 meta={"file":zf}
                 for line in zip.open(zf):
                     self.decode_proc(line, meta)

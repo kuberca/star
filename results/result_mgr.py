@@ -5,8 +5,11 @@ save prediction results into a storage backend
 waiting for user action, to either accept or reject the prediciton
 if reject, then need to pass the result to feedback manager
 """
+import json, sys
+
 from results.result import Result
 from feedback.fb_mgr import FeedbackMgr
+
 
 from storage.mem import MemStore
 
@@ -36,6 +39,7 @@ class ResultMgr:
         if res is not None:
             res.count += 1
             res.input = result.input
+            res.context = self.merge_context(res.context, result.context)
             self.store.save_unresolved(res)
         else:
             if fb is not None:
@@ -83,3 +87,14 @@ class ResultMgr:
         self.store.resolve(result)
 
 
+    def merge_context(self, old: dict, n : dict) -> dict:
+
+        # if same log appears in multiple pods or containers or files, merge them
+        keys = ["file", "pod", "container"]
+        for key in keys:
+            keyo = old.get(key)
+            keyn = n.get(key)
+            if keyo != keyn:
+                n[key] = keyo + "," + keyn
+        
+        return n

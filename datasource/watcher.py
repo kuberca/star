@@ -7,7 +7,7 @@ pre-process the input data to text message
 and call callback to process the data
 """
 
-import threading
+import threading, json
 
 from kubernetes import client, config, watch
 
@@ -16,7 +16,14 @@ from config.config import Config
 
 def tail_log(api, namespace, pod, container, callback):
     w = watch.Watch()
-    meta = {"namespace":namespace, "pod":pod, "container": container}
+    # meta = {"namespace":namespace, "pod":pod, "container": container}
+    meta = {}
+    meta["namespace"] = namespace
+    meta["pod"] = pod
+    meta["container"] = container
+
+    print(json.dumps(meta))
+
     for line in w.stream(api.read_namespaced_pod_log, name=pod, namespace=namespace, container=container):
         callback(line, meta)
 
@@ -41,20 +48,20 @@ class Watcher():
         namespace = "cluster-123"
         for event in w.stream(v1.list_namespaced_pod, namespace=namespace, watch=True):
             print("Event: %s %s %s" % (
-                event['type'],
-                event['object'].kind,
-                event['object'].metadata.name)
+                event["type"],
+                event["object"].kind,
+                event["object"].metadata.name)
             )
             # print(event)
-            podname = event['object'].metadata.name
+            podname = event["object"].metadata.name
             containers = []
-            for container in event['object'].spec.containers:
+            for container in event["object"].spec.containers:
                 containers.append(container.name)
 
-            if event['type'] == "DELETED":
+            if event["type"] == "DELETED":
                 for c in containers:
                     th = self.threads.pop(self.get_key(podname, c))
-            elif event['object'].status.phase == "Running":
+            elif event["object"].status.phase == "Running":
                 for container in containers:
                     key = self.get_key(podname, container)
                     if key not in self.threads:

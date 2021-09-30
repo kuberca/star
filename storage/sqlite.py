@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS unresolved (
   template TEXT NOT NULL,
   label TEXT NOT NULL,
   analysis TEXT,
-  context TEXT,
+  context JSON,
   count INTEGER
 );
 
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS resolved (
   template TEXT NOT NULL,
   label TEXT NOT NULL,
   analysis TEXT,
-  context TEXT,
+  context JSON,
   count INTEGER
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS feedback (
   template TEXT NOT NULL,
   label TEXT NOT NULL,
   analysis TEXT,
-  context TEXT,
+  context JSON,
   count INTEGER
 );
 
