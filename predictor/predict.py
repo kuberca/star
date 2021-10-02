@@ -18,13 +18,13 @@ class Predictor:
         self.model = model
         self.lock = threading.Lock()
 
-    def predict(self, input: str):
+    def predict(self, input: str, context: dict = {}):
 
         self.lock.acquire()
         id, template = self.preper.process(input)
         self.lock.release()
         
-        label = self.model.predict(template)
+        label = self.model.predict(template, context)
         
 
         result = Result(input=input, label=label, template=template, template_id=id)

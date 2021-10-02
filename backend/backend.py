@@ -49,14 +49,15 @@ class Server():
     def start_in_bg(self):
         self.watcher.start_in_bg()
 
-    def process_line(self, line: str, meta: dict):
+    def process_line(self, line: str, meta: dict, context: dict = {}):
         text, info = self.split_line(line)
 
-        result = self.predictor.predict(text)
+        result = self.predictor.predict(text, context)
         
         if result.is_error():
             meta.update({"info":info})
             result.meta = meta
+            result.context = context
             self.results.add(result)
 
     def split_line(self, line: str):

@@ -32,7 +32,7 @@ class Labeler:
         # self.labelers = [self.gt, self.hu, self.nv]
 
     # interface to be used by predictor
-    def predict(self, tpl: str):
+    def predict(self, tpl: str, context: dict = {}):
         return self.get_label_for_tpl(tpl)
 
     # given an input template, return the label
