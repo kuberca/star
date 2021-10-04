@@ -12,16 +12,24 @@ import threading, json
 from kubernetes import client, config, watch
 
 from config.config import Config
+from . mem_queue import MemQueue
 
+def process_log_with_context(mq: MemQueue, meta: dict, callback):
+    while True:
+        line, context = mq.get()
+        callback(line, meta, context)
 
 def tail_log(api, namespace, pod, container, callback):
     w = watch.Watch()
     meta = {"namespace":namespace, "pod":pod, "container": container}
-
-    print(json.dumps(meta))
+    
+    mq = MemQueue()
+    # mq.bg_worker()
+    th = threading.Thread(target=process_log_with_context, args=(mq, meta, callback))
+    th.start()
 
     for line in w.stream(api.read_namespaced_pod_log, name=pod, namespace=namespace, container=container):
-        callback(line, meta)
+        mq.put(line)
 
 class Watcher():
     def __init__(self, config: Config, callback) -> None:

@@ -139,7 +139,8 @@ class SqliteStore:
             'SELECT * FROM unresolved'
         ).fetchall()
 
-        return unresolved
+
+        return [self.get_result_from_sql(i) for i in unresolved ]
 
     # get all resolved results from storage, could be used for statictics
     def get_all_resolved(self):
@@ -147,7 +148,7 @@ class SqliteStore:
             'SELECT * FROM resolved'
         ).fetchall()
 
-        return resolved
+        return [self.get_result_from_sql(i) for i in resolved ]
 
     # get all results from storage
     def get_all(self):

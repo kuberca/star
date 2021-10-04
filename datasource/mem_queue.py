@@ -13,6 +13,9 @@ QueueSize = 1024 * 1024
 # lines before and after current line as context
 ContextLength = 10
 
+# place hoolder for original line
+OriginalLine = "<ORIGINAL_LINE>"
+
 class Item:
     def __init__(self, input: str, context: dict = {}) -> None:
         self.input = input
@@ -34,14 +37,17 @@ class MemQueue:
         self.contexts = []
         self.context_length = context_length
 
+        self.bg_worker()
+
 
     def put(self, line: str, context: dict = {}) -> None:
         item = Item(input=line, context=context)
         self.lines_queue.put(item)
 
 
-    def get(self) -> Item:
-        return self.item_queue.get()
+    def get(self):
+        item = self.item_queue.get()
+        return item.input, item.context
 
     
     def bg_worker(self):
@@ -64,6 +70,7 @@ class MemQueue:
             lines = []
             for i in range(idx):
                 lines.append(self.contexts[i].input)
+            lines.append(OriginalLine)
             for i in range(idx+1, self.context_length+1):
                 lines.append(self.contexts[i].input)
             item.context["lines"] = lines
@@ -80,11 +87,11 @@ class MemQueue:
         th.start()
 
 if __name__ == "__main__":
-    mq = MemQueue(queue_size=20, context_length=4)
+    mq = MemQueue(queue_size=10, context_length=4)
     mq.bg_worker()
-    mq.test_bg_reader()
+    # mq.test_bg_reader()
 
-    for i in range(25):
+    for i in range(20):
         input = "input number %d" % (i)
         context = {"no": i}
         print("create", i)

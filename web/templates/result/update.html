@@ -6,9 +6,11 @@
 
 {% block content %}
   <p class="body"><b>Log text</b>: {{ result['input'] }}</p>
-
   <p class="body"><b>Log Template</b>: {{ result['template'] }}</p>
-
+  <p class="body"><b>Log context</b>:</p>
+  {% for line in result['context']['lines'] %}
+    <li> {{ line }}</li>
+  {% endfor %}
   <form method="result">
 
     <label for="label">Predict Label</label>

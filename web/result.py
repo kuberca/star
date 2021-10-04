@@ -19,8 +19,8 @@ UPLOAD_FOLDER = "/tmp"
 @bp.route('/')
 def index():
     unresolved, resolved = get_results()
-    sorted_unresolved = sorted(unresolved, key=lambda it: it["count"], reverse=True)
-    sorted_resolved = sorted(resolved, key=lambda it: it["count"], reverse=True)
+    sorted_unresolved = sorted(unresolved, key=lambda it: it.count, reverse=True)
+    sorted_resolved = sorted(resolved, key=lambda it: it.count, reverse=True)
     return render_template('result/index.html', unresolved=sorted_unresolved, resolved=sorted_resolved)
 
 
