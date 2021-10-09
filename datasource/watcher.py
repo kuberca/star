@@ -49,7 +49,7 @@ class Watcher():
         config.load_kube_config()
         w = watch.Watch()
         v1 = client.CoreV1Api()
-        namespace = "cluster-123"
+        namespace = "default"
         for event in w.stream(v1.list_namespaced_pod, namespace=namespace, watch=True):
             print("Event: %s %s %s" % (
                 event["type"],

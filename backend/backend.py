@@ -50,32 +50,13 @@ class Server():
         self.watcher.start_in_bg()
 
     def process_line(self, line: str, meta: dict, context: dict = {}):
-        text, info = self.split_line(line)
 
-        result = self.predictor.predict(text, context)
+        result = self.predictor.predict(line, meta, context)
         
         if result.is_error():
-            meta.update({"info":info})
-            result.meta = meta
-            result.context = context
             self.results.add(result)
 
-    def split_line(self, line: str):
-        msg_log = re.compile("(.*) \"?msg\"?=(.*)")
-        dot_go_log = re.compile("(.*\.go[: ]\d+[:\]])(.*)")
-        m = msg_log.match(line)
-        if m:
-            info = m.group(1)
-            text = m.group(2)
-        else:
-            m = dot_go_log.match(line)
-            if m:
-                info = m.group(1)
-                text = m.group(2)
-            else:
-                text = line
-                info = {}
-        return text, info
+
 
 if __name__ == "__main__":
     cfg = {}

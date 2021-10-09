@@ -10,12 +10,15 @@
 #   useful events at time of log happened
 #   useful k8s data for related objects at time of log 
 #   and others? 
+# context_id: aggregated id to represent the context info, used to retrieve same context
 class Result:
     def __init__(self, 
                 input: str,
                 template: str,
                 template_id: int,
                 label: str,
+                context_id: str = "",
+                context_template: str ="",
                 analysis: str = "NA",
                 meta: dict = {}, 
                 context: dict = {},
@@ -28,6 +31,8 @@ class Result:
         self.analysis = analysis
         self.meta = meta
         self.context = context
+        self.context_id = context_id
+        self.context_template = context_template
         self.count = count
 
     def __str__(self) -> str:
