@@ -55,7 +55,7 @@ class Predictor:
             ids.append(str(id))
             templates.append(template)
 
-        return ",".join(ids), ",".join(templates)
+        return "-".join(ids), ",".join(templates)
 
     def split_line(self, line: str):
         msg_log = re.compile("(.*) \"?msg\"?=(.*)")

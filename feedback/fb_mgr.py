@@ -42,7 +42,7 @@ class FeedbackMgr:
     # get feedback from local cache for the given template
     # if exist, then the feedback is treated as ground truth
     # if not, return None, then predictor need to take further actions
-    def get(self, template_id: int) -> Result:
-        return self.store.get_feedback(template_id)
+    def get(self, template_id: int, context_id: str) -> Result:
+        return self.store.get_feedback(template_id, context_id)
 
 

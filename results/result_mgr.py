@@ -27,7 +27,7 @@ class ResultMgr:
     # 1. check feedback,
     # 2. dedup
     def add(self, result:Result):
-        fb = self.fbmgr.get(result.template_id)
+        fb = self.fbmgr.get(result.template_id, result.context_id)
 
         # do not save is feedback shows it's not an error
         if fb is not None and not fb.is_error():
@@ -35,7 +35,7 @@ class ResultMgr:
             return
         
         # check if already exists in storage
-        res = self.get_unresolved(result.template_id)
+        res = self.get_unresolved(result.template_id, result.context_id)
         if res is not None:
             res.count += 1
             res.input = result.input
@@ -61,18 +61,18 @@ class ResultMgr:
         return self.store.get_all()
 
     # get un resolved results from storage, so user can look at it and take action
-    def get_unresolved(self, template_id: int) -> Result:
-        print("get unresolved template_id", template_id)
-        return self.store.get_unresolved(template_id)
+    def get_unresolved(self, template_id: int, context_id: str) -> Result:
+        print("get unresolved template_id", template_id, context_id)
+        return self.store.get_unresolved(template_id, context_id)
 
     # get all un resolved results from storage, so user can look at it and take action
     def get_all_unresolved(self):
         return self.store.get_unresolved()
 
     # get un resolved results from storage, so user can look at it and take action
-    def get_resolved(self, template_id: int) -> Result:
-        print("get resolved template_id", template_id)
-        return self.store.get_resolved(template_id)
+    def get_resolved(self, template_id: int, context_id: str) -> Result:
+        print("get resolved template_id", template_id, context_id)
+        return self.store.get_resolved(template_id, context_id)
 
     # get all resolved results from storage, could be used for statictics
     def get_all_resolved(self):

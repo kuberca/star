@@ -37,12 +37,16 @@ class MemQueue:
         self.contexts = []
         self.context_length = context_length
 
+        self.lock = threading.Lock()
+
         self.bg_worker()
 
 
     def put(self, line: str, context: dict = {}) -> None:
         item = Item(input=line, context=context)
+        self.lock.acquire()
         self.lines_queue.put(item)
+        self.lock.release()
 
 
     def get(self):
@@ -73,6 +77,7 @@ class MemQueue:
             lines.append(OriginalLine)
             for i in range(idx+1, self.context_length+1):
                 lines.append(self.contexts[i].input)
+            item.context = {}
             item.context["lines"] = lines
             self.item_queue.put(item)
             self.contexts = self.contexts[1:]
@@ -89,11 +94,11 @@ class MemQueue:
 if __name__ == "__main__":
     mq = MemQueue(queue_size=10, context_length=4)
     mq.bg_worker()
-    # mq.test_bg_reader()
+    mq.test_bg_reader()
 
     for i in range(20):
         input = "input number %d" % (i)
         context = {"no": i}
         print("create", i)
-        mq.put(line=input, context=context)
+        mq.put(line=input)
 

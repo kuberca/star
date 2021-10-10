@@ -27,10 +27,11 @@ def index():
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 def update(id):
     is_resolved = request.args.get('resolved')
+    context_id = request.args.get('context_id')
     if is_resolved == "true":
-        result = get_resolved(id)
+        result = get_resolved(id, context_id)
     else:
-        result = get_result(id)
+        result = get_unresolved(id, context_id)
 
     if request.method == 'POST':
         analysis = request.form['analysis']
@@ -64,11 +65,11 @@ def templates():
     return render_template('result/logtpl.html', templates=templates)
 
 
-def get_result(id: int):
-    return get_server().results.get_unresolved(id)
+def get_unresolved(id: int, context_id: str):
+    return get_server().results.get_unresolved(id, context_id)
 
-def get_resolved(id: int):
-    return get_server().results.get_resolved(id)
+def get_resolved(id: int, context_id: str):
+    return get_server().results.get_resolved(id, context_id)
 
 def get_results():
     return get_server().results.get_all()
