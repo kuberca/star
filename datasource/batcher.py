@@ -57,6 +57,8 @@ class Batcher():
                 if f.name.endswith(".yaml") or f.name.endswith(".json"):
                     continue
                 ft = tar.extractfile(f.name)
+                if ft is None:
+                    continue
                 meta={"file":f.name}
 
                 mq = self.create_start_mq(meta)

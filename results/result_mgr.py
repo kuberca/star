@@ -90,11 +90,11 @@ class ResultMgr:
     def merge_meta(self, old: dict, n : dict) -> dict:
 
         # if same log appears in multiple pods or containers or files, merge them
-        keys = ["file", "pod", "container"]
-        for key in keys:
-            keyo = old.get(key)
-            keyn = n.get(key)
-            if keyo != keyn:
-                n[key] = keyo + "," + keyn
+        # keys = ["file", "pod", "container"]
+        # for key in keys:
+        #     vold = old.get(key)
+        #     vnew = n.get(key)
+        #     if vold is not None and vnew not in vold:
+        #         n[key] = vold + "," + vnew
         
         return n
