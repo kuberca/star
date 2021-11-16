@@ -20,6 +20,8 @@ class ResultMgr:
             store = MemStore()
         self.store = store
 
+        # grouper group unresolved results using semantic similarity
+        self.grouper = None
 
     # add results into storage
     # called by predictor
@@ -27,11 +29,11 @@ class ResultMgr:
     # 1. check feedback,
     # 2. dedup
     def add(self, result:Result):
-        fb = self.fbmgr.get(result.template_id, result.context_id)
+        fb = self.fbmgr.get(result.template_id, result.context_id, result.template)
 
         # do not save is feedback shows it's not an error
         if fb is not None and not fb.is_error():
-            print("is not error from feedback", result.input)
+            #print("is not error from feedback", result.input)
             return
         
         # check if already exists in storage
@@ -46,6 +48,10 @@ class ResultMgr:
                 result.label = fb.label
                 result.analysis = fb.analysis
             self.store.save_unresolved(result)
+
+        # check if grouper is enabled and if yes, then save to grouper
+        if self.grouper is not None:
+            self.grouper.add(result)
 
     # save into storage  
     def save_unresolved(self, result: Result):

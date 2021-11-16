@@ -30,7 +30,7 @@ class Server():
         store = SqliteStore()
         self.preper = LogParser(config_file=prepcfg["config_file"], persist=True, persist_dir=prepcfg["persist_dir"])
         self.labler = Labeler(naive=True, datadir=prepcfg["persist_dir"])
-        self.feedback = FeedbackMgr(remote_url="", store=store)
+        self.feedback = FeedbackMgr(remote_url="", local_file="./fb.csv", store=store)
         self.results = ResultMgr(fbmgr=self.feedback, store=store)
 
         self.predictor = Predictor(preper=self.preper, model=self.labler)

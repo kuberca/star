@@ -5,25 +5,27 @@
 
   <a class="action" href="{{ url_for('result.templates') }}">Log Templates </a>
 
-  <a class="action" href="{{ url_for('result.resolved') }}">Resolved </a>
+  <a class="action" href="{{ url_for('result.index') }}">Unresolved </a>
 {% endblock %}
 
 
 
 {% block content %}
 
-  <h1>Results Unresolved</h1> 
-  {% for result in unresolved %}
-    <article class="result">
+{% endblock %}
+<span></span>
 
+
+{% block content2 %}
+  <h1>Results Resolved</h1> 
+  {% for result in resolved %}
+    <article class="result">
       <header>
         <div>
-          <div class="about"> Happened <b>{{ result['count'] }} </b> times. </div>
-          
+          <div class="about"> Happened <b>{{ result['count'] }} </b> times.</div>
         </div>
 
       </header>
-      <a class="action" href="{{ url_for('result.update', id=result['template_id'], context_id=result['context_id']) }}">Resolve</a>
       <p class="body"><b>Meta</b>: {{ result['meta'] }} </p>
       <p class="body"><b>Log Template Id</b>: {{ result['template_id'] }}</p>
       <p class="body"><b>Context Id</b>: {{ result['context_id'] }}</p>
@@ -33,19 +35,13 @@
         <li> {{ line }}</li>
       {% endfor %}
       <p class="body"><b>Analysis</b>: {{ result['analysis'] }}</p>
-      
-      
+
+      <a class="action" href="{{ url_for('result.update', id=result['template_id'], resolved='true', context_id=result['context_id']) }}">Resolve</a>
     </article>
     {% if not loop.last %}
       <hr>
     {% endif %}
   {% endfor %}
-{% endblock %}
-<span></span>
-
-
-{% block content2 %}
-
 {% endblock %}
 
 

@@ -4,7 +4,26 @@
   <h1>{% block title %}Resolve {% endblock %}</h1>
 {% endblock %}
 
+
+
 {% block content %}
+
+<form method="result">
+
+  <label for="label">Predict Label</label>
+  <!-- <input name="label" id="label" value="{{ request.form['label'] or result['label'] }}" required> -->
+  <select name="label" id="label">
+    <option value="Error" {% if request.form['label'] == 'Error' or result['label']  == 'Error' %}selected{% endif %}>Error</option>  
+    <option value="Normal" {% if request.form['label'] == 'Normal' or result['label'] == 'Normal' %}selected{% endif %}>Normal</option>
+  </select>
+
+  <label for="analysis">Root Cause Analysis</label>
+  <textarea name="analysis" id="analysis" >{{ request.form['analysis'] or result['analysis'] }}</textarea>
+
+  <input type="submit" value="Save" formmethod="post">
+</form>
+
+
   <p class="body"><b>Meta</b>: {{ result['meta'] }} </p>
   <p class="body"><b>Log text</b>: {{ result['input'] }}</p>
   <p class="body"><b>Log Template Id</b>: {{ result['template_id'] }}</p>
@@ -15,16 +34,7 @@
   {% for line in result['context']['lines'] %}
     <li> {{ line }}</li>
   {% endfor %}
-  <form method="result">
 
-    <label for="label">Predict Label</label>
-    <input name="label" id="label" value="{{ request.form['label'] or result['label'] }}" required>
-
-    <label for="analysis">Root Cause Analysis</label>
-    <textarea name="analysis" id="analysis">{{ request.form['analysis'] or result['analysis'] }}</textarea>
-
-    <input type="submit" value="Save" formmethod="post">
-  </form>
   <hr>
 
 {% endblock %}

@@ -20,8 +20,7 @@ UPLOAD_FOLDER = "/tmp"
 def index():
     unresolved, resolved = get_results()
     sorted_unresolved = sorted(unresolved, key=lambda it: it.count, reverse=True)
-    sorted_resolved = sorted(resolved, key=lambda it: it.count, reverse=True)
-    return render_template('result/index.html', unresolved=sorted_unresolved, resolved=sorted_resolved)
+    return render_template('result/index.html', unresolved=sorted_unresolved)
 
 
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
@@ -63,6 +62,12 @@ def upload():
 def templates():
     templates = get_server().preper.get_templates()
     return render_template('result/logtpl.html', templates=templates)
+
+@bp.route('/resolved')
+def resolved():
+    unresolved, resolved = get_results()
+    sorted_resolved = sorted(resolved, key=lambda it: it.count, reverse=True)
+    return render_template('result/resolved.html', resolved=sorted_resolved)
 
 
 def get_unresolved(id: int, context_id: str):

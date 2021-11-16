@@ -55,7 +55,12 @@ class Predictor:
             ids.append(str(id))
             templates.append(template)
 
-        return "-".join(ids), ",".join(templates)
+        #########################
+        # fake context_id here to only use template ID as key
+        # remember to revert
+        #########################
+        #return "-".join(ids), ",".join(templates)
+        return "context_id", ",".join(templates)
 
     def split_line(self, line: str):
         msg_log = re.compile("(.*) \"?msg\"?=(.*)")
