@@ -69,6 +69,11 @@ def resolved():
     sorted_resolved = sorted(resolved, key=lambda it: it.count, reverse=True)
     return render_template('result/resolved.html', resolved=sorted_resolved)
 
+@bp.route('/groups')
+def groups():
+    groups = get_server().results.get_all_unresolved_groups()
+    sorted_groups = sorted(groups, key=lambda it: it.count, reverse=True)
+    return render_template('result/groups.html', groups=sorted_groups)
 
 def get_unresolved(id: int, context_id: str):
     return get_server().results.get_unresolved(id, context_id)

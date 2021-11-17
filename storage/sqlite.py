@@ -3,8 +3,10 @@ use in sqlite as storage backend
 """
 import sqlite3
 import json
+from typing import List
 
 from results.result import Result
+from results.result import Group
 
 from werkzeug.exceptions import abort
 
@@ -21,6 +23,7 @@ CREATE TABLE IF NOT EXISTS unresolved (
   meta JSON,
   context JSON,
   count INTEGER,
+  group_id INTEGER ,
   PRIMARY KEY (template_id, context_id)
 );
 
@@ -35,6 +38,7 @@ CREATE TABLE IF NOT EXISTS resolved (
   meta JSON,
   context JSON,
   count INTEGER,
+  group_id INTEGER ,
   PRIMARY KEY (template_id, context_id)
 );
 
@@ -49,14 +53,21 @@ CREATE TABLE IF NOT EXISTS feedback (
   meta JSON,
   context JSON,
   count INTEGER,
+  group_id INTEGER ,
   PRIMARY KEY (template_id, context_id)
+);
+
+CREATE TABLE IF NOT EXISTS groups (
+  group_id INTEGER PRIMARY KEY,
+  vector TEXT NOT NULL, 
+  count INTEGER
 );
 
 """
 
 g_create_sql = """
-INSERT INTO {}  (template_id, input, template, label, analysis, context_id, context_template, meta, context, count) 
- VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  
+INSERT INTO {}  (template_id, input, template, label, analysis, context_id, context_template, meta, context, count, group_id)
+ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  
 ON CONFLICT(template_id, context_id) DO UPDATE SET
     input     = excluded.input,
     template  = excluded.template,
@@ -65,7 +76,16 @@ ON CONFLICT(template_id, context_id) DO UPDATE SET
     meta      = excluded.meta,
     context   = excluded.context,
     count     = excluded.count,
+    group_id  = excluded.group_id,
     context_template  = excluded.context_template
+"""
+
+g_create_group_sql = """
+INSERT INTO groups (group_id, vector, count)
+    VALUES (?, ?, ?)
+ON CONFLICT(group_id) DO UPDATE SET
+    vector = excluded.vector,
+    count  = excluded.count
 """
 
 class SqliteStore:
@@ -87,21 +107,21 @@ class SqliteStore:
         sql = g_create_sql.format("unresolved")
         self.db.execute(
             sql,  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id)
         )
         self.db.commit()
 
     def save_resolved(self, result: Result):
         self.db.execute(
             g_create_sql.format("resolved"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id)
         )
         self.db.commit()
 
     def save_feedback(self, result: Result):
         self.db.execute(
             g_create_sql.format("feedback"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id)
         )
         self.db.commit()
 
@@ -176,13 +196,16 @@ class SqliteStore:
         self.db.commit()
         self.db.execute(
             g_create_sql.format("resolved"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), result.count)
+            (result.template_id, result.input, result.template, result.label, result.analysis, 
+            result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), 
+            result.count, result.group_id)
         )
         self.db.commit()
 
     def get_result_from_sql(self, obj:dict) -> Result:
         result = Result(input=obj["input"], template_id=obj["template_id"], template=obj["template"], 
-            label=obj["label"], analysis=obj["analysis"], count=obj["count"], context_id=obj["context_id"], context_template=obj["context_template"] 
+            label=obj["label"], analysis=obj["analysis"], count=obj["count"], context_id=obj["context_id"], 
+            context_template=obj["context_template"], group_id=obj["group_id"] 
         )
         try:
             result.meta=json.loads(obj["meta"])
@@ -191,3 +214,67 @@ class SqliteStore:
             pass
 
         return result
+
+
+    # save group into storage, return the generated group_id
+    def save_group(self, group: Group) -> Group:
+        if  group.group_id == 0:
+            cur  = self.db.execute(
+                "INSERT INTO groups (vector, count) VALUES (?, ?)",
+                (group.vector_str(), group.count)
+            )
+            group.group_id = cur.lastrowid
+            return group
+        else:
+            self.db.execute(
+                g_create_group_sql,
+                (group.group_id, group.vector_str(), group.count)
+            )
+            return group
+
+    # get group from storage
+    def get_group(self, group_id: int) -> Group:
+        group = self.db.execute(
+            'SELECT * FROM groups WHERE group_id = ? ',
+            (group_id,)
+        ).fetchone()
+
+        if group is None:
+            return None
+
+        return self.get_group_from_sql(group)
+
+    # get all group from storage
+    def get_groups(self) -> List[Group]:
+        groups = self.db.execute(
+            'SELECT * FROM groups'
+        ).fetchall()
+
+        return [self.get_group_from_sql(g) for g in groups]
+
+    # get groups with results
+    def get_groups_with_results(self) -> List[Group]:
+        groups = self.db.execute(
+            'SELECT * FROM groups'
+        ).fetchall()
+
+        g_all = [self.get_group_from_sql(g) for g in groups]
+        for g in g_all:
+            g.results = self.get_group_results(g.group_id)
+        
+        return g_all
+
+    # get all results of a  group
+    def get_group_results(self, group_id: int) -> List[Group]:
+        unresolved = self.db.execute(
+            'SELECT * FROM unresolved WHERE group_id = ?',
+            (group_id,)
+        ).fetchall()
+
+        return [self.get_result_from_sql(i) for i in unresolved ]
+
+    # get Group object from select result
+    def get_group_from_sql(self, obj:dict) -> Group:
+        if obj is None:
+            return None
+        return Group(group_id=obj["group_id"], vector_str=obj["vector"], count=obj["count"])

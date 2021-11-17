@@ -11,6 +11,10 @@
 #   useful k8s data for related objects at time of log 
 #   and others? 
 # context_id: aggregated id to represent the context info, used to retrieve same context
+# group_id: grouping multiple results into one group with semantic similarity
+from typing import List
+
+
 class Result:
     def __init__(self, 
                 input: str,
@@ -19,6 +23,7 @@ class Result:
                 label: str,
                 context_id: str = "",
                 context_template: str ="",
+                group_id: int = -1,
                 analysis: str = "NA",
                 meta: dict = {}, 
                 context: dict = {},
@@ -33,6 +38,7 @@ class Result:
         self.context = context
         self.context_id = context_id
         self.context_template = context_template
+        self.group_id = group_id
         self.count = count
 
     def __str__(self) -> str:
@@ -40,3 +46,20 @@ class Result:
 
     def is_error(self):
         return self.label != "Normal"
+
+
+class Group:
+    def __init__(self, group_id: int, vector: list = None, vector_str: str = "", count: int=1, results: List[Result] = None) -> None:
+        self.group_id = group_id
+        self.count = count
+        self.results = results
+
+        if vector is not None:
+            self.vector = vector
+        elif  vector_str:
+            self.vector = list(map(float, vector_str.strip().split()))
+        else:
+            raise TypeError("vector should be list or str, given: {}, {}, {}".format(group_id, vector, vector_str))
+
+    def vector_str(self) -> str:
+        return " ".join(map(str, self.vector))

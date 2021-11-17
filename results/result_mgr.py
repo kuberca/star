@@ -9,19 +9,21 @@ import json, sys
 
 from results.result import Result
 from feedback.fb_mgr import FeedbackMgr
+from storage.sqlite import SqliteStore
 
 
-from storage.mem import MemStore
+from sems.grouper import Grouper
 
 class ResultMgr:
     def __init__(self, fbmgr: FeedbackMgr, store = None):
         self.fbmgr = fbmgr
         if store is None:
-            store = MemStore()
+            store = SqliteStore()
         self.store = store
 
         # grouper group unresolved results using semantic similarity
-        self.grouper = None
+        self.model_file = "./model/star.bin"
+        self.grouper = Grouper(self.store, self.model_file)
 
     # add results into storage
     # called by predictor
@@ -36,22 +38,32 @@ class ResultMgr:
             #print("is not error from feedback", result.input)
             return
         
+
         # check if already exists in storage
         res = self.get_unresolved(result.template_id, result.context_id)
         if res is not None:
             res.count += 1
             res.input = result.input
             res.meta = self.merge_meta(res.meta, result.meta)
+
+            # check if grouper is enabled and if yes, then save to grouper
+            if self.grouper is not None and not res.group_id > 0:
+                group_id = self.grouper.add_result(res)
+                res.group_id = group_id
+
             self.store.save_unresolved(res)
         else:
+            # check if grouper is enabled and if yes, then save to grouper
+            if self.grouper is not None:
+                group_id = self.grouper.add_result(result)
+                result.group_id = group_id
+
             if fb is not None:
                 result.label = fb.label
                 result.analysis = fb.analysis
             self.store.save_unresolved(result)
 
-        # check if grouper is enabled and if yes, then save to grouper
-        if self.grouper is not None:
-            self.grouper.add(result)
+
 
     # save into storage  
     def save_unresolved(self, result: Result):
@@ -83,6 +95,9 @@ class ResultMgr:
     # get all resolved results from storage, could be used for statictics
     def get_all_resolved(self):
         return self.store.get_all_resolved()
+
+    def get_all_unresolved_groups(self):
+        return self.store.get_groups_with_results()
 
     # if user reject the result, means the prediction that the data is 'error' is wrong
     # need to update this result into user feedback, so later prediction can use it as ground truth
