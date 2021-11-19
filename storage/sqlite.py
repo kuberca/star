@@ -257,12 +257,30 @@ class SqliteStore:
         groups = self.db.execute(
             'SELECT * FROM groups'
         ).fetchall()
-
-        g_all = [self.get_group_from_sql(g) for g in groups]
-        for g in g_all:
-            g.results = self.get_group_results(g.group_id)
         
+        g_all = []
+        for g in groups:
+            g = self.get_group_from_sql(g)
+            results = self.get_group_results(g.group_id)
+            if len(results) > 0:
+                g.results = results
+                g_all.append(g)
+
         return g_all
+
+    # get group with results
+    def get_group_with_results(self, group_id: int) -> Group:
+        group = self.db.execute(
+            'SELECT * FROM groups WHERE group_id = ? ',
+            (group_id,)
+        ).fetchone()
+
+        if group is None:
+            return None
+
+        g = self.get_group_from_sql(group)
+        g.results = self.get_group_results(g.group_id)
+        return g
 
     # get all results of a  group
     def get_group_results(self, group_id: int) -> List[Group]:

@@ -17,28 +17,33 @@
     <article class="result">
 
       <header>
-
       </header>
-      
-      <p class="body"><b>Group Id</b>: {{ group['group_id'] }}</p>
-      <p class="body"><b>Log Templates</b>:</p>
-      {% for result in group['results'] %}
-        <li> {{ result['template'] }}</li>
-      {% endfor %}
 
+      <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}</p>
+
+      <a class="action" href="{{ url_for('result.update_group', id=group['group_id']) }}">Resolve</a>
+
+      <table>
+        <tr>
+          <th>Num</th>
+          <th>log</th>
+        </tr>
+
+        {% for result in group['results'] %}
+        <tr>
+          <td>{{ result['count'] }}</td>
+          <td>{{ result['input'] }}</td>
+        </tr>
+
+        {% endfor %}
+      </table>
       
       
     </article>
-    {% if not loop.last %}
-      <hr>
-    {% endif %}
+
   {% endfor %}
 {% endblock %}
-<span></span>
 
 
-{% block content2 %}
-
-{% endblock %}
 
 

@@ -7,7 +7,7 @@ if reject, then need to pass the result to feedback manager
 """
 import json, sys
 
-from results.result import Result
+from results.result import Result, Group
 from feedback.fb_mgr import FeedbackMgr
 from storage.sqlite import SqliteStore
 
@@ -97,7 +97,24 @@ class ResultMgr:
         return self.store.get_all_resolved()
 
     def get_all_unresolved_groups(self):
-        return self.store.get_groups_with_results()
+        groups = self.store.get_groups_with_results()
+        #  get the top 10 frequent words in the templates of each group
+        for group in groups:
+            group.top_words = self.get_top_words(group)
+
+        return groups
+
+    # get one single group with results
+    def get_unresolved_group(self, id: int) -> Group:
+        group = self.store.get_group_with_results(id)
+        return group
+
+    # resolve group
+    def resolve_group(self, group: Group):
+        for result in group.results:
+            result.label = group.label
+            result.analysis = group.analysis
+            self.resolve(result)
 
     # if user reject the result, means the prediction that the data is 'error' is wrong
     # need to update this result into user feedback, so later prediction can use it as ground truth
@@ -119,3 +136,35 @@ class ResultMgr:
         #         n[key] = vold + "," + vnew
         
         return n
+
+
+    # get top K frequent words in the templates of each group
+    def get_top_words(self, group: Group):
+        # get all words in all templates
+        words = {}
+        for result in group.results:
+            tokens = result.template.split()
+            for token in tokens:
+                if self.skip_word(token):
+                    continue
+                if token not in words:
+                    words[token] = 0
+                words[token] += 1
+
+        # get top K frequent words
+        return self.get_top_k(words.items(), 10)
+
+    # get top K frequent items from a list of items
+    def get_top_k(self, items, k):
+        k = min(k, len(items))
+        return sorted(items, key=lambda x: x[1], reverse=True)[:k]
+
+    # skip some words
+    def skip_word(self, word:str):
+        if len(word) < 2 or word == "<DATE>" or word == "<TIME>" or word == "<DATETIME>" or word == "<HEX>" or word == "<IP>" or word == "<*>":
+            return True
+
+        if any([char.isdigit() or char == '-' for char in word]):
+            return True
+
+        return False

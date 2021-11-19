@@ -75,6 +75,23 @@ def groups():
     sorted_groups = sorted(groups, key=lambda it: it.count, reverse=True)
     return render_template('result/groups.html', groups=sorted_groups)
 
+
+@bp.route('/<int:id>/update_group', methods=('GET', 'POST'))
+def update_group(id):
+    group = get_server().results.get_unresolved_group(id)
+
+    if request.method == 'POST':
+        analysis = request.form['analysis']
+        label = request.form['label']
+        group.analysis = analysis
+        group.label = label
+        get_server().results.resolve_group(group)
+
+        return redirect(url_for('result.groups'))
+
+    return render_template('result/update_group.html', group=group)
+
+
 def get_unresolved(id: int, context_id: str):
     return get_server().results.get_unresolved(id, context_id)
 

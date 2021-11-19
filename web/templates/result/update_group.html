@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Resolve Group {% endblock %}</h1>
+{% endblock %}
+
+
+
+{% block content %}
+
+<form method="result">
+
+  <label for="label">Predict Label</label>
+
+  <select name="label" id="label">
+    <option value="Error" {% if request.form['label'] == 'Error' or group['label']  == 'Error' %}selected{% endif %}>Error</option>  
+    <option value="Normal" {% if request.form['label'] == 'Normal' or group['label'] == 'Normal' %}selected{% endif %}>Normal</option>
+  </select>
+
+  <label for="analysis">Root Cause Analysis</label>
+  <textarea name="analysis" id="analysis" >{{ request.form['analysis'] or group['analysis'] }}</textarea>
+
+  <input type="submit" value="Save" formmethod="post">
+</form>
+
+
+<p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}</p>
+
+<table>
+  <tr>
+    <th>Num</th>
+    <th>log</th>
+    <th>Template</th>
+  </tr>
+
+  {% for result in group['results'] %}
+  <tr>
+    <td>{{ result['count'] }}</td>
+    <td>{{ result['input'] }}</td>
+    <td>{{ result['template'] }}</td>
+  </tr>
+
+  {% endfor %}
+</table>
+
+  <hr>
+
+{% endblock %}

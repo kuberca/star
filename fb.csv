@@ -1,0 +1,26 @@
+label,template
+Normal,Failed to watch <*> failed to list <*> replicationcontrollers is forbidden User system kube-scheduler cannot list resource replicationcontrollers in API group at the cluster scope
+Normal,Failed to watch <*> failed to list <*> persistentvolumeclaims is forbidden User system kube-scheduler cannot list resource persistentvolumeclaims in API group at the cluster scope
+Normal,Failed to watch <*> failed to list <*> <*> is forbidden User system kube-scheduler cannot list resource csistoragecapacities in API group <*> at the cluster scope
+Normal,Failed to watch <*> failed to list <*> poddisruptionbudgets.policy is forbidden User system kube-scheduler cannot list resource poddisruptionbudgets in API group policy at the cluster scope
+Normal,Failed to watch <*> failed to list <*> <*> is forbidden User system kube-scheduler cannot list resource csinodes in API group <*> at the cluster scope
+Normal,Failed to watch <*> failed to list <*> <*> is forbidden User system kube-scheduler cannot list resource csidrivers in API group <*> at the cluster scope
+Normal,error retrieving resource lock <*> the server was unable to return a response in the time allotted but may still be processing the request get leases.coordination.k8s.io <*>
+Normal,Failed to access interface because it doesn t exist. error Link not found ifaceName <*> ifaceRegex ^cali.* ipVersion <HEX>
+Normal,Failed to get interface; it s down/gone. error Link not found ifaceName <*> ifaceRegex ^cali.* ipVersion <HEX>
+Normal,apiserver received an error that is not an metav1.Status &errors.errorString s context canceled context canceled
+Normal,apiserver received an error that is not an metav1.Status &errors.errorString s http Handler timeout http Handler timeout
+Normal,Auditing failed of request encoding failed authentication.TokenRequest is not suitable for converting to v1 in scheme k8s.io/kubernetes/pkg/api/legacyscheme/scheme.go 30
+Normal,Auditing failed of request encoding failed /v1 Kind DeleteOptions is unstructured and is not suitable for converting to <*>
+Normal,Failed to verify datastore error Get https //<IP> 443/apis/crd.projectcalico.org/v1/clusterinformations/default context deadline exceeded
+Normal,Failed to reach apiserver error Get https //<IP> 443/apis/crd.projectcalico.org/v1/clusterinformations/default context deadline exceeded
+Normal,Failed to get local addresses assuming no local IPs err route ip+net no such network interface route ip+net no such network interface MISSING
+Normal,error retrieving resource lock kube-system/kube-controller-manager leases.coordination.k8s.io kube-controller-manager is forbidden User system kube-controller-manager cannot get resource leases in API group coordination.k8s.io in the namespace kube-system
+Normal,unable to get KubeControllersConfiguration default error etcdserver leader changed
+Normal,Couldn t reconcile node routes error listing routes unable to find route table for AWS cluster <*>
+Normal,loading OpenAPI spec for v1beta1.external.metrics.k8s.io failed with OpenAPI spec does not exist
+Normal,<*> <*> <*> <*> no error handler specified with the subscriber. going with default error handler
+Normal,unable to perform status update on KubeControllersConfiguration default error etcdserver request timed out
+Normal,unable to parse crd file continue to next error couldn t get version/kind; json parse error json cannot unmarshal array into Go value of type struct APIVersion string json apiVersion omitempty ; Kind string json kind omitempty spectrocluster Namespace cluster-6193d722f3fed0ffb3a979bb Name ehs-api-orch-qa failed file config/vendorcrd/aws/base/patch_sa_default_name.yaml
+Normal,Watch error received from Upstream ListRoot <*> error too old resource version <*> <*>
+Normal,<DATE> <TIME> W | etcdserver failed to revoke <*> etcdserver request timed out

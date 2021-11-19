@@ -53,6 +53,9 @@ class Group:
         self.group_id = group_id
         self.count = count
         self.results = results
+        self.top_words = []
+        self.analysis = ""
+        self.label = "Error"
 
         if vector is not None:
             self.vector = vector
