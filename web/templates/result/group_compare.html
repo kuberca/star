@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+  <a class="action" href="{{ url_for('result.groups') }}">Groups </a>
+{% endblock %}
+
+
+
+{% block content %}
+<h1>{% block title %}Compare Similarity between two groups {% endblock %}</h1>
+<form method="result">
+
+  <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}, <b>Label</b>: {{ group['label'] }}</p>
+
+  
+  <select name="from_group" id="from_group">
+    {% for g in groups %}
+      <option value="{{ g['group_id'] }}" {% if request.form['from_group'] == g['group_id'] or group['group_id']  == g['group_id'] %}selected{% endif %} >{{ g['group_id'] }}, {{g['results'][0]['template']}}</option>
+    {% endfor %}
+  </select>
+  <label for="label">Compare to Group ID</label>
+  <select name="to_group" id="to_group">
+    {% for g in groups %}
+      <option value="{{ g['group_id'] }}">{{ g['group_id'] }}, {{g['results'][0]['template']}}</option>
+    {% endfor %}
+  </select>
+
+  <input type="submit" value="Compare" formmethod="post">
+</form>
+
+
+
+
+<table>
+  <tr>
+    <th>Num</th>
+    <th>log</th>
+    <th>Template</th>
+  </tr>
+
+  {% for result in group['results'] %}
+  <tr>
+    <td>{{ result['count'] }}</td>
+    <td>{{ result['input'] }}</td>
+    <td>{{ result['template'] }}</td>
+  </tr>
+
+  {% endfor %}
+</table>
+
+  <hr>
+
+{% endblock %}

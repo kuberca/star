@@ -66,6 +66,10 @@ class Grouper:
         vec = self.get_result_vector(result)
         return self.vector.similarity(group.vector, vec)
 
+    # get similarity score between two groups
+    def get_group_sim_score(self, group1:Group, group2:Group) -> float:
+        return self.vector.similarity(group1.vector, group2.vector)
+        
     # get semantic vector of the log template
     def get_result_vector(self, result: Result):
         return self.vector.generate(result.template)

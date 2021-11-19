@@ -21,7 +21,10 @@
 
       <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}</p>
 
-      <a class="action" href="{{ url_for('result.update_group', id=group['group_id']) }}">Resolve</a>
+      <a class="action" href="{{ url_for('result.group_update', id=group['group_id']) }}">Resolve</a>
+
+      <a class="action" href="{{ url_for('result.group_compare', from_group=group['group_id']) }}">Compare</a>
+
 
       <table>
         <tr>

@@ -76,8 +76,8 @@ def groups():
     return render_template('result/groups.html', groups=sorted_groups)
 
 
-@bp.route('/<int:id>/update_group', methods=('GET', 'POST'))
-def update_group(id):
+@bp.route('/<int:id>/group_update', methods=('GET', 'POST'))
+def group_update(id):
     group = get_server().results.get_unresolved_group(id)
 
     if request.method == 'POST':
@@ -89,8 +89,26 @@ def update_group(id):
 
         return redirect(url_for('result.groups'))
 
-    return render_template('result/update_group.html', group=group)
+    return render_template('result/group_update.html', group=group)
 
+
+
+@bp.route('/group_compare', methods=('GET', 'POST'))
+def group_compare():
+    
+    groups = get_server().results.get_all_unresolved_groups()
+    if request.method == 'GET':
+        from_group = request.args.get('from_group')
+        group = get_server().results.get_unresolved_group(from_group)
+    elif request.method == 'POST':
+        from_group = request.form.get('from_group')
+        group = get_server().results.get_unresolved_group(from_group)
+        to_group_id = request.form['to_group']
+        to_group = get_server().results.get_unresolved_group(to_group_id)
+        score = get_server().results.get_group_sim_score(group, to_group)
+        return render_template('result/group_compare_result.html', group=group, to_group=to_group, groups=groups, score=score) 
+    
+    return render_template('result/group_compare.html', group=group, groups=groups)      
 
 def get_unresolved(id: int, context_id: str):
     return get_server().results.get_unresolved(id, context_id)
