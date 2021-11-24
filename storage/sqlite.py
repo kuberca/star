@@ -296,3 +296,11 @@ class SqliteStore:
         if obj is None:
             return None
         return Group(group_id=obj["group_id"], vector_str=obj["vector"], count=obj["count"])
+
+    # change results group_id from old_group_id to new_group_id
+    def change_group(self, old_group_id: int, new_group_id: int):
+        self.db.execute(
+            'UPDATE unresolved SET group_id = ? WHERE group_id = ?',
+            (new_group_id, old_group_id)
+        )
+        self.db.commit()    

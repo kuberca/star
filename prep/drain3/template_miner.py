@@ -182,3 +182,13 @@ class TemplateMiner:
 
         parameter_list = [p for p in list(parameter_list) if not is_mask(p)]
         return parameter_list
+
+    def save_variables(self, file_path:str=""):
+        if file_path == "":
+            file_path="./drain_variables.txt"
+        self.drain.save_all_variables(file_path)
+    
+    def save_template_tokens(self, file_path:str=""):
+        if file_path == "":
+            file_path="./drain_template_tokens.txt"
+        self.drain.save_template_tokens(file_path)

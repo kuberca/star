@@ -26,6 +26,9 @@
     {% endfor %}
   </select>
 
+  <label>Similarity Threshold</label>
+
+  <input type="text" id="threshold" name="threshold" value={% if request.form['threshold'] %} "{{request.form['threshold']}}" {% else %} 0.90 {% endif%}><br>
   <input type="submit" value="Compare" formmethod="post" formaction="{{ url_for('result.group_compare', from_group=request.form['from_group']) }}">
 </form>
 
@@ -33,36 +36,62 @@
   <p class="body"><b>To Group Id</b>: {{ to_group['group_id'] }}, <b>Templates num</b>: {{ to_group['results']|length }}, <b>Label</b>: {{ to_group['label'] }}</p>
   <p class="body"><b>Similarity Score </b>: {{ score }}</p>
 
+  <table>
+    <tr>
+      <th>Num</th>
+      <th>log</th>
+      <th>Template</th>
+    </tr>
+  
+    {% for result in group['results'] %}
+    <tr>
+      <td>{{ result['count'] }}</td>
+      <td>{{ result['input'] }}</td>
+      <td>{{ result['template'] }}</td>
+    </tr>
+    {% endfor %}
+  
+    <tr>
+      <th>Num</th>
+      <th>log</th>
+      <th>Template</th>
+    </tr>
+  
+    {% for result in to_group['results'] %}
+    <tr>
+      <td>{{ result['count'] }}</td>
+      <td>{{ result['input'] }}</td>
+      <td>{{ result['template'] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
 
-<table>
-  <tr>
-    <th>Num</th>
-    <th>log</th>
-    <th>Template</th>
-  </tr>
+  
+  <p class="body"><b>Similarity Score between groups that above threshold </b></p>
 
-  {% for result in group['results'] %}
-  <tr>
-    <td>{{ result['count'] }}</td>
-    <td>{{ result['input'] }}</td>
-    <td>{{ result['template'] }}</td>
-  </tr>
-  {% endfor %}
 
-  <tr>
-    <th>Num</th>
-    <th>log</th>
-    <th>Template</th>
-  </tr>
+  <table>
+    <tr>
+      <th>score</th>
+      <th>group id</th>
+      <th>log</th>
+    </tr>
+  
+    {% for (id1, id2), (score, t1, t2) in scores.items() %}  
 
-  {% for result in to_group['results'] %}
-  <tr>
-    <td>{{ result['count'] }}</td>
-    <td>{{ result['input'] }}</td>
-    <td>{{ result['template'] }}</td>
-  </tr>
-  {% endfor %}
-</table>
+    <tr>
+      <td>{{ score }}</td>
+      <td>{{ id1 }}</td>
+      <td>{{ t1 }}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>{{ id2 }}</td>
+      <td>{{ t2 }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
 
 
 

@@ -44,6 +44,8 @@ class ResultMgr:
         if res is not None:
             res.count += 1
             res.input = result.input
+            # update template because template will also keep updated when new variables detected
+            res.template = result.template
             res.meta = self.merge_meta(res.meta, result.meta)
 
             # check if grouper is enabled and if yes, then save to grouper

@@ -106,7 +106,21 @@ def group_compare():
         to_group_id = request.form['to_group']
         to_group = get_server().results.get_unresolved_group(to_group_id)
         score = get_server().results.get_group_sim_score(group, to_group)
-        return render_template('result/group_compare_result.html', group=group, to_group=to_group, groups=groups, score=score) 
+
+        threshold = float(request.form['threshold'])
+
+
+        # compute similarity between all groups
+        groups = get_server().results.get_all_unresolved_groups()
+        scores = {}
+        for g in groups:
+            for g2 in groups:
+                if g.group_id < g2.group_id:
+                     s = get_server().results.get_group_sim_score(g, g2)
+                     if s > threshold:
+                        scores[(g.group_id, g2.group_id)] = (s, g.results[0].input, g2.results[0].input)
+
+        return render_template('result/group_compare_result.html', group=group, to_group=to_group, groups=groups, score=score, scores=scores)
     
     return render_template('result/group_compare.html', group=group, groups=groups)      
 
@@ -127,6 +141,6 @@ def start_backend():
     print("start backend")
     global server
     cfg = {}
-    cfg["drain3"]={"config_file":"drain3.ini", "persist_dir":"."}
+    cfg["drain3"]={"config_file":"drain3.ini", "persist_dir":".", "model_file":"model/star.cla.bin"}
     server = Server(config=cfg)
     server.start_in_bg()

@@ -26,6 +26,9 @@
     {% endfor %}
   </select>
 
+  <label>Similarity Threshold</label>
+  <input type="text" id="threshold" name="threshold" value={% if request.form['threshold'] %} "{{request.form['threshold']}}" {% else %} 0.90 {% endif%}><br>
+
   <input type="submit" value="Compare" formmethod="post">
 </form>
 

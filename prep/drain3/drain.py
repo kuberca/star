@@ -88,6 +88,9 @@ class Drain:
         # user provided function to decide if a token could be an variable
         self.is_token_variable = is_token_variable
 
+        self.keep_all_variables = True
+        self.all_variables = set()
+
         # key: int, value: LogCluster
         self.id_to_cluster = {} if max_clusters is None else LogClusterCache(maxsize=max_clusters)
         self.clusters_counter = 0
@@ -269,14 +272,45 @@ class Drain:
                 if self.is_token_variable(token1):
                     original_template[i] = self.param_str
                     create_new_template[i] = self.param_str
+
+                    # if want to keep all variables
+                    if self.keep_all_variables:
+                        self.all_variables.add(token1)
                 else:
                     # token1 is not variable, means can not use the template matched, need to create a new template
                     create_new_template[i] = token1
 
         return original_template, create_new_template
 
+
+    # save all_variables to file
+    def save_all_variables(self, file_path):
+        with open(file_path, 'w') as f:
+            for variable in self.all_variables:
+                f.write(variable + '\n')
+
+    # save tokens of all templates to file
+    def save_template_tokens(self, file_path):
+        tokens = set()
+
+        for cluster in self.clusters:
+            for token in cluster.log_template_tokens:
+                # if token appears both in template and variable
+                # we take it as a template, so remove it from variable
+                if token in self.all_variables:
+                    self.all_variables.remove(token)
+
+                if token != self.param_str:
+                    tokens.add(token)
+
+        with open(file_path, 'w') as f:
+            for token in tokens:
+                f.write(token + '\n')
+
+
     def print_tree(self, file=None):
         self.print_node("root", self.root_node, 0, file)
+
 
     def print_node(self, token, node, depth, file):
         out_str = '\t' * depth

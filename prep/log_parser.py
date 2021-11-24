@@ -30,7 +30,10 @@ class LogParser:
         if persist:
             persistence = FilePersistence(path.join(persist_dir, "drain3_state.bin"))
 
-        self.template_miner = TemplateMiner(config=config, is_token_variable=var_has_digit, persistence_handler=persistence)
+        # to enable token variable check, uncomment the following line
+        # self.template_miner = TemplateMiner(config=config, is_token_variable=var_has_digit, persistence_handler=persistence)
+
+        self.template_miner = TemplateMiner(config=config, persistence_handler=persistence)
 
         self.line_count = 0
         self.log_ids = []
@@ -68,6 +71,8 @@ class LogParser:
                 batch_start_time = time.time()
     
         self.template_miner.save_state("finished")
+        self.template_miner.save_variables()
+        self.template_miner.save_template_tokens()
         
         return self.template_miner.drain.id_to_cluster, self.log_ids
 
@@ -81,6 +86,11 @@ class LogParser:
 
     # return current templates
     def get_templates(self):
+        self.template_miner.save_state("finished")
+        # save template tokens first, because it'll cleanup some variables
+        self.template_miner.save_template_tokens()
+        self.template_miner.save_variables()
+
         clusters = self.template_miner.drain.clusters
         sorted_clusters = sorted(clusters, key=lambda it: it.size, reverse=True)
         return sorted_clusters

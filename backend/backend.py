@@ -12,6 +12,7 @@ from predictor.predict import Predictor
 from datasource.watcher import Watcher
 from datasource.batcher import Batcher
 from prep.log_parser import LogParser
+from prep.log_parser_nlp import LogParserNLP
 from label.labeler import Labeler
 from feedback.fb_mgr import FeedbackMgr
 from results.result_mgr import ResultMgr
@@ -28,7 +29,8 @@ class Server():
         prepcfg = config["drain3"]
 
         store = SqliteStore()
-        self.preper = LogParser(config_file=prepcfg["config_file"], persist=True, persist_dir=prepcfg["persist_dir"])
+        #self.preper = LogParser(config_file=prepcfg["config_file"], persist=True, persist_dir=prepcfg["persist_dir"])
+        self.preper = LogParserNLP(model_file=prepcfg["model_file"])
         self.labler = Labeler(naive=True, datadir=prepcfg["persist_dir"])
         self.feedback = FeedbackMgr(remote_url="", local_file="./fb.csv", store=store)
         self.results = ResultMgr(fbmgr=self.feedback, store=store)
