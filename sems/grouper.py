@@ -16,7 +16,7 @@ class Grouper:
             store = SqliteStore()
         self.store = store
         self.sim_score_min = 0.94
-        self.group_merge_threshold = 0.96
+        self.group_merge_threshold = 0.95
         self.vector = Vector(model_file)
 
 
@@ -36,7 +36,7 @@ class Grouper:
         # merge groups if necessary
 
 
-        # self.merge_groups()
+        self.merge_groups()
 
         # if result.group_id > 0:
         #     self.update_group(result.group, result)

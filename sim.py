@@ -41,7 +41,7 @@ with open(vector_file+".sim", "w") as f:
         # for similarity >= 0.99, we treat them as the same template
         # for all temps which have sim >= 0.99, we use the smallest idx as the idx of the group
         small = i
-        for j in range(10):
+        for j in range(min(10, len(vecs)-1)):
             if num[j] > 0.985:
                 small = np.min(idx[j:])
         if small > i:

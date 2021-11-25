@@ -30,13 +30,13 @@ class LogParserNLP:
         if not path.isfile(model_file):
             raise Exception(f"Model file {model_file} not found.")
 
-        self.template_file = "./template_nlp.txt"
-        if path.isfile(self.template_file):
-            self.load_templates()
-
         self.model = fasttext.load_model(model_file)
         self.id_to_template = {}
         self.text_to_template = {}
+
+        self.template_file = "./template_nlp.txt"
+        if path.isfile(self.template_file):
+            self.load_templates()
 
     # interface for preper, userd by predictor, input is single line
     def process(self, line: str):
