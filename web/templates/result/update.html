@@ -1,12 +1,19 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Resolve {% endblock %}</h1>
+  
+  <a class="action" href="{{ url_for('result.index') }}">Index </a>
+  <a class="action" href="{{ url_for('result.upload') }}">Upload Log File </a>
+
+  <a class="action" href="{{ url_for('result.templates') }}">Log Templates </a>
+
+  <a class="action" href="{{ url_for('result.groups') }}">Groups </a>
 {% endblock %}
 
 
 
 {% block content %}
+<h1>{% block title %}Resolve {% endblock %}</h1>
 
 <form method="result">
 

@@ -2,7 +2,13 @@
 
 {% block header %}
 
-  <a class="action" href="{{ url_for('result.groups') }}">Groups </a>
+<a class="action" href="{{ url_for('result.index') }}">Index </a>
+<a class="action" href="{{ url_for('result.upload') }}">Upload Log File </a>
+
+<a class="action" href="{{ url_for('result.templates') }}">Log Templates </a>
+
+<a class="action" href="{{ url_for('result.groups') }}">Groups </a>
+
 {% endblock %}
 
 
@@ -40,6 +46,7 @@
     <th>Num</th>
     <th>log</th>
     <th>Template</th>
+    <th>Detail</th>
   </tr>
 
   {% for result in group['results'] %}
@@ -47,6 +54,7 @@
     <td>{{ result['count'] }}</td>
     <td>{{ result['input'] }}</td>
     <td>{{ result['template'] }}</td>
+    <td><a class="action" href="{{ url_for('result.update', id=result['template_id'], context_id=result['context_id']) }}">Detail</a></td>
   </tr>
 
   {% endfor %}

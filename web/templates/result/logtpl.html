@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Log Templates {% endblock %}</h1>
+
+  <a class="action" href="{{ url_for('result.index') }}">Index </a>
+  <a class="action" href="{{ url_for('result.upload') }}">Upload Log File </a>
+
+  <a class="action" href="{{ url_for('result.groups') }}">Groups </a>
 {% endblock %}
 
 
 {% block content %}
+  <h1>{% block title %}Log Templates {% endblock %}</h1>
 
   {% for result in templates %}
     <article class="result">

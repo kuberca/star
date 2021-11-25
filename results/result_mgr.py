@@ -131,6 +131,9 @@ class ResultMgr:
         self.store.resolve(result)
 
 
+    def cleanup(self):
+        self.store.cleanup()
+        
     def merge_meta(self, old: dict, n : dict) -> dict:
 
         # if same log appears in multiple pods or containers or files, merge them

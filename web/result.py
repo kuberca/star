@@ -75,6 +75,11 @@ def groups():
     sorted_groups = sorted(groups, key=lambda it: it.count, reverse=True)
     return render_template('result/groups.html', groups=sorted_groups)
 
+@bp.route('/cleanup')
+def cleanup():
+    get_server().results.cleanup()
+    return render_template('result/index.html', unresolved=[])
+
 
 @bp.route('/<int:id>/group_update', methods=('GET', 'POST'))
 def group_update(id):

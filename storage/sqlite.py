@@ -304,3 +304,17 @@ class SqliteStore:
             (new_group_id, old_group_id)
         )
         self.db.commit()    
+
+    # cleanup delete all groups and results
+    def cleanup(self):
+        self.db.execute(
+            'DELETE FROM unresolved'
+        )
+        self.db.execute(
+            'DELETE FROM resolved'
+        )
+        self.db.execute(
+            'DELETE FROM groups'
+        )
+        self.db.commit()
+        
