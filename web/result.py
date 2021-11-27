@@ -58,6 +58,18 @@ def upload():
 
     return render_template('result/upload.html')
 
+@bp.route('/<int:id>/detail')
+def detail(id):
+    is_resolved = request.args.get('resolved')
+    context_id = request.args.get('context_id')
+    if is_resolved == "true":
+        result = get_resolved(id, context_id)
+    else:
+        result = get_unresolved(id, context_id)
+    
+    detail_contexts = get_server().batcher.get_result_detail_contexts(result)
+    return render_template('result/detail.html', result=result, detail_contexts=detail_contexts)
+
 @bp.route('/templates')
 def templates():
     templates = get_server().preper.get_templates()
