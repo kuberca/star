@@ -20,7 +20,7 @@ class Predictor:
         self.model = model
         self.lock = threading.Lock()
 
-    def predict(self, line: str, meta: dict, context: dict = {}) -> Result:
+    def predict(self, line: str, meta: dict={}, context: dict = {}) -> Result:
         text, info = self.split_line(line)
         meta.update({"info":info})
 

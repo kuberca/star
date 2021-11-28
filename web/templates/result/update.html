@@ -38,7 +38,9 @@
   <p class="body"><b>Context Id</b>: {{ result['context_id'] }}</p>
   <p class="body"><b>Context Template</b>: {{ result['context_template'] }}</p>
   <p class="body"><b>Log context</b>:</p>
-  <a class="action" href="{{ url_for('result.detail', id=result['template_id'], context_id=result['context_id']) }}">Details</a>
+  <a class="action" href="{{ url_for('result.detail', id=result['template_id'], context_id=result['context_id']) }}">More Detailed Contexts</a>
+  <hr>
+
   {% for line in result['context']['lines'] %}
     <li> {{ line }}</li>
   {% endfor %}

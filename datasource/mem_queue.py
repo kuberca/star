@@ -77,7 +77,6 @@ class MemQueue:
             lines.append(OriginalLine)
             for i in range(idx+1, self.context_length+1):
                 lines.append(self.contexts[i].input)
-            item.context = {}
             item.context["lines"] = lines
             self.item_queue.put(item)
             self.contexts = self.contexts[1:]

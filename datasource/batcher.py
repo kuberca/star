@@ -15,6 +15,7 @@ from results.result import Result
 # from config.config import Config
 
 def process_log_with_context(mq: MemQueue, meta: dict, callback):
+    print("Processing log with context", meta, mq)
     while True:
         line, context = mq.get()
         callback(line, meta, context)
@@ -54,6 +55,8 @@ class Batcher():
         if file_format is None or file is None or line_num is None:
             return None
 
+        print("file_format is", file_format, file, line_num)
+
         if file_format == "text/plain":
             with open(file_uploaded, 'r') as f:
                 return self.get_line_contexts(f, line_num)
@@ -85,11 +88,11 @@ class Batcher():
             print("can't read file", file)
             return
 
-        meta={"file_uploaded":file, "file_format":fm}
+        
 
         if fm == "text/plain":
             with open(file, 'r') as f:
-                meta["file"]=os.path.basename(file)
+                meta={"file_uploaded":file, "file_format":fm, "file":os.path.basename(file)}
                 mq = self.create_start_mq(meta)
                 self.proc_line_in_file(mq, f, False)
 
@@ -101,8 +104,8 @@ class Batcher():
                 ft = tar.extractfile(f.name)
                 if ft is None:
                     continue
-                meta["file"]=f.name
 
+                meta={"file_uploaded":file, "file_format":fm,"file":f.name}
                 mq = self.create_start_mq(meta)
                 self.proc_line_in_file(mq, ft, True)
 
@@ -111,14 +114,14 @@ class Batcher():
             for zf in zip.namelist():
                 if zf.endswith(".yaml") or zf.endswith(".json"):
                     continue
-                meta["file"]=zf
 
+                meta={"file_uploaded":file, "file_format":fm,"file":zf}
                 mq = self.create_start_mq(meta)
                 self.proc_line_in_file(mq, zip.open(zf), True)
 
         elif fm == "application/gzip":
             zip = gzip.GzipFile(file)
-            meta["file"]=zip.name
+            meta={"file_uploaded":file, "file_format":fm,"file":zip.name}
 
             mq = self.create_start_mq(meta)
             self.proc_line_in_file(mq, zip, True)
@@ -151,7 +154,13 @@ class Batcher():
                 continue
             elif current > line_num_after:
                 break
-            lines.append(line)
+            
+            if current == line_num:
+                lines.append("<==============================================================================>")
+                lines.append(line)
+                lines.append("<==============================================================================>")
+            else:
+                lines.append(line)
 
         return lines
 

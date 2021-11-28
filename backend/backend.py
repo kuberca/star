@@ -53,8 +53,12 @@ class Server():
 
     def process_line(self, line: str, meta: dict, context: dict = {}):
 
+        # print("before prediction", meta)
+
         result = self.predictor.predict(line, meta, context)
         
+        # print("after prediction", result.meta)
+
         if result.is_error():
             self.results.add(result)
 
