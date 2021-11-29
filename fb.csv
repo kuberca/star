@@ -1,3 +1,110 @@
 label,template
 Normal,Error proxying data from backend to client tls use of closed connection
 Normal,Error proxying data from client to backend tls use of closed connection
+Normal,Error proxying data from backend to client write tcp <*> <*> <*> write broken pipe
+Normal,Error proxying data from backend to client write tcp <*> <*> <*> write connection reset by peer
+Normal,Error proxying data from backend to client read tcp <*> <*> <*> read connection reset by peer
+Normal,<*> <*> <*> and error exit status <*>
+Normal,exit status 1Failed to run ansible task
+Normal,Failed to run command <*> print-logs.sh . exit status <*>
+Normal,Watch error received from Upstream ListRoot <*> error too old resource version <*> <*>
+Normal,Auditing failed of request encoding failed <*> Kind DeleteOptions is unstructured and is not suitable for converting to <*>
+Normal,Failed to run command <*> print-logs.sh with output ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Normal,Execution failed. Failed to execute command <*> print-logs.sh . exit status <*>
+Normal,Failed to execute task exit status 1Failed to run cmd exec task <*>
+Error,Reconciler error error failed to pivot move resource back failed to pause capi cluster error updating the pause status for <*> Kind <*> Internal error occurred failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused controller spectrocluster name <*> namespace <*>
+Error,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error EOF stderr
+Error,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error exit status <*> stderr <*> <*> <*> <*> socat <*> E write <*> <*> <*> Broken pipe n
+Error,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error write tcp <*> <*> <*> use of closed network connection stderr
+Error,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error write tcp <*> <*> <*> write broken pipe stderr
+Error,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error write tcp <*> <*> <*> write connection reset by peer stderr
+Error,Error while processing Node <*> failed to allocate cidr from cluster cidr at idx 0 CIDR allocation failed there are no remaining CIDRs left to allocate in the accepted range
+Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver failed to send out heartbeat on time exceeded the <*> timeout for <*> to <*>
+Normal,Failed to get IPIP tunnel device assuming it isn t present error Link not found
+Normal,Failed to add IPIP tunnel device error exit status <*>
+Normal,Failed configure IPIP tunnel device retrying... error exit status <*>
+Normal,Failed to delete route error no such process ifaceName <*> ifaceRegex ^cali. ipVersion <*>
+Normal,Failed to access interface because it doesn t exist. error Link not found ifaceName <*> ifaceRegex ^cali. ipVersion <*>
+Normal,Failed to get interface it s <*> error Link not found ifaceName <*> ifaceRegex ^cali. ipVersion <*>
+Normal,Auditing failed of request encoding failed authentication.TokenRequest is not suitable for converting to <*> in scheme <*> <*>
+Normal,<*> <*> <*> <*> <*> <*> <*> W | etcdserver/api/etcdhttp <*> error no leader status code <*>
+Normal,<*> <*> <*> WARNING <*> <*> <*> <*> grpc <*> failed to write status connection error desc transport is closing
+Error,Target has failed health check marking for remediation message Node failed to report startup in <*> reason NodeStartupTimeout target <*>
+Normal,Failed predicate on node <*> node s had taints that the pod didn t tolerate
+Normal,attempted to modprobe nf_conntrack_proto_sctp error exit status <*> output
+Normal,failed to acquire lease <*>
+Error,Can t enable XDP acceleration. error kernel is too old have <*> but want at least <*>
+Normal,Failed to start service controller the cloud provider does not support external load balancers
+Normal,Interface was deleted during operation filtering error error netlink update operation failed ifaceName <*> ifaceRegex ^cali. ipVersion <*>
+Normal,Error looking up in-cluster authentication configuration configmaps <*> is forbidden User system <*> cannot get resource configmaps in API group in the namespace <*>
+Error,Event occurred object brighteon/backend kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedGetResourceMetric message failed to get memory utilization unable to get metrics for resource memory no metrics returned from resource metrics API
+Error,Event occurred object brighteon/backend kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedGetResourceMetric message failed to get cpu utilization unable to get metrics for resource cpu no metrics returned from resource metrics API
+Error,failed to compute desired number of replicas based on listed metrics for <*> invalid metrics <*> invalid out of <*> first error is failed to get memory utilization unable to get metrics for resource memory no metrics returned from resource metrics API
+Error,Event occurred object brighteon/backend kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedComputeMetricsReplicas message invalid metrics <*> invalid out of <*> first error is failed to get memory utilization unable to get metrics for resource memory no metrics returned from resource metrics API
+Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error context canceled took too long <*> to execute
+Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error context deadline exceeded took too long <*> to execute
+Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error etcdserver request timed out took too long <*> to execute
+Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> range_end <*> with result error context canceled took too long <*> to execute
+Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error etcdserver leader changed took too long <*> to execute
+Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> range_end <*> count_only true with result error etcdserver leader changed took too long <*> to execute
+Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> range_end <*> limit <*> with result error etcdserver leader changed took too long <*> to execute
+Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> range_end <*> with result error etcdserver leader changed took too long <*> to execute
+Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> range_end <*> count_only true with result error etcdserver request timed out took too long <*> to execute
+Error,Failed to get VSphereMachine <*> <*> not found cluster <*>
+Error,Failed to get VSphereMachine <*> . <*> <*> not found cluster <*>
+Error,Failed to process machine event for machine <*> <*> <*> not found cluster <*>
+Normal,<*> <*> <*> <*> <*> <*> <*> http TLS handshake error from <*> <*> remote error tls bad certificate
+Normal,<*> <*> <*> <*> <*> <*> <*> E | rafthttp failed to read <*> on stream Message context canceled
+Normal,<*> <*> <*> <*> <*> <*> <*> I | rafthttp peer <*> became inactive message send to peer failed
+Normal,<*> <*> <*> <*> <*> <*> <*> W | etcdserver failed to reach the peerURL https <*> <*> of member <*> Get https <*> <*> dial tcp <*> <*> connect connection refused
+Error,Unable to retrieve machine from node error expecting one machine for node <*> got node <*>
+Error,Unable to retrieve machine from node error no matching Machine node <*>
+Error,Failed to get node from machine <*> . Failed to find node reference from machine s <*> status as node ref is empty. cluster <*>
+Error,Failed to process health for node from machine <*> Failed to find node reference from machine s <*> status as node ref is empty. cluster <*>
+Normal,Error getting cluster information config ClusterInformation default error etcdserver request timed out
+Normal,unable to perform status update on KubeControllersConfiguration default error etcdserver leader changed
+Normal,Failed to update statusUpdateNeeded field in actual state of world Failed to set statusUpdateNeeded to needed true because nodeName <*> does not exist
+Error,QueryVirtualDiskUuid failed for diskPath <*> <*> . err ServerFaultCode File <*> <*> was not found
+Error,sync <*> failed with <*> <*> not found
+Normal,error retrieving resource lock <*> <*> <*> is forbidden User system <*> cannot get resource leases in API group <*> in the namespace <*>
+Normal,<*> <*> <*> <*> <*> <*> <*> no error handler specified with the subscriber. going with default error handler
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind Tenant conversion webhook for <*> Kind Tenant failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,Failed to get VsphereMachine data from store using capi machine name <*> Failed to get machine data as couldn t find any matching machine with capi machine name <*> cluster <*>
+Error,Failed to delete vsphere machine using cached capi machine <*> <*> not found cluster <*>
+Normal,Failed to get log lines Failed to parse logs cluster <*>
+Normal,Failed to process logs Failed to parse logs cluster <*>
+Normal,Error proxying data from client to backend read tcp <*> <*> <*> read connection reset by peer
+Normal,healthz check failed statuses
+Normal,Failed calling webhook failing open <*> failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Normal,failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Normal,Failed calling webhook failing closed <*> failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,Failed to create broadcast job <*> Internal error occurred failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused cluster <*>
+Error,Failed to apply log fetch broadcast manifest crd fileInternal error occurred failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused cluster <*>
+Error,create volume rep CapacityBytes <*> VolumeId <*> VolumeContext map attached ATTACH_STATE_INTERNAL_SWITCH error parent readonly false secure false shared false sharedv4 false state VOLUME_STATE_DETACHED ContentSource <nil> AccessibleTopology XXX_NoUnkeyedLiteral XXX_unrecognized XXX_sizecache 0
+Error,Failed to detach volume. AbortOnError false AttachedState ATTACH_STATE_INTERNAL_SWITCH Driver pxd Error Failed with status device or resource busy Format <*> Function Detaching ID <*> State VOLUME_STATE_ATTACHED Version <*>
+Error,detach failed. retry count 0 AbortOnError false AttachedState ATTACH_STATE_EXTERNAL Driver pxd Error Volume is busy Format <*> Function detachWithExponentialBackoff ID <*> State VOLUME_STATE_ATTACHED Version <*>
+Normal,Failed to parse Failed to parse logs for pod <*> in namespace <*> as no suitable regex filter is found cluster <*>
+Normal,ContainerStatus for <*> failed error an error occurred when try to find container <*> does not exist
+Normal,ContainerStatus <*> from runtime service failed rpc error code Unknown desc an error occurred when try to find container <*> does not exist
+Normal,pod_container_deletor DeleteContainer returned error for id containerd <*> failed to get container status <*> rpc error code Unknown desc an error occurred when try to find container <*> does not exist
+Normal,object- <*> <*> <*> Failed to watch <*> failed to list <*> secrets <*> is forbidden User system node <*> cannot list resource secrets in API group in the namespace <*> no relationship found between node <*> and this object
+Normal,Unable to authenticate the request due to an error invalid bearer token <*> error in cryptographic primitive
+Normal,Unable to authenticate the request due to an error invalid bearer token oidc verify token oidc token is expired Token Expiry <*> <*> <*> <*> <*> UTC
+Normal,Event occurred object <*> kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedGetScale message no matches for kind Deployment in group extensions
+Error,unmount ignoring attached remote error Volume is detached. Using device path <*>
+Error,Error syncing pod <*> <*> <*> skipping failed to StartContainer for <*> with CrashLoopBackOff back-off <*> restarting failed container <*> pod <*> <*>
+Normal,error building openapi models for <*> ERROR <*> has invalid property anyOf
+Normal,Failed to watch <*> failed to list <*> the server could not find the requested resource get <*>
+Normal,Failed to apply log fetch broadcast job Internal error occurred failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused cluster <*>
+Normal,Failed to process watch event EventType 0 Name <*> WatchSource 0 task <*> not found not found
+Normal,<*> <*> <*> http2 server error reading preface from client <*> <*> read tcp <*> <*> <*> read connection reset by peer
+Normal,healthz check failed checker webhook-ready error Op Get URL https <*> <*> Err Op dial Net tcp Source null Addr IP <*> Port <*> Zone Err Syscall connect Err <*>
+Error,Failed to delete mount path <*> remove <*> operation not permitted
+Normal,failed to keep alive rest client unauthorized error Unauthorized
+Normal,Error while calling home node <*> <*> Bad Gateway
+Normal,Couldn t get secret <*> failed to sync secret cache timed out waiting for the condition
+Normal,StorageCluster Predicates failed on node <*> for storage cluster portworx for reason node s had taints that the pod didn t tolerate file storagecluster.go <*>
+Normal,StorageCluster Predicates failed on node <*> for storage cluster portworx for reason node s didn t match node selector file storagecluster.go <*>
+Error,PVC <*> failed with Operation cannot be fulfilled on persistentvolumeclaims <*> StorageError invalid object Code 4 Key <*> ResourceVersion 0 AdditionalErrorMsg Precondition failed UID in precondition <*> UID in object meta
+Error,Operation for volumeName <*> podName <*> nodeName failed. No retries permitted until <*> <*> <*> <*> <*> UTC m <*> durationBeforeRetry <*> . Error MountVolume.SetUp failed for volume <*> UniqueName <*> pod <*> UID <*> failed to sync secret cache timed out waiting for the condition
+Error,Operation for volumeName <*> podName <*> nodeName failed. No retries permitted until <*> <*> <*> <*> <*> UTC m <*> durationBeforeRetry <*> . Error UnmountVolume.TearDown failed for volume <*> UniqueName <*> pod <*> UID <*> <*> mounter.TearDownAt failed rpc error code Internal desc Mount path still exists <*>

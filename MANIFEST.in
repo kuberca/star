@@ -1,0 +1,2 @@
+graft web
+global-exclude *.pyc
