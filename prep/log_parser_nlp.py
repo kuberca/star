@@ -42,7 +42,12 @@ class LogParserNLP:
     def process(self, line: str):
         out = []
         tokens = re.split(r'\\|\s|:|;|,|\*|\"|\'|=|\[|\]|\(|\)|{|}' ,line.strip())
+
         for token in tokens:
+            # above re will result in mulitple empty string tokens if there are multipe special chars in a row
+            if not token:
+                continue
+
             if token == '<*>':
                 out.append(token)
             else:
