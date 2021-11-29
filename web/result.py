@@ -97,16 +97,39 @@ def cleanup():
 def group_update(id):
     group = get_server().results.get_unresolved_group(id)
 
+    if request.method == 'GET':
+        return render_template('result/group_update.html', group=group)
+
     if request.method == 'POST':
-        analysis = request.form['analysis']
-        label = request.form['label']
-        group.analysis = analysis
-        group.label = label
-        get_server().results.resolve_group(group)
+        action = request.form.get('action')
+        if action == "extract":
+            # extract result from group, still show current group info
+            result_id = request.form.get('result_id')
+            context_id = request.form.get('context_id')
+            result = get_unresolved(result_id, context_id)
+            get_server().results.split_result_from_group(result)
+            group = get_server().results.get_unresolved_group(id)
+            return render_template('result/group_update.html', group=group)
+        elif action == "merge":
+            # reverse operation of extract, we need to remove the manual_group flag
+            # of the group, to make it able to be merged again
+            # result_id = request.form.get('result_id')
+            # context_id = request.form.get('context_id')
+            # result = get_unresolved(result_id, context_id)
+            # get_server().results.split_result_from_group(result)
+            group = get_server().results.get_unresolved_group(id)
+            get_server().results.set_group_unmanual(group)
+            return redirect(url_for('result.groups'))
+        else:
+            analysis = request.form['analysis']
+            label = request.form['label']
+            group.analysis = analysis
+            group.label = label
+            get_server().results.resolve_group(group)
 
-        return redirect(url_for('result.groups'))
+            return redirect(url_for('result.groups'))
 
-    return render_template('result/group_update.html', group=group)
+    
 
 
 

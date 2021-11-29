@@ -40,6 +40,7 @@
     <th>log</th>
     <th>Template</th>
     <th>Detail</th>
+    <th>Extract</th>
   </tr>
 
   {% for result in group['results'] %}
@@ -48,6 +49,20 @@
     <td>{{ result['input'] }}</td>
     <td>{{ result['template'] }}</td>
     <td><a class="action" href="{{ url_for('result.update', id=result['template_id'], context_id=result['context_id']) }}">Detail</a></td>
+    <td>
+      <form method="post" action="{{ url_for('result.group_update', id=group['group_id']) }}">
+        <input type="hidden" name="action" value="extract" /> 
+        <input type="hidden" name="result_id" value="{{ result['template_id'] }}" /> 
+        <input type="hidden" name="context_id" value="{{ result['context_id'] }}" /> 
+        <a class="extract"  onclick="this.parentNode.submit();">Extract</a>
+      </form>
+      <form method="post" action="{{ url_for('result.group_update', id=group['group_id']) }}">
+        <input type="hidden" name="action" value="merge" /> 
+        <input type="hidden" name="result_id" value="{{ result['template_id'] }}" /> 
+        <input type="hidden" name="context_id" value="{{ result['context_id'] }}" /> 
+        <a class="extract"  onclick="this.parentNode.submit();">Merge</a>
+      </form>
+    </td>
   </tr>
 
   {% endfor %}

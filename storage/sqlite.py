@@ -60,7 +60,8 @@ CREATE TABLE IF NOT EXISTS feedback (
 CREATE TABLE IF NOT EXISTS groups (
   group_id INTEGER PRIMARY KEY,
   vector TEXT NOT NULL, 
-  count INTEGER
+  count INTEGER,
+  manual_group BOOLEAN
 );
 
 """
@@ -81,11 +82,12 @@ ON CONFLICT(template_id, context_id) DO UPDATE SET
 """
 
 g_create_group_sql = """
-INSERT INTO groups (group_id, vector, count)
-    VALUES (?, ?, ?)
+INSERT INTO groups (group_id, vector, count, manual_group)
+    VALUES (?, ?, ?, ?)
 ON CONFLICT(group_id) DO UPDATE SET
-    vector = excluded.vector,
-    count  = excluded.count
+    vector        = excluded.vector,
+    count         = excluded.count,
+    manual_group  = excluded.manual_group
 """
 
 class SqliteStore:
@@ -220,15 +222,15 @@ class SqliteStore:
     def save_group(self, group: Group) -> Group:
         if  group.group_id == 0:
             cur  = self.db.execute(
-                "INSERT INTO groups (vector, count) VALUES (?, ?)",
-                (group.vector_str(), group.count)
+                "INSERT INTO groups (vector, count, manual_group) VALUES (?, ?, ?)",
+                (group.vector_str(), group.count, group.manual_group)
             )
             group.group_id = cur.lastrowid
             return group
         else:
             self.db.execute(
                 g_create_group_sql,
-                (group.group_id, group.vector_str(), group.count)
+                (group.group_id, group.vector_str(), group.count, group.manual_group)
             )
             return group
 
@@ -295,7 +297,7 @@ class SqliteStore:
     def get_group_from_sql(self, obj:dict) -> Group:
         if obj is None:
             return None
-        return Group(group_id=obj["group_id"], vector_str=obj["vector"], count=obj["count"])
+        return Group(group_id=obj["group_id"], vector_str=obj["vector"], count=obj["count"], manual_group=obj["manual_group"])
 
     # change results group_id from old_group_id to new_group_id
     def change_group(self, old_group_id: int, new_group_id: int):
@@ -317,4 +319,3 @@ class SqliteStore:
             'DELETE FROM groups'
         )
         self.db.commit()
-        

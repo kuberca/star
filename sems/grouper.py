@@ -16,7 +16,7 @@ class Grouper:
             store = SqliteStore()
         self.store = store
         self.sim_score_min = 0.94
-        self.group_merge_threshold = 0.95
+        self.group_merge_threshold = 0.96
         self.vector = Vector(model_file)
 
 
@@ -83,10 +83,28 @@ class Grouper:
         g_e.count += 1
         return self.store.save_group(g_e)
 
+    # remove result from group
+    # need to update group count and vector
+    def remove_result_from_group(self, result: Result):
+        group = self.get_group(result.group_id)
+        group.vector = (np.array(group.vector)*group.count - self.get_result_vector(result)) / (group.count-1)
+        group.count -= 1
+        self.store.save_group(group)
+
+    # split result from group and save as a new group
+    # use case is user removes a result from a group
+    def split_result_from_group(self, result:Result) -> Group: 
+        if result.group_id > 0:
+            self.remove_result_from_group(result)
+        result.group_id = 0
+        result.manual_group = True
+        group = self.create_group(result)
+        return group  
+
     # create a new group with new result
     def create_group(self, result:Result) -> Group:
         vector = self.get_result_vector(result)
-        group = Group(group_id=0,vector=vector)
+        group = Group(group_id=0,vector=vector,manual_group=result.manual_group)
         return self.store.save_group(group)
 
     # get similarity score between group and result
@@ -112,7 +130,12 @@ class Grouper:
     def merge_groups(self):
         groups = self.get_groups()
         for i in range(len(groups)):
+            if groups[i].manual_group:
+                continue
             for j in range(i+1, len(groups)):
+                # do not merge if the groups is marked as manual
+                if groups[j].manual_group:
+                    continue
                 sim_score = self.get_group_sim_score(groups[i], groups[j])
                 if sim_score > self.group_merge_threshold:
                     self.merge_group(groups[i], groups[j])

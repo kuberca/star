@@ -47,6 +47,6 @@ with open(vector_file+".sim", "w") as f:
         if small > i:
             small = i
 
-        s=["{:.2f}".format(x) for x in num]
+        s=["{:.3f}".format(x) for x in num]
         #f.write("{}; {}; {}, {}\n".format(i, small, idx, s))
         f.write("{}; {}; {}, {}\n".format(i+1, small+1, [x+1 for x in idx], s))

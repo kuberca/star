@@ -47,25 +47,42 @@ class ResultMgr:
             # update template because template will also keep updated when new variables detected
             res.template = result.template
             res.meta = self.merge_meta(res.meta, result.meta)
+            res.context = result.context
 
-            # check if grouper is enabled and if yes, then save to grouper
-            if self.grouper is not None and not res.group_id > 0:
+            # if result not belongs to any group yet,  then save to grouper
+            if not res.group_id > 0:
                 group_id = self.grouper.add_result(res)
                 res.group_id = group_id
 
             self.store.save_unresolved(res)
         else:
-            # check if grouper is enabled and if yes, then save to grouper
-            if self.grouper is not None:
-                group_id = self.grouper.add_result(result)
-                result.group_id = group_id
+            # if result not belongs to any group yet,  then save to grouper
+            group_id = self.grouper.add_result(result)
+            result.group_id = group_id
 
             if fb is not None:
                 result.label = fb.label
                 result.analysis = fb.analysis
             self.store.save_unresolved(result)
 
+    # split result from group, save into another manual group
+    # mark both result and group as manual so there is no merge
+    def split_result_from_group(self, result: Result):
+        if result.group_id == 0:
+            return 
 
+        group = self.grouper.split_result_from_group(result)
+        result.group_id = group.group_id
+
+        self.save_unresolved(result)   
+
+    # reverse operation of about split_result_from_group
+    # set group unmanual to set the manual_group flag to false
+    # then do a merge group
+    def set_group_unmanual(self, group: Group):
+        group.manual_group = False
+        self.store.save_group(group)
+        self.grouper.merge_groups()
 
     # save into storage  
     def save_unresolved(self, result: Result):
@@ -133,7 +150,7 @@ class ResultMgr:
 
     def cleanup(self):
         self.store.cleanup()
-        
+
     def merge_meta(self, old: dict, n : dict) -> dict:
 
         # if same log appears in multiple pods or containers or files, merge them

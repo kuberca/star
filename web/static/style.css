@@ -40,3 +40,10 @@ td, th {
     padding: 8px;
   }
 tr:nth-child(even) {background-color: #f2f2f2;}
+
+.extract {
+    display: block; 
+    padding: 0.5rem; 
+    cursor: pointer;
+    text-decoration: underline;
+  }

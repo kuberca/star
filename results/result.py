@@ -39,6 +39,8 @@ class Result:
         self.context_id = context_id
         self.context_template = context_template
         self.group_id = group_id
+        # group created by user from remove result from exisitng group
+        self.manual_group = False
         self.count = count
 
     def __str__(self) -> str:
@@ -49,13 +51,15 @@ class Result:
 
 
 class Group:
-    def __init__(self, group_id: int, vector: list = None, vector_str: str = "", count: int=1, results: List[Result] = None) -> None:
+    def __init__(self, group_id: int, vector: list = None, manual_group:bool=False, vector_str: str = "", count: int=1, results: List[Result] = None) -> None:
         self.group_id = group_id
         self.count = count
         self.results = results
         self.top_words = []
         self.analysis = ""
         self.label = "Error"
+        # if manual_group is True, this group is created by user, so do not try to merge with other groups
+        self.manual_group = manual_group
 
         if vector is not None:
             self.vector = vector

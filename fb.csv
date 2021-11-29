@@ -1,0 +1,16 @@
+label,template
+Normal,Error proxying data from backend to client  tls  use of closed connection
+Normal,WARNING  <*> <*> <*> <*> grpc  <*> failed to write status  connection error  desc    transport is closing 
+Normal,Auditing failed of  request  encoding failed  <*>  Kind DeleteOptions is unstructured and is not suitable for converting to  <*> 
+Normal,Couldn t reconcile node routes  error listing routes  unable to find route table for AWS cluster  prod2
+Normal,loading OpenAPI spec for  <*>  failed with  OpenAPI spec does not exist
+Normal,Failed to access interface because it doesn t exist. error Link not found ifaceName  <*>  ifaceRegex  ^cali.   ipVersion <*>
+Normal,Failed to get interface  it s <*> error Link not found ifaceName  <*>  ifaceRegex  ^cali.   ipVersion <*>
+Normal,error building openapi models for <*>  ERROR <*> has invalid property  anyOf
+Normal,ERROR <*> has invalid property  anyOf
+Normal,Unable to remove old endpoints from kubernetes service  StorageError  key not found  Code  <*>  Key  <*>  ResourceVersion  0  AdditionalErrorMsg 
+Normal,Watch error received from Upstream ListRoot  <*>  error too old resource version  <*>  <*> 
+Normal,Watch error received from Upstream ListRoot  <*>  error too old resource version  4  <*> 
+Normal,<*> <*> <*> <*> I | embed  rejected connection from  <*> <*>   error  EOF   ServerName    
+Normal,<*> <*> <*> <*> I | embed  rejected connection from  <*> <*>   error  EOF   ServerName  <*>  
+Normal,Failed to update statusUpdateNeeded field in actual state of world  Failed to set statusUpdateNeeded to needed true  because nodeName  <*>  does not exist
