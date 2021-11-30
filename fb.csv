@@ -108,3 +108,37 @@ Normal,StorageCluster Predicates failed on node <*> for storage cluster portworx
 Error,PVC <*> failed with Operation cannot be fulfilled on persistentvolumeclaims <*> StorageError invalid object Code 4 Key <*> ResourceVersion 0 AdditionalErrorMsg Precondition failed UID in precondition <*> UID in object meta
 Error,Operation for volumeName <*> podName <*> nodeName failed. No retries permitted until <*> <*> <*> <*> <*> UTC m <*> durationBeforeRetry <*> . Error MountVolume.SetUp failed for volume <*> UniqueName <*> pod <*> UID <*> failed to sync secret cache timed out waiting for the condition
 Error,Operation for volumeName <*> podName <*> nodeName failed. No retries permitted until <*> <*> <*> <*> <*> UTC m <*> durationBeforeRetry <*> . Error UnmountVolume.TearDown failed for volume <*> UniqueName <*> pod <*> UID <*> <*> mounter.TearDownAt failed rpc error code Internal desc Mount path still exists <*>
+Normal,Auditing failed of request encoding failed policy.Eviction is not suitable for converting to <*> in scheme <*> <*>
+Error,ReadCPIConfigYAML failed yaml unmarshal errors
+Normal,apiserver received an error that is not an <*> &errors.errorString s http Handler timeout http Handler timeout
+Normal,apiserver received an error that is not an <*> rpctypes.EtcdError code 0xe desc etcdserver leader changed etcdserver leader changed
+Normal,apiserver received an error that is not an <*> &errors.errorString s context canceled context canceled
+Normal,Unable to remove old endpoints from kubernetes service StorageError key not found Code <*> Key <*> ResourceVersion 0 AdditionalErrorMsg
+Normal,<*> failed with failing or missing response from https <*> <*> Get https <*> <*> context deadline exceeded
+Normal,<*> failed with failing or missing response from https <*> <*> Get https <*> <*> dial tcp <*> <*> i/o timeout
+Normal,<*> failed with failing or missing response from https <*> <*> Get https <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers
+Normal,loading OpenAPI spec for <*> failed with failed to retrieve openAPI spec http error ResponseCode <*> Body error trying to reach service dial tcp <*> <*> i/o timeout
+Normal,<*> failed with Operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
+Error,Failed calling webhook failing closed <*> failed calling webhook <*> Post https <*> <*> <*> EOF
+Normal,apiserver received an error that is not an <*> rpctypes.EtcdError code 0xe desc etcdserver request timed out etcdserver request timed out
+Error,Reconciler error error failed to reconcile control plane for AWSManagedControlPlane <*> failed reconciling cluster config failed to update EKS cluster InvalidRequestException Provided subnets <*> Free IPs <*> need at least <*> IPs in each subnet to be free for this operation n n RespMetadata n StatusCode <*> n RequestID <*> n n Message_ Provided subnets <*> Free IPs <*> need at least <*> IPs in each subnet to be free for this operation n controller awsmanagedcontrolplane name <*> namespace <*>
+Error,Reconciler error error failed to reconcile control plane for AWSManagedControlPlane <*> failed reconciling cluster config failed to update EKS cluster ResourceInUseException Cannot EndpointAccessUpdate because cluster <*> currently has update <*> in progress n n RespMetadata n StatusCode <*> n RequestID <*> n n ClusterName <*> n Message_ Cannot EndpointAccessUpdate because cluster <*> currently has update <*> in progress n controller awsmanagedcontrolplane name <*> namespace <*>
+Error,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error etcdserver leader changed took too long <*> to execute
+Error,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error context canceled took too long <*> to execute
+Error,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error context deadline exceeded took too long <*> to execute
+Error,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error etcdserver request timed out took too long <*> to execute
+Error,<*> <*> <*> <*> W | etcdserver read-only range request key <*> range_end <*> count_only true with result error etcdserver request timed out took too long <*> to execute
+Normal,Failed to watch <*> failed to list <*> Get https <*> <*> <*> 500&resourceVersion 0 dial tcp <*> <*> connect connection refused
+Normal,Failed to watch <*> failed to list <*> Get https <*> <*> 500&resourceVersion 0 dial tcp <*> <*> connect connection refused
+Normal,loading OpenAPI spec for <*> failed with failed to retrieve openAPI spec http error ResponseCode <*> Body service unavailable
+Normal,WARNING <*> <*> <*> <*> grpc <*> failed to write status connection error desc transport is closing
+Normal,Couldn t reconcile node routes error listing routes unable to find route table for AWS cluster <*>
+Normal,loading OpenAPI spec for <*> failed with OpenAPI spec does not exist
+Normal,<*> <*> <*> <*> no error handler specified with the subscriber. going with default error handler
+Error,getting client for remote cluster error Get https <*> <*> dial tcp <*> <*> i/o timeout cluster <*> eksControlPlane <*> namespace <*>
+Error,Failed to get local addresses assuming no local IPs err route ip+net no such network interface route ip+net no such network interface MISSING
+Normal,<*> <*> <*> <*> I | embed rejected connection from <*> <*> error EOF ServerName
+Normal,<*> <*> <*> <*> W | etcdserver failed to revoke <*> etcdserver request timed out
+Normal,<*> <*> <*> <*> E | rafthttp failed to read <*> on stream Message read tcp <*> <*> <*> i/o timeout
+Normal,<*> <*> <*> <*> I | rafthttp peer <*> became inactive message send to peer failed
+Normal,unable to parse crd file continue to next error couldn t get version/kind json parse error json cannot unmarshal array into Go value of type struct APIVersion string json apiVersion omitempty Kind string json kind omitempty spectrocluster Namespace <*> Name <*> failed file <*>

@@ -149,3 +149,5 @@ class Grouper:
         g1_e.count += g2_e.count
         self.store.save_group(g1_e)
         self.store.change_group(group2.group_id, group1.group_id)
+        # delete group2 after merging
+        self.store.delete_group(group2.group_id)

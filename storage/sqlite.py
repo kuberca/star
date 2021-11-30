@@ -61,7 +61,8 @@ CREATE TABLE IF NOT EXISTS groups (
   group_id INTEGER PRIMARY KEY,
   vector TEXT NOT NULL, 
   count INTEGER,
-  manual_group BOOLEAN
+  manual_group BOOLEAN, 
+  deleted BOOLEAN DEFAULT 0
 );
 
 """
@@ -246,10 +247,10 @@ class SqliteStore:
 
         return self.get_group_from_sql(group)
 
-    # get all group from storage
+    # get all group not deleted from storage
     def get_groups(self) -> List[Group]:
         groups = self.db.execute(
-            'SELECT * FROM groups'
+            'SELECT * FROM groups where deleted = 0'
         ).fetchall()
 
         return [self.get_group_from_sql(g) for g in groups]
@@ -306,6 +307,14 @@ class SqliteStore:
             (new_group_id, old_group_id)
         )
         self.db.commit()    
+
+    # mark a group as deleted
+    def delete_group(self, group_id: int):
+        self.db.execute(
+            'UPDATE groups SET deleted = 1 WHERE group_id = ?',
+            (group_id,)
+        )
+        self.db.commit()
 
     # cleanup delete all groups and results
     def cleanup(self):
