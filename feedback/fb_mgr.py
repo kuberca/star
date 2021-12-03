@@ -44,16 +44,16 @@ class FeedbackMgr:
 
 
     # take an array of user feedbacks and update local cache
-    def save(self, result):
+    def save(self, result:Result):
         self.store.save_feedback(result)
 
-        self.data[result.template] = result.label
+        self.data[result.template] = (result.label, result.error_type)
         
         with open(self.local_file, 'w') as fw:
             writer = csv.writer(fw)
-            writer.writerow(['label', 'template'])
-            for key, value in self.data.items():
-                writer.writerow([value, key])
+            writer.writerow(['label', 'error_type', 'template'])
+            for template, (label, err_type) in self.data.items():
+                writer.writerow([label, err_type, template])
 
 
     # update changes in local cache to upstream remote_url

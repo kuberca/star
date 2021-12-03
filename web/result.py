@@ -123,8 +123,10 @@ def group_update(id):
         else:
             analysis = request.form['analysis']
             label = request.form['label']
+            error_type = request.form['error_type']
             group.analysis = analysis
             group.label = label
+            group.error_type = error_type
             get_server().results.resolve_group(group)
 
             return redirect(url_for('result.groups'))

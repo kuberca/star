@@ -27,7 +27,8 @@ class Result:
                 analysis: str = "NA",
                 meta: dict = {}, 
                 context: dict = {},
-                count: int = 1) -> None:
+                count: int = 1,
+                error_type: str = "") -> None:
 
         self.input = input
         self.template = template
@@ -42,6 +43,7 @@ class Result:
         # group created by user from remove result from exisitng group
         self.manual_group = False
         self.count = count
+        self.error_type = error_type
 
     def __str__(self) -> str:
         return "%s %s %s %s %d %d" % (self.label, self.analysis, self.input, self.template, self.template_id, self.count)
@@ -51,7 +53,7 @@ class Result:
 
 
 class Group:
-    def __init__(self, group_id: int, vector: list = None, manual_group:bool=False, vector_str: str = "", count: int=1, results: List[Result] = None) -> None:
+    def __init__(self, group_id: int, vector: list = None, manual_group:bool=False, error_type:str="", vector_str: str = "", count: int=1, results: List[Result] = None) -> None:
         self.group_id = group_id
         self.count = count
         self.results = results
@@ -60,6 +62,7 @@ class Group:
         self.label = "Error"
         # if manual_group is True, this group is created by user, so do not try to merge with other groups
         self.manual_group = manual_group
+        self.error_type = error_type
 
         if vector is not None:
             self.vector = vector

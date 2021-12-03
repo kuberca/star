@@ -1,4 +1,5 @@
 data
 model
 sqlite3.bin
+sqlite3.bin-journal
 __pycache__

@@ -24,6 +24,7 @@ CREATE TABLE IF NOT EXISTS unresolved (
   context JSON,
   count INTEGER,
   group_id INTEGER ,
+  error_type TEXT,
   PRIMARY KEY (template_id, context_id)
 );
 
@@ -39,6 +40,7 @@ CREATE TABLE IF NOT EXISTS resolved (
   context JSON,
   count INTEGER,
   group_id INTEGER ,
+  error_type TEXT,
   PRIMARY KEY (template_id, context_id)
 );
 
@@ -54,6 +56,7 @@ CREATE TABLE IF NOT EXISTS feedback (
   context JSON,
   count INTEGER,
   group_id INTEGER ,
+  error_type TEXT,
   PRIMARY KEY (template_id, context_id)
 );
 
@@ -62,14 +65,15 @@ CREATE TABLE IF NOT EXISTS groups (
   vector TEXT NOT NULL, 
   count INTEGER,
   manual_group BOOLEAN, 
-  deleted BOOLEAN DEFAULT 0
+  deleted BOOLEAN DEFAULT 0,
+  error_type TEXT
 );
 
 """
 
 g_create_sql = """
-INSERT INTO {}  (template_id, input, template, label, analysis, context_id, context_template, meta, context, count, group_id)
- VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  
+INSERT INTO {}  (template_id, input, template, label, analysis, context_id, context_template, meta, context, count, group_id, error_type)
+ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  
 ON CONFLICT(template_id, context_id) DO UPDATE SET
     input     = excluded.input,
     template  = excluded.template,
@@ -79,16 +83,19 @@ ON CONFLICT(template_id, context_id) DO UPDATE SET
     context   = excluded.context,
     count     = excluded.count,
     group_id  = excluded.group_id,
-    context_template  = excluded.context_template
+    context_template  = excluded.context_template,
+    error_type = excluded.error_type
 """
 
 g_create_group_sql = """
-INSERT INTO groups (group_id, vector, count, manual_group)
-    VALUES (?, ?, ?, ?)
+INSERT INTO groups (group_id, vector, count, manual_group, error_type)
+    VALUES (?, ?, ?, ?, ?)
 ON CONFLICT(group_id) DO UPDATE SET
     vector        = excluded.vector,
     count         = excluded.count,
-    manual_group  = excluded.manual_group
+    manual_group  = excluded.manual_group,
+    error_type    = excluded.error_type
+
 """
 
 class SqliteStore:
@@ -110,21 +117,24 @@ class SqliteStore:
         sql = g_create_sql.format("unresolved")
         self.db.execute(
             sql,  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id)
+            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, 
+                json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type)
         )
         self.db.commit()
 
     def save_resolved(self, result: Result):
         self.db.execute(
             g_create_sql.format("resolved"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id)
+            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, 
+                json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type)
         )
         self.db.commit()
 
     def save_feedback(self, result: Result):
         self.db.execute(
             g_create_sql.format("feedback"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id)
+            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, 
+                json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type)
         )
         self.db.commit()
 
@@ -201,14 +211,14 @@ class SqliteStore:
             g_create_sql.format("resolved"),  
             (result.template_id, result.input, result.template, result.label, result.analysis, 
             result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), 
-            result.count, result.group_id)
+            result.count, result.group_id, result.error_type)
         )
         self.db.commit()
 
     def get_result_from_sql(self, obj:dict) -> Result:
         result = Result(input=obj["input"], template_id=obj["template_id"], template=obj["template"], 
             label=obj["label"], analysis=obj["analysis"], count=obj["count"], context_id=obj["context_id"], 
-            context_template=obj["context_template"], group_id=obj["group_id"] 
+            context_template=obj["context_template"], group_id=obj["group_id"], error_type=obj["error_type"]
         )
         try:
             result.meta=json.loads(obj["meta"])
@@ -223,15 +233,15 @@ class SqliteStore:
     def save_group(self, group: Group) -> Group:
         if  group.group_id == 0:
             cur  = self.db.execute(
-                "INSERT INTO groups (vector, count, manual_group) VALUES (?, ?, ?)",
-                (group.vector_str(), group.count, group.manual_group)
+                "INSERT INTO groups (vector, count, manual_group, error_type) VALUES (?, ?, ?, ?)",
+                (group.vector_str(), group.count, group.manual_group, group.error_type)
             )
             group.group_id = cur.lastrowid
             return group
         else:
             self.db.execute(
                 g_create_group_sql,
-                (group.group_id, group.vector_str(), group.count, group.manual_group)
+                (group.group_id, group.vector_str(), group.count, group.manual_group, group.error_type)
             )
             return group
 
@@ -298,7 +308,7 @@ class SqliteStore:
     def get_group_from_sql(self, obj:dict) -> Group:
         if obj is None:
             return None
-        return Group(group_id=obj["group_id"], vector_str=obj["vector"], count=obj["count"], manual_group=obj["manual_group"])
+        return Group(group_id=obj["group_id"], vector_str=obj["vector"], count=obj["count"], manual_group=obj["manual_group"], error_type=obj["error_type"])
 
     # change results group_id from old_group_id to new_group_id
     def change_group(self, old_group_id: int, new_group_id: int):

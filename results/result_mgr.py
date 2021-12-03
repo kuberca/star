@@ -133,7 +133,10 @@ class ResultMgr:
         for result in group.results:
             result.label = group.label
             result.analysis = group.analysis
+            result.error_type = group.error_type
             self.resolve(result)
+            
+        self.store.save_group(group)
 
     # get sim scores between two groups
     def get_group_sim_score(self, group1: Group, group2: Group):
