@@ -28,7 +28,8 @@ class Result:
                 meta: dict = {}, 
                 context: dict = {},
                 count: int = 1,
-                error_type: str = "") -> None:
+                error_type: str = "",
+                resolved: bool = False) -> None:
 
         self.input = input
         self.template = template
@@ -44,6 +45,7 @@ class Result:
         self.manual_group = False
         self.count = count
         self.error_type = error_type
+        self.resolved = resolved
 
     def __str__(self) -> str:
         return "%s %s %s %s %d %d" % (self.label, self.analysis, self.input, self.template, self.template_id, self.count)

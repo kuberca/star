@@ -12,7 +12,7 @@ from werkzeug.exceptions import abort
 
 
 g_schema = """
-CREATE TABLE IF NOT EXISTS unresolved (
+CREATE TABLE IF NOT EXISTS result (
   template_id INTEGER ,
   input TEXT NOT NULL,
   template TEXT NOT NULL,
@@ -25,22 +25,7 @@ CREATE TABLE IF NOT EXISTS unresolved (
   count INTEGER,
   group_id INTEGER ,
   error_type TEXT,
-  PRIMARY KEY (template_id, context_id)
-);
-
-CREATE TABLE IF NOT EXISTS resolved (
-  template_id INTEGER ,
-  input TEXT NOT NULL,
-  template TEXT NOT NULL,
-  label TEXT NOT NULL,
-  context_id TEXT, 
-  context_template TEXT,
-  analysis TEXT,
-  meta JSON,
-  context JSON,
-  count INTEGER,
-  group_id INTEGER ,
-  error_type TEXT,
+  resolved BOOLEAN DEFAULT 0,
   PRIMARY KEY (template_id, context_id)
 );
 
@@ -57,6 +42,7 @@ CREATE TABLE IF NOT EXISTS feedback (
   count INTEGER,
   group_id INTEGER ,
   error_type TEXT,
+  resolved BOOLEAN DEFAULT 0,
   PRIMARY KEY (template_id, context_id)
 );
 
@@ -72,8 +58,8 @@ CREATE TABLE IF NOT EXISTS groups (
 """
 
 g_create_sql = """
-INSERT INTO {}  (template_id, input, template, label, analysis, context_id, context_template, meta, context, count, group_id, error_type)
- VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  
+INSERT INTO {}  (template_id, input, template, label, analysis, context_id, context_template, meta, context, count, group_id, error_type, resolved)
+ VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  
 ON CONFLICT(template_id, context_id) DO UPDATE SET
     input     = excluded.input,
     template  = excluded.template,
@@ -83,8 +69,10 @@ ON CONFLICT(template_id, context_id) DO UPDATE SET
     context   = excluded.context,
     count     = excluded.count,
     group_id  = excluded.group_id,
-    context_template  = excluded.context_template,
-    error_type = excluded.error_type
+    error_type = excluded.error_type,
+    resolved   = excluded.resolved,    
+    context_template  = excluded.context_template
+
 """
 
 g_create_group_sql = """
@@ -113,56 +101,50 @@ class SqliteStore:
         self.db.commit()
 
     # save into storage  
-    def save_unresolved(self, result: Result):
-        sql = g_create_sql.format("unresolved")
+    def save_result(self, result: Result):
+        sql = g_create_sql.format("result")
         self.db.execute(
             sql,  
             (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, 
-                json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type)
+                json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type, result.resolved)
         )
         self.db.commit()
 
+    def save_unresolved(self, result: Result):
+        result.resolved = False
+        self.save_result(result)
+
     def save_resolved(self, result: Result):
-        self.db.execute(
-            g_create_sql.format("resolved"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, 
-                json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type)
-        )
-        self.db.commit()
+        result.resolved = True
+        self.save_result(result)
 
     def save_feedback(self, result: Result):
         self.db.execute(
             g_create_sql.format("feedback"),  
             (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, 
-                json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type)
+                json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type, result.resolved)
         )
         self.db.commit()
 
-    # get un resolved results from storage, so user can look at it and take action
+    def get_result(self, template_id: int, context_id: str, resolved: int) -> Result:
+        result = self.db.execute(
+            'SELECT * FROM result WHERE template_id = ? AND context_id = ? AND resolved = ?',
+            (template_id, context_id, resolved)
+        ).fetchone()
+
+        if result is None:
+            return None
+
+        result = self.get_result_from_sql(result)
+        return result
+
+    # get unresolved results from storage, so user can look at it and take action
     def get_unresolved(self, template_id: int, context_id: str) -> Result:
-        unresolved = self.db.execute(
-            'SELECT * FROM unresolved WHERE template_id = ? AND context_id = ? ',
-            (template_id, context_id)
-        ).fetchone()
+        return self.get_result(template_id, context_id, 0)
 
-        if unresolved is None:
-            return None
-
-        result = self.get_result_from_sql(unresolved)
-        return result
-
-    # get un resolved results from storage, so user can look at it and take action
+    # get resolved results from storage, so user can look at it and take action
     def get_resolved(self, template_id: int, context_id: str) -> Result:
-        resolved = self.db.execute(
-            'SELECT * FROM resolved WHERE template_id = ? AND context_id = ? ',
-            (template_id, context_id)
-        ).fetchone()
-
-        if resolved is None:
-            return None
-
-        result = self.get_result_from_sql(resolved)
-        return result
+        return self.get_result(template_id, context_id, 1)
 
     def get_feedback(self, template_id: int, context_id: str) -> Result:
         feedback = self.db.execute(
@@ -178,20 +160,20 @@ class SqliteStore:
 
     # get all un resolved results from storage, so user can look at it and take action
     def get_all_unresolved(self):
-        unresolved = self.db.execute(
-            'SELECT * FROM unresolved'
-        ).fetchall()
-
-
-        return [self.get_result_from_sql(i) for i in unresolved ]
+        return self.get_results(0)
 
     # get all resolved results from storage, could be used for statictics
     def get_all_resolved(self):
-        resolved = self.db.execute(
-            'SELECT * FROM resolved'
+        return self.get_results(1)
+
+    def get_results(self, resolved: int) -> List[Result]:
+        result = self.db.execute(
+            'SELECT * FROM result where resolved = ?',
+             (resolved, )
         ).fetchall()
 
-        return [self.get_result_from_sql(i) for i in resolved ]
+
+        return [self.get_result_from_sql(i) for i in result ]
 
     # get all results from storage
     def get_all(self):
@@ -203,22 +185,17 @@ class SqliteStore:
     # if user accept the result, should mark the result as accepted
     def resolve(self, result: Result):
         self.db.execute(
-            'DELETE FROM unresolved WHERE template_id = ? AND context_id = ? ',
+            'UPDATE result SET resolved = 1 WHERE template_id = ? AND context_id = ? ',
             (result.template_id, result.context_id)
         )
-        self.db.commit()
-        self.db.execute(
-            g_create_sql.format("resolved"),  
-            (result.template_id, result.input, result.template, result.label, result.analysis, 
-            result.context_id, result.context_template, json.dumps(result.meta), json.dumps(result.context), 
-            result.count, result.group_id, result.error_type)
-        )
+
         self.db.commit()
 
     def get_result_from_sql(self, obj:dict) -> Result:
         result = Result(input=obj["input"], template_id=obj["template_id"], template=obj["template"], 
             label=obj["label"], analysis=obj["analysis"], count=obj["count"], context_id=obj["context_id"], 
-            context_template=obj["context_template"], group_id=obj["group_id"], error_type=obj["error_type"]
+            context_template=obj["context_template"], group_id=obj["group_id"], error_type=obj["error_type"],
+            resolved=obj["resolved"]
         )
         try:
             result.meta=json.loads(obj["meta"])
@@ -297,12 +274,12 @@ class SqliteStore:
 
     # get all results of a  group
     def get_group_results(self, group_id: int) -> List[Group]:
-        unresolved = self.db.execute(
-            'SELECT * FROM unresolved WHERE group_id = ?',
+        result = self.db.execute(
+            'SELECT * FROM result WHERE group_id = ? and resolved = 0',
             (group_id,)
         ).fetchall()
 
-        return [self.get_result_from_sql(i) for i in unresolved ]
+        return [self.get_result_from_sql(i) for i in result ]
 
     # get Group object from select result
     def get_group_from_sql(self, obj:dict) -> Group:
@@ -313,7 +290,7 @@ class SqliteStore:
     # change results group_id from old_group_id to new_group_id
     def change_group(self, old_group_id: int, new_group_id: int):
         self.db.execute(
-            'UPDATE unresolved SET group_id = ? WHERE group_id = ?',
+            'UPDATE result SET group_id = ? WHERE group_id = ?',
             (new_group_id, old_group_id)
         )
         self.db.commit()    
@@ -329,10 +306,10 @@ class SqliteStore:
     # cleanup delete all groups and results
     def cleanup(self):
         self.db.execute(
-            'DELETE FROM unresolved'
+            'DELETE FROM result'
         )
         self.db.execute(
-            'DELETE FROM resolved'
+            'DELETE FROM feedback'
         )
         self.db.execute(
             'DELETE FROM groups'

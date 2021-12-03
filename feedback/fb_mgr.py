@@ -40,7 +40,7 @@ class FeedbackMgr:
             with open(local_file, 'r') as fp:
                 csv_reader = csv.DictReader(fp)
                 for row in csv_reader:
-                    self.data[row['template']] = row['label']
+                    self.data[row['template']] = (row['label'], row['error_type'])
 
 
     # take an array of user feedbacks and update local cache

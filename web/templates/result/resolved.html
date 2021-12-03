@@ -11,33 +11,34 @@
 
 
 
+
 {% block content %}
 
-{% endblock %}
-<span></span>
-
-
-{% block content2 %}
   <h1>Results Resolved</h1> 
   {% for result in resolved %}
     <article class="result">
+
       <header>
         <div>
-          <div class="about"> Happened <b>{{ result['count'] }} </b> times.</div>
+          <div class="about"> Happened <b>{{ result['count'] }} </b> times. </div>
+          
         </div>
 
       </header>
-      <p class="body"><b>Meta</b>: {{ result['meta'] }} </p>
+      
+      <p class="body"><b>Label</b>: {{ result['label'] }} </p>
+      <p class="body"><b>Error Type</b>: {{ result['error_type'] }} </p>
       <p class="body"><b>Log Template Id</b>: {{ result['template_id'] }}</p>
       <p class="body"><b>Context Id</b>: {{ result['context_id'] }}</p>
+      <p class="body"><b>Log template</b>:  {{ result['template'] }}</p>
       <p class="body"><b>Log text</b>:  {{ result['input'] }}</p>
       <p class="body"><b>Log context</b>:</p>
       {% for line in result['context']['lines'] %}
         <li> {{ line }}</li>
       {% endfor %}
       <p class="body"><b>Analysis</b>: {{ result['analysis'] }}</p>
-
-      <a class="action" href="{{ url_for('result.update', id=result['template_id'], resolved='true', context_id=result['context_id']) }}">Resolve</a>
+      
+      
     </article>
     {% if not loop.last %}
       <hr>

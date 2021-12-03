@@ -104,7 +104,11 @@ class ResultMgr:
 
     # get all un resolved results from storage, so user can look at it and take action
     def get_all_unresolved(self):
-        return self.store.get_unresolved()
+        return self.store.get_all_unresolved()
+
+    # get all resolved results from storage, so user can look at it and take action
+    def get_all_resolved(self):
+        return self.store.get_all_resolved()
 
     # get un resolved results from storage, so user can look at it and take action
     def get_resolved(self, template_id: int, context_id: str) -> Result:
@@ -135,7 +139,7 @@ class ResultMgr:
             result.analysis = group.analysis
             result.error_type = group.error_type
             self.resolve(result)
-            
+
         self.store.save_group(group)
 
     # get sim scores between two groups
