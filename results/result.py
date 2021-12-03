@@ -55,13 +55,13 @@ class Result:
 
 
 class Group:
-    def __init__(self, group_id: int, vector: list = None, manual_group:bool=False, error_type:str="", vector_str: str = "", count: int=1, results: List[Result] = None) -> None:
+    def __init__(self, group_id: int, vector: list = None, manual_group:bool=False, label:str="", error_type:str="", vector_str: str = "", count: int=1, results: List[Result] = None) -> None:
         self.group_id = group_id
         self.count = count
         self.results = results
         self.top_words = []
         self.analysis = ""
-        self.label = "Error"
+        self.label = label
         # if manual_group is True, this group is created by user, so do not try to merge with other groups
         self.manual_group = manual_group
         self.error_type = error_type

@@ -27,12 +27,12 @@ def resolved():
     resolved = get_server().results.get_all_resolved()
     sorted_resolved = sorted(resolved, key=lambda it: it.count, reverse=True)
     return render_template('result/resolved.html', resolved=sorted_resolved)
-    
+
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 def update(id):
     is_resolved = request.args.get('resolved')
     context_id = request.args.get('context_id')
-    if is_resolved == "true":
+    if is_resolved == "1":
         result = get_resolved(id, context_id)
     else:
         result = get_unresolved(id, context_id)
@@ -86,7 +86,9 @@ def templates():
 def groups():
     groups = get_server().results.get_all_unresolved_groups()
     sorted_groups = sorted(groups, key=lambda it: it.count, reverse=True)
-    return render_template('result/groups.html', groups=sorted_groups)
+    resolved_groups = get_server().results.get_all_resolved_groups()
+    sorted_resolved_groups = sorted(resolved_groups, key=lambda it: it.count, reverse=True)
+    return render_template('result/groups.html', groups=sorted_groups, resolved_groups=sorted_resolved_groups)
 
 @bp.route('/cleanup')
 def cleanup():
@@ -96,7 +98,11 @@ def cleanup():
 
 @bp.route('/<int:id>/group_update', methods=('GET', 'POST'))
 def group_update(id):
-    group = get_server().results.get_unresolved_group(id)
+    is_resolved = request.args.get('resolved')
+    if is_resolved is None or is_resolved == "0":
+        group = get_server().results.get_unresolved_group(id)
+    else:
+        group = get_server().results.get_resolved_group(id)
 
     if request.method == 'GET':
         return render_template('result/group_update.html', group=group)

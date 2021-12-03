@@ -63,6 +63,7 @@ class ResultMgr:
             if fb is not None:
                 result.label = fb.label
                 result.analysis = fb.analysis
+                result.error_type = fb.error_type
             self.store.save_unresolved(result)
 
     # split result from group, save into another manual group
@@ -120,17 +121,20 @@ class ResultMgr:
         return self.store.get_all_resolved()
 
     def get_all_unresolved_groups(self):
-        groups = self.store.get_groups_with_results()
-        #  get the top 10 frequent words in the templates of each group
-        for group in groups:
-            group.top_words = self.get_top_words(group)
+        groups = self.store.get_groups_with_results(0)
+        return groups
 
+    def get_all_resolved_groups(self):
+        groups = self.store.get_groups_with_results(1)
         return groups
 
     # get one single group with results
     def get_unresolved_group(self, id: int) -> Group:
-        group = self.store.get_group_with_results(id)
-        return group
+        return self.store.get_group_with_results(id, resolved=0)
+
+    # get one single group with results
+    def get_resolved_group(self, id: int) -> Group:
+        return self.store.get_group_with_results(id, resolved=1)
 
     # resolve group
     def resolve_group(self, group: Group):

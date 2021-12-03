@@ -44,7 +44,8 @@ class Grouper:
         #     return result.group_id
 
         if self.strict_group_sim():
-            groups = self.store.get_groups_with_results()
+            # use resolved=-1 to indicate get all results, both resolved and unresolved
+            groups = self.store.get_groups_with_results(-1)
             max_sim_score = 0
             max_group = None
 

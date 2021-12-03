@@ -14,19 +14,12 @@
 
 {% block content %}
 
-  <h1>Results Group</h1> 
+  <h1>Unresolved Group</h1> 
   {% for group in groups %}
     <article class="result">
-
-      <header>
-      </header>
-
-      <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}</p>
-
+      <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}, <b>Label</b>: {{ group['label'] }}, <b>Error Type</b>: {{ group['error_type'] }}</p>
       <a class="action" href="{{ url_for('result.group_update', id=group['group_id']) }}">Resolve</a>
-
       <a class="action" href="{{ url_for('result.group_compare', from_group=group['group_id']) }}">Compare</a>
-
 
       <table>
         <tr>
@@ -41,14 +34,37 @@
           <td>{{ result['input'] }}</td>
           <td><a class="action" href="{{ url_for('result.update', id=result['template_id'], context_id=result['context_id']) }}">Detail</a></td>
         </tr>
-
         {% endfor %}
-      </table>
-      
-      
+      </table>  
     </article>
-
   {% endfor %}
+  <hr><hr>
+
+  <h1>Resolved Group</h1> 
+  {% for group in resolved_groups %}
+    <article class="result">
+      <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}, <b>Label</b>: {{ group['label'] }}, <b>Error Type</b>: {{ group['error_type'] }}</p>
+      <a class="action" href="{{ url_for('result.group_update', id=group['group_id'], resolved=1) }}">Resolve</a>
+      <a class="action" href="{{ url_for('result.group_compare', from_group=group['group_id'], resolved=1) }}">Compare</a>
+
+      <table>
+        <tr>
+          <th>Num</th>
+          <th>log</th>
+          <th>Detail</th>
+        </tr>
+
+        {% for result in group['results'] %}
+        <tr>
+          <td>{{ result['count'] }}</td>
+          <td>{{ result['input'] }}</td>
+          <td><a class="action" href="{{ url_for('result.update', id=result['template_id'], context_id=result['context_id'], resolved=1) }}">Detail</a></td>
+        </tr>
+        {% endfor %}
+      </table>  
+    </article>
+  {% endfor %}
+
 {% endblock %}
 
 

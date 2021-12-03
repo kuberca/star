@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS groups (
   count INTEGER,
   manual_group BOOLEAN, 
   deleted BOOLEAN DEFAULT 0,
+  label TEXT,
   error_type TEXT
 );
 
@@ -76,12 +77,13 @@ ON CONFLICT(template_id, context_id) DO UPDATE SET
 """
 
 g_create_group_sql = """
-INSERT INTO groups (group_id, vector, count, manual_group, error_type)
-    VALUES (?, ?, ?, ?, ?)
+INSERT INTO groups (group_id, vector, count, manual_group, label, error_type)
+    VALUES (?, ?, ?, ?, ?, ?)
 ON CONFLICT(group_id) DO UPDATE SET
     vector        = excluded.vector,
     count         = excluded.count,
     manual_group  = excluded.manual_group,
+    label         = excluded.label,
     error_type    = excluded.error_type
 
 """
@@ -185,8 +187,8 @@ class SqliteStore:
     # if user accept the result, should mark the result as accepted
     def resolve(self, result: Result):
         self.db.execute(
-            'UPDATE result SET resolved = 1 WHERE template_id = ? AND context_id = ? ',
-            (result.template_id, result.context_id)
+            'UPDATE result SET resolved = 1, label = ?, error_type = ? WHERE template_id = ? AND context_id = ? ',
+            (result.label, result.error_type, result.template_id, result.context_id)
         )
 
         self.db.commit()
@@ -210,16 +212,18 @@ class SqliteStore:
     def save_group(self, group: Group) -> Group:
         if  group.group_id == 0:
             cur  = self.db.execute(
-                "INSERT INTO groups (vector, count, manual_group, error_type) VALUES (?, ?, ?, ?)",
-                (group.vector_str(), group.count, group.manual_group, group.error_type)
+                "INSERT INTO groups (vector, count, manual_group, label, error_type) VALUES (?, ?, ?, ?, ?)",
+                (group.vector_str(), group.count, group.manual_group, group.label, group.error_type)
             )
+            self.db.commit()
             group.group_id = cur.lastrowid
             return group
         else:
             self.db.execute(
                 g_create_group_sql,
-                (group.group_id, group.vector_str(), group.count, group.manual_group, group.error_type)
+                (group.group_id, group.vector_str(), group.count, group.manual_group, group.label, group.error_type)
             )
+            self.db.commit()
             return group
 
     # get group from storage
@@ -243,7 +247,8 @@ class SqliteStore:
         return [self.get_group_from_sql(g) for g in groups]
 
     # get groups with results
-    def get_groups_with_results(self) -> List[Group]:
+    # if resolved == -1, means get all results, no matter it is resolved or not
+    def get_groups_with_results(self, resolved: int=0) -> List[Group]:
         groups = self.db.execute(
             'SELECT * FROM groups'
         ).fetchall()
@@ -251,7 +256,10 @@ class SqliteStore:
         g_all = []
         for g in groups:
             g = self.get_group_from_sql(g)
-            results = self.get_group_results(g.group_id)
+            if resolved == -1:
+                results = self.get_group_all_results(g.group_id)
+            else:
+                results = self.get_group_results(g.group_id, resolved)
             if len(results) > 0:
                 g.results = results
                 g_all.append(g)
@@ -259,7 +267,7 @@ class SqliteStore:
         return g_all
 
     # get group with results
-    def get_group_with_results(self, group_id: int) -> Group:
+    def get_group_with_results(self, group_id: int, resolved: int=0) -> Group:
         group = self.db.execute(
             'SELECT * FROM groups WHERE group_id = ? ',
             (group_id,)
@@ -269,14 +277,23 @@ class SqliteStore:
             return None
 
         g = self.get_group_from_sql(group)
-        g.results = self.get_group_results(g.group_id)
+        g.results = self.get_group_results(g.group_id, resolved)
         return g
 
-    # get all results of a  group
-    def get_group_results(self, group_id: int) -> List[Group]:
+    # get all results of a  group, either resolved or unresolved
+    def get_group_results(self, group_id: int, resolved: int) -> List[Group]:
         result = self.db.execute(
-            'SELECT * FROM result WHERE group_id = ? and resolved = 0',
-            (group_id,)
+            'SELECT * FROM result WHERE group_id = ? and resolved = ?',
+            (group_id, resolved)
+        ).fetchall()
+
+        return [self.get_result_from_sql(i) for i in result ]
+
+    # get all results of a group, both resolved and unresolved, for grouping when add a new result
+    def get_group_all_results(self, group_id: int) -> List[Group]:
+        result = self.db.execute(
+            'SELECT * FROM result WHERE group_id = ?',
+            (group_id, )
         ).fetchall()
 
         return [self.get_result_from_sql(i) for i in result ]
@@ -285,7 +302,7 @@ class SqliteStore:
     def get_group_from_sql(self, obj:dict) -> Group:
         if obj is None:
             return None
-        return Group(group_id=obj["group_id"], vector_str=obj["vector"], count=obj["count"], manual_group=obj["manual_group"], error_type=obj["error_type"])
+        return Group(group_id=obj["group_id"], vector_str=obj["vector"], count=obj["count"], manual_group=obj["manual_group"], label=obj["label"], error_type=obj["error_type"])
 
     # change results group_id from old_group_id to new_group_id
     def change_group(self, old_group_id: int, new_group_id: int):

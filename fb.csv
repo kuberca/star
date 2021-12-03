@@ -2,3 +2,5 @@ label,error_type,template
 Error,DataError,error message error error parsing <*> error converting YAML to JSON yaml invalid map key map interface interface <*> | quote interface nil
 Error,DataError,Reconciler error error failed to reconcile manifests failed to do kubectl apply error error parsing <*> error converting YAML to JSON yaml invalid map key map interface interface <*> | quote interface nil exit status <*> name <*> namespace <*> reconciler group <*> reconciler kind Pack
 Normal,NA,error message Warning <*> Certificate is deprecated in <*> unavailable in <*> use <*> Certificate
+Error,ConnectionTimeout,Reconciler error error failed to pivot move resource failed to move configmap to target cluster failed to move configmap <*> error copying ConfigMap <*> to target cluster Post https <*> <*> <*> context deadline exceeded controller spectrocluster name <*> namespace <*>
+Error,ConnectionTimeout,Reconciler error error unable to install crd failed to get deployment <*> timed out waiting for the condition controller spectrocluster name <*> namespace <*>

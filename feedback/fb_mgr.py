@@ -64,15 +64,15 @@ class FeedbackMgr:
     # if exist, then the feedback is treated as ground truth
     # if not, return None, then predictor need to take further actions
     def get(self, template_id: int, context_id: str, template: str) -> Result:
-        res = self.store.get_feedback(template_id, context_id)
-        if res is not None:
-            return res
+        # res = self.store.get_feedback(template_id, context_id)
+        # if res is not None:
+        #     return res
 
-        label = self.data.get(template)
+        (label, error_type) = self.data.get(template)
         if label is None:
             return None
             
-        return Result(input="", template=template, template_id=template_id, label=label)
+        return Result(input="", template=template, template_id=template_id, label=label, error_type=error_type)
 
 
             
