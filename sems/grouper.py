@@ -15,12 +15,13 @@ class Grouper:
         if store is None:
             store = SqliteStore()
         self.store = store
-        self.sim_score_min = 0.94
+        self.sim_score_min = 0.95
         self.group_merge_threshold = 0.96
         self.vector = Vector(model_file)
 
 
     # if use strict group sim, then need to check if the result is similar to all results in the group
+    # and if there are multipe groups, then need to get the one with most similar results
     # if not, then need to check if the result is similar to the vector of the group which is averaged of results vector
     def strict_group_sim(self) -> bool:
         return True
@@ -36,7 +37,7 @@ class Grouper:
         # merge groups if necessary
 
 
-        self.merge_groups()
+        # self.merge_groups()
 
         # if result.group_id > 0:
         #     self.update_group(result.group, result)
@@ -44,19 +45,34 @@ class Grouper:
 
         if self.strict_group_sim():
             groups = self.store.get_groups_with_results()
+            max_sim_score = 0
+            max_group = None
+
             for group in groups:
                 all_sim = True
+                score_sum = 0
                 for gr in group.results:
                     sim_score = self.get_results_sim_score(gr, result)
                     if sim_score < self.sim_score_min:
                         all_sim = False
                         break
+                    else:
+                        score_sum += sim_score
+
                 if all_sim:
-                    result.group_id = group.group_id
-                    self.update_group(group, result)
-                    return group.group_id
+                    # check average score of this group, check if it is higher than the current max
+                    avg_score = score_sum / len(group.results)
+                    if avg_score > max_sim_score:
+                        max_group = group
+                        max_sim_score = avg_score
+
+            if max_group is not None:
+                result.group_id = max_group.group_id
+                self.update_group(max_group, result)
+                return result.group_id
 
         else:
+            # just pick the first group that above the threshold
             for group in self.get_groups():
                 sim_score = self.get_sim_score(group, result)
                 if sim_score > self.sim_score_min:

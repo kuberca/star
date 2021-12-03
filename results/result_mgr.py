@@ -139,6 +139,10 @@ class ResultMgr:
     def get_group_sim_score(self, group1: Group, group2: Group):
         return self.grouper.get_group_sim_score(group1, group2)
 
+    # get sim scores between two results
+    def get_result_sim_score(self, result1: Result, result2: Result):
+        return self.grouper.get_results_sim_score(result1, result2)
+
     # if user reject the result, means the prediction that the data is 'error' is wrong
     # need to update this result into user feedback, so later prediction can use it as ground truth
     # so it won't be labelled as 'error' again

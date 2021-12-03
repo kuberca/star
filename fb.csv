@@ -13,11 +13,11 @@ Normal,Failed to run command <*> print-logs.sh with output ~~~~~~~~~~~~~~~~~~~~~
 Normal,Execution failed. Failed to execute command <*> print-logs.sh . exit status <*>
 Normal,Failed to execute task exit status 1Failed to run cmd exec task <*>
 Error,Reconciler error error failed to pivot move resource back failed to pause capi cluster error updating the pause status for <*> Kind <*> Internal error occurred failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused controller spectrocluster name <*> namespace <*>
-Error,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error EOF stderr
-Error,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error exit status <*> stderr <*> <*> <*> <*> socat <*> E write <*> <*> <*> Broken pipe n
-Error,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error write tcp <*> <*> <*> use of closed network connection stderr
-Error,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error write tcp <*> <*> <*> write broken pipe stderr
-Error,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error write tcp <*> <*> <*> write connection reset by peer stderr
+Normal,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error EOF stderr
+Normal,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error exit status <*> stderr <*> <*> <*> <*> socat <*> E write <*> <*> <*> Broken pipe n
+Normal,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error write tcp <*> <*> <*> use of closed network connection stderr
+Normal,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error write tcp <*> <*> <*> write broken pipe stderr
+Normal,error forwarding port <*> to pod <*> uid failed to execute portforward in network namespace host socat command returns error write tcp <*> <*> <*> write connection reset by peer stderr
 Error,Error while processing Node <*> failed to allocate cidr from cluster cidr at idx 0 CIDR allocation failed there are no remaining CIDRs left to allocate in the accepted range
 Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver failed to send out heartbeat on time exceeded the <*> timeout for <*> to <*>
 Normal,Failed to get IPIP tunnel device assuming it isn t present error Link not found
@@ -33,13 +33,13 @@ Error,Target has failed health check marking for remediation message Node failed
 Normal,Failed predicate on node <*> node s had taints that the pod didn t tolerate
 Normal,attempted to modprobe nf_conntrack_proto_sctp error exit status <*> output
 Normal,failed to acquire lease <*>
-Error,Can t enable XDP acceleration. error kernel is too old have <*> but want at least <*>
+Normal,Can t enable XDP acceleration. error kernel is too old have <*> but want at least <*>
 Normal,Failed to start service controller the cloud provider does not support external load balancers
 Normal,Interface was deleted during operation filtering error error netlink update operation failed ifaceName <*> ifaceRegex ^cali. ipVersion <*>
 Normal,Error looking up in-cluster authentication configuration configmaps <*> is forbidden User system <*> cannot get resource configmaps in API group in the namespace <*>
 Error,Event occurred object brighteon/backend kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedGetResourceMetric message failed to get memory utilization unable to get metrics for resource memory no metrics returned from resource metrics API
 Error,Event occurred object brighteon/backend kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedGetResourceMetric message failed to get cpu utilization unable to get metrics for resource cpu no metrics returned from resource metrics API
-Error,failed to compute desired number of replicas based on listed metrics for <*> invalid metrics <*> invalid out of <*> first error is failed to get memory utilization unable to get metrics for resource memory no metrics returned from resource metrics API
+Normal,failed to compute desired number of replicas based on listed metrics for <*> invalid metrics <*> invalid out of <*> first error is failed to get memory utilization unable to get metrics for resource memory no metrics returned from resource metrics API
 Error,Event occurred object brighteon/backend kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedComputeMetricsReplicas message invalid metrics <*> invalid out of <*> first error is failed to get memory utilization unable to get metrics for resource memory no metrics returned from resource metrics API
 Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error context canceled took too long <*> to execute
 Error,<*> <*> <*> <*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error context deadline exceeded took too long <*> to execute
@@ -142,3 +142,314 @@ Normal,<*> <*> <*> <*> W | etcdserver failed to revoke <*> etcdserver request ti
 Normal,<*> <*> <*> <*> E | rafthttp failed to read <*> on stream Message read tcp <*> <*> <*> i/o timeout
 Normal,<*> <*> <*> <*> I | rafthttp peer <*> became inactive message send to peer failed
 Normal,unable to parse crd file continue to next error couldn t get version/kind json parse error json cannot unmarshal array into Go value of type struct APIVersion string json apiVersion omitempty Kind string json kind omitempty spectrocluster Namespace <*> Name <*> failed file <*>
+Normal,aws Error cloudformation spectrocluster Namespace <*> Name <*> code AccessDenied error AccessDenied User arn aws iam <*> <*> is not authorized to perform cloudformation DescribeStacks on resource arn aws cloudformation <*> <*> <*> with an explicit <*> n tstatus code <*> request id <*> region <*>
+Normal,aws Error cloudformation spectrocluster Namespace <*> Name <*> code ValidationError error ValidationError Stack with id <*> does not exist n tstatus code <*> request id <*> region <*>
+Normal,error spectrocluster Namespace <*> Name <*> message Warning kubectl apply should be used on resource created by either kubectl create <*> or kubectl apply
+Normal,HTTP verb POST URI <*> latency <*> userAgent <*> linux/amd64 <*> <*> <*> CronJob should delete failed finished jobs with limit of one job srcIP <*> <*> resp <*>
+Normal,HTTP verb GET URI <*> metadata.name%3Ddefault limit <*> resourceVersion 0 latency <*> userAgent <*> linux/amd64 <*> <*> <*> CronJob should delete failed finished jobs with limit of one job srcIP <*> <*> resp <*>
+Normal,HTTP verb GET URI <*> true fieldSelector metadata.name%3Ddefault resourceVersion <*> timeout <*> timeoutSeconds <*> watch true latency <*> userAgent <*> linux/amd64 <*> <*> <*> CronJob should delete failed finished jobs with limit of one job srcIP <*> <*> resp 0
+Normal,HTTP verb GET URI <*> latency <*> userAgent <*> linux/amd64 <*> <*> <*> CronJob should delete failed finished jobs with limit of one job srcIP <*> <*> resp <*>
+Normal,HTTP verb GET URI <*> <*> latency <*> userAgent <*> linux/amd64 <*> <*> <*> CronJob should delete failed finished jobs with limit of one job srcIP <*> <*> resp <*>
+Normal,HTTP verb DELETE URI <*> latency <*> userAgent <*> linux/amd64 <*> <*> <*> CronJob should delete failed finished jobs with limit of one job srcIP <*> <*> resp <*>
+Normal,HTTP verb POST URI <*> latency <*> userAgent <*> linux/amd64 <*> <*> <*> ServerSideApply should ignore conflict errors if force apply is used srcIP <*> <*> resp <*>
+Normal,HTTP verb GET URI <*> metadata.name%3Ddefault limit <*> resourceVersion 0 latency <*> userAgent <*> linux/amd64 <*> <*> <*> ServerSideApply should ignore conflict errors if force apply is used srcIP <*> <*> resp <*>
+Normal,HTTP verb GET URI <*> true fieldSelector metadata.name%3Ddefault resourceVersion <*> timeout <*> timeoutSeconds <*> watch true latency <*> userAgent <*> linux/amd64 <*> <*> <*> ServerSideApply should ignore conflict errors if force apply is used srcIP <*> <*> resp 0
+Normal,HTTP verb PATCH URI <*> apply_test latency <*> userAgent <*> linux/amd64 <*> <*> <*> ServerSideApply should ignore conflict errors if force apply is used srcIP <*> <*> resp <*>
+Normal,HTTP verb PATCH URI <*> latency <*> userAgent <*> linux/amd64 <*> <*> <*> ServerSideApply should ignore conflict errors if force apply is used srcIP <*> <*> resp <*>
+Normal,HTTP verb PATCH URI <*> apply_test force true latency <*> userAgent <*> linux/amd64 <*> <*> <*> ServerSideApply should ignore conflict errors if force apply is used srcIP <*> <*> resp <*>
+Normal,HTTP verb GET URI <*> latency <*> userAgent <*> linux/amd64 <*> <*> <*> ServerSideApply should ignore conflict errors if force apply is used srcIP <*> <*> resp <*>
+Normal,HTTP verb DELETE URI <*> latency <*> userAgent <*> linux/amd64 <*> <*> <*> ServerSideApply should ignore conflict errors if force apply is used srcIP <*> <*> resp <*>
+Normal,HTTP verb POST URI <*> latency <*> userAgent <*> linux/amd64 <*> <*> sig-storage Pod Disks should be able to delete a <*> PD without error srcIP <*> <*> resp <*>
+Normal,HTTP verb GET URI <*> metadata.name%3Ddefault limit <*> resourceVersion 0 latency <*> userAgent <*> linux/amd64 <*> <*> sig-storage Pod Disks should be able to delete a <*> PD without error srcIP <*> <*> resp <*>
+Normal,HTTP verb GET URI <*> true fieldSelector metadata.name%3Ddefault resourceVersion <*> timeout <*> timeoutSeconds <*> watch true latency <*> userAgent <*> linux/amd64 <*> <*> sig-storage Pod Disks should be able to delete a <*> PD without error srcIP <*> <*> resp 0
+Normal,HTTP verb GET URI <*> latency <*> userAgent <*> linux/amd64 <*> <*> sig-storage Pod Disks should be able to delete a <*> PD without error srcIP <*> <*> resp <*>
+Normal,HTTP verb GET URI <*> spec.unschedulable%3Dfalse latency <*> userAgent <*> linux/amd64 <*> <*> sig-storage Pod Disks should be able to delete a <*> PD without error srcIP <*> <*> resp <*>
+Normal,HTTP verb DELETE URI <*> latency <*> userAgent <*> linux/amd64 <*> <*> sig-storage Pod Disks should be able to delete a <*> PD without error srcIP <*> <*> resp <*>
+Error,Failed calling webhook failing closed <*> failed calling webhook <*> Post https <*> <*> <*> context deadline exceeded
+Error,Failed calling webhook failing open <*> failed calling webhook <*> Post https <*> <*> <*> context deadline exceeded
+Error,failed calling webhook <*> Post https <*> <*> <*> context deadline exceeded
+Normal,transport loopyWriter.run returning. connection error desc transport is closing
+Normal,Error proxying data from client to backend write tcp <*> <*> <*> write broken pipe
+Normal,deletion of <*> failed because of a conflict going to retry
+Normal,GuaranteedUpdate of <*> failed because of a conflict going to retry
+Normal,failed to patch pack error <*> nginx not found atop Namespace <*> Name nginx pack nginx
+Error,Reconciler error error failed to reconcile charts failed to reconcile charts string <*> unable to install chart <*> Error failed pre-install timed out waiting for the condition n exit status <*> controller pack name nginx namespace <*>
+Error,found release releases name <*> namespace nginx revision <*> updated <*> <*> <*> <*> <*> UTC status failed chart <*> app_version <*>
+Error,some release resources are manually deleted upgrading the chart error <*> <*> not found release <*>
+Normal,chart release in failed state skipping
+Normal,deleting release absent from pack or failed name <*>
+Normal,Failed to get pod logs container manager in pod <*> is waiting to start PodInitializing cluster <*>
+Normal,Failed to get pod logs container <*> in pod <*> is waiting to start ContainerCreating cluster <*>
+Normal,Failed to get pod logs container mold-manager in pod <*> is waiting to start PodInitializing cluster <*>
+Normal,Failed to get pod logs container manager in pod <*> is waiting to start ContainerCreating cluster <*>
+Normal,view failed with Operation cannot be fulfilled on <*> view the object has been modified please apply your changes to the latest version and try again
+Normal,admin failed with Operation cannot be fulfilled on <*> admin the object has been modified please apply your changes to the latest version and try again
+Normal,edit failed with Operation cannot be fulfilled on <*> edit the object has been modified please apply your changes to the latest version and try again
+Error,Observed a panic invalid memory address or nil pointer dereference runtime error invalid memory address or nil pointer dereference
+Error,panic runtime error invalid memory address or nil pointer dereference recovered
+Error,panic runtime error invalid memory address or nil pointer dereference
+Normal,Failed to query VXLAN device error Link not found
+Normal,aws Error cloudformation spectrocluster Namespace <*> Name sfiaz code ValidationError error ValidationError Stack with id <*> does not exist n tstatus code <*> request id <*>
+Normal,ERROR <*> has invalid property anyOf
+Normal,Couldn t reconcile node routes error listing routes unable to find route table for AWS cluster kubernetes
+Normal,failed to discover some groups map <*> the server is currently unable to handle the request
+Error,Failed to get node name and machine map Failed to get machine data as no machine s are cached. cluster <*>
+Error,Failed to process health for node <*> Failed to get machine data as no machine s are cached. cluster <*>
+Error,Failed to get capi machine. Failed to find owner references of Machine in AWSMachine cluster <*>
+Error,Failed to get node and cloud machine uid map for metrics Failed to get machine data as no machine s are cached. cluster <*>
+Error,pods <*> is forbidden error looking up service account <*> serviceaccount <*> not found
+Error,<*> failed with pods <*> is forbidden error looking up service account <*> serviceaccount <*> not found
+Error,Event <*> Kind DaemonSet Namespace <*> Name <*> UID <*> APIVersion <*> ResourceVersion <*> FieldPath type Warning reason FailedCreate Error creating pods <*> is forbidden error looking up service account <*> serviceaccount <*> not found
+Error,Event <*> Kind ReplicaSet Namespace <*> Name <*> UID <*> APIVersion <*> ResourceVersion <*> FieldPath type Warning reason FailedCreate Error creating pods <*> is forbidden error looking up service account <*> serviceaccount <*> not found
+Error,Sync <*> failed with pods <*> is forbidden error looking up service account <*> serviceaccount <*> not found
+Normal,Failed to get capi cluster name. Failed to find Cluster reference in KubeadmControlPlane <*> cluster <*>
+Normal,Failed to get capi cluster. Failed to find Cluster reference in KubeadmControlPlane <*> cluster <*>
+Normal,Error getting resource Key GlobalFelixConfig name CalicoVersion Name calicoversion Resource GlobalFelixConfigs error the server could not find the requested resource get <*> calicoversion
+Normal,Reconciler error error failed to get cluster sfiaz for machine <*> in namespace <*> <*> sfiaz not found controller machine name <*> namespace <*>
+Error,error retrieving resource lock <*> Get https <*> <*> <*> EOF
+Error,Failed to list <*> Get https <*> <*> <*> resourceVersion 0 EOF
+Error,Failed to list <*> Get https <*> <*> <*> limit <*> resourceVersion 0 EOF
+Normal,error retrieving resource lock <*> endpoints <*> is forbidden User system <*> cannot get resource endpoints in API group in the namespace <*>
+Normal,Failed to watch <*> failed to list <*> nodes is forbidden User system <*> cannot list resource nodes in API group at the cluster scope
+Normal,Failed to watch <*> failed to list <*> configmaps <*> is forbidden User system <*> cannot list resource configmaps in API group in the namespace <*>
+Normal,Failed to watch <*> failed to list <*> replicationcontrollers is forbidden User system <*> cannot list resource replicationcontrollers in API group at the cluster scope
+Normal,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource <*> in API group policy at the cluster scope
+Normal,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource storageclasses in API group <*> at the cluster scope
+Normal,Failed to watch <*> failed to list <*> persistentvolumeclaims is forbidden User system <*> cannot list resource persistentvolumeclaims in API group at the cluster scope
+Normal,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource replicasets in API group apps at the cluster scope
+Normal,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource statefulsets in API group apps at the cluster scope
+Normal,Failed to watch <*> failed to list <*> pods is forbidden User system <*> cannot list resource pods in API group at the cluster scope
+Normal,Failed to watch <*> failed to list <*> services is forbidden User system <*> cannot list resource services in API group at the cluster scope
+Error,error retrieving resource lock <*> Get https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,Failed to watch <*> failed to list <*> Get https <*> <*> <*> limit <*> resourceVersion 0 dial tcp <*> <*> connect connection refused
+Error,Failed to watch <*> failed to list <*> Get https <*> <*> <*> resourceVersion 0 dial tcp <*> <*> connect connection refused
+Error,Failed to watch <*> failed to list <*> Get https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,Failed to watch <*> failed to list <*> Get https <*> <*> <*> resourceVersion <*> dial tcp <*> <*> connect connection refused
+Error,Failed to watch <*> failed to list <*> Get https <*> <*> <*> resourceVersion <*> <*> TLS handshake timeout
+Normal,<*> <*> <*> <*> error <*> <*> upstream timed out <*> Operation timed out while connecting to upstream client <*> server _ request POST <*> <*> upstream https <*> <*> host <*>
+Error,<*> <*> <*> <*> W | etcdserver failed to reach the peerURL https <*> <*> of member <*> Get https <*> <*> dial tcp <*> <*> connect connection refused
+Error,Failed to publish message unable to post the message over the subject <*> due to nats timeout cluster <*>
+Error,Failed to publish event msg unable to post the message over the subject <*> due to nats timeout cluster <*>
+Error,Failed to publish events. Retrying via different transport. unable to post the message over the subject <*> due to nats timeout cluster <*>
+Error,Failed to publish node health unable to post the message over the subject <*> due to nats timeout cluster <*>
+Error,Failed to publish heartbeat unable to post the message over the subject <*> due to nats timeout cluster <*>
+Error,<*> <*> <*> <*> error <*> <*> upstream timed out <*> Operation timed out while connecting to upstream client <*> server _ request GET <*> <*> <*> <*> <*> upstream https <*> <*> <*> <*> <*> host <*> referrer https <*>
+Error,<*> <*> <*> <*> error <*> <*> upstream timed out <*> Operation timed out while connecting to upstream client <*> server _ request GET <*> discrete true startTime <*> <*> <*> endTime <*> <*> <*> metricKind cpuRequest cpuTotal memoryRequest memoryTotal <*> upstream https <*> <*> discrete true startTime <*> <*> <*> endTime <*> <*> <*> metricKind cpuRequest cpuTotal memoryRequest memoryTotal host <*> referrer https <*>
+Error,<*> <*> <*> <*> error <*> <*> upstream timed out <*> Operation timed out while connecting to upstream client <*> server _ request GET <*> <*> upstream https <*> <*> host <*> referrer https <*>
+Error,<*> <*> <*> <*> error <*> <*> upstream timed out <*> Operation timed out while connecting to upstream client <*> server _ request GET <*> schema presets <*> upstream https <*> <*> schema presets host <*> referrer https <*>
+Error,<*> <*> <*> <*> error <*> <*> connect failed <*> Connection refused while connecting to upstream client <*> server <*> <*> upstream <*> <*> bytes from/to client <*> bytes from/to upstream <*>
+Error,<*> <*> <*> I REPL <*> Restarting oplog query due to error HostUnreachable error in fetcher batch callback caused by Connection closed by peer. Last fetched optime ts Timestamp <*> 4 t <*> . Restarts remaining <*>
+Error,<*> <*> <*> I REPL <*> Error returned from oplog query no more query restarts left HostUnreachable error in fetcher batch callback caused by Error connecting to <*> <*> caused by Could not find address for <*> <*> SocketException Host not found authoritative
+Error,<*> <*> <*> W REPL rsBackgroundSync Fetcher stopped querying remote oplog with error HostUnreachable error in fetcher batch callback caused by Error connecting to <*> <*> caused by Could not find address for <*> <*> SocketException Host not found authoritative
+Error,<*> <*> <*> W REPL rsBackgroundSync Fetcher stopped querying remote oplog with error InvalidSyncSource sync source <*> <*> config version <*> last applied optime ts Timestamp <*> <*> t <*> sync source index <*> primary index 0 is no longer valid
+Error,<*> <*> <*> <*> error <*> <*> lua <*> <*> call certificate not found falling back to fake certificate for hostname <*> context ssl_certificate_by_lua client <*> server <*> <*>
+Error,<*> <*> <*> I REPL_HB <*> Heartbeat to <*> <*> failed after <*> retries response status HostUnreachable Error connecting to <*> <*> caused by Could not find address for <*> <*> SocketException Host not found authoritative
+Error,<*> <*> <*> I REPL <*> Member <*> <*> is now in state RS_DOWN <*> Error connecting to <*> <*> caused by Could not find address for <*> <*> SocketException Host not found authoritative
+Error,<*> <*> <*> I ELECTION <*> VoteRequester term <*> failed to receive response from <*> <*> HostUnreachable Error connecting to <*> <*> caused by Could not find address for <*> <*> SocketException Host not found authoritative
+Error,error retrieving resource lock <*> Get https <*> <*> dial tcp <*> <*> connect connection refused
+Error,error retrieving resource lock <*> Get https <*> <*> <*> TLS handshake timeout
+Error,error retrieving resource lock <*> Get https <*> <*> <*> context deadline exceeded
+Error,error retrieving resource lock <*> Get https <*> <*> <*> context deadline exceeded Client.Timeout exceeded while awaiting headers
+Error,error retrieving resource lock <*> Get https <*> <*> <*> <*> request canceled Client.Timeout exceeded while awaiting headers
+Error,error retrieving resource lock <*> Get https <*> <*> context deadline exceeded
+Error,error retrieving resource lock <*> Get https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers
+Normal,<*> <*> <*> I REPL <*> New replica set config in use _id rs0 version <*> protocolVersion <*> writeConcernMajorityJournalDefault true members _id 0 host <*> <*> arbiterOnly false buildIndexes true hidden false priority <*> tags slaveDelay 0 votes <*> _id <*> host <*> <*> arbiterOnly false buildIndexes true hidden false priority <*> tags slaveDelay 0 votes <*> settings chainingAllowed true heartbeatIntervalMillis <*> heartbeatTimeoutSecs <*> electionTimeoutMillis <*> catchUpTimeoutMillis <*> catchUpTakeoverDelayMillis <*> getLastErrorModes getLastErrorDefaults w <*> wtimeout 0 replicaSetId ObjectId <*>
+Normal,Failed to report usage/get deprecation warnings. error Get https <*> false alp_policies 0 <*> <*> guid <*> heps 0 k8s_ver <*> policies 0 profiles <*> rev <*> size <*> type <*> version <*> weps <*> context deadline exceeded Client.Timeout exceeded while awaiting headers
+Normal,Failed to report usage/get deprecation warnings. error Get https <*> false alp_policies 0 <*> <*> guid <*> heps 0 k8s_ver <*> policies 0 profiles <*> rev <*> size 4 type <*> version <*> weps <*> context deadline exceeded Client.Timeout exceeded while awaiting headers
+Error,Unmarshal failed yaml unmarshal errors
+Error,ReadConfigYAML failed yaml unmarshal errors
+Error,<*> <*> <*> <*>  <*> 0m ACNBNGXDQYCB <*> error loading JWT <*> open <*> no such file or directory
+Error,<*> <*> <*> <*>  <*> 0m <*> <*> error loading JWT <*> open <*> no such file or directory
+Error,<*> <*> <*> <*>  <*> 0m ACKKMIMN6FOE <*> error loading JWT <*> open <*> no such file or directory
+Error,<*> detachment for VolumeAttachment for volume <*> failed rpc error code Internal desc failed to detach disk <*> from node <*> err ServerFaultCode The object vim.VirtualMachine <*> has already been deleted or has not been completely created
+Error,Operation for volumeName <*> podName nodeName failed. No retries permitted until <*> <*> <*> <*> <*> UTC m <*> durationBeforeRetry <*> . Error DetachVolume.Detach failed for volume <*> UniqueName <*> on node <*> rpc error code Internal desc failed to detach disk <*> from node <*> err ServerFaultCode The object vim.VirtualMachine <*> has already been deleted or has not been completely created
+Error,Error processing <*> failed to detach rpc error code Internal desc failed to detach disk <*> from node <*> err ServerFaultCode The object vim.VirtualMachine <*> has already been deleted or has not been completely created
+Error,<*> detachment for VolumeAttachment for volume <*> failed rpc error code Internal desc failed to find VirtualMachine for node <*> . Error node wasn t found
+Error,Operation for volumeName <*> podName nodeName failed. No retries permitted until <*> <*> <*> <*> <*> UTC m <*> durationBeforeRetry <*> . Error DetachVolume.Detach failed for volume <*> UniqueName <*> on node <*> rpc error code Internal desc failed to find VirtualMachine for node <*> . Error node wasn t found
+Error,Error processing <*> failed to detach rpc error code Internal desc failed to find VirtualMachine for node <*> . Error node wasn t found
+Normal,apiserver received an error that is not an <*> <*> s context canceled
+Normal,apiserver received an error that is not an <*> <*> s http2 stream closed
+Normal,apiserver received an error that is not an <*> <*> s error dialing backend dial tcp <*> <*> i/o timeout
+Error,Nov <*> <*> <*> <*> ERROR cloudmetasync_service.go <*> CloudMetaSyncService .syncCloudMetadata Failed to get the cloud cloudInstanceTypesSyncMeta due to <nil>
+Normal,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource <*> in API group <*> at the cluster scope
+Normal,Nov <*> <*> <*> <*> ERROR hongo_meta_read_repo.go <*> HongoMetaReadRepo .GetMetaArchive Unable to get the metadata from the archive metadata.name due to ResourceNotFound Metadata Archive and metadata.uid eq sysadmin kind eq user is not found
+Normal,<*> <*> <*> I CONTROL LogicalSessionCacheReap Failed to reap transaction table NotYetInitialized Replication has not yet been configured
+Normal,<*> <*> <*> <*> E | etcdserver publish error etcdserver request cancelled
+Normal,<*> <*> <*> <*> E | etcdserver publish error etcdserver request timed out possibly due to connection <*>
+Normal,Failed to verify datastore error etcdserver leader changed
+Normal,Failed to reach apiserver error etcdserver leader changed
+Error,<*> <*> <*> I REPL SyncSourceFeedback SyncSourceFeedback error sending update to <*> <*> InvalidSyncSource Sync source was cleared. Was <*> <*>
+Error,<*> <*> <*> I REPL <*> Restarting oplog query due to error NetworkInterfaceExceededTimeLimit error in fetcher batch callback caused by Request <*> timed out deadline was <*> <*> <*> op was RemoteCommand <*> <*> target <*> <*> db local expDate <*> <*> <*> cmd getMore <*> collection oplog.rs batchSize <*> maxTimeMS <*> term <*> lastKnownCommittedOpTime ts Timestamp <*> <*> t <*> . Last fetched optime ts Timestamp <*> <*> t <*> . Restarts remaining <*>
+Normal,error retrieving resource lock <*> context deadline exceeded
+Normal,error retrieving resource lock <*> etcdserver leader changed
+Error,failed to establish connection to CSI driver context deadline exceeded
+Normal,re-queuing item due to optimistic locking on resource key <*> error Operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
+Normal,Event occurred object <*> kind Endpoints apiVersion <*> type Warning reason FailedToUpdateEndpoint message Failed to update endpoint <*> Operation cannot be fulfilled on endpoints <*> the object has been modified please apply your changes to the latest version and try again
+Normal,<*> <*> <*> <*> E | rafthttp failed to read <*> on stream MsgApp <*> context canceled
+Normal,<*> <*> <*> <*> <*> <*> <*> <*> GET <*> <*> filters severity%3DWarningORseverity%3DNormalORseverity%3DError <*> <*> <*> https <*> <*> Windows NT <*> <*> <*> <*> KHTML like Gecko <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> sysadmin
+Normal,<*> <*> <*> <*> <*> <*> <*> <*> GET <*> <*> limit <*> filters severity%3DWarningORseverity%3DNormalORseverity%3DError <*> <*> <*> https <*> <*> Windows NT <*> <*> <*> <*> KHTML like Gecko <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> sysadmin
+Normal,Condition spectrocluster <*> Condition type ImageCustomizationDone status False lastProbeTime <*> <*> <*> lastTransitionTime <*> <*> <*> reason Failure message Failed to create spectro-ansible playbook failed to locate Pack stat <*> no such file or directory
+Normal,Reconciler error error Failed to create image on cloud Failed to create spectro-ansible playbook failed to locate Pack stat <*> no such file or directory controller spectrocluster name <*> namespace <*>
+Normal,Error in workloop MongoError failed to connect to server <*> <*> on first connect MongoError connect ECONNREFUSED <*> <*>
+Normal,failed to connect to server <*> <*> on first connect MongoError connect ECONNREFUSED <*> <*>
+Normal,at emitErrorNT <*> <*> <*>
+Normal,at emitErrorAndCloseNT <*> <*> <*>
+Normal,Saving detach error to <*>
+Normal,Saved detach error to <*>
+Normal,Nov <*> <*> <*> <*> ERROR email_client.go <*> dial email failed with the error dial tcp 0 connect connection refused
+Normal,<*> <*> <*> I SHARDING <*> Marking collection hubbledb.error_logs as collection version <unsharded>
+Normal,Received NotifyRegistrationStatus call RegistrationStatus PluginRegistered true Error
+Error,level error time <*> <*> <*> caller <*> <*> msg Couldn t find VM given uuid <*> TraceId <*> stacktrace <*> Datacenter .GetVirtualMachineByUUID n <*> <*> <*> n <*> <*>
+Normal,Error getting cluster information config ClusterInformation default error etcdserver leader changed
+Error,Error getting node err nodes <*> not found name <*>
+Normal,Unable to authenticate the request due to an error invalid bearer token context canceled
+Error,<*> <*> <*> <*> W | etcdserver failed to send out heartbeat on time exceeded the <*> timeout for <*> to <*>
+Normal,Calico Node referenced in IPAM data does not exist error resource does not exist Node <*> with error nodes <*> not found
+Error,shakeOutNodeIDLookup failed. Err nodeID is empty
+Normal,http TLS handshake error from <*> <*> EOF
+Normal,failed to renew lease <*> timed out waiting for the condition
+Normal,error message Warning kubectl apply should be used on resource created by either kubectl create <*> or kubectl apply
+Normal,Failed to create govmomi client. err ServerFaultCode Cannot complete login due to an incorrect user name or password.
+Error,error when evicting pod <*> will retry after <*> Cannot evict pod as it would violate the pod s disruption budget.
+Error,Drain failed error error when evicting pod <*> global timeout reached <*> cluster <*> machine <*> namespace <*> node <*>
+Normal,Reconciler error error requeue in <*> controller machine name <*> namespace <*>
+Normal,Adding NSXT secret listener failed %vconfig is not available for NSXT connector manager
+Normal,ReadRouteConfig failed router path is required
+Normal,ReadNsxtConfig failed user or vmc access token or client cert file must be set
+Normal,Error syncing endpoint slices for service <*> retrying. Error EndpointSlice informer cache is out of date
+Error,Multi-Attach error for volume <*> UniqueName <*> from node <*> Volume is already exclusively attached to node <*> and can t be attached to another
+Error,Event occurred object <*> kind Pod apiVersion <*> type Warning reason FailedAttachVolume message Multi-Attach error for volume <*> Volume is already exclusively attached to one node and can t be attached to another
+Normal,name MongoError
+Error,<*> <*> <*> <*>  <*> 0m failed to connect to NATS nats no servers available for connection
+Normal,error checking if node <*> is shutdown nodeID is empty
+Normal,<*> <*> <*> W NETWORK <*> getaddrinfo <*> failed Name or service not known
+Error,<*> <*> <*> info transport loopyWriter.run returning. connection error desc transport is closing
+Error,update of store node failed err getting metadata fetching store info from <*> <*> rpc error code DeadlineExceeded desc latest connection error connection error desc transport Error while dialing dial tcp <*> <*> connect connection refused address <*> <*>
+Error,update of store node failed err getting metadata fetching store info from <*> <*> rpc error code DeadlineExceeded desc latest balancer error connection error desc transport Error while dialing dial tcp <*> <*> connect connection refused address <*> <*>
+Error,<*> <*> <*> info grpc addrConn.createTransport failed to connect to <*> <*> <nil> 0 <nil> . Err connection error desc transport Error while dialing dial tcp i/o timeout . Reconnecting...
+Error,<*> <*> <*> info pickfirstBalancer HandleSubConnStateChange <*> TRANSIENT_FAILURE connection error desc transport Error while dialing dial tcp i/o timeout
+Error,<*> <*> <*> <*>  <*> 0m Failed to register Kube enforcer error rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp <*> <*> i/o timeout
+Error,<*> <*> <*> <*>  <*> 0m Failed connecting to gRPC server. Attempt <*> sleep duration seconds 0 error Failed to register Kube Enforcer rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp <*> <*> i/o timeout
+Error,<*> <*> <*> <*>  <*> 0m Failed connecting to gRPC server. Attempt <*> sleep duration seconds <*> error Failed to register Kube Enforcer rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp <*> <*> i/o timeout
+Error,<*> <*> <*> error citadelclient Failed to create certificate rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp i/o timeout
+Error,<*> <*> <*> warn cache resource default request <*> CSR failed with error rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp i/o timeout retry in <*> millisec
+Error,<*> <*> <*> info grpc addrConn.createTransport failed to connect to <*> <*> <nil> 0 <nil> . Err connection error desc transport Error while dialing dial tcp <*> <*> i/o timeout . Reconnecting...
+Error,<*> <*> <*> error cache resource default request <*> CSR retrial timed out rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp i/o timeout
+Error,<*> <*> <*> error cache resource default failed to generate secret for proxy rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp i/o timeout
+Error,<*> <*> <*> error sds resource default Close connection. Failed to get secret for proxy <*> from secret cache rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp i/o timeout
+Error,<*> <*> <*> warning envoy config <*> <*> StreamSecrets gRPC config stream closed <*> connection error desc transport Error while dialing dial tcp i/o timeout
+Error,<*> <*> <*> error citadelclient Failed to create certificate rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp <*> <*> i/o timeout
+Error,<*> <*> <*> error cache resource default request <*> CSR retrial timed out rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp <*> <*> i/o timeout
+Error,<*> <*> <*> error cache resource default failed to generate secret for proxy rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp <*> <*> i/o timeout
+Error,<*> <*> <*> error sds resource default Close connection. Failed to get secret for proxy <*> from secret cache rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp <*> <*> i/o timeout
+Error,<*> <*> <*> warn cache resource default request <*> CSR failed with error rpc error code Unavailable desc connection error desc transport Error while dialing dial tcp <*> <*> i/o timeout retry in <*> millisec
+Error,failed to prepare current and previous objects conversion webhook for <*> Kind Cluster failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,<*> <*> watch of <*> Kind Cluster ended with Internal error occurred conversion webhook for <*> Kind Cluster failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind Cluster conversion webhook for <*> Kind Cluster failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,failed to prepare current and previous objects conversion webhook for <*> Kind KubeadmConfig failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,<*> <*> watch of <*> Kind KubeadmConfig ended with Internal error occurred conversion webhook for <*> Kind KubeadmConfig failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,failed to prepare current and previous objects conversion webhook for <*> Kind MachineSet failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,<*> <*> watch of <*> Kind MachineSet ended with Internal error occurred conversion webhook for <*> Kind MachineSet failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,failed to prepare current and previous objects conversion webhook for <*> Kind MachineDeployment failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,<*> <*> watch of <*> Kind MachineDeployment ended with Internal error occurred conversion webhook for <*> Kind MachineDeployment failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind KubeadmConfig conversion webhook for <*> Kind KubeadmConfig failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind MachineSet conversion webhook for <*> Kind MachineSet failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind MachineDeployment conversion webhook for <*> Kind MachineDeployment failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,failed to prepare current and previous objects conversion webhook for <*> Kind VSphereMachine failed Post https <*> <*> <*> dial tcp <*> <*> i/o timeout
+Error,<*> <*> watch of <*> Kind VSphereMachine ended with Internal error occurred conversion webhook for <*> Kind VSphereMachine failed Post https <*> <*> <*> dial tcp <*> <*> i/o timeout
+Normal,Failed to list <*> the server could not find the requested resource get <*>
+Normal,Event occurred object <*> kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedGetResourceMetric message failed to get cpu utilization unable to get metrics for resource cpu unable to fetch metrics from resource metrics API the server is currently unable to handle the request get <*>
+Normal,failed to compute desired number of replicas based on listed metrics for <*> invalid metrics <*> invalid out of <*> first error is failed to get cpu utilization unable to get metrics for resource cpu unable to fetch metrics from resource metrics API the server is currently unable to handle the request get <*>
+Normal,Event occurred object <*> kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedComputeMetricsReplicas message invalid metrics <*> invalid out of <*> first error is failed to get cpu utilization unable to get metrics for resource cpu unable to fetch metrics from resource metrics API the server is currently unable to handle the request get <*>
+Normal,Event occurred object <*> kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedGetResourceMetric message failed to get memory utilization unable to get metrics for resource memory unable to fetch metrics from resource metrics API the server is currently unable to handle the request get <*>
+Normal,failed to compute desired number of replicas based on listed metrics for <*> invalid metrics <*> invalid out of <*> first error is failed to get memory utilization unable to get metrics for resource memory unable to fetch metrics from resource metrics API the server is currently unable to handle the request get <*>
+Normal,Event occurred object <*> kind HorizontalPodAutoscaler apiVersion <*> type Warning reason FailedComputeMetricsReplicas message invalid metrics <*> invalid out of <*> first error is failed to get memory utilization unable to get metrics for resource memory unable to fetch metrics from resource metrics API the server is currently unable to handle the request get <*>
+Normal,failed to compute desired number of replicas based on listed metrics for <*> invalid metrics <*> invalid out of <*> first error is failed to get cpu utilization unable to get metrics for resource cpu no metrics returned from resource metrics API
+Normal,Sync for <*> failed due to OPA error. Trying again in <*> Reason list the server could not find the requested resource
+Error,Failed to get cluster domain info Get http <*> <*> <*> request canceled Client.Timeout exceeded while awaiting headers
+Error,> Failed to check for updates Get https <*> amd64 os linux signature <*> version <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers
+Error,<*> failed with failing or missing response from https <*> <*> Get https <*> <*> context deadline exceeded Client.Timeout exceeded while awaiting headers
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind Certificate conversion webhook for <*> Kind Certificate failed Post https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers reinitializing...
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind Certificate conversion webhook for <*> Kind Certificate failed Post https <*> <*> <*> context deadline exceeded Client.Timeout exceeded while awaiting headers reinitializing...
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind Machine conversion webhook for <*> Kind Machine failed Post https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers reinitializing...
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind MachineDeployment conversion webhook for <*> Kind MachineDeployment failed Post https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers reinitializing...
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind KubeadmConfig conversion webhook for <*> Kind KubeadmConfig failed Post https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers reinitializing...
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind MachineSet conversion webhook for <*> Kind MachineSet failed Post https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers reinitializing...
+Error,Unable to authenticate the request due to an error Post https <*> <*> read tcp <*> <*> <*> read connection timed out some request body already written
+Error,thread 0 index Failed to post. Verify connection. Retrying in few seconds. Post https <*> <*> dial tcp lookup <*> on <*> <*> read udp <*> <*> <*> i/o timeout
+Error,thread 0 index kubernetes_admin Failed to post. Verify connection. Retrying in few seconds. Post https <*> <*> dial tcp lookup <*> on <*> <*> read udp <*> <*> <*> i/o timeout
+Error,<*> <*> <*> info pickfirstBalancer HandleSubConnStateChange <*> TRANSIENT_FAILURE connection error desc transport Error while dialing dial tcp <*> <*> i/o timeout
+Error,failed to get Prometheus flags. Is Prometheus running? Retrying err request config against http <*> <*> Get http <*> <*> dial tcp <*> <*> connect connection refused
+Error,failed to prepare current and previous objects conversion webhook for <*> Kind Machine failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind Machine conversion webhook for <*> Kind Machine failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,Sync for <*> failed due to OPA error. Trying again in <*> Reason reset Put http <*> <*> dial tcp i/o timeout
+Error,W Failed to fetch http <*> Cannot initiate the connection to <*> <*> <*> <*> <*> <*> <*> . <*> connect <*> Network is unreachable Cannot initiate the connection to <*> <*> <*> <*> <*> <*> <*> . <*> connect <*> Network is unreachable
+Error,W Failed to fetch https <*> Cannot initiate the connection to <*> <*> <*> <*> 0 <*> . <*> connect <*> Network is unreachable Could not connect to <*> <*> <*> connection timed out
+Error,<*> <*> <*> <*> error <*> <*> upstream timed out <*> Operation timed out while connecting to upstream client <*> server <*> request GET <*> <*> upstream http <*> <*> host <*>
+Error,<*> <*> <*> <*> <*> sshchannel.cpp <*> Failed connecting to GW <*> <*> with error Operation timed out
+Error,<*> portworx <*> <*> <*> <*> <*> ERR memberlist Push/Pull with <*> failed dial tcp <*> <*> connect connection refused
+Error,<*> portworx <*> <*> <*> <*> <*> ERR memberlist Push/Pull with <*> failed dial tcp <*> <*> i/o timeout
+Error,<*> <*> <*> <*> error <*> <*> upstream timed out <*> Operation timed out while connecting to upstream client <*> server <*> request POST <*> <*> upstream http <*> <*> host <*>
+Error,<*> <*> <*> <*> error <*> <*> connect failed <*> Operation timed out while connecting to upstream client <*> server <*> request GET <*> <*> upstream http <*> <*> host <*>
+Error,update of store node failed err getting metadata fetching store info from <*> <*> rpc error code DeadlineExceeded desc context deadline exceeded address <*> <*>
+Error,<*> <*> <*> <*>  <*> 0m Failed receiving response from gateway on registration call error rpc error code DeadlineExceeded desc context deadline exceeded
+Error,<*> <*> <*> <*>  <*> 0m Failed connecting to gRPC server. Attempt <*> sleep duration seconds <*> error Failed to register Kube Enforcer rpc error code DeadlineExceeded desc context deadline exceeded
+Error,<*> <*> <*> <*>  <*> 0m Failed connecting to gRPC server. Attempt 4 sleep duration seconds 0 error Failed to register Kube Enforcer rpc error code DeadlineExceeded desc context deadline exceeded
+Error,<*> <*> <*> <*>  <*> 0m Failed connecting to gRPC server. Attempt 6 sleep duration seconds <*> error Failed to register Kube Enforcer rpc error code DeadlineExceeded desc context deadline exceeded
+Error,<*> <*> <*> <*>  <*> 0m Failed connecting to gRPC server. Attempt <*> sleep duration seconds 0 error Failed to register Kube Enforcer rpc error code DeadlineExceeded desc context deadline exceeded
+Error,level error msg could not make http request to opa endpoint http <*> <*> Get http <*> <*> dial tcp <*> <*> connect connection refused time <*> <*> <*>
+Error,<*> <*> <*> info transport http2Server.HandleStreams failed to read frame read tcp <*> <*> <*> use of closed network connection
+Error,W Failed to fetch http <*> Cannot initiate the connection to <*> <*> <*> <*> <*> <*> <*> . <*> connect <*> Network is unreachable Cannot initiate the connection to <*> <*> <*> <*> <*> <*> <*> . <*> connect <*> Network is unreachable Could not connect to <*> <*> <*> connection timed out Could not connect to <*> <*> <*> connection timed out
+Error,W Failed to fetch http <*> Cannot initiate the connection to security.ubuntu.com <*> <*> <*> <*> <*> . <*> connect <*> Network is unreachable Cannot initiate the connection to security.ubuntu.com <*> <*> <*> <*> <*> . <*> connect <*> Network is unreachable Could not connect to security.ubuntu.com <*> <*> connection timed out Could not connect to security.ubuntu.com <*> <*> connection timed out
+Error,<*> <*> watch of <*> Kind Machine ended with Internal error occurred conversion webhook for <*> Kind Machine failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,Failed calling webhook failing open imageassurance.aquasec.com failed calling webhook imageassurance.aquasec.com Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,failed calling webhook imageassurance.aquasec.com Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,Error while calling home node <*> node <*> Post http <*> token <*> dial tcp <*> <*> i/o timeout
+Error,Failed calling webhook failing open <*> failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> i/o timeout
+Error,Failed calling webhook failing closed <*> failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> i/o timeout
+Error,Reconciler error error failed to convert to cloudcluster get tag urn vmomi InventoryServiceTag <*> GLOBAL Get https <*> urn vmomi InventoryServiceTag <*> GLOBAL dial tcp lookup <*> on <*> <*> read udp <*> <*> <*> <*> i/o timeout controller spectrocluster name <*> namespace <*>
+Error,Reconciler error error failed to convert to cloudcluster list categories Get https <*> dial tcp lookup <*> on <*> <*> read udp <*> <*> <*> <*> i/o timeout controller spectrocluster name <*> namespace <*>
+Error,failed to resolve addresses for storeAPIs err <*> errors lookup SRV records <*> lookup <*> on <*> <*> no such host lookup SRV records <*> lookup <*> on <*> <*> no such host lookup SRV records <*> lookup <*> on <*> <*> no such host
+Error,failed to resolve addresses for storeAPIs err <*> errors lookup SRV records <*> lookup <*> on <*> <*> read udp <*> <*> <*> i/o timeout lookup SRV records <*> lookup <*> on <*> <*> read udp <*> <*> <*> i/o timeout
+Error,failed to resolve addresses for storeAPIs err <*> errors look IP addresses <*> lookup <*> on <*> <*> no such host lookup SRV records <*> lookup <*> on <*> <*> no such host lookup SRV records <*> lookup <*> on <*> <*> no such host
+Error,failed to resolve addresses for storeAPIs err <*> errors look IP addresses <*> lookup <*> on <*> <*> read udp <*> <*> <*> i/o timeout lookup SRV records <*> lookup <*> on <*> <*> no such host look IP addresses <*> lookup <*> on <*> <*> no such host
+Error,Evaluating rule failed rule record node node_num_cpu sum nexpr count by clusterName node sum by node cpu node_cpu_seconds_total job node-exporter on namespace pod group_left node node_namespace_pod kube_pod_info n err found duplicate series for the match group namespace monitoring pod <*> on the right <*> of the operation __name__ node_namespace_pod kube_pod_info namespace monitoring node <*> pod <*> __name__ node_namespace_pod kube_pod_info namespace monitoring node <*> pod <*> <*> matching not allowed matching labels must be unique on one side
+Error,Evaluating rule failed rule record node_namespace_pod_container container_memory_working_set_bytes nexpr container_memory_working_set_bytes image! job kubelet on namespace pod group_left node topk by namespace pod <*> max by namespace pod node kube_pod_info node! n err multiple matches for labels grouping labels must ensure unique matches
+Error,Evaluating rule failed rule record node_namespace_pod_container container_memory_rss nexpr container_memory_rss image! job kubelet on namespace pod group_left node topk by namespace pod <*> max by namespace pod node kube_pod_info node! n err multiple matches for labels grouping labels must ensure unique matches
+Error,Evaluating rule failed rule record node_namespace_pod_container container_memory_cache nexpr container_memory_cache image! job kubelet on namespace pod group_left node topk by namespace pod <*> max by namespace pod node kube_pod_info node! n err multiple matches for labels grouping labels must ensure unique matches
+Error,Evaluating rule failed rule record node_namespace_pod_container container_memory_swap nexpr container_memory_swap image! job kubelet on namespace pod group_left node topk by namespace pod <*> max by namespace pod node kube_pod_info node! n err multiple matches for labels grouping labels must ensure unique matches
+Normal,Failed to make webhook authenticator request <*> is forbidden User system <*> cannot create resource tokenreviews in API group <*> at the cluster scope
+Normal,Unable to authenticate the request due to an error invalid bearer token <*> is forbidden User system <*> cannot create resource tokenreviews in API group <*> at the cluster scope
+Normal,Failed to watch <*> failed to list <*> persistentvolumes is forbidden User system <*> cannot list resource persistentvolumes in API group at the cluster scope
+Normal,stats query processed stats blocksQueried 4 postingsTouched 0 postingsTouchedSizeSum 0 postingsToFetch 0 postingsFetched 0 postingsFetchedSizeSum 0 postingsFetchCount 0 postingsFetchDurationSum 0 cachedPostingsCompressions 0 cachedPostingsCompressionErrors 0 cachedPostingsOriginalSizeSum 0 cachedPostingsCompressedSizeSum 0 cachedPostingsCompressionTimeSum 0 cachedPostingsDecompressions 0 cachedPostingsDecompressionErrors 0 cachedPostingsDecompressionTimeSum 0 seriesTouched 0 seriesTouchedSizeSum 0 seriesFetched 0 seriesFetchedSizeSum 0 seriesFetchCount 0 seriesFetchDurationSum 0 chunksTouched 0 chunksTouchedSizeSum 0 chunksFetched 0 chunksFetchedSizeSum 0 chunksFetchCount 0 chunksFetchDurationSum 0 getAllDuration <*> mergedSeriesCount 0 mergedChunksCount 0 mergeDuration <*> err null
+Normal,stats query processed stats blocksQueried <*> postingsTouched 0 postingsTouchedSizeSum 0 postingsToFetch 0 postingsFetched 0 postingsFetchedSizeSum 0 postingsFetchCount 0 postingsFetchDurationSum 0 cachedPostingsCompressions 0 cachedPostingsCompressionErrors 0 cachedPostingsOriginalSizeSum 0 cachedPostingsCompressedSizeSum 0 cachedPostingsCompressionTimeSum 0 cachedPostingsDecompressions 0 cachedPostingsDecompressionErrors 0 cachedPostingsDecompressionTimeSum 0 seriesTouched 0 seriesTouchedSizeSum 0 seriesFetched 0 seriesFetchedSizeSum 0 seriesFetchCount 0 seriesFetchDurationSum 0 chunksTouched 0 chunksTouchedSizeSum 0 chunksFetched 0 chunksFetchedSizeSum 0 chunksFetchCount 0 chunksFetchDurationSum 0 getAllDuration <*> mergedSeriesCount 0 mergedChunksCount 0 mergeDuration <*> err null
+Normal,stats query processed stats blocksQueried 0 postingsTouched 0 postingsTouchedSizeSum 0 postingsToFetch 0 postingsFetched 0 postingsFetchedSizeSum 0 postingsFetchCount 0 postingsFetchDurationSum 0 cachedPostingsCompressions 0 cachedPostingsCompressionErrors 0 cachedPostingsOriginalSizeSum 0 cachedPostingsCompressedSizeSum 0 cachedPostingsCompressionTimeSum 0 cachedPostingsDecompressions 0 cachedPostingsDecompressionErrors 0 cachedPostingsDecompressionTimeSum 0 seriesTouched 0 seriesTouchedSizeSum 0 seriesFetched 0 seriesFetchedSizeSum 0 seriesFetchCount 0 seriesFetchDurationSum 0 chunksTouched 0 chunksTouchedSizeSum 0 chunksFetched 0 chunksFetchedSizeSum 0 chunksFetchCount 0 chunksFetchDurationSum 0 getAllDuration <*> mergedSeriesCount 0 mergedChunksCount 0 mergeDuration <*> err null
+Normal,stats query processed stats blocksQueried 6 postingsTouched 0 postingsTouchedSizeSum 0 postingsToFetch 0 postingsFetched 0 postingsFetchedSizeSum 0 postingsFetchCount 0 postingsFetchDurationSum 0 cachedPostingsCompressions 0 cachedPostingsCompressionErrors 0 cachedPostingsOriginalSizeSum 0 cachedPostingsCompressedSizeSum 0 cachedPostingsCompressionTimeSum 0 cachedPostingsDecompressions 0 cachedPostingsDecompressionErrors 0 cachedPostingsDecompressionTimeSum 0 seriesTouched 0 seriesTouchedSizeSum 0 seriesFetched 0 seriesFetchedSizeSum 0 seriesFetchCount 0 seriesFetchDurationSum 0 chunksTouched 0 chunksTouchedSizeSum 0 chunksFetched 0 chunksFetchedSizeSum 0 chunksFetchCount 0 chunksFetchDurationSum 0 getAllDuration <*> mergedSeriesCount 0 mergedChunksCount 0 mergeDuration <*> err null
+Error,Unable to retrieve Node status error error retrieving node <*> for machine <*> Node <*> not found machineset <*> namespace <*>
+Error,Failed to reconcile MachineSet error failed to sync MachineSet replicas <*> <*> not found machineset <*> namespace <*>
+Error,Reconciler error error failed to sync MachineSet replicas <*> <*> not found controller machineset name <*> namespace <*>
+Error,Failed to reconcile MachineHealthCheck error failed to patch unhealthy machine status for machine <*> <*> <*> not found <*> <*> not found cluster <*>
+Error,failed to reconcile VSphereMachine IP error failed to patch VSphereMachine <*> Timeout request did not complete within requested timeout <*> vspheremachine Namespace <*> Name <*>
+Error,Reconciler error error failed to patch VSphereMachine <*> Timeout request did not complete within requested timeout <*> controller vspheremachine name <*> namespace <*>
+Error,Reconciler error error unable to reconcile update strategy unable to update machinedeployment strategy Timeout request did not complete within requested timeout <*> controller spectrocluster name <*> namespace <*>
+Error,Reconciler error error failed to convert to cloudcluster list categories Get https <*> dial tcp i/o timeout controller spectrocluster name <*> namespace <*>
+Error,<*> portworx <*> <*> <*> <*> <*> INFO memberlist Suspect <*> has failed no acks received
+Error,<*> portworx <*> <*> <*> <*> <*> INFO memberlist Marking <*> as failed suspect timeout reached
+Error,<*> portworx <*> <*> <*> <*> <*> ERR memberlist Failed TCP fallback ping EOF
+Error,failed to prepare current and previous objects conversion webhook for <*> Kind VSphereMachine failed Post https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind VSphereMachine conversion webhook for <*> Kind VSphereMachine failed Post https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers reinitializing...
+Error,<*> <*> watch of <*> Kind VSphereMachine ended with Internal error occurred conversion webhook for <*> Kind VSphereMachine failed Post https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers
+Error,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind VSphereMachine conversion webhook for <*> Kind VSphereMachine failed Post https <*> <*> <*> context deadline exceeded reinitializing...
+Error,Notify for alerts failed num_alerts <*> err <*> 0 notify retry canceled after 4 attempts Post <redacted> context deadline exceeded
+Error,thread 0 index kubernetes_admin Failed to post. Verify connection. Retrying in few seconds. Post https <*> <*> context deadline exceeded Client.Timeout exceeded while awaiting headers
+Error,thread 0 index Failed to post. Verify connection. Retrying in few seconds. Post https <*> <*> context deadline exceeded Client.Timeout exceeded while awaiting headers
+Error,Failed to watch <*> failed to list <*> Get https <*> <*> <*> limit <*> resourceVersion 0 context deadline exceeded
+Error,Failed to watch <*> failed to list <*> Get https <*> <*> <*> resourceVersion 0 <*> TLS handshake timeout
+Error,Failed to watch <*> failed to list <*> Get https <*> <*> <*> limit <*> resourceVersion 0 <*> TLS handshake timeout
+Error,failed to read index-header from disk recreating path <*> err try lock file open <*> no such file or directory
+Error,error opening credentials file error open <*> no such file or directory
+Error,Failed to read catalog mount point open <*> no such file or directory
+Error,watch of <*> ended with an error on the server unable to decode an event from the watch stream http2 client connection <*> has prevented the request from succeeding
+Error,<*> <*> watch of <*> ended with an error on the server unable to decode an event from the watch stream context canceled has prevented the request from succeeding
+Error,Watch error received from Upstream ListRoot <*> error an error on the server unable to decode an event from the watch stream http2 client connection <*> has prevented the request from succeeding
+Normal,<*> <*> <*> info FLAG <*> misc error

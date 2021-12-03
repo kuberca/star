@@ -44,6 +44,7 @@
 
   <table>
     <tr>
+      <th>TemplateId</th>
       <th>Num</th>
       <th>log</th>
       <th>Template</th>
@@ -52,6 +53,7 @@
   
     {% for result in group['results'] %}
     <tr>
+      <td>{{ result['template_id'] }}</td>
       <td>{{ result['count'] }}</td>
       <td>{{ result['input'] }}</td>
       <td>{{ result['template'] }}</td>
@@ -60,6 +62,7 @@
     {% endfor %}
   
     <tr>
+      <th>TemplateId</th>
       <th>Num</th>
       <th>log</th>
       <th>Template</th>
@@ -68,10 +71,30 @@
   
     {% for result in to_group['results'] %}
     <tr>
+      <td>{{ result['template_id'] }}</td>
       <td>{{ result['count'] }}</td>
       <td>{{ result['input'] }}</td>
       <td>{{ result['template'] }}</td>
       <td><a class="action" href="{{ url_for('result.update', id=result['template_id'], context_id=result['context_id']) }}">Detail</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <p class="body"><b>Similarity Score of templates within the group </b></p>
+
+  <table>
+    <tr>
+      <th>score</th>
+      <th>template id1</th>
+      <th>template id1</th>
+    </tr>
+  
+    {% for (id1, id2), (score,) in result_scores.items() %}  
+
+    <tr>
+      <td>{{ score }}</td>
+      <td>{{ id1 }}</td>
+      <td>{{ id2 }}</td>
     </tr>
     {% endfor %}
   </table>

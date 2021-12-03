@@ -149,7 +149,6 @@ def group_compare():
 
         threshold = float(request.form['threshold'])
 
-
         # compute similarity between all groups
         groups = get_server().results.get_all_unresolved_groups()
         scores = {}
@@ -160,7 +159,17 @@ def group_compare():
                      if s > threshold:
                         scores[(g.group_id, g2.group_id)] = (s, g.results[0].input, g2.results[0].input)
 
-        return render_template('result/group_compare_result.html', group=group, to_group=to_group, groups=groups, score=score, scores=scores)
+        result_scores = {}
+        # compute similarity between all results of from_group
+        for i in range(len(group.results)):
+            for j in range(i+1, len(group.results)):
+                r1 = group.results[i]
+                r2 = group.results[j]
+                s = get_server().results.get_result_sim_score(r1, r2)
+                result_scores[(r1.template_id, r2.template_id)] = (s,)
+
+        return render_template('result/group_compare_result.html', group=group, to_group=to_group, groups=groups, 
+            score=score, scores=scores, result_scores=result_scores)
     
     return render_template('result/group_compare.html', group=group, groups=groups)      
 

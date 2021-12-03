@@ -41,7 +41,7 @@ class LogParserNLP:
     # interface for preper, userd by predictor, input is single line
     def process(self, line: str):
         out = []
-        tokens = re.split(r'\\|\s|:|;|,|\*|\"|\'|=|\[|\]|\(|\)|{|}' ,line.strip())
+        tokens = re.split(r'\\|\s|:|;|,|\*|\"|\'|=|\[|\]|\(|\)|{|}|&|\$' ,line.strip())
 
         for token in tokens:
             # above re will result in mulitple empty string tokens if there are multipe special chars in a row
