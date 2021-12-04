@@ -14,10 +14,10 @@ from results.result import Result
 
 # from config.config import Config
 
-def process_log_with_context(mq: MemQueue, meta: dict, callback):
-    print("Processing log with context", meta, mq)
+def process_log_with_context(mq: MemQueue, callback):
+    print("Processing log with context", mq)
     while True:
-        line, context = mq.get()
+        line, meta, context = mq.get()
         callback(line, meta, context)
 
 
@@ -27,7 +27,9 @@ class Batcher():
         print("callback is", callback)
         self.callback = callback
         self.threads = {}
-        self.start_print_threads_in_bg()
+        self.mq = MemQueue()
+        self.create_start_queue_worker()
+        # self.start_print_threads_in_bg()
 
     def get_key(self, pod: str, container : str):
         return "%s_%s" % (pod, container)
@@ -100,11 +102,13 @@ class Batcher():
             print("can't read file", file)
             return    
 
+        print("start to process file ", file)
+
         if fm == "text/plain":
             with open(file, 'r') as f:
                 meta={"file_uploaded":file, "file_format":fm, "file":os.path.basename(file)}
-                mq = self.create_start_mq(meta)
-                self.proc_line_in_file(mq, f, False)
+                
+                self.proc_line_in_file(meta, f, False)
 
         elif fm == "application/x-tar":
             tar = tarfile.open(file)
@@ -116,8 +120,7 @@ class Batcher():
                     continue
 
                 meta={"file_uploaded":file, "file_format":fm,"file":f.name}
-                mq = self.create_start_mq(meta)
-                self.proc_line_in_file(mq, ft, True)
+                self.proc_line_in_file(meta, ft, True)
 
         elif fm == "application/zip":
             zip = zipfile.ZipFile(file)
@@ -126,22 +129,12 @@ class Batcher():
                     continue
 
                 meta={"file_uploaded":file, "file_format":fm,"file":zf}
-                mq = self.create_start_mq(meta)
-                self.proc_line_in_file(mq, zip.open(zf), True)
+                self.proc_line_in_file(meta, zip.open(zf), True)
 
         elif fm == "application/gzip":
             zip = gzip.GzipFile(file)
             meta={"file_uploaded":file, "file_format":fm,"file":zip.name}
-
-            mq = self.create_start_mq(meta)
-            self.proc_line_in_file(mq, zip, True)
-
-        
-        # wait for all the lines to be processed, then close the queue
-        mq.size_reader_blocking()
-        print("finished processing file", file)
-        # delete the queue
-        del mq
+            self.proc_line_in_file(meta, zip, True)
 
     def get_file_format(self, file: str): 
         try:
@@ -181,7 +174,7 @@ class Batcher():
 
         return lines
 
-    def proc_line_in_file(self, mq: MemQueue, file, decode: bool):
+    def proc_line_in_file(self, meta, file, decode: bool):
         line_num = 0
         for line in file:
             line_num += 1
@@ -191,14 +184,13 @@ class Batcher():
                 except:
                     pass
 
-            mq.put(line, context={"line_num":line_num})
+            self.mq.put(line, meta, context={"line_num":line_num})
 
 
-    def create_start_mq(self, meta):
-        mq = MemQueue()
-        th = threading.Thread(target=process_log_with_context, name="process_log_with_context "+meta["file"], args=(mq, meta, self.callback))
+    # start a new thread to read from the queue and process the lines
+    def create_start_queue_worker(self): 
+        th = threading.Thread(target=process_log_with_context, name="process_log_with_context ", args=(self.mq, self.callback))
         th.start()
-        return mq
 
 
 if __name__ == "__main__":

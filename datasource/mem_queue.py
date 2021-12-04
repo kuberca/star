@@ -17,12 +17,14 @@ ContextLength = 10
 OriginalLine = "<ORIGINAL_LINE>"
 
 class Item:
-    def __init__(self, input: str, context: dict = {}) -> None:
+    def __init__(self, input: str, meta: dict, context: dict = {}) -> None:
         self.input = input
+        self.meta = meta
         self.context = context
 
+
     def __str__(self) -> str:
-        return "input: [%s], context: [%s]" % (self.input, self.context)
+        return "input: [%s], meta: [%s], context: [%s]" % (self.input, self.meta, self.context)
 
 class MemQueue:
     def __init__(self, queue_size: int = QueueSize, context_length: int = ContextLength) -> None:
@@ -42,8 +44,8 @@ class MemQueue:
         self.bg_worker()
 
 
-    def put(self, line: str, context: dict = {}) -> None:
-        item = Item(input=line, context=context)
+    def put(self, line: str, meta: dict, context: dict = {} ) -> None:
+        item = Item(input=line, meta=meta, context=context)
         self.lock.acquire()
         self.lines_queue.put(item)
         self.lock.release()
@@ -51,27 +53,19 @@ class MemQueue:
 
     def get(self):
         item = self.item_queue.get()
-        return item.input, item.context
+        return item.input, item.meta, item.context
 
     # start a new thread to print out size of the lines_queue every minute
     def size_reader_blocking(self):
-        print("lines_queue and item_queue size is: ", self.lines_queue.qsize(), self.item_queue.qsize())
-        time.sleep(1)
         while True:
             print("lines_queue and item_queue size is: ", self.lines_queue.qsize(), self.item_queue.qsize())
-            # stop reader if both queue are empty
-            if self.lines_queue.empty() and self.item_queue.empty():
-                break
-            time.sleep(1)
-
-            
-
-
-
+            time.sleep(3)
     
     def bg_worker(self):
         th = threading.Thread(target=self.worker, name="mem_queue_worker")
         th.start()
+        th1 = threading.Thread(target=self.size_reader_blocking, name="size_reader_blocking")
+        th1.start()
 
 
 
@@ -104,6 +98,7 @@ class MemQueue:
     def test_bg_reader(self):
         th = threading.Thread(target=self.test_reader)
         th.start()
+        
 
 if __name__ == "__main__":
     mq = MemQueue(queue_size=10, context_length=4)
