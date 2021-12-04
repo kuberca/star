@@ -68,11 +68,11 @@ class FeedbackMgr:
         # if res is not None:
         #     return res
 
-        (label, error_type) = self.data.get(template)
-        if label is None:
-            return None
-            
-        return Result(input="", template=template, template_id=template_id, label=label, error_type=error_type)
+        if template in self.data:
+            (label, error_type) = self.data.get(template)
+            return Result(input="", template=template, template_id=template_id, label=label, error_type=error_type)
+        
+        return None
 
 
             

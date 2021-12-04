@@ -14,56 +14,68 @@
 
 {% block content %}
 
-  <h1>Unresolved Group</h1> 
-  {% for group in groups %}
-    <article class="result">
-      <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}, <b>Label</b>: {{ group['label'] }}, <b>Error Type</b>: {{ group['error_type'] }}</p>
-      <a class="action" href="{{ url_for('result.group_update', id=group['group_id']) }}">Resolve</a>
-      <a class="action" href="{{ url_for('result.group_compare', from_group=group['group_id']) }}">Compare</a>
+  <h1> Groups Summary</h1>
+  <section>
+    {% for error_type, details in summary.items() %}
+      <p class="body">{{ error_type }}, {{ details }}</p>
+    {% endfor %}
+  </section>
 
-      <table>
-        <tr>
-          <th>Num</th>
-          <th>log</th>
-          <th>Detail</th>
-        </tr>
+  <button type="button" class="collapsible">Unresolved Group</button>
+  <section class="groupsec">
+    {% for group in groups %}
+      <article class="result">
+        <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}, <b>Label</b>: {{ group['label'] }}, <b>Error Type</b>: {{ group['error_type'] }}</p>
+        <a class="action" href="{{ url_for('result.group_update', id=group['group_id']) }}">Resolve</a>
+        <a class="action" href="{{ url_for('result.group_compare', from_group=group['group_id']) }}">Compare</a>
 
-        {% for result in group['results'] %}
-        <tr>
-          <td>{{ result['count'] }}</td>
-          <td>{{ result['input'] }}</td>
-          <td><a class="action" href="{{ url_for('result.update', id=result['template_id'], context_id=result['context_id']) }}">Detail</a></td>
-        </tr>
-        {% endfor %}
-      </table>  
-    </article>
-  {% endfor %}
-  <hr><hr>
+        <table>
+          <tr>
+            <th>Num</th>
+            <th>log</th>
+            <th>Detail</th>
+          </tr>
 
-  <h1>Resolved Group</h1> 
-  {% for group in resolved_groups %}
-    <article class="result">
-      <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}, <b>Label</b>: {{ group['label'] }}, <b>Error Type</b>: {{ group['error_type'] }}</p>
-      <a class="action" href="{{ url_for('result.group_update', id=group['group_id'], resolved=1) }}">Resolve</a>
-      <a class="action" href="{{ url_for('result.group_compare', from_group=group['group_id'], resolved=1) }}">Compare</a>
+          {% for result in group['results'] %}
+          <tr>
+            <td>{{ result['count'] }}</td>
+            <td>{{ result['input'] }}</td>
+            <td><a class="action" href="{{ url_for('result.update', id=result['template_id'], context_id=result['context_id']) }}">Detail</a></td>
+          </tr>
+          {% endfor %}
+        </table>  
+      </article>
+    {% endfor %}
+  </section>
 
-      <table>
-        <tr>
-          <th>Num</th>
-          <th>log</th>
-          <th>Detail</th>
-        </tr>
+  <hr>
 
-        {% for result in group['results'] %}
-        <tr>
-          <td>{{ result['count'] }}</td>
-          <td>{{ result['input'] }}</td>
-          <td><a class="action" href="{{ url_for('result.update', id=result['template_id'], context_id=result['context_id'], resolved=1) }}">Detail</a></td>
-        </tr>
-        {% endfor %}
-      </table>  
-    </article>
-  {% endfor %}
+  <button type="button" class="collapsible">Resolved Group</button>
+  <section class="groupsec">
+    {% for group in resolved_groups %}
+      <article class="result">
+        <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}, <b>Label</b>: {{ group['label'] }}, <b>Error Type</b>: {{ group['error_type'] }}</p>
+        <a class="action" href="{{ url_for('result.group_update', id=group['group_id'], resolved=1) }}">Resolve</a>
+        <a class="action" href="{{ url_for('result.group_compare', from_group=group['group_id'], resolved=1) }}">Compare</a>
+
+        <table>
+          <tr>
+            <th>Num</th>
+            <th>log</th>
+            <th>Detail</th>
+          </tr>
+
+          {% for result in group['results'] %}
+          <tr>
+            <td>{{ result['count'] }}</td>
+            <td>{{ result['input'] }}</td>
+            <td><a class="action" href="{{ url_for('result.update', id=result['template_id'], context_id=result['context_id'], resolved=1) }}">Detail</a></td>
+          </tr>
+          {% endfor %}
+        </table>  
+      </article>
+    {% endfor %}
+  </section>
 
 {% endblock %}
 

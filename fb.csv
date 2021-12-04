@@ -4,3 +4,71 @@ Error,DataError,Reconciler error error failed to reconcile manifests failed to d
 Normal,NA,error message Warning <*> Certificate is deprecated in <*> unavailable in <*> use <*> Certificate
 Error,ConnectionTimeout,Reconciler error error failed to pivot move resource failed to move configmap to target cluster failed to move configmap <*> error copying ConfigMap <*> to target cluster Post https <*> <*> <*> context deadline exceeded controller spectrocluster name <*> namespace <*>
 Error,ConnectionTimeout,Reconciler error error unable to install crd failed to get deployment <*> timed out waiting for the condition controller spectrocluster name <*> namespace <*>
+Error,Ignored,error retrieving resource lock <*> <*> <*> is forbidden User system <*> cannot get resource leases in API group <*> in the namespace <*>
+Error,Ignored,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource <*> in API group policy at the cluster scope
+Error,Ignored,Failed to watch <*> failed to list <*> services is forbidden User system <*> cannot list resource services in API group at the cluster scope
+Error,Ignored,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource <*> in API group <*> at the cluster scope
+Error,Ignored,Failed to watch <*> failed to list <*> pods is forbidden User system <*> cannot list resource pods in API group at the cluster scope
+Error,Ignored,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource storageclasses in API group <*> at the cluster scope
+Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error etcdserver leader changed took too long <*> to execute
+Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error context canceled took too long <*> to execute
+Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error context deadline exceeded took too long <*> to execute
+Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error etcdserver request timed out took too long <*> to execute
+Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> range_end <*> with result error etcdserver request timed out took too long <*> to execute
+Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> range_end <*> count_only true with result error etcdserver request timed out took too long <*> to execute
+Error,ConnectionError,failed to list all deployments spectrocluster Namespace <*> Name <*> error detail Op Get URL https <*> <*> Err
+Error,ConnectionError,failed to list all ingress spectrocluster Namespace <*> Name <*> error detail Op Get URL https <*> <*> Err
+Error,ConnectionError,failed to list all services spectrocluster Namespace <*> Name <*> error detail Op Get URL https <*> <*> Err
+Error,ConnectionError,failed to list all ingress spectrocluster Namespace <*> Name <*> error detail Op Get URL https <*> <*> Err Op dial Net tcp Source null Addr IP <*> Port <*> Zone Err
+Error,ConnectionError,failed to list all services spectrocluster Namespace <*> Name <*> error detail Op Get URL https <*> <*> Err Op dial Net tcp Source null Addr IP <*> Port <*> Zone Err
+Error,ConnectionError,failed to list all deployments spectrocluster Namespace <*> Name <*> error detail Op Get URL https <*> <*> Err Op dial Net tcp Source null Addr IP <*> Port <*> Zone Err
+Error,ConnectionError,error retrieving resource lock <*> Get https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,Failed to watch <*> failed to list <*> Get https <*> <*> <*> limit <*> resourceVersion 0 dial tcp <*> <*> connect connection refused
+Error,ConnectionError,Failed to watch <*> failed to list <*> Get https <*> <*> <*> resourceVersion 0 dial tcp <*> <*> connect connection refused
+Normal,ResourceNotFound,Failed to get node <*> nodes <*> not found cluster <*>
+Normal,ResourceNotFound,Failed to update machine for pool <*> nodes <*> not found cluster <*>
+Normal,ResourceNotFound,Failed to create/update machines in pool <*> nodes <*> not found cluster <*>
+Error,ConnectionTimeout,getting client for remote cluster error Get https <*> <*> dial tcp <*> <*> i/o timeout cluster <*> eksControlPlane <*> namespace <*>
+Error,ConnectionTimeout,Reconciler error error failed to reconcile <*> config for AWSManagedControlPlane <*> getting client for remote cluster Get https <*> <*> dial tcp <*> <*> i/o timeout controller awsmanagedcontrolplane name <*> namespace <*>
+Error,ConnectionTimeout,Reconciler error error failed to create client for Cluster <*> Get https <*> <*> dial tcp <*> <*> i/o timeout controller machinepool name <*> namespace <*>
+Error,OperationNotAllowed,Failed to update SpectroClusterStatusConditions Code ClusterOperationNotAllowed Msg cluster operation cluster conditionType update not allowed with cluster state Deleted Ref <*> Details <nil> cluster <*>
+Error,OperationNotAllowed,Failed to push status conditions Code ClusterOperationNotAllowed Details <nil> Message cluster operation cluster conditionType update not allowed with cluster state Deleted Ref <*> cluster <*>
+Error,OperationNotAllowed,Failed to process spectro cluster status event Code ClusterOperationNotAllowed Details <nil> Message cluster operation cluster conditionType update not allowed with cluster state Deleted Ref <*> cluster <*>
+Error,DNSError,failed to list all ingress spectrocluster Namespace <*> Name <*> error detail Op Get URL https <*> <*> Err Op dial Net tcp Source null Addr null Err Err no such host Name <*> Server <*> <*> IsTimeout false IsTemporary false IsNotFound true
+Error,DNSError,failed to list all services spectrocluster Namespace <*> Name <*> error detail Op Get URL https <*> <*> Err Op dial Net tcp Source null Addr null Err Err no such host Name <*> Server <*> <*> IsTimeout false IsTemporary false IsNotFound true
+Error,DNSError,failed to list all deployments spectrocluster Namespace <*> Name <*> error detail Op Get URL https <*> <*> Err Op dial Net tcp Source null Addr null Err Err no such host Name <*> Server <*> <*> IsTimeout false IsTemporary false IsNotFound true
+Error,Ignored,Failed to verify datastore error Get https <*> <*> context deadline exceeded
+Error,Ignored,Failed to reach apiserver error Get https <*> <*> context deadline exceeded
+Error,ConnectionTimeout,error retrieving resource lock <*> Get https <*> <*> <*> <*> request canceled Client.Timeout exceeded while awaiting headers
+Error,ConnectionTimeout,error retrieving resource lock <*> Get https <*> <*> <*> context deadline exceeded
+Normal,NA,Auditing failed of request encoding failed authentication.TokenRequest is not suitable for converting to <*> in scheme <*> <*>
+Normal,NA,Auditing failed of request encoding failed <*> Kind DeleteOptions is unstructured and is not suitable for converting to <*>
+Error,QuotaExceeded,Reconciler error error failed to reconcile control plane for AWSManagedControlPlane <*> failed reconciling cluster config failed to update EKS cluster InvalidRequestException Provided subnets <*> Free IPs <*> need at least <*> IPs in each subnet to be free for this operation n n RespMetadata n StatusCode <*> n RequestID <*> n n Message_ Provided subnets <*> Free IPs <*> need at least <*> IPs in each subnet to be free for this operation n controller awsmanagedcontrolplane name <*> namespace <*>
+Error,QuotaExceeded,Reconciler error error failed to reconcile control plane for AWSManagedControlPlane <*> failed reconciling cluster config failed to update EKS cluster ResourceInUseException Cannot EndpointAccessUpdate because cluster <*> currently has update <*> in progress n n RespMetadata n StatusCode <*> n RequestID <*> n n ClusterName <*> n Message_ Cannot EndpointAccessUpdate because cluster <*> currently has update <*> in progress n controller awsmanagedcontrolplane name <*> namespace <*>
+Error,Ignored,Failed to get Cluster %s for MachinePool. error <*> <*> not found machinepool Namespace <*> Name <*> <*> null
+Error,Ignored,Reconciler error error failed to get cluster <*> for machinepool <*> in namespace <*> <*> <*> not found controller machinepool name <*> namespace <*>
+Error,Ignored,Failed to access interface because it doesn t exist. error Link not found ifaceName <*> ifaceRegex ^cali. ipVersion <*>
+Error,Ignored,Failed to get interface it s <*> error Link not found ifaceName <*> ifaceRegex ^cali. ipVersion <*>
+Error,Ignored,apiserver received an error that is not an <*> <*> s context canceled context canceled
+Error,Ignored,apiserver received an error that is not an <*> <*> s http Handler timeout http Handler timeout
+Error,Ignored,<*> failed with Operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
+Error,Ignored,Reconciler error error unable to install crd unable to update version config map Operation cannot be fulfilled on configmaps <*> the object has been modified please apply your changes to the latest version and try again controller spectrocluster name <*> namespace <*>
+Error,Ignored,unable to perform status update on KubeControllersConfiguration default error etcdserver request timed out
+Error,ConnectionTimeout,Error getting cluster information config ClusterInformation default error Get https <*> <*> context deadline exceeded
+Error,Ignored,Couldn t reconcile node routes error listing routes unable to find route table for AWS cluster <*>
+Error,Ignored,unable to get KubeControllersConfiguration default error etcdserver leader changed
+Normal,NA,Watch error received from Upstream ListRoot <*> error too old resource version <*> <*>
+Normal,NA,loading OpenAPI spec for <*> failed with OpenAPI spec does not exist
+Normal,NA,<*> <*> <*> <*> no error handler specified with the subscriber. going with default error handler
+Error,NotAuthorized,Failed to watch <*> failed to list <*> persistentvolumeclaims is forbidden User system <*> cannot list resource persistentvolumeclaims in API group at the cluster scope
+Error,Ignored,unable to parse crd file continue to next error couldn t get version/kind json parse error json cannot unmarshal array into Go value of type struct APIVersion string json apiVersion omitempty Kind string json kind omitempty spectrocluster Namespace <*> Name <*> failed file <*>
+Normal,NA,error spectrocluster Namespace <*> Name <*> message Warning kubectl apply should be used on resource created by either kubectl create <*> or kubectl apply
+Error,ResourceNotFound,Reconciler error error <*> <*> not found controller awsmanagedmachinepool name <*> namespace <*>
+Error,Ignored,Failed to delete route error no such process ifaceName <*> ifaceRegex ^cali. ipVersion <*>
+Error,Ignored,Interface was deleted during operation filtering error error netlink update operation failed ifaceName <*> ifaceRegex ^cali. ipVersion <*>
+Error,Ignored,loading OpenAPI spec for <*> failed with failed to retrieve openAPI spec http error ResponseCode <*> Body service unavailable
+Error,Ignored,WARNING <*> <*> <*> <*> grpc <*> failed to write status connection error desc transport is closing
+Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver failed to send out heartbeat on time exceeded the <*> timeout for <*> to <*>
+Error,Ignored,Failed to get local addresses assuming no local IPs err route ip+net no such network interface route ip+net no such network interface MISSING
+Normal,NA,<*> <*> <*> <*> I | embed rejected connection from <*> <*> error EOF ServerName
+Error,Ignored,<*> <*> <*> <*> W | etcdserver failed to revoke <*> etcdserver request timed out

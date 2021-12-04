@@ -88,7 +88,20 @@ def groups():
     sorted_groups = sorted(groups, key=lambda it: it.count, reverse=True)
     resolved_groups = get_server().results.get_all_resolved_groups()
     sorted_resolved_groups = sorted(resolved_groups, key=lambda it: it.count, reverse=True)
-    return render_template('result/groups.html', groups=sorted_groups, resolved_groups=sorted_resolved_groups)
+    summary = {}
+    for group in sorted_groups:
+        if group.error_type not in summary:
+            summary[group.error_type] = [(group.group_id, group.count)]
+        else:
+            summary[group.error_type].append((group.group_id, group.count))
+        
+    for group in sorted_resolved_groups:
+        if group.error_type not in summary:
+            summary[group.error_type] = [(group.group_id, group.count)]
+        else:
+            summary[group.error_type].append((group.group_id, group.count))
+
+    return render_template('result/groups.html', groups=sorted_groups, resolved_groups=sorted_resolved_groups, summary=summary)
 
 @bp.route('/cleanup')
 def cleanup():

@@ -27,6 +27,7 @@
   <label for="error_type">Predict Error Type</label>
   <select name="error_type" id="error_type">
     <option value="NA" {% if request.form['error_type'] == 'NA' or group['error_type']  == 'NA' %}selected{% endif %}>Not an Error</option> 
+    <option value="Ignored" {% if request.form['error_type'] == 'Ignored' or group['error_type']  == 'Ignored' %}selected{% endif %}>Can Be Ignored</option> 
     <option value="ConnectionError" {% if request.form['error_type'] == 'ConnectionError' or group['error_type']  == 'ConnectionError' %}selected{% endif %}>Connection Error</option>  
     <option value="ConnectionTimeout" {% if request.form['error_type'] == 'ConnectionTimeout' or group['error_type'] == 'ConnectionTimeout' %}selected{% endif %}>Connection Timeout</option>
     <option value="DataError" {% if request.form['error_type'] == 'DataError' or group['error_type'] == 'DataError' %}selected{% endif %}>Data Error</option>
@@ -37,6 +38,8 @@
     <option value="FileNotExist" {% if request.form['error_type'] == 'FileNotExist' or group['error_type'] == 'FileNotExist' %}selected{% endif %}>File Not Exist</option>
     <option value="DNSError" {% if request.form['error_type'] == 'DNSError' or group['error_type'] == 'DNSError' %}selected{% endif %}>DNS Error</option>
     <option value="NotAuthorized" {% if request.form['error_type'] == 'NotAuthorized' or group['error_type'] == 'NotAuthorized' %}selected{% endif %}>Not Authorized</option>
+    <option value="OperationNotAllowed" {% if request.form['error_type'] == 'OperationNotAllowed' or group['error_type'] == 'OperationNotAllowed' %}selected{% endif %}>Operation Not Allowed</option>
+    <option value="QuotaExceeded" {% if request.form['error_type'] == 'QuotaExceeded' or group['error_type'] == 'QuotaExceeded' %}selected{% endif %}>Quota Exceeded</option>
   </select>
 
   <label for="analysis">Root Cause Analysis</label>

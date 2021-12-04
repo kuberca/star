@@ -110,7 +110,10 @@ class SqliteStore:
             (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, 
                 json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type, result.resolved)
         )
-        self.db.commit()
+        try:
+            self.db.commit()
+        except:
+            pass
 
     def save_unresolved(self, result: Result):
         result.resolved = False
