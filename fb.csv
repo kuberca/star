@@ -4,12 +4,12 @@ Error,DataError,Reconciler error error failed to reconcile manifests failed to d
 Normal,NA,error message Warning <*> Certificate is deprecated in <*> unavailable in <*> use <*> Certificate
 Error,ConnectionTimeout,Reconciler error error failed to pivot move resource failed to move configmap to target cluster failed to move configmap <*> error copying ConfigMap <*> to target cluster Post https <*> <*> <*> context deadline exceeded controller spectrocluster name <*> namespace <*>
 Error,ConnectionTimeout,Reconciler error error unable to install crd failed to get deployment <*> timed out waiting for the condition controller spectrocluster name <*> namespace <*>
-Error,Ignored,error retrieving resource lock <*> <*> <*> is forbidden User system <*> cannot get resource leases in API group <*> in the namespace <*>
-Error,Ignored,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource <*> in API group policy at the cluster scope
-Error,Ignored,Failed to watch <*> failed to list <*> services is forbidden User system <*> cannot list resource services in API group at the cluster scope
-Error,Ignored,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource <*> in API group <*> at the cluster scope
-Error,Ignored,Failed to watch <*> failed to list <*> pods is forbidden User system <*> cannot list resource pods in API group at the cluster scope
-Error,Ignored,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource storageclasses in API group <*> at the cluster scope
+Error,NotAuthorized,error retrieving resource lock <*> <*> <*> is forbidden User system <*> cannot get resource leases in API group <*> in the namespace <*>
+Error,NotAuthorized,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource <*> in API group policy at the cluster scope
+Error,NotAuthorized,Failed to watch <*> failed to list <*> services is forbidden User system <*> cannot list resource services in API group at the cluster scope
+Error,NotAuthorized,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource <*> in API group <*> at the cluster scope
+Error,NotAuthorized,Failed to watch <*> failed to list <*> pods is forbidden User system <*> cannot list resource pods in API group at the cluster scope
+Error,NotAuthorized,Failed to watch <*> failed to list <*> <*> is forbidden User system <*> cannot list resource storageclasses in API group <*> at the cluster scope
 Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error etcdserver leader changed took too long <*> to execute
 Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error context canceled took too long <*> to execute
 Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> with result error context deadline exceeded took too long <*> to execute
@@ -72,3 +72,4 @@ Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver failed to send out heartbe
 Error,Ignored,Failed to get local addresses assuming no local IPs err route ip+net no such network interface route ip+net no such network interface MISSING
 Normal,NA,<*> <*> <*> <*> I | embed rejected connection from <*> <*> error EOF ServerName
 Error,Ignored,<*> <*> <*> <*> W | etcdserver failed to revoke <*> etcdserver request timed out
+Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> range_end <*> count_only true with result error etcdserver leader changed took too long <*> to execute

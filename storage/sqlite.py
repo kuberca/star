@@ -93,7 +93,8 @@ class SqliteStore:
         self.db = sqlite3.connect(
             db_file,
             check_same_thread=False,
-            detect_types=sqlite3.PARSE_DECLTYPES
+            detect_types=sqlite3.PARSE_DECLTYPES,
+            isolation_level=None
         )
         self.db.row_factory = sqlite3.Row
         if schema == "":
@@ -110,10 +111,11 @@ class SqliteStore:
             (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, 
                 json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type, result.resolved)
         )
-        try:
-            self.db.commit()
-        except:
-            pass
+        # self.db.commit()
+        # try:
+        #     self.db.commit()
+        # except:
+        #     pass
 
     def save_unresolved(self, result: Result):
         result.resolved = False
@@ -129,7 +131,7 @@ class SqliteStore:
             (result.template_id, result.input, result.template, result.label, result.analysis, result.context_id, result.context_template, 
                 json.dumps(result.meta), json.dumps(result.context), result.count, result.group_id, result.error_type, result.resolved)
         )
-        self.db.commit()
+        # self.db.commit()
 
     def get_result(self, template_id: int, context_id: str, resolved: int) -> Result:
         result = self.db.execute(
@@ -194,7 +196,7 @@ class SqliteStore:
             (result.label, result.error_type, result.template_id, result.context_id)
         )
 
-        self.db.commit()
+        # self.db.commit()
 
     def get_result_from_sql(self, obj:dict) -> Result:
         result = Result(input=obj["input"], template_id=obj["template_id"], template=obj["template"], 
@@ -218,7 +220,7 @@ class SqliteStore:
                 "INSERT INTO groups (vector, count, manual_group, label, error_type) VALUES (?, ?, ?, ?, ?)",
                 (group.vector_str(), group.count, group.manual_group, group.label, group.error_type)
             )
-            self.db.commit()
+            # self.db.commit()
             group.group_id = cur.lastrowid
             return group
         else:
@@ -226,7 +228,7 @@ class SqliteStore:
                 g_create_group_sql,
                 (group.group_id, group.vector_str(), group.count, group.manual_group, group.label, group.error_type)
             )
-            self.db.commit()
+            # self.db.commit()
             return group
 
     # get group from storage
@@ -313,7 +315,7 @@ class SqliteStore:
             'UPDATE result SET group_id = ? WHERE group_id = ?',
             (new_group_id, old_group_id)
         )
-        self.db.commit()    
+        # self.db.commit()    
 
     # mark a group as deleted
     def delete_group(self, group_id: int):
@@ -321,7 +323,7 @@ class SqliteStore:
             'UPDATE groups SET deleted = 1 WHERE group_id = ?',
             (group_id,)
         )
-        self.db.commit()
+        # self.db.commit()
 
     # cleanup delete all groups and results
     def cleanup(self):

@@ -6,6 +6,7 @@
   <a class="action" href="{{ url_for('result.upload') }}">Upload Log File </a>
 
   <a class="action" href="{{ url_for('result.templates') }}">Log Templates </a>
+  <a class="action" href="{{ url_for('result.groups') }}">Groups </a>
 
 
 {% endblock %}
@@ -16,10 +17,22 @@
 
   <h1> Groups Summary</h1>
   <section>
-    {% for error_type, details in summary.items() %}
-      <p class="body">{{ error_type }}, {{ details }}</p>
-    {% endfor %}
+    <table>
+      <tr>
+        <th>Error Type</th>
+        <th>Array of (Group Id, Group Size)</th>
+      </tr>
+
+      {% for error_type, details in summary.items() %}
+      <tr>
+        <td><a class="action" href="{{ url_for('result.groups', error_type=error_type) }}">{{ error_type }}</a></td>
+        <td>{{ details }} </td>
+      </tr>
+      {% endfor %}
+    </table>  
   </section>
+
+  <hr>
 
   <button type="button" class="collapsible">Unresolved Group</button>
   <section class="groupsec">

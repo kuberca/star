@@ -7,7 +7,7 @@ import threading
 import magic
 import os
 import tarfile, zipfile, gzip
-import sys
+import sys, time
 
 from . mem_queue import MemQueue
 from results.result import Result
@@ -27,12 +27,24 @@ class Batcher():
         print("callback is", callback)
         self.callback = callback
         self.threads = {}
+        self.start_print_threads_in_bg()
 
     def get_key(self, pod: str, container : str):
         return "%s_%s" % (pod, container)
 
+    def start_print_threads_in_bg(self):
+        th = threading.Thread(target=self.print_threads, name="print_threads")
+        th.start()
+
+    # print out all the running threads for every second
+    def print_threads(self):
+        while True:
+            for thread in threading.enumerate(): 
+                print("running thread: ", thread.name)
+            time.sleep(3)
+
     def start_in_bg(self, file: str):
-        th = threading.Thread(target=self.start, args=(file,))
+        th = threading.Thread(target=self.start, name="start_in_bg "+file, args=(file,))
         th.start()
 
     # given a result, extract the log lines before and after it within the log file
@@ -86,9 +98,7 @@ class Batcher():
         fm = self.get_file_format(file)
         if fm is None:
             print("can't read file", file)
-            return
-
-        
+            return    
 
         if fm == "text/plain":
             with open(file, 'r') as f:
@@ -125,6 +135,13 @@ class Batcher():
 
             mq = self.create_start_mq(meta)
             self.proc_line_in_file(mq, zip, True)
+
+        
+        # wait for all the lines to be processed, then close the queue
+        mq.size_reader_blocking()
+        print("finished processing file", file)
+        # delete the queue
+        del mq
 
     def get_file_format(self, file: str): 
         try:
@@ -176,9 +193,10 @@ class Batcher():
 
             mq.put(line, context={"line_num":line_num})
 
+
     def create_start_mq(self, meta):
         mq = MemQueue()
-        th = threading.Thread(target=process_log_with_context, args=(mq, meta, self.callback))
+        th = threading.Thread(target=process_log_with_context, name="process_log_with_context "+meta["file"], args=(mq, meta, self.callback))
         th.start()
         return mq
 

@@ -5,7 +5,7 @@ input lines need to be put into this queue
 so that for each line, we can get the before and after lines as context
 use the target line together with the contex for prediction
 """
-import threading
+import threading, time
 from queue import Queue
 
 QueueSize = 1024 * 1024
@@ -53,9 +53,24 @@ class MemQueue:
         item = self.item_queue.get()
         return item.input, item.context
 
+    # start a new thread to print out size of the lines_queue every minute
+    def size_reader_blocking(self):
+        print("lines_queue and item_queue size is: ", self.lines_queue.qsize(), self.item_queue.qsize())
+        time.sleep(1)
+        while True:
+            print("lines_queue and item_queue size is: ", self.lines_queue.qsize(), self.item_queue.qsize())
+            # stop reader if both queue are empty
+            if self.lines_queue.empty() and self.item_queue.empty():
+                break
+            time.sleep(1)
+
+            
+
+
+
     
     def bg_worker(self):
-        th = threading.Thread(target=self.worker)
+        th = threading.Thread(target=self.worker, name="mem_queue_worker")
         th.start()
 
 

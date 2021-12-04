@@ -84,22 +84,25 @@ def templates():
 
 @bp.route('/groups')
 def groups():
+    error_type = request.args.get('error_type')
+    if error_type is None:
+        error_type = "all"
     groups = get_server().results.get_all_unresolved_groups()
-    sorted_groups = sorted(groups, key=lambda it: it.count, reverse=True)
     resolved_groups = get_server().results.get_all_resolved_groups()
-    sorted_resolved_groups = sorted(resolved_groups, key=lambda it: it.count, reverse=True)
     summary = {}
-    for group in sorted_groups:
+    for group in groups + resolved_groups:
         if group.error_type not in summary:
             summary[group.error_type] = [(group.group_id, group.count)]
         else:
             summary[group.error_type].append((group.group_id, group.count))
-        
-    for group in sorted_resolved_groups:
-        if group.error_type not in summary:
-            summary[group.error_type] = [(group.group_id, group.count)]
-        else:
-            summary[group.error_type].append((group.group_id, group.count))
+
+    # filter groups and resolved groups based on error_type
+    if error_type != "all":
+        groups = list(filter(lambda it: it.error_type == error_type, groups))
+        resolved_groups = list(filter(lambda it: it.error_type == error_type, resolved_groups))
+
+    sorted_groups = sorted(groups, key=lambda it: it.count, reverse=True)
+    sorted_resolved_groups = sorted(resolved_groups, key=lambda it: it.count, reverse=True)
 
     return render_template('result/groups.html', groups=sorted_groups, resolved_groups=sorted_resolved_groups, summary=summary)
 

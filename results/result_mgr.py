@@ -100,7 +100,7 @@ class ResultMgr:
 
     # get un resolved results from storage, so user can look at it and take action
     def get_unresolved(self, template_id: int, context_id: str) -> Result:
-        print("get unresolved template_id", template_id, context_id)
+        # print("get unresolved template_id", template_id, context_id)
         return self.store.get_unresolved(template_id, context_id)
 
     # get all un resolved results from storage, so user can look at it and take action
