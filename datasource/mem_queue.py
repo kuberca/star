@@ -5,7 +5,7 @@ input lines need to be put into this queue
 so that for each line, we can get the before and after lines as context
 use the target line together with the contex for prediction
 """
-import threading, time
+import threading, time, logging
 from queue import Queue
 
 QueueSize = 1024 * 1024
@@ -15,6 +15,9 @@ ContextLength = 10
 
 # place hoolder for original line
 OriginalLine = "<ORIGINAL_LINE>"
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(format='%(asctime)s %(message)s', level=logging.DEBUG)
 
 class Item:
     def __init__(self, input: str, meta: dict, context: dict = {}) -> None:
@@ -46,9 +49,9 @@ class MemQueue:
 
     def put(self, line: str, meta: dict, context: dict = {} ) -> None:
         item = Item(input=line, meta=meta, context=context)
-        self.lock.acquire()
+        # self.lock.acquire()
         self.lines_queue.put(item)
-        self.lock.release()
+        # self.lock.release()
 
 
     def get(self):
@@ -58,7 +61,7 @@ class MemQueue:
     # start a new thread to print out size of the lines_queue every minute
     def size_reader_blocking(self):
         while True:
-            print("lines_queue and item_queue size is: ", self.lines_queue.qsize(), self.item_queue.qsize())
+            logger.debug("lines_queue size: %d, item_queue size: %d ", self.lines_queue.qsize(), self.item_queue.qsize())
             time.sleep(3)
     
     def bg_worker(self):

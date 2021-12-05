@@ -7,6 +7,9 @@ start watcher
 """
 import re, json
 
+import yappi, time, threading
+
+
 from config.config import Config
 from predictor.predict import Predictor
 from datasource.watcher import Watcher
@@ -47,6 +50,10 @@ class Server():
     def start_batch_in_bg(self, file: str):
         self.batcher.start_in_bg(file)
 
+    # start batcher in foreground
+    def start_batch(self, file: str):
+        self.batcher.start(file)
+
     # start watcher in back ground
     def start_in_bg(self):
         self.watcher.start_in_bg()
@@ -66,7 +73,16 @@ class Server():
 
 if __name__ == "__main__":
     cfg = {}
-    cfg["drain3"]={"config_file":"drain3.ini", "persist_dir":"."}
+    cfg["drain3"]={"config_file":"drain3.ini", "persist_dir":".", "model_file":"model/star.cla.bin"}
     server = Server(config=cfg)
-    server.start()
+    yappi.start()
+    server.start_batch("/tmp/2-cp-with-v1213_1.zip")
+    time.sleep(30)
+    yappi.stop()
 
+    threads = yappi.get_thread_stats()
+    for thread in threads:
+        print(
+            "Function stats for (%s) (%d)" % (thread.name, thread.id)
+        )  # it is the Thread.__class__.__name__
+        yappi.get_func_stats(ctx_id=thread.id).print_all()

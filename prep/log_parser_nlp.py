@@ -43,19 +43,28 @@ class LogParserNLP:
         out = []
         tokens = re.split(r'\\|\s|:|;|,|\*|\"|\'|=|\[|\]|\(|\)|{|}|&|\$' ,line.strip())
 
-        for token in tokens:
-            # above re will result in mulitple empty string tokens if there are multipe special chars in a row
-            if not token:
-                continue
+        # for token in tokens:
+        #     # above re will result in mulitple empty string tokens if there are multipe special chars in a row
+        #     if not token:
+        #         continue
 
-            if token == '<*>':
-                out.append(token)
+        #     if token == '<*>':
+        #         out.append(token)
+        #     else:
+        #         label = self.model.predict(token)[0][0]
+        #         if label == '__label__var':
+        #             out.append("<*>")
+        #         else:
+        #             out.append(token)
+
+        tks = [token for token in tokens if token]
+        labels = self.model.predict(tks)
+        for i in range(len(tks)):
+            label = labels[0][i][0]
+            if label == '__label__var':
+                out.append("<*>")
             else:
-                label = self.model.predict(token)[0][0]
-                if label == '__label__var':
-                    out.append("<*>")
-                else:
-                    out.append(token)
+                out.append(tks[i])
         
         text = " ".join(out)
         if text in self.text_to_template:

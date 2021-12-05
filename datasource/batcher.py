@@ -8,9 +8,11 @@ import magic
 import os
 import tarfile, zipfile, gzip
 import sys, time
+import logging
 
 from . mem_queue import MemQueue
 from results.result import Result
+
 
 # from config.config import Config
 
@@ -20,11 +22,12 @@ def process_log_with_context(mq: MemQueue, callback):
         line, meta, context = mq.get()
         callback(line, meta, context)
 
-
+logger = logging.getLogger(__name__)
 
 class Batcher():
     def __init__(self, config, callback) -> None:
         print("callback is", callback)
+        self.num_threads = 4
         self.callback = callback
         self.threads = {}
         self.mq = MemQueue()
@@ -189,8 +192,9 @@ class Batcher():
 
     # start a new thread to read from the queue and process the lines
     def create_start_queue_worker(self): 
-        th = threading.Thread(target=process_log_with_context, name="process_log_with_context ", args=(self.mq, self.callback))
-        th.start()
+        for i in range(self.num_threads):
+            th = threading.Thread(target=process_log_with_context, name="process_log_with_context ", args=(self.mq, self.callback))
+            th.start()
 
 
 if __name__ == "__main__":

@@ -40,27 +40,29 @@ class Predictor:
         return result
 
     def get_context_info(self, context: dict) :
-        lines = context.get("lines")
-        if lines is None:
-            return ""
-        ids = []
-        templates = []
-        for line in lines:
-            if line == OriginalLine:
-                continue
-            text, info = self.split_line(line)
-            self.lock.acquire()
-            id, template = self.preper.process(text)
-            self.lock.release()
-            ids.append(str(id))
-            templates.append(template)
+        return "context_id", "context_template"
+
+        # lines = context.get("lines")
+        # if lines is None:
+        #     return ""
+        # ids = []
+        # templates = []
+        # for line in lines:
+        #     if line == OriginalLine:
+        #         continue
+        #     text, info = self.split_line(line)
+        #     self.lock.acquire()
+        #     id, template = self.preper.process(text)
+        #     self.lock.release()
+        #     ids.append(str(id))
+        #     templates.append(template)
 
         #########################
         # fake context_id here to only use template ID as key
         # remember to revert
         #########################
         #return "-".join(ids), ",".join(templates)
-        return "context_id", ",".join(templates)
+        # return "context_id", ",".join(templates)
 
     def split_line(self, line: str):
         msg_log = re.compile("(.*) \"?msg\"?=(.*)")
