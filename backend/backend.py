@@ -76,7 +76,7 @@ if __name__ == "__main__":
     cfg["drain3"]={"config_file":"drain3.ini", "persist_dir":".", "model_file":"model/star.cla.bin"}
     server = Server(config=cfg)
     yappi.start()
-    server.start_batch("/tmp/2-cp-with-v1213_1.zip")
+    server.start_batch("/tmp/ClusterDelete.zip")
     time.sleep(30)
     yappi.stop()
 

@@ -62,7 +62,7 @@ class MemQueue:
     def size_reader_blocking(self):
         while True:
             logger.debug("lines_queue size: %d, item_queue size: %d ", self.lines_queue.qsize(), self.item_queue.qsize())
-            time.sleep(3)
+            time.sleep(10)
     
     def bg_worker(self):
         th = threading.Thread(target=self.worker, name="mem_queue_worker")

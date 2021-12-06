@@ -19,14 +19,16 @@ class Predictor:
         self.preper = preper
         self.model = model
         self.lock = threading.Lock()
+        self.msg_log = re.compile("(.*) \"?msg\"?=(.*)")
+        self.dot_go_log = re.compile("(.*\.go[: ]\d+[:\]])(.*)")
 
     def predict(self, line: str, meta: dict={}, context: dict = {}) -> Result:
         text, info = self.split_line(line)
         meta.update({"info":info})
 
-        self.lock.acquire()
+        # self.lock.acquire()
         id, template = self.preper.process(text)
-        self.lock.release()
+        # self.lock.release()
 
         context_id, context_template = self.get_context_info(context=context)
 
@@ -65,14 +67,13 @@ class Predictor:
         # return "context_id", ",".join(templates)
 
     def split_line(self, line: str):
-        msg_log = re.compile("(.*) \"?msg\"?=(.*)")
-        dot_go_log = re.compile("(.*\.go[: ]\d+[:\]])(.*)")
-        m = msg_log.match(line)
+
+        m = self.msg_log.match(line)
         if m:
             info = m.group(1)
             text = m.group(2)
         else:
-            m = dot_go_log.match(line)
+            m = self.dot_go_log.match(line)
             if m:
                 info = m.group(1)
                 text = m.group(2)
