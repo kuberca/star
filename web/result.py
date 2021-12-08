@@ -147,9 +147,11 @@ def group_update(id):
             analysis = request.form['analysis']
             label = request.form['label']
             error_type = request.form['error_type']
+            objects = request.form['objects']
             group.analysis = analysis
             group.label = label
             group.error_type = error_type
+            group.objects = objects
             get_server().results.resolve_group(group)
 
             return redirect(url_for('result.groups'))

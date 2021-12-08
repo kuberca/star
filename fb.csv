@@ -73,3 +73,56 @@ Error,Ignored,Failed to get local addresses assuming no local IPs err route ip+n
 Normal,NA,<*> <*> <*> <*> I | embed rejected connection from <*> <*> error EOF ServerName
 Error,Ignored,<*> <*> <*> <*> W | etcdserver failed to revoke <*> etcdserver request timed out
 Error,OperationTimeout,<*> <*> <*> <*> W | etcdserver read-only range request key <*> range_end <*> count_only true with result error etcdserver leader changed took too long <*> to execute
+Error,ConnectionError,failed to prepare current and previous objects conversion webhook for <*> Kind Machine failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind Machine conversion webhook for <*> Kind Machine failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,ConnectionError,failed to prepare current and previous objects conversion webhook for <*> Kind MachineDeployment failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,<*> <*> watch of <*> Kind MachineDeployment ended with Internal error occurred conversion webhook for <*> Kind MachineDeployment failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind MachineDeployment conversion webhook for <*> Kind MachineDeployment failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,ConnectionError,<*> <*> watch of <*> Kind VSphereMachine ended with Internal error occurred conversion webhook for <*> Kind VSphereMachine failed Post https <*> <*> <*> dial tcp <*> <*> i/o timeout
+Error,ConnectionError,failed to prepare current and previous objects conversion webhook for <*> Kind VSphereMachine failed Post https <*> <*> <*> dial tcp <*> <*> i/o timeout
+Error,ConnectionError,failed to prepare current and previous objects conversion webhook for <*> Kind Cluster failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind Cluster conversion webhook for <*> Kind Cluster failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,ConnectionError,<*> <*> watch of <*> Kind Cluster ended with Internal error occurred conversion webhook for <*> Kind Cluster failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,failed to prepare current and previous objects conversion webhook for <*> Kind KubeadmConfig failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,<*> <*> watch of <*> Kind KubeadmConfig ended with Internal error occurred conversion webhook for <*> Kind KubeadmConfig failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,failed to prepare current and previous objects conversion webhook for <*> Kind MachineSet failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,<*> <*> watch of <*> Kind MachineSet ended with Internal error occurred conversion webhook for <*> Kind MachineSet failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind KubeadmConfig conversion webhook for <*> Kind KubeadmConfig failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,ConnectionError,cacher unstructured.Unstructured unexpected ListAndWatch error failed to list <*> Kind MachineSet conversion webhook for <*> Kind MachineSet failed Post https <*> <*> <*> dial tcp <*> <*> connect connection refused reinitializing...
+Error,ConnectionError,Failed to watch <*> failed to list <*> Get https <*> <*> <*> resourceVersion 0 dial tcp <*> <*> i/o timeout
+Error,ConnectionError,Failed to watch <*> failed to list <*> Get https <*> <*> <*> resourceVersion 0 dial tcp <*> <*> connect no route to host
+Error,ConnectionError,<*> failed with failing or missing response from https <*> <*> Get https <*> <*> dial tcp <*> <*> i/o timeout
+Error,ConnectionError,caller level.go <*> error <*> error occurred n t Failed to join <*> dial tcp <*> <*> connect connection refused n n expected <*> joined 0 level error msg partial join op memberDiscovery ts <*> <*> <*>
+Error,ConnectionError,caller level.go <*> error <*> error occurred n t Failed to join <*> No installed keys could decrypt the message n n expected <*> joined 0 level error msg partial join op memberDiscovery ts <*> <*> <*>
+Error,ConnectionError,caller level.go <*> error <*> errors occurred n t Failed to join <*> No installed keys could decrypt the message n t Failed to join <*> No installed keys could decrypt the message n n expected <*> joined 0 level error msg partial join op memberDiscovery ts <*> <*> <*>
+Error,ConnectionError,sync <*> failed with Internal error occurred failed calling webhook <*> Post https <*> <*> <*> EOF
+Error,ConnectionError,sync <*> failed with Internal error occurred failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,<*> <*> <*> <*> failed to create cluster domains status object for driver pxd Failed to get clusterID for the driver Get http <*> <*> dial tcp <*> <*> connect connection refused Next retry in <*>
+Error,ConnectionError,failed to check if actions <*> <*> are licensed due to Head http <*> <*> AUTCapacityManagement dial tcp <*> <*> connect connection refused file portworx.go <*> fn syncLicenses
+Error,ConnectionError,error retrieving resource lock <*> Get https <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,grpc addrConn.createTransport failed to connect to <*> <nil> 0 <nil> . Err connection error desc transport Error while dialing dial tcp <*> connect connection refused . Reconnecting...
+Error,ConnectionError,grpc addrConn.createTransport failed to connect to https <*> <*> <nil> 0 <nil> . Err connection error desc transport Error while dialing dial tcp <*> <*> connect connection refused . Reconnecting...
+Error,ConnectionError,grpc addrConn.createTransport failed to connect to https <*> <*> <nil> 0 <nil> . Err connection error desc transport authentication handshake failed read tcp <*> <*> <*> read connection reset by peer . Reconnecting...
+Error,ConnectionError,Event occurred object <*> kind ReplicaSet apiVersion <*> type Warning reason FailedCreate message Error creating Internal error occurred failed calling webhook <*> Post https <*> <*> <*> EOF
+Error,ConnectionError,Event occurred object <*> kind ReplicaSet apiVersion <*> type Warning reason FailedCreate message Error creating Internal error occurred failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,Ignored,apiserver received an error that is not an <*> rpctypes.EtcdError code 0xe desc etcdserver leader changed etcdserver leader changed
+Error,Ignored,apiserver received an error that is not an <*> rpctypes.EtcdError code 0xe desc etcdserver request timed out etcdserver request timed out
+Error,ConnectionError,caller level.go <*> error creating NDP responder for <*> listen ip6 <*> fe80 ecee eeff feee <*> bind cannot assign requested address interface <*> level error msg failed to create NDP responder op createNDPResponder ts <*> <*> <*>
+Error,ConnectionError,caller net.go <*> component Memberlist level error msg memberlist failed to receive No installed keys could decrypt the message from <*> <*> ts <*> <*> <*>
+Error,Ignored,Request log error the server rejected our request for an unknown reason get pods <*>
+Error,Ignored,Event occurred object <*> kind Endpoints apiVersion <*> type Warning reason FailedToUpdateEndpoint message Failed to update endpoint <*> Operation cannot be fulfilled on endpoints <*> the object has been modified please apply your changes to the latest version and try again
+Error,ConnectionError,Failed calling webhook failing closed <*> failed calling webhook <*> Post https <*> <*> <*> EOF
+Error,ConnectionError,Failed calling webhook failing closed <*> failed calling webhook <*> Post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+Error,NoError,healthz check failed statuses
+Error,ConnectionError,failed to create node client to check pool expansion status. err error connecting to GRPC server <*> <*> Connection timed out file portworx.go <*>
+Error,ConnectionError,Failed to scrape all the objects from the system error connecting to GRPC server <*> <*> Connection timed out file engine.go <*> component <*>
+Error,Ignored,Failed to fetch SpectroCluster definitionsCode ResourceNotFound Msg Cluster <*> is not found Ref <*> Details <nil> cluster <*>
+Error,Ignored,Failed to get spectro cluster Code ResourceNotFound Details <nil> Message Cluster <*> is not found Ref <*> cluster <*>
+Error,Ignored,Failed to get cloud type from spectro cluster Code ResourceNotFound Details <nil> Message Cluster <*> is not found Ref <*> cluster <*>
+Error,Ignored,Failed to initialize cloud orchestrator Code ResourceNotFound Details <nil> Message Cluster <*> is not found Ref <*> cluster <*>
+Error,Ignored,body was not decodable unable to check for Status couldn t get version/kind json parse error json cannot unmarshal string into Go value of type struct APIVersion string json apiVersion omitempty Kind string json kind omitempty
+Error,Ignored,failed to keep alive rest client unauthorized error Unauthorized
+Error,Ignored,Reconciler error error Operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again name <*> namespace <*> reconciler group <*> reconciler kind MachineDeployment
+Error,Ignored,Failed to get kubeconfig from hubble. Code ResourceNotFound Msg Cluster Asset <*> is not found Ref <*> Details <nil> cluster <*>
+Error,Ignored,Failed to get kubeconfig data Code ResourceNotFound Details <nil> Message Cluster Asset <*> is not found Ref <*> cluster <*>
+Error,Ignored,Failed to create kubeconfig secret Code ResourceNotFound Details <nil> Message Cluster Asset <*> is not found Ref <*> cluster <*>

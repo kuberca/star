@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 class Batcher():
     def __init__(self, config, callback) -> None:
         print("callback is", callback)
-        self.num_threads = 4
+        self.num_threads = 1
         self.callback = callback
         self.threads = {}
         self.mq = MemQueue()

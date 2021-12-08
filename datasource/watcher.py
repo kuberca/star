@@ -14,28 +14,26 @@ from kubernetes import client, config, watch
 from config.config import Config
 from . mem_queue import MemQueue
 
-def process_log_with_context(mq: MemQueue, meta: dict, callback):
+def process_log_with_context(mq: MemQueue, callback):
     while True:
-        line, context = mq.get()
+        line, meta, context = mq.get()
         callback(line, meta, context)
 
-def tail_log(api, namespace, pod, container, callback):
+def tail_log(api, namespace, pod, container, mq, callback):
     w = watch.Watch()
     meta = {"namespace":namespace, "pod":pod, "container": container}
-    
-    mq = MemQueue()
-    # mq.bg_worker()
-    th = threading.Thread(target=process_log_with_context, args=(mq, meta, callback))
-    th.start()
 
     for line in w.stream(api.read_namespaced_pod_log, name=pod, namespace=namespace, container=container):
-        mq.put(line)
+        mq.put(line, meta, context={})
 
 class Watcher():
     def __init__(self, config: Config, callback) -> None:
         print("callback is", callback)
         self.callback = callback
         self.threads = {}
+        self.num_workers = 1
+        self.mq = MemQueue()
+        self.create_start_queue_worker()
 
     def get_key(self, pod: str, container : str):
         return "%s_%s" % (pod, container)
@@ -45,12 +43,30 @@ class Watcher():
         th.start()
 
     def start(self):
-        print()
         config.load_kube_config()
         w = watch.Watch()
         v1 = client.CoreV1Api()
-        namespace = "default"
-        for event in w.stream(v1.list_namespaced_pod, namespace=namespace, watch=True):
+        namespaces = v1.list_namespace().items
+        # cnt = 0
+        for namespace in namespaces:
+            if "cluster-" not in namespace.metadata.name:
+                continue
+            
+            # temp hack to only watch one namespace
+            # cnt += 1
+            # if cnt > 3:
+            #     break
+
+            th = threading.Thread(target=self.watch_namespace, args=(v1, w, namespace.metadata.name))
+            th.start()
+
+            # th.join()
+
+    # watch namespace and tail log for each pod
+    def watch_namespace(self, client, watch, namespace):
+        print("watching namespace", namespace)
+
+        for event in watch.stream(client.list_namespaced_pod, namespace=namespace, watch=True):
             print("Event: %s %s %s" % (
                 event["type"],
                 event["object"].kind,
@@ -69,10 +85,16 @@ class Watcher():
                 for container in containers:
                     key = self.get_key(podname, container)
                     if key not in self.threads:
-                        th = threading.Thread(target=tail_log, args=(v1, namespace, podname, container, self.callback))
+                        th = threading.Thread(target=tail_log, args=(client, namespace, podname, container, self.mq, self.callback))
                         th.start()
                         self.threads[key] = th
-            # th.join()
+
+
+    # start a new thread to read from the queue and process the lines
+    def create_start_queue_worker(self): 
+        for i in range(self.num_workers):
+            th = threading.Thread(target=process_log_with_context, name="process_log_with_context_watcher", args=(self.mq, self.callback))
+            th.start()
 
 
 

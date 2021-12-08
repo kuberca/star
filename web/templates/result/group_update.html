@@ -22,7 +22,7 @@
   <select name="label" id="label">
     <option value="Error" {% if request.form['label'] == 'Error' or group['label']  == 'Error' %}selected{% endif %}>Error</option>  
     <option value="Normal" {% if request.form['label'] == 'Normal' or group['label'] == 'Normal' %}selected{% endif %}>Normal</option>
-  </select>
+  </select><br>
 
   <label for="error_type">Predict Error Type</label>
   <select name="error_type" id="error_type">
@@ -40,6 +40,10 @@
     <option value="OperationNotAllowed" {% if request.form['error_type'] == 'OperationNotAllowed' or group['error_type'] == 'OperationNotAllowed' %}selected{% endif %}>Operation Not Allowed</option>
     <option value="QuotaExceeded" {% if request.form['error_type'] == 'QuotaExceeded' or group['error_type'] == 'QuotaExceeded' %}selected{% endif %}>Quota Exceeded</option>
   </select>
+
+  <br>
+  <label for="objects">Target Objects</label>
+  <input type="text" id="objects" name="objects" value={{ request.form['objects'] or group['objects'] }}></input>
 
   <label for="analysis">Root Cause Analysis</label>
   <textarea name="analysis" id="analysis" >{{ request.form['analysis'] or group['analysis'] }}</textarea>

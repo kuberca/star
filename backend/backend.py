@@ -66,7 +66,7 @@ class Server():
         
         # print("after prediction", result.meta)
 
-        if result.is_error():
+        if result is not None and result.is_error():
             self.results.add(result)
 
 

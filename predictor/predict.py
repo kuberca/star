@@ -24,6 +24,9 @@ class Predictor:
 
     def predict(self, line: str, meta: dict={}, context: dict = {}) -> Result:
         text, info = self.split_line(line)
+        if text == "":
+            return None
+
         meta.update({"info":info})
 
         # self.lock.acquire()
@@ -67,17 +70,20 @@ class Predictor:
         # return "context_id", ",".join(templates)
 
     def split_line(self, line: str):
-
-        m = self.msg_log.match(line)
-        if m:
-            info = m.group(1)
-            text = m.group(2)
-        else:
-            m = self.dot_go_log.match(line)
+        try:
+            m = self.msg_log.match(line)
             if m:
                 info = m.group(1)
                 text = m.group(2)
             else:
-                text = line
-                info = {}
-        return text, info
+                m = self.dot_go_log.match(line)
+                if m:
+                    info = m.group(1)
+                    text = m.group(2)
+                else:
+                    text = line
+                    info = {}
+            return text, info
+        except Exception as e:
+            print(e)
+            return "", {}
