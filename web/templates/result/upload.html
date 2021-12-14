@@ -16,9 +16,15 @@
 {% block content %}
 <h1>{% block title %}Upload Log file {% endblock %}</h1>
 
-  <form  method = "POST" 
-    enctype = "multipart/form-data">
+  <form  method = "POST" enctype = "multipart/form-data">
+
+    <label for="file">Upload local log file </label>
     <input type = "file" name = "file" />
+    <br>
+    
+    <label for="link">OR use http URL</label>
+    <input type="text" id="link" name="link" value={{ request.form['link'] }}></input>
+
     <input type = "submit"/>
   </form>   
   <hr>

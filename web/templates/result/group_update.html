@@ -29,16 +29,19 @@
     <option value="NoError" {% if request.form['error_type'] == 'NoError' or group['error_type']  == 'NoError' %}selected{% endif %}>Not an Error</option> 
     <option value="Ignored" {% if request.form['error_type'] == 'Ignored' or group['error_type']  == 'Ignored' %}selected{% endif %}>Can Be Ignored</option> 
     <option value="ConnectionError" {% if request.form['error_type'] == 'ConnectionError' or group['error_type']  == 'ConnectionError' %}selected{% endif %}>Connection Error</option>  
+    <option value="ServerError" {% if request.form['error_type'] == 'ServerError' or group['error_type']  == 'ServerError' %}selected{% endif %}>Server Error</option>  
     <option value="DataError" {% if request.form['error_type'] == 'DataError' or group['error_type'] == 'DataError' %}selected{% endif %}>Data Error</option>
     <option value="TLSCertError" {% if request.form['error_type'] == 'TLSCertError' or group['error_type'] == 'TLSCertError' %}selected{% endif %}>TLS Cert Error</option>
     <option value="OperationTimeout" {% if request.form['error_type'] == 'OperationTimeout' or group['error_type'] == 'OperationTimeout' %}selected{% endif %}>Operation Timeout</option>
-    <option value="CommandFailed" {% if request.form['error_type'] == 'CommandFailed' or group['error_type'] == 'CommandFailed' %}selected{% endif %}>Command Failed</option>
+    <option value="OperationFailed" {% if request.form['error_type'] == 'OperationFailed' or group['error_type'] == 'OperationFailed' %}selected{% endif %}>Operation Failed</option>
     <option value="ResourceNotFound" {% if request.form['error_type'] == 'ResourceNotFound' or group['error_type'] == 'ResourceNotFound' %}selected{% endif %}>Resource Not Found</option>
     <option value="FileNotExist" {% if request.form['error_type'] == 'FileNotExist' or group['error_type'] == 'FileNotExist' %}selected{% endif %}>File Not Exist</option>
     <option value="DNSError" {% if request.form['error_type'] == 'DNSError' or group['error_type'] == 'DNSError' %}selected{% endif %}>DNS Error</option>
     <option value="NotAuthorized" {% if request.form['error_type'] == 'NotAuthorized' or group['error_type'] == 'NotAuthorized' %}selected{% endif %}>Not Authorized</option>
     <option value="OperationNotAllowed" {% if request.form['error_type'] == 'OperationNotAllowed' or group['error_type'] == 'OperationNotAllowed' %}selected{% endif %}>Operation Not Allowed</option>
     <option value="QuotaExceeded" {% if request.form['error_type'] == 'QuotaExceeded' or group['error_type'] == 'QuotaExceeded' %}selected{% endif %}>Quota Exceeded</option>
+    <option value="CRDNotAvailable" {% if request.form['error_type'] == 'CRDNotAvailable' or group['error_type'] == 'CRDNotAvailable' %}selected{% endif %}>CRD Not Available</option>
+    <option value="ErrorEvent" {% if request.form['error_type'] == 'ErrorEvent' or group['error_type'] == 'ErrorEvent' %}selected{% endif %}>Error Event</option>
   </select>
 
   <br>

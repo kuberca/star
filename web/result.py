@@ -6,6 +6,7 @@ import os
 from werkzeug.utils import secure_filename
 from werkzeug.exceptions import abort
 from datetime import datetime
+import urllib
 
 from backend.backend import Server
 
@@ -54,9 +55,17 @@ def upload():
 
     if request.method == 'POST':
         file = request.files['file']
-        filename = secure_filename(file.filename)
-        fullfile=os.path.join(UPLOAD_FOLDER, filename)
-        file.save(fullfile)
+        link = request.form['link']
+        if file:
+            filename = secure_filename(file.filename)
+            fullfile=os.path.join(UPLOAD_FOLDER, filename)
+            file.save(fullfile)
+        else:
+            # download file from link, save to tmp directory
+            filename = urllib.parse.urlsplit(link).path.split('/')[-1]
+            fullfile=os.path.join(UPLOAD_FOLDER, filename)
+            urllib.request.urlretrieve(link, fullfile)
+
         get_server().start_batch_in_bg(fullfile)
 
         return redirect(url_for('index'))
