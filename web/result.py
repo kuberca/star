@@ -228,4 +228,4 @@ def start_backend():
     cfg = {}
     cfg["drain3"]={"config_file":"drain3.ini", "persist_dir":".", "model_file":"model/star.cla.bin"}
     server = Server(config=cfg)
-    # server.start_in_bg()
+    server.start_in_bg()

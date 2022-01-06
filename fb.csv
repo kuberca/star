@@ -123,20 +123,20 @@ Error,Ignored,Failed to initialize cloud orchestrator Code ResourceNotFound Deta
 Error,Ignored,body was not decodable unable to check for Status couldn t get version/kind json parse error json cannot unmarshal string into Go value of type struct APIVersion string json apiVersion omitempty Kind string json kind omitempty
 Error,Ignored,failed to keep alive rest client unauthorized error Unauthorized
 Error,Ignored,Reconciler error error Operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again name <*> namespace <*> reconciler group <*> reconciler kind MachineDeployment
-Error,Ignored,Failed to get kubeconfig from hubble. Code ResourceNotFound Msg Cluster Asset <*> is not found Ref <*> Details <nil> cluster <*>
-Error,Ignored,Failed to get kubeconfig data Code ResourceNotFound Details <nil> Message Cluster Asset <*> is not found Ref <*> cluster <*>
-Error,Ignored,Failed to create kubeconfig secret Code ResourceNotFound Details <nil> Message Cluster Asset <*> is not found Ref <*> cluster <*>
+Error,ResourceNotFound,Failed to get kubeconfig from hubble. Code ResourceNotFound Msg Cluster Asset <*> is not found Ref <*> Details <nil> cluster <*>
+Error,ResourceNotFound,Failed to get kubeconfig data Code ResourceNotFound Details <nil> Message Cluster Asset <*> is not found Ref <*> cluster <*>
+Error,ResourceNotFound,Failed to create kubeconfig secret Code ResourceNotFound Details <nil> Message Cluster Asset <*> is not found Ref <*> cluster <*>
 Error,Ignored,problem running manager error leader election <*>
 Error,Ignored,failed to renew lease <*> timed out waiting for the condition
 Error,Ignored,error spectrocluster Namespace <*> Name <*> message Warning resource serviceaccounts/default is missing the <*> annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create <*> or kubectl apply. The missing annotation will be patched automatically.
 Error,Ignored,Failed to delete Azure machine using cached capi machine <*> <*> not found cluster <*>
-Error,,Recovered from panic. Failed to get master pool name from cloud config <*> as it doesn t contain any machine pool. goroutine <*> running runtime/debug.Stack <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> panic <*> <*> <*> <*> <*> <*> <*> 0x0 0x0 <*> <*> <*> main.main <*> <*> <*>
+Error,ServerError,Recovered from panic. Failed to get master pool name from cloud config <*> as it doesn t contain any machine pool. goroutine <*> running runtime/debug.Stack <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> panic <*> <*> <*> <*> <*> <*> <*> 0x0 0x0 <*> <*> <*> main.main <*> <*> <*>
 Error,Ignored,aws Error cloudformation spectrocluster Namespace <*> Name <*> code ValidationError error ValidationError Stack with id <*> does not exist n tstatus code <*> request id <*> region <*>
 Error,Ignored,Error health checking cluster error context deadline exceeded cluster <*>
 Error,CRDNotAvailable,error spectrocluster Namespace <*> Name <*> message error unable to recognize <*> no matches for kind Installation in version <*>
 Error,CRDNotAvailable,Reconciler error error failed to do kubectl apply error unable to recognize <*> no matches for kind Installation in version <*> exit status <*> name <*> namespace <*> reconciler group <*> reconciler kind SpectroCluster
 Error,Ignored,failed to get Pack object error <*> <*> not found spectrocluster azure-static
-Error,Ignored,kubeconfig not available retry later spectrocluster Namespace <*> Name <*> more info failed to get from secret Secret <*> not found
+Error,ResourceNotFound,kubeconfig not available retry later spectrocluster Namespace <*> Name <*> more info failed to get from secret Secret <*> not found
 Error,ConnectionError,Failed to update KubeadmControlPlane Status error failed to create remote cluster client error creating client and cache for remote cluster error creating <*> rest mapper for remote cluster <*> Get https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers cluster <*> name <*> namespace <*> reconciler group <*> reconciler kind KubeadmControlPlane
 Error,ConnectionError,Reconciler error error failed to create remote cluster client error creating client and cache for remote cluster error creating <*> rest mapper for remote cluster <*> Get https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers name <*> namespace <*> reconciler group <*> reconciler kind KubeadmControlPlane
 Error,ConnectionError,Failed to update KubeadmControlPlane Status error failed to create remote cluster client error creating client and cache for remote cluster error creating <*> rest mapper for remote cluster <*> Get https <*> <*> <*> dial tcp <*> <*> i/o timeout cluster <*> name <*> namespace <*> reconciler group <*> reconciler kind KubeadmControlPlane
@@ -251,7 +251,7 @@ Error,ConnectionError,failed to ensure lease exists will retry in <*> error Get 
 Error,ConnectionError,failed to ensure lease exists will retry in <*> error Get https <*> <*> dial tcp <*> <*> connect connection refused
 Error,ConnectionError,Failed to get status for pod podUID <*> pod <*> err Get https <*> dial tcp <*> <*> connect connection refused
 Error,ConnectionError,Probe failed probeType Liveness pod <*> podUID <*> containerName <*> probeResult failure output Get http <*> <*> dial tcp <*> <*> connect connection refused
-Error,FileNotExist,error while reading <*> link readlink <*> no such file or directory
+Error,Ignored,error while reading <*> link readlink <*> no such file or directory
 Error,FileNotExist,error while listing directory <*> to read ulimits open <*> no such file or directory
 Error,FileNotExist,error while listing directory <*> to measure fd count open <*> no such file or directory
 Error,Ignored,Probe failed for https <*> <*> with request headers map Accept <*> <*> <*> response body kind Status apiVersion <*> metadata status Failure message forbidden User system anonymous cannot get path <*> reason Forbidden details code <*>
@@ -274,7 +274,7 @@ Error,OperationFailed,<*> restarting failed container err back-off <*> restartin
 Error,OperationFailed,Error syncing pod skipping err failed to StartContainer for <*> with CrashLoopBackOff back-off <*> restarting failed container <*> pod <*> <*> pod <*> podUID <*>
 Error,ConnectionError,Probe failed probeType Liveness pod <*> podUID <*> containerName <*> probeResult failure output Get http <*> <*> context deadline exceeded Client.Timeout exceeded while awaiting headers
 Error,ConnectionError,Event occurred object <*> kind Pod apiVersion <*> type Warning reason Unhealthy message Liveness probe failed Get http <*> <*> context deadline exceeded Client.Timeout exceeded while awaiting headers
-Error,Ignored,Failed to ensure that <*> chain exists <*> chain err error creating chain <*> exit status <*> ip6tables <*> can t initialize ip6tables table `nat Table does not exist do you need to insmod? nPerhaps ip6tables or your kernel needs to be upgraded. n
+Error,OperationFailed,Failed to ensure that <*> chain exists <*> chain err error creating chain <*> exit status <*> ip6tables <*> can t initialize ip6tables table `nat Table does not exist do you need to insmod? nPerhaps ip6tables or your kernel needs to be upgraded. n
 Error,Ignored,Failed to initialize protocol iptables rules some functionality may be missing. protocol IPv6
 Error,Ignored,Failed to get the info of the filesystem with mountpoint err unable to find data in memory cache mountpoint <*>
 Error,Ignored,Error getting node err node <*> not found
@@ -391,3 +391,76 @@ Error,Ignored,Ignoring inactive pod <*> in state Failed deletion time <*> <*> <*
 Error,TLSCertError,syncing <*> failed Internal error occurred failed calling webhook <*> failed to call webhook Post https <*> <*> <*> <*> certificate signed by unknown authority
 Error,Ignored,error reading persistent volume <*> persistentvolumes <*> not found
 Error,Ignored,<*> attacher.VolumesAreAttached failed in AttachmentLister for attach.ID <*> <*> <*> not found. Probing the API server.
+Error,ConnectionError,failed to reconcile AzureMachinePool error failed to create scale set failed to get VMSS <*> failed to get result from future operation type PUT on Azure resource <*> is not done. Object will be requeued after <*> namespace <*> reconciler group <*> reconciler kind AzureMachinePool <*> <*> name <*>
+Error,ConnectionError,Reconciler error error failed to create scale set failed to start updating VMSS failed to generate scale set update parameters for <*> failed to retrieve bootstrap data failed to retrieve bootstrap data secret for AzureMachinePool <*> Secret <*> not found name <*> namespace <*> reconciler group <*> reconciler kind AzureMachinePool
+Error,ConnectionError,Reconciler error error error creating client and cache for remote cluster error fetching REST client config for remote cluster <*> failed to retrieve kubeconfig secret for Cluster <*> secrets <*> not found name <*> namespace <*> reconciler group <*> reconciler kind ClusterResourceSet
+Error,ConnectionError,Reconciler error error error creating client and cache for remote cluster error creating <*> rest mapper for remote cluster <*> Get https <*> <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers name <*> namespace <*> reconciler group <*> reconciler kind ClusterResourceSet
+Error,ConnectionError,Probe failed probeType Readiness pod <*> podUID <*> containerName <*> probeResult failure output Get https <*> <*> read tcp <*> <*> <*> read connection reset by peer
+Error,ConnectionError,Probe failed probeType Readiness pod <*> podUID <*> containerName <*> probeResult failure output Get https <*> <*> dial tcp <*> <*> connect connection refused
+Error,ConnectionError,Event occurred object <*> kind Pod apiVersion <*> type Warning reason Unhealthy message Readiness probe failed Get https <*> <*> read tcp <*> <*> <*> read connection reset by peer
+Error,ConnectionError,Event occurred object <*> kind Pod apiVersion <*> type Warning reason Unhealthy message Readiness probe failed Get https <*> <*> dial tcp <*> <*> connect connection refused
+Error,ResourceNotFound,Reconciler error error <*> <*> not found name <*> namespace <*> reconciler group <*> reconciler kind AzureCluster
+Error,ErrorEvent,Event occurred object <*> kind Pod apiVersion <*> type Warning reason BackOff message <*> restarting failed container
+Error,Ignored,Error group version <*> that has not been registered
+Error,ServerError,Failed to fetch latest version for service palette . Code Service Unavailable Msg <*> Service Temporarily Unavailable Ref Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n cluster <*>
+Error,ServerError,upgrade agent Failed to get latest version for service palette. Code Service Unavailable Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n Message <*> Service Temporarily Unavailable Ref cluster <*>
+Error,ServerError,upgrade agent Failed to check update required in palette Code Service Unavailable Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n Message <*> Service Temporarily Unavailable Ref cluster <*>
+Error,ServerError,upgrade agent Failed to check version upgrade Code Service Unavailable Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n Message <*> Service Temporarily Unavailable Ref cluster <*>
+Error,ServerError,Failed to post manifestCode Service Unavailable Msg <*> Service Temporarily Unavailable Ref Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n cluster <*>
+Error,ServerError,BACKUP Failed to update hubble with manifest Code Service Unavailable Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n Message <*> Service Temporarily Unavailable Ref cluster <*>
+Error,ServerError,Failed to update SpectroClusterStatusConditions Code Service Unavailable Msg <*> Service Temporarily Unavailable Ref Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n cluster <*>
+Error,ServerError,Failed to push status conditions Code Service Unavailable Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n Message <*> Service Temporarily Unavailable Ref cluster <*>
+Error,ServerError,Failed to process spectro cluster status event Code Service Unavailable Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n Message <*> Service Temporarily Unavailable Ref cluster <*>
+Error,ServerError,Failed to post bulk events Code Service Unavailable Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n Message <*> Service Temporarily Unavailable Ref cluster <*>
+Error,ServerError,Failed to post events Code Service Unavailable Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n Message <*> Service Temporarily Unavailable Ref cluster <*>
+Error,ServerError,Failed to push audit event Code Service Unavailable Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n Message <*> Service Temporarily Unavailable Ref cluster <*>
+Error,ServerError,Failed to post audit events Code Service Unavailable Details <html> r n<head><title>503 Service Temporarily Unavailable</title></head> r n<body> r <*> Service Temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n Message <*> Service Temporarily Unavailable Ref cluster <*>
+Error,ServerError,Error deleting a network error googleapi Error <*> <*> <*> The network resource <*> is already being used by <*> namespace <*> reconciler group <*> reconciler kind GCPCluster name <*>
+Error,ServerError,Reconcile error error googleapi Error <*> <*> <*> The network resource <*> is already being used by <*> name <*> namespace <*> reconciler group <*> reconciler kind GCPCluster
+Error,ServerError,Reconciler error error googleapi Error <*> <*> <*> The network resource <*> is already being used by <*> name <*> namespace <*> reconciler group <*> reconciler kind GCPCluster
+Error,ResourceNotFound,Subnetwork not found.. skipping error googleapi Error <*> The resource <*> was not found notFound namespace <*> reconciler group <*> reconciler kind GCPCluster name <*> region <*>
+Error,ConnectionError,Reconciler error error failed to create client for Cluster <*> Get https <*> <*> <*> request canceled while waiting for connection Client.Timeout exceeded while awaiting headers name <*> namespace <*> reconciler group <*> reconciler kind MachinePool
+Error,ConnectionError,Reconciler error error failed to create client for Cluster <*> Get https <*> <*> dial tcp <*> <*> i/o timeout name <*> namespace <*> reconciler group <*> reconciler kind MachinePool
+Error,ConnectionError,Reconciler error error failed to create client for Cluster <*> Get https <*> <*> context deadline exceeded name <*> namespace <*> reconciler group <*> reconciler kind MachinePool
+Error,ConnectionError,Reconciler error error failed to create client for Cluster <*> Get https <*> <*> context deadline exceeded Client.Timeout exceeded while awaiting headers name <*> namespace <*> reconciler group <*> reconciler kind MachinePool
+Error,ConnectionError,Reconciler error error failed to create client for Cluster <*> Get https <*> <*> dial tcp <*> <*> i/o timeout Client.Timeout exceeded while awaiting headers name <*> namespace <*> reconciler group <*> reconciler kind MachinePool
+Error,ConnectionError,Reconciler error error failed to reconcile <*> config for AWSManagedControlPlane <*> getting client for remote cluster Get https <*> <*> dial tcp <*> <*> i/o timeout name <*> namespace <*> reconciler group <*> reconciler kind AWSManagedControlPlane
+Error,OperationNotAllowed,Failed to update SpectroClusterStatusCondition Code ClusterOperationNotAllowed Msg cluster operation cluster conditionType update not allowed with cluster state Deleted Ref <*> Details <nil> cluster <*>
+Error,OperationNotAllowed,Failed to update cluster condition Code ClusterOperationNotAllowed Details <nil> Message cluster operation cluster conditionType update not allowed with cluster state Deleted Ref <*> cluster <*>
+Error,OperationNotAllowed,Failed to orchestrate cluster resources Code ClusterOperationNotAllowed Details <nil> Message cluster operation cluster conditionType update not allowed with cluster state Deleted Ref <*> cluster <*>
+Error,ResourceNotFound,Failed to get manifest from hubble. Code ResourceNotFound Msg Cluster Asset <*> is not found Ref <*> Details <nil> cluster <*>
+Error,ResourceNotFound,BACKUP Failed to get manifest from hubble Code ResourceNotFound Details <nil> Message Cluster Asset <*> is not found Ref <*> cluster <*>
+Error,ResourceNotFound,Failed to apply manifest. Code ResourceNotFound Details <nil> Message Cluster Asset <*> is not found Ref <*> cluster <*>
+Error,ConnectionError,Failed to publish message unable to post the message over the subject <*> due to nats timeout cluster <*>
+Error,Ignored,Failed to watch <*> failed to list <*> Get https <*> <*> <*> timeout <*> context deadline exceeded
+Error,Ignored,Failed to watch <*> failed to list <*> context deadline exceeded
+Error,ConnectionError,Failed to convert events to msg unable to post the message over the subject <*> due to nats timeout cluster <*>
+Error,ConnectionError,Failed to audit. Retrying via different transport. unable to post the message over the subject <*> due to nats timeout cluster <*>
+Error,ConnectionError,Failed to publish event msg unable to post the message over the subject <*> due to nats timeout cluster <*>
+Error,ConnectionError,Failed to publish events. Retrying via different transport. unable to post the message over the subject <*> due to nats timeout cluster <*>
+Error,ResourceNotFound,Reconciler error error failed to get cluster <*> for machine <*> in namespace <*> failed to get <*> <*> <*> not found name <*> namespace <*> reconciler group <*> reconciler kind Machine
+Error,ResourceNotFound,Reconciler error error failed to set force pivot annotation for the cluster namespace namespaces <*> not found name <*> namespace <*> reconciler group <*> reconciler kind SpectroCluster
+Error,ResourceNotFound,Reconciler error error kubeconfig not available name <*> namespace <*> reconciler group <*> reconciler kind SpectroCluster
+Error,ServerError,Failed Request PATCH <*> uid <*> error Code Service Unavailable Details <html>
+Error,ServerError,Failed Request PUT <*> uid <*> error Code Service Unavailable Details <html>
+Error,ServerError,retrying <*> Request PATCH <*> uid <*> Failed Request PATCH <*> uid <*> error Code Service Unavailable Details <html>
+Error,ServerError,retrying <*> Request PUT <*> uid <*> Failed Request PUT <*> uid <*> error Code Service Unavailable Details <html>
+Error,ConnectionError,failed to reconcile conditions cluster <*> name <*> namespace <*> reconciler group <*> reconciler kind KubeadmControlPlane error cannot get remote client to workload cluster error creating client and cache for remote cluster error creating <*> rest mapper for remote cluster <*> context deadline exceeded
+Error,ServerError,Failed Request GET <*> serviceName <*> error Code Service Unavailable Details <html>
+Error,ServerError,retrying <*> Request GET <*> serviceName <*> Failed Request GET <*> serviceName <*> error Code Service Unavailable Details <html>
+Error,Ignored,Failed to update lock etcdserver request timed out
+Error,ResourceNotFound,Failed to get GCPMachine <*> <*> not found cluster <*>
+Error,ResourceNotFound,Failed to get GCPMachine <*> . <*> <*> not found cluster <*>
+Error,ResourceNotFound,Failed to process machine event for machine <*> <*> <*> not found cluster <*>
+Error,ResourceNotFound,Failed to get master machine pool name Failed to get master pool name from cloud config <*> as it doesn t contain any machine pool cluster <*>
+Error,ResourceNotFound,Failed to get GcpMachine data from store using capi machine name Failed to get machine data as couldn t find any matching machine with capi machine name <*> cluster <*>
+Error,ResourceNotFound,Reconciler error error <*> <*> not found name <*> namespace <*> reconciler group <*> reconciler kind GCPMachine
+Error,OperationFailed,Reconciler error error failed to force pivot cluster <*> name <*> namespace <*> reconciler group <*> reconciler kind SpectroCluster
+Error,ResourceNotFound,Reconciler error error <*> <*> not found name <*> namespace <*> reconciler group <*> reconciler kind Machine
+Error,Ignored,error retrieving resource lock <*> etcdserver request timed out
+Error,Ignored,Failed to delete gcp machine using cached capi machine <*> <*> not found cluster <*>
+Error,ConnectionError,Failed to scrape node err Get https <*> <*> true context deadline exceeded node <*>
+Error,ConnectionError,getting client for remote cluster error Get https <*> <*> dial tcp <*> <*> i/o timeout
+Error,ServerError,retrying <*> Request POST <*> Failed Request POST <*> error Code Service Unavailable Details <html>
+Error,ResourceNotFound,Reconciler error error failed to reconcile network for AWSManagedControlPlane <*> <*> is set but VPC resource is missing in AWS failed to describe VPC resources. might be in creation process InvalidVpcID.NotFound The vpc ID <*> does not exist n tstatus code <*> request id <*> name <*> namespace <*> reconciler group <*> reconciler kind AWSManagedControlPlane
+Error,NotAuthorized,Failed to scrape node err GET https <*> <*> true bad status code <*> Unauthorized node <*>

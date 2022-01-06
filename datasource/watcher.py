@@ -46,19 +46,23 @@ class Watcher():
         config.load_kube_config()
         w = watch.Watch()
         v1 = client.CoreV1Api()
-        namespaces = v1.list_namespace().items
+        namespaces = set()
         # cnt = 0
-        for namespace in namespaces:
-            if "cluster-" not in namespace.metadata.name:
-                continue
-            
-            # temp hack to only watch one namespace
-            # cnt += 1
-            # if cnt > 3:
-            #     break
+        for event in w.stream(v1.list_namespace):
+            namespace = event["object"].metadata.name
 
-            th = threading.Thread(target=self.watch_namespace, args=(v1, w, namespace.metadata.name))
-            th.start()
+            if event["type"] == "DELETED":
+                print("namespace deleted, stop watching", namespace)
+                namespaces.remove(namespace)
+
+                continue
+            elif event["object"].status.phase == "Active": 
+                if namespace in namespaces or "cluster-" not in namespace:
+                    continue
+                
+                namespaces.add(namespace)
+                th = threading.Thread(target=self.watch_namespace, args=(v1, w, namespace))
+                th.start()
 
             # th.join()
 
@@ -67,12 +71,8 @@ class Watcher():
         print("watching namespace", namespace)
 
         for event in watch.stream(client.list_namespaced_pod, namespace=namespace, watch=True):
-            print("Event: %s %s %s" % (
-                event["type"],
-                event["object"].kind,
-                event["object"].metadata.name)
-            )
-            # print(event)
+            # print("Event: %s %s %s" % (event["type"],event["object"].kind, event["object"].metadata.name))
+
             podname = event["object"].metadata.name
             containers = []
             for container in event["object"].spec.containers:
@@ -81,13 +81,18 @@ class Watcher():
             if event["type"] == "DELETED":
                 for c in containers:
                     th = self.threads.pop(self.get_key(podname, c))
+                    print("pod deleted, stop watching ", namespace, podname, c)
+                    th._stop()
+
             elif event["object"].status.phase == "Running":
                 for container in containers:
                     key = self.get_key(podname, container)
                     if key not in self.threads:
+                        print("start watching", namespace ,podname, container)
                         th = threading.Thread(target=tail_log, args=(client, namespace, podname, container, self.mq, self.callback))
-                        th.start()
                         self.threads[key] = th
+                        th.start()
+                        
 
 
     # start a new thread to read from the queue and process the lines
