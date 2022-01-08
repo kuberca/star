@@ -57,8 +57,10 @@ class Watcher():
 
                 continue
             elif event["object"].status.phase == "Active": 
+                # if namespace in namespaces:
                 if namespace in namespaces or "cluster-" not in namespace:
-                    continue
+                    if namespace != "kube-system":
+                        continue
                 
                 namespaces.add(namespace)
                 th = threading.Thread(target=self.watch_namespace, args=(v1, w, namespace))

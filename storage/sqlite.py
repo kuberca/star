@@ -330,6 +330,15 @@ class SqliteStore:
         )
         # self.db.commit()
 
+
+    # get all template_id and template from result table
+    def get_all_templates(self):
+        templates = self.db.execute(
+            'SELECT template_id, template FROM result'
+        ).fetchall()
+
+        return sorted([t[1] for t in templates])
+
     # cleanup delete all groups and results
     def cleanup(self):
         self.db.execute(

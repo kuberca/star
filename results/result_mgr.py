@@ -162,6 +162,17 @@ class ResultMgr:
         self.fbmgr.save(result)
         self.store.resolve(result)
 
+    # get all templates from storage
+    def get_all_templates(self):
+        templates = self.store.get_all_templates()
+        if templates is None:
+            return []
+            
+        self.template_file = "./template_nlp.txt"
+        with open(self.template_file, "w") as f:
+            for tpl in templates:
+                f.write(f"{tpl}\n")
+        return templates
 
     def cleanup(self):
         self.store.cleanup()

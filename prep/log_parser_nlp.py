@@ -35,13 +35,14 @@ class LogParserNLP:
         self.text_to_template = {}
 
         self.template_file = "./template_nlp.txt"
-        if path.isfile(self.template_file):
-            self.load_templates()
+        # if path.isfile(self.template_file):
+        #     self.load_templates()
 
     # interface for preper, userd by predictor, input is single line
     def process(self, line: str):
         out = []
-        tokens = re.split(r'\\|\s|:|;|,|\*|\"|\'|=|\[|\]|\(|\)|{|}|&|\$' ,line.strip())
+        tokens = re.split(r'\\|\s|:|;|,|\"|\'|=|\[|\]|\(|\)|{|}|&|\$' ,line.strip().lower())
+        # tokens = re.split(r'\\|\s|:|;|,|\*|\"|\'|=|\[|\]|\(|\)|{|}|&|\$' ,line.strip().lower())
 
         # for token in tokens:
         #     # above re will result in mulitple empty string tokens if there are multipe special chars in a row

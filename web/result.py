@@ -86,7 +86,7 @@ def detail(id):
 
 @bp.route('/templates')
 def templates():
-    templates = get_server().preper.get_templates()
+    templates = get_server().results.get_all_templates()
     return render_template('result/logtpl.html', templates=templates)
 
 
@@ -226,6 +226,6 @@ def start_backend():
     print("start backend")
     global server
     cfg = {}
-    cfg["drain3"]={"config_file":"drain3.ini", "persist_dir":".", "model_file":"model/star.cla.bin"}
+    cfg["drain3"]={"config_file":"drain3.ini", "persist_dir":".", "model_file":"data/star.cla.bin"}
     server = Server(config=cfg)
-    server.start_in_bg()
+    # server.start_in_bg()
