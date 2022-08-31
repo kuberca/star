@@ -13,6 +13,7 @@ from storage.sqlite import SqliteStore
 
 
 from sems.grouper import Grouper
+from sems.error_type_nlp import ErrorTypeNLP
 
 class ResultMgr:
     def __init__(self, fbmgr: FeedbackMgr, store = None):
@@ -24,6 +25,10 @@ class ResultMgr:
         # grouper group unresolved results using semantic similarity
         self.model_file = "./model/star.bin"
         self.grouper = Grouper(self.store, self.model_file)
+
+        # error_type classifier
+        self.error_type_model_file = "./error_type_cla/error_type_cla.bin"
+        self.error_type_model = ErrorTypeNLP(self.error_type_model_file)
 
     # add results into storage
     # called by predictor
@@ -39,9 +44,14 @@ class ResultMgr:
             return
         
 
-        # check if already exists in storage
+        # check if already exists in unresolved db
         res = self.get_unresolved(result.template_id, result.context_id)
+        if res is None:
+            # check if exist in resolved db
+            res = self.get_resolved(result.template_id, result.context_id)
+            
         if res is not None:
+            # result already saved to unresolved db previously
             res.count += 1
             res.input = result.input
             # update template because template will also keep updated when new variables detected
@@ -56,14 +66,22 @@ class ResultMgr:
 
             self.store.save_unresolved(res)
         else:
-            # if result not belongs to any group yet,  then save to grouper
-            group_id = self.grouper.add_result(result)
-            result.group_id = group_id
-
+            # first time to save this template into db
             if fb is not None:
                 result.label = fb.label
                 result.analysis = fb.analysis
                 result.error_type = fb.error_type
+            
+            # if error_type is empty, use classifier to predict
+            if result.error_type == "":
+                result.error_type = self.error_type_model.predict(result.template)
+                print("got error_type from nlp: ", result.error_type)
+
+            # if result not belongs to any group yet,  then save to grouper
+            group_id = self.grouper.add_result(result)
+            result.group_id = group_id
+            print("got error_type from nlp, group id: ", group_id)
+
             self.store.save_unresolved(result)
 
     # split result from group, save into another manual group
@@ -135,6 +153,12 @@ class ResultMgr:
     # get one single group with results
     def get_resolved_group(self, id: int) -> Group:
         return self.store.get_group_with_results(id, resolved=1)
+
+    # resolve all unresolved groups
+    def resolve_all(self):
+        groups = self.get_all_unresolved_groups()
+        for g in groups:
+            self.resolve_group(g)
 
     # resolve group
     def resolve_group(self, group: Group):

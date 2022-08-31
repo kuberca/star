@@ -29,6 +29,12 @@ def resolved():
     sorted_resolved = sorted(resolved, key=lambda it: it.count, reverse=True)
     return render_template('result/resolved.html', resolved=sorted_resolved)
 
+
+@bp.route('/resolve_all')
+def resolve_all():
+    get_server().results.resolve_all()
+    return redirect(url_for('index'))
+
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 def update(id):
     is_resolved = request.args.get('resolved')
@@ -163,7 +169,7 @@ def group_update(id):
             group.objects = objects
             get_server().results.resolve_group(group)
 
-            return redirect(url_for('result.groups'))
+            return redirect(url_for('result.groups', error_type="NotIgnored"))
 
     
 

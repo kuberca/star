@@ -1,10 +1,10 @@
 import os
 import openai
 
-# openai.api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = "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"
+openai.api_key = os.getenv("OPENAI_API_KEY")
+# openai.api_key = ""
 
-prompt="""summarize keywords from text
+prompt="""summarize action and failed reason from text
 
 Text: 
 failed to reconcile network error using unmanaged vpc and subnet <*> cidr specified but it doesn t exist in vpc <*> cluster <*> name <*> namespace <*> reconciler group <*> reconciler kind AWSCluster
@@ -114,18 +114,11 @@ Error removing protection finalizer from PVC err Operation cannot be fulfilled o
 action:
 Error removing protection finalizer from PVC
 reason:
-StorageError invalid object
+Precondition failed UID in precondition
 
 
 Text:
-Error syncing deployment deployment <*> err Operation cannot be fulfilled on <*> deployment StorageError invalid object Code 4 Key <*> ResourceVersion 0 AdditionalErrorMsg Precondition failed UID in precondition <*> UID in object meta
-
-action:
-Error syncing deployment
-reason:
-StorageError invalid object
-
-
+reconciler error error failed to delete security group <*> dependencyviolation resource <*> has a dependent object n tstatus code <*> request id <*> name varun-cluster namespace <*> reconciler group <*> reconciler kind awscluster
 """
 
 response = openai.Completion.create(

@@ -121,7 +121,7 @@ class Grouper:
     # create a new group with new result
     def create_group(self, result:Result) -> Group:
         vector = self.get_result_vector(result)
-        group = Group(group_id=0,vector=vector,manual_group=result.manual_group)
+        group = Group(group_id=0,vector=vector,manual_group=result.manual_group,error_type=result.error_type,label=result.label)
         return self.store.save_group(group)
 
     # get similarity score between group and result

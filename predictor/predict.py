@@ -22,6 +22,7 @@ class Predictor:
         self.msg_log = re.compile("(.*) \"?msg\"?=(.*)")
         self.dot_go_log = re.compile("(.*\.go[: ]\d+[:\]])(.*)")
 
+
     def predict(self, line: str, meta: dict={}, context: dict = {}) -> Result:
         text, info = self.split_line(line)
         if text == "":
@@ -87,3 +88,5 @@ class Predictor:
         except Exception as e:
             print(e)
             return "", {}
+
+

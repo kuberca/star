@@ -19,7 +19,7 @@ Error,Ignored,<*> info controller.vmoperator error vm_name variable not set reco
 Error,Ignored,failed to watch <*> failed to list <*> configmaps <*> is forbidden user system <*> cannot list resource configmaps in api group in the namespace <*>
 Error,Ignored,error looking up in-cluster authentication configuration configmaps <*> is forbidden user system <*> cannot get resource configmaps in api group in the namespace <*>
 Error,Ignored,reconciler error error <*> <*> not found name <*> namespace <*> reconciler group <*> reconciler kind machine
-Error,Ignored,error plugin/errors <*> <*> hinfo read udp <*> <*> <*> i/o timeout
+Error,NotIgnored,error plugin/errors <*> <*> hinfo read udp <*> <*> <*> i/o timeout
 Error,NotIgnored,error plugin/errors <*> <*> a read udp <*> <*> <*> i/o timeout
 Error,NotIgnored,error plugin/errors <*> <*> aaaa read udp <*> <*> <*> i/o timeout
 Error,Ignored,<*> <*> <*> error controller.libvirtmachine reconciler error reconciler group <*> reconciler kind libvirtmachine name <*> namespace <*> error <*> <*> not found errorcauses error <*> <*> not found
@@ -93,8 +93,8 @@ Error,NotIgnored,failed to fetch latest version for service lodge . code request
 Error,NotIgnored,failed to get latest version for lodge code requesterror details <nil> message get request failure for with msg get with response caused by get https <*> read tcp <*> <*> <*> read connection reset by peer ref <*>
 Error,NotIgnored,upgrade agent failed to check update required in lodge code requesterror details <nil> message get request failure for with msg get with response caused by get https <*> read tcp <*> <*> <*> read connection reset by peer ref <*>
 Error,NotIgnored,failed to check version upgrade code requesterror details <nil> message get request failure for with msg get with response caused by get https <*> read tcp <*> <*> <*> read connection reset by peer ref <*>
-,Ignored,failed predicate on node <*> node s had taint <*> that the pod didn t tolerate
-,Ignored,failed to checknodefitness for node <*> node s had taint <*> that the pod didn t tolerate
+Error,Ignored,failed predicate on node <*> node s had taint <*> that the pod didn t tolerate
+Error,Ignored,failed to checknodefitness for node <*> node s had taint <*> that the pod didn t tolerate
 Error,Ignored,failed predicate on node <*> node s had taint dicomnode true that the pod didn t tolerate
 Error,Ignored,failed to checknodefitness for node <*> node s had taint dicomnode true that the pod didn t tolerate
 Error,Ignored,error dial tcp lookup <*> on <*> <*> read udp <*> <*> <*> i/o timeout
@@ -194,18 +194,18 @@ Error,Ignored,check failed but file does not yet exist <*> create anyway
 Error,Ignored,attempted to modprobe nf_conntrack_proto_sctp error exit status <*> output
 Error,Ignored,watch error received from upstream listroot <*> error too old resource version <*> <*>
 Error,Ignored,error updating node <*> %!s <nil> . retrying. type vxlantunneladdress
-,Ignored,<*> <*> <*> <*> e | etcdserver publish error etcdserver request timed out
+Error,Ignored,<*> <*> <*> <*> e | etcdserver publish error etcdserver request timed out
 Error,Ignored,<*> <*> <*> <*> w | etcdserver failed to apply request header <id <*> > lease_revoke <id <*> with response size <*> took <*> to execute err is lease not found
-,Ignored,<*> <*> <*> <*> w | etcdserver failed to send out heartbeat on time exceeded the <*> timeout for <*> to <*>
+Error,Ignored,<*> <*> <*> <*> w | etcdserver failed to send out heartbeat on time exceeded the <*> timeout for <*> to <*>
 Error,Ignored,auditing failed of request encoding failed authentication.tokenrequest is not suitable for converting to <*> in scheme <*> <*>
 Error,Ignored,failed to discover some groups map <*> the server is currently unable to handle the request
 Error,NotIgnored,could not replicate object to other namespaces error replicated <*> to 0 out of <*> namespaces <*> error occurred n t* failed to replicate configmap <*> -> <*> failed to update secret <*> configmaps <*> already exists failed to update secret <*> configmaps <*> already exists n n kind configmap resource <*>
 Error,Ignored,watch of <*> ended with an error on the server unable to decode an event from the watch stream got short buffer with n 0 base <*> cap <*> has prevented the request from succeeding
-,Ignored,failed to find resources in group version <*> the server could not find the requested resource waiting time <*>
+Error,Ignored,failed to find resources in group version <*> the server could not find the requested resource waiting time <*>
 Error,Ignored,client ip <*> requestid <*> user agent <*> failed to authenticate user _json_key error failed to authenticate user due to error invalid credentials
 Error,Ignored,job context initialization error failed to load rest config
 Error,Ignored,failed to make <*> executable exit status <*>
-Error,Ignored,error calculation sha for image <*> <*> exit status <*>
+Error,NotIgnored,error calculation sha for image <*> <*> exit status <*>
 Error,Ignored,error reading cm <*>
 Error,Ignored,failed to fetch spc from either system or app cluster
 Error,NotIgnored,executing command failed error exit status <*> cmd virsh <*> <*> out error command <*> requires <domain> option n
@@ -229,11 +229,11 @@ Error,Ignored,error periodic_enqueuer.loop.enqueue <*> dial tcp <*> <*> connect 
 Error,Ignored,error heartbeat <*> dial tcp <*> <*> connect connection refused
 Error,Ignored,error requeuer.process <*> dial tcp <*> <*> connect connection refused
 Error,Ignored,requestid <*> failed to update the quota usage for project <*> error the object has been modified please apply your changes to the latest version and try again
-,Ignored,reconciler error error failed to create/update cloud resource operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again name <*> namespace <*> reconciler group <*> reconciler kind configuration
-,Ignored,reconciler error error operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again name <*> namespace <*> reconciler group <*> reconciler kind configuration
-,Ignored,failed to set status err operation cannot be fulfilled on <*> libvirt the object has been modified please apply your changes to the latest version and try again provider <*>
-,Ignored,reconciler error error failed to set status operation cannot be fulfilled on <*> libvirt the object has been modified please apply your changes to the latest version and try again name libvirt namespace <*> reconciler group <*> reconciler kind provider
-,Ignored,error syncing cronjobcontroller <*> requeuing operation cannot be fulfilled on cronjobs.batch <*> the object has been modified please apply your changes to the latest version and try again
+Error,Ignored,reconciler error error failed to create/update cloud resource operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again name <*> namespace <*> reconciler group <*> reconciler kind configuration
+Error,Ignored,reconciler error error operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again name <*> namespace <*> reconciler group <*> reconciler kind configuration
+Error,Ignored,failed to set status err operation cannot be fulfilled on <*> libvirt the object has been modified please apply your changes to the latest version and try again provider <*>
+Error,Ignored,reconciler error error failed to set status operation cannot be fulfilled on <*> libvirt the object has been modified please apply your changes to the latest version and try again name libvirt namespace <*> reconciler group <*> reconciler kind provider
+Error,Ignored,error syncing cronjobcontroller <*> requeuing operation cannot be fulfilled on cronjobs.batch <*> the object has been modified please apply your changes to the latest version and try again
 Error,Ignored,error retrieving resource lock <*> <*> <*> is forbidden user system <*> cannot get resource leases in api group <*> in the namespace <*>
 Error,Ignored,failed to get key trace_service_name error the configure value is not set
 Error,Ignored,failed to get key trace_namespace error the configure value is not set
@@ -444,8 +444,8 @@ Error,NotIgnored,<*> <*> <*> <*> error <*> <*> upstream timed out <*> connection
 Error,NotIgnored,<*> <*> <*> <*> error <*> <*> upstream timed out <*> connection timed out while connecting to upstream client <*> server request head <*> ceph http/1.1 upstream http <*> <*> ceph host <*>
 Error,NotIgnored,<*> <*> <*> <*> error <*> <*> upstream timed out <*> connection timed out while connecting to upstream client <*> server request head <*> sig-storage http/1.1 upstream http <*> <*> sig-storage host <*>
 Error,Ignored,<*> <*> <*> <*> w | etcdserver failed to reach the peerurl https <*> <*> of member <*> get https <*> <*> dial tcp <*> <*> connect connection refused
-,Ignored,<*> failed with operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
-,Ignored,event occurred object <*> kind endpoints apiversion <*> type warning reason failedtoupdateendpoint message failed to update endpoint <*> operation cannot be fulfilled on endpoints <*> the object has been modified please apply your changes to the latest version and try again
+Error,Ignored,<*> failed with operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
+Error,Ignored,event occurred object <*> kind endpoints apiversion <*> type warning reason failedtoupdateendpoint message failed to update endpoint <*> operation cannot be fulfilled on endpoints <*> the object has been modified please apply your changes to the latest version and try again
 Error,Ignored,error syncing <*> <*> requeuing operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
 Error,Ignored,reconciler error error operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again name <*> namespace <*> reconciler group <*> reconciler kind machinedeployment
 Error,NotIgnored,failed to list projects response status code does not match any response statuses defined for this endpoint in the swagger spec status <*>
@@ -553,7 +553,7 @@ Error,Ignored,failed to start service controller the cloud provider does not sup
 Error,NotIgnored,failed to acquire auth token for service ally. code unknownerror msg an unknown error occurred. proxyconnect tcp dial tcp lookup <*> on <*> <*> server misbehaving ref details <nil> cluster <*>
 Error,NotIgnored,condition spectrocluster <*> condition type imagecustomizationdone status false lastprobetime <*> <*> <*> lasttransitiontime <*> <*> <*> reason failure message failed to create spectro-ansible playbook failed to update cloudconfigstatus failed to check if ova is deployed unable to find virtual machine failed to get govmomi finder with datacenter <*>
 Error,NotIgnored,reconciler error error failed to create image on cloud failed to create spectro-ansible playbook failed to update cloudconfigstatus failed to initialize govc manager post https <*> dial tcp lookup <*> on <*> <*> server misbehaving name <*> namespace <*> reconciler group <*> reconciler kind spectrocluster
-Error,Ignored,error calculation sha for image <*> latest exit status <*>
+Error,NotIgnored,error calculation sha for image <*> latest exit status <*>
 Error,Ignored,failed calling webhook failing closed <*> failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
 Error,NotIgnored,internal error occurred failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
 Error,NotIgnored,error syncing job internal error occurred failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
@@ -573,7 +573,7 @@ Error,Ignored,could not find node from noderef it may have already been deleted 
 Error,Ignored,could not find node from noderef it may have already been deleted error node <*> not found cluster <*> machine <*> name <*> namespace <*> node <*> reconciler group <*> reconciler kind machine
 Error,Ignored,error retrieving resource lock <*> etcdserver request timed out
 Error,Ignored,error retrieving resource lock <*> etcdserver leader changed
-Error,Ignored,level error time <*> <*> <*> caller vsphere/datacenter.go <*> msg couldn t find vm given uuid <*> traceid <*> stacktrace <*> *datacenter .getvirtualmachinebyuuid n <*> <*> <*> n <*> <*>
+Error,NotIgnored,level error time <*> <*> <*> caller vsphere/datacenter.go <*> msg couldn t find vm given uuid <*> traceid <*> stacktrace <*> *datacenter .getvirtualmachinebyuuid n <*> <*> <*> n <*> <*>
 Error,NotIgnored,failed to <*> detach error to <*> <*> <*> not found
 Error,Ignored,<*> <*> <*> <*> error <*> <*> upstream timed out <*> connection timed out while connecting to upstream client <*> server request head <*> charts http/1.1 upstream http <*> <*> charts host <*>
 Error,Ignored,<*> <*> <*> <*> error <*> <*> upstream timed out <*> connection timed out while connecting to upstream client <*> server request head <*> rancher http/1.1 upstream http <*> <*> rancher host <*>
@@ -601,8 +601,8 @@ Error,NotIgnored,mount failed args <*> ext4 <*> defaults <*> <*> cmd mount error
 Error,Ignored,failed to reconcile open <*> no such file or directory
 Error,NotIgnored,event occurred object <*> kind job apiversion batch/v1 type warning reason failedcreate message error creating internal error occurred failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
 Error,NotIgnored,event occurred object <*> kind pod apiversion <*> type warning reason failedattachvolume message multi-attach error for volume <*> volume is already used by pod s <*>
-,Ignored,failed to add ipip tunnel device error exit status <*>
-,Ignored,failed configure ipip tunnel device retrying... error exit status <*>
+Error,Ignored,failed to add ipip tunnel device error exit status <*>
+Error,Ignored,failed configure ipip tunnel device retrying... error exit status <*>
 Error,Ignored,apiserver received an error that is not an <*> rpctypes.etcderror code 0xe desc etcdserver request timed out etcdserver request timed out
 Error,Ignored,apiserver received an error that is not an <*> rpctypes.etcderror code 0xe desc etcdserver leader changed etcdserver leader changed
 Error,Ignored,apiserver received an error that is not an <*> status.statuserror state impl.messagestate nounkeyedliterals pragma.nounkeyedliterals donotcompare pragma.donotcompare donotcopy pragma.donotcopy atomicmessageinfo *impl.messageinfo nil sizecache 0 unknownfields uint8 nil code <*> message context deadline exceeded details <*> nil rpc error code unknown desc context deadline exceeded
@@ -616,7 +616,7 @@ Error,Ignored,failed to reconcile timed out waiting for the condition
 Error,Ignored,unable to perform status update on kubecontrollersconfiguration default error etcdserver leader changed
 Error,Ignored,error getting cluster information config clusterinformation default error get https <*> <*> context deadline exceeded
 Error,Ignored,calico node referenced in ipam data does not exist error resource does not exist node <*> with error nodes <*> not found
-,Ignored,failed to get ipip tunnel device assuming it isn t present error link not found
+Error,Ignored,failed to get ipip tunnel device assuming it isn t present error link not found
 Error,Ignored,warning <*> <*> <*> <*> grpc server.processunaryrpc failed to write status connection error desc transport is closing
 Error,Ignored,<*> <*> <*> <*> w | <*> <*> error no leader status code <*>
 Error,Ignored,unexpected validation error *errors.errorstring
@@ -673,60 +673,60 @@ Error,Ignored,failed to apply manifest template unable to retrieve the complete 
 Error,Ignored,failed to list pod metricsthe server is currently unable to handle the request get <*> cluster <*>
 Error,Ignored,failed to compute pod metricsthe server is currently unable to handle the request get <*> cluster <*>
 Error,Ignored,failed to generate app cluster kubeconfig file <*> failed to get system cluster client set invalid configuration no configuration has been provided try setting kubernetes_master environment variable error failed to generate app cluster kubeconfig file <*> failed to get system cluster client set invalid configuration no configuration has been provided try setting kubernetes_master environment variable
-Error,Ignored,<*> <*> watch of <*> kind kongcredential ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind alertmanager ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind volumesnapshotlocation ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind postgresql ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind aca ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind prometheus ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind superstream ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind applicationroleextension ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind <*> ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind prometheusrule ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind ehscertificaterequest ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind kongcredential ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind alertmanager ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind volumesnapshotlocation ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind postgresql ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind aca ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind prometheus ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind superstream ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind applicationroleextension ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind <*> ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind prometheusrule ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind ehscertificaterequest ended with internal error occurred etcdserver no leader
 Error,Ignored,<*> <*> watch of <*> kind libvirtmachine ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind queue ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind postgresteam ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind servicemonitor ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind thanosruler ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind decoratorcontroller ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind podvolumebackup ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind restore ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind queue ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind postgresteam ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind servicemonitor ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind thanosruler ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind decoratorcontroller ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind podvolumebackup ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind restore ended with internal error occurred etcdserver no leader
 Error,Ignored,<*> <*> watch of <*> kind libvirthost ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind permission ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind dashboardcomponent ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind kongingress ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind vhost ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind federation ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind binding ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind authorizationpolicy ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind deletebackuprequest ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind shovel ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind schedule ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind permission ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind dashboardcomponent ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind kongingress ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind vhost ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind federation ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind binding ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind authorizationpolicy ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind deletebackuprequest ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind shovel ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind schedule ended with internal error occurred etcdserver no leader
 Error,Ignored,<*> <*> watch of <*> kind libvirtmachinetemplate ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind downloadrequest ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind policy ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind operatorconfiguration ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind applicationregistration ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind resticrepository ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind backupstoragelocation ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind kongplugin ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind compositecontroller ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind downloadrequest ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind policy ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind operatorconfiguration ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind applicationregistration ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind resticrepository ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind backupstoragelocation ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind kongplugin ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind compositecontroller ended with internal error occurred etcdserver no leader
 Error,Ignored,<*> <*> watch of <*> kind libvirtsshidentity ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind user ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind exchange ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind backup ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind alertmanagerconfig ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind user ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind exchange ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind backup ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind alertmanagerconfig ended with internal error occurred etcdserver no leader
 Error,Ignored,<*> <*> watch of <*> kind cephcluster ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind probe ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind probe ended with internal error occurred etcdserver no leader
 Error,Ignored,<*> <*> watch of <*> kind libvirtcluster ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind podvolumerestore ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind podvolumerestore ended with internal error occurred etcdserver no leader
 Error,Ignored,<*> <*> watch of <*> kind cephblockpool ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind networkconfiguration ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind podmonitor ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind eespostgresaccount ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind controllerrevision ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind serverstatusrequest ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind networkconfiguration ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind podmonitor ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind eespostgresaccount ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind controllerrevision ended with internal error occurred etcdserver no leader
+Error,NotIgnored,<*> <*> watch of <*> kind serverstatusrequest ended with internal error occurred etcdserver no leader
 Error,Ignored,<*> <*> watch of <*> kind cephfilesystem ended with internal error occurred etcdserver no leader
 Error,Ignored,failed to perform list of current data during resync listroot <*> error etcdserver leader changed
 Error,Ignored,error retrieving resource lock <*> get https <*> <*> <*> dial tcp <*> <*> connect connection refused
@@ -779,7 +779,7 @@ Error,Ignored,successfully audited failed to get spectrocluster from hubble. cod
 Error,Ignored,failed to run orchestration task code unauthorizedaccess details unauthorizedaccess invalid authorization token specified ncaused by token is expired message invalid authorization token specified ref cluster <*>
 Error,Ignored,failed to compute pod metricsfailed to get machine data as couldn t find any matching machine with node name <*> cluster <*>
 Error,Ignored,failed to get vspheremachine data from store using capi machine name <*> failed to get machine data as couldn t find any matching machine with capi machine name <*> cluster <*>
-Error,Ignored,level error time <*> <*> <*> caller vsphere/datacenter.go <*> msg couldn t find vm given uuid traceid <*> stacktrace <*> *datacenter .getvirtualmachinebyuuid n <*> <*> <*> n <*> <*>
+Error,NotIgnored,level error time <*> <*> <*> caller vsphere/datacenter.go <*> msg couldn t find vm given uuid traceid <*> stacktrace <*> *datacenter .getvirtualmachinebyuuid n <*> <*> <*> n <*> <*>
 Error,Ignored,error from checkcmd bird6 <*> <*> <*> bird <*> 6 <*> unable to open included file <*> no such file or directory n
 Error,Ignored,watch error received from upstream listroot <*> error an error on the server unable to decode an event from the watch stream http2 client connection <*> has prevented the request from succeeding
 Error,Ignored,watch of <*> ended with an error on the server unable to decode an event from the watch stream http2 client connection <*> has prevented the request from succeeding
@@ -824,7 +824,7 @@ Error,NotIgnored,reconciler error error failed to reconcile charts failed to rec
 Error,NotIgnored,error retrieving resource lock <*> rpc error code unknown desc ok http status code <*> transport missing content-type field
 Error,Ignored,failed to verify datastore error etcdserver leader changed
 Error,Ignored,failed to reach apiserver error etcdserver leader changed
-Error,Ignored,failed request get <*> uid error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
+Error,NotIgnored,failed request get <*> uid error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
 Error,NotIgnored,retrying <*> request get <*> uid failed request get <*> uid error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
 Error,Ignored,<*> <*> <*> <*> http proxy error context canceled
 Error,Ignored,error retrieving resource lock <*> get https <*> <*> <*> http2 client connection <*>
@@ -851,7 +851,7 @@ Error,Ignored,<*> <*> <*> <*> w | <*> <*> error qget failed etcdserver request t
 Error,Ignored,unable to list k8s network policy resources error etcdserver request timed out
 Error,Ignored,unable to remove tunnel address error etcdserver request timed out type vxlantunneladdress
 Error,Ignored,apiserver received an error that is not an <*> tls.permanenterror err *net.operror <*> write tcp <*> <*> <*> write connection reset by peer
-,Ignored,failed to watch <*> unknown get <*>
+Error,Ignored,failed to watch <*> unknown get <*>
 Error,Ignored,scheduler cache removepod failed err pod <*> is not found in scheduler cache so cannot be removed from it pod <*>
 Error,Ignored,error retrieving resource lock <*> rpc error code unknown desc context deadline exceeded
 Error,Ignored,failed to watch <*> failed to list <*> stream error when reading response body may be caused by closed connection. please retry. original error stream error stream id <*> internal_error
@@ -893,7 +893,7 @@ Error,Ignored,failed to reach apiserver error etcdserver request timed out
 Error,Ignored,event <*> resource machines event type modified name <*> infratype libvirtmachine infratypename <*> status failed cluster <*>
 Error,Ignored,event <*> resource machines event type added name <*> infratype libvirtmachine infratypename <*> status failed cluster <*>
 Error,Ignored,error getting resource key globalfelixconfig name calicoversion name calicoversion resource globalfelixconfigs error the server could not find the requested resource get <*> calicoversion
-,Ignored,could not getversion rpc error code unavailable desc connection error desc transport error while dialing dial tcp <*> connect connection refused
+Error,Ignored,could not getversion rpc error code unavailable desc connection error desc transport error while dialing dial tcp <*> connect connection refused
 Error,Ignored,failed to acquire lease <*>
 Error,Ignored,ignoring ip address reason failed to validate ip addr fe80 <*> <*> fea7 <*> <*>
 Error,Ignored,failed to build metadata for pod metricsetcdserver request timed out cluster <*>
@@ -925,8 +925,8 @@ Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error fa
 Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirtsshidentity etcdserver leader changed reinitializing...
 Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephbucketnotification etcdserver leader changed reinitializing...
 Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephbuckettopic etcdserver leader changed reinitializing...
-,Ignored,grpc addrconn.createtransport failed to connect to <*> <nil> 0 <nil> . err connection error desc transport error while dialing dial tcp <*> connect connection refused . reconnecting...
-,Ignored,pickfirstbalancer handlesubconnstatechange <*> transient_failure connection error desc transport error while dialing dial tcp <*> connect connection refused
+Error,Ignored,grpc addrconn.createtransport failed to connect to <*> <nil> 0 <nil> . err connection error desc transport error while dialing dial tcp <*> connect connection refused . reconnecting...
+Error,Ignored,pickfirstbalancer handlesubconnstatechange <*> transient_failure connection error desc transport error while dialing dial tcp <*> connect connection refused
 Error,NotIgnored,<*> <*> <*> <*> w | etcdserver read-only range request key <*> range_end <*> limit <*> with result error etcdserver request timed out took too long <*> to execute
 Error,Ignored,failed to reconcile machinehealthcheck error failed to patch unhealthy machine status for machine <*> <*> <*> not found failed to patch unhealthy machine status for machine <*> <*> <*> not found cluster <*> name <*> namespace <*> reconciler group <*> reconciler kind machinehealthcheck
 Error,Ignored,reconciler error error failed to patch unhealthy machine status for machine <*> <*> <*> not found failed to patch unhealthy machine status for machine <*> <*> <*> not found name <*> namespace <*> reconciler group <*> reconciler kind machinehealthcheck
@@ -951,7 +951,7 @@ Error,NotIgnored,reconciler error error failed to reconcile charts failed to fet
 Error,NotIgnored,reconciler error error failed to reconcile charts failed to fetch the list of deleted chart releases failed to get all the files in dir <*> stat <*> no such file or directory name <*> namespace <*> reconciler group <*> reconciler kind pack
 Error,Ignored,failed to connect to tcp <*> <*> retry after <*> seconds dial tcp <*> <*> connect connection refused
 Error,Ignored,unable to perform status update on kubecontrollersconfiguration default error etcdserver request timed out
-Error,Ignored,event occurred object <*> kind endpoints apiversion <*> type warning reason failedtocreateendpoint message failed to create endpoint for service <*> endpoints <*> already exists
+Error,NotIgnored,event occurred object <*> kind endpoints apiversion <*> type warning reason failedtocreateendpoint message failed to create endpoint for service <*> endpoints <*> already exists
 Error,Ignored,reconciler error error unable to get node from machine node ref <*> not found name <*> namespace reconciler group reconciler kind node
 Error,NotIgnored,reconciler error error failed to retrieve libvirtmachinetemplate external object <*> <*> <*> etcdserver leader changed name <*> namespace <*> reconciler group <*> reconciler kind kubeadmcontrolplane
 Error,NotIgnored,failed to initialize control plane error failed to retrieve infra obj for machine <*> failed to retrieve vspheremachine external object <*> <*> <*> etcdserver request timed out cluster <*> name <*> namespace <*> reconciler group <*> reconciler kind kubeadmcontrolplane
@@ -1088,456 +1088,3 @@ Error,NotIgnored,reconciler error error failed to reconcile charts failed to rec
 Error,Ignored,failed to publish pod workload unable to post the message over the subject <*> due to nats timeout cluster <*>
 Error,Ignored,failed to scrape node err get https <*> <*> true dial tcp <*> <*> connect no route to host node <*>
 Error,Ignored,<*> reconnect to server error i/o deadline reached 0m
-Error,Ignored,error syncing cronjobcontroller <*> requeuing operation cannot be fulfilled on cronjobs.batch packsync the object has been modified please apply your changes to the latest version and try again
-Error,Ignored,re-queuing item due to optimistic locking on resource key <*> error operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
-Error,Ignored,aug <*> <*> <*> <*> error metadata_service.go <*> *metadataservice .updatelastmodifiedtime failed to update last modified timestamp for cloudaccount <*> due to dbupdateerror update to cloudaccounts failed caused by mongo no documents in result
-Error,Ignored,error <*> <*> dial tcp <*> <*> connect connection refused
-Error,NotIgnored,error plugin/errors <*> <*> ptr read udp <*> <*> <*> i/o timeout
-Error,NotIgnored,error plugin/errors <*> <*> srv read udp <*> <*> <*> i/o timeout
-Error,Ignored,retrying <*> request get <*> uid <*> failed request patch <*> uid <*> error an unknown error occurred. context deadline exceeded
-Error,NotIgnored,failed to fetch manifest with uid <*> for pack <*> read connection reset by peer
-Error,NotIgnored,aug <*> <*> <*> <*> error email_client.go <*> dial email failed with the error connectproxy <*> status <*> bad request
-Error,Ignored,<*> <*> <*> e <*> main error saving history file fileopenfailed unable to open file <*> read-only file system
-Error,Ignored,error from checkcmd bird <*> <*> <*> bird <*> 6 <*> unable to open included file <*> no such file or directory n
-Error,Ignored,failed to access interface because it doesn t exist. error link not found ifacename <*> ifaceregex <*> ipversion <*> tableindex 0
-Error,Ignored,failed to get interface it s down/gone. error link not found ifacename <*> ifaceregex <*> ipversion <*> tableindex 0
-Error,Ignored,<*> <*> <*> i repl conn1 new replica set config in use _id rs0 version <*> protocolversion <*> writeconcernmajorityjournaldefault true members _id 0 host <*> <*> arbiteronly false buildindexes true hidden false priority <*> tags slavedelay 0 votes <*> settings chainingallowed true heartbeatintervalmillis <*> heartbeattimeoutsecs <*> electiontimeoutmillis <*> catchuptimeoutmillis <*> catchuptakeoverdelaymillis <*> getlasterrormodes getlasterrordefaults w <*> wtimeout 0 replicasetid objectid <*>
-Error,Ignored,<*> <*> <*> i repl conn1 replsetreconfig admin command received from client new config _id rs0 version <*> protocolversion <*> writeconcernmajorityjournaldefault true members _id 0 host <*> <*> arbiteronly false buildindexes true hidden false priority <*> tags slavedelay 0 votes <*> settings chainingallowed true heartbeatintervalmillis <*> heartbeattimeoutsecs <*> electiontimeoutmillis <*> catchuptimeoutmillis <*> catchuptakeoverdelaymillis <*> getlasterrormodes getlasterrordefaults w <*> wtimeout 0 replicasetid objectid <*> configsvr false
-Error,Ignored,failed to report usage/get deprecation warnings. error get https <*> false alp_policies 0 cal_ver <*> guid <*> heps 0 k8s_ver <*> policies 0 profiles <*> rev <*> size 6 type <*> version <*> weps <*> dial tcp lookup <*> on <*> <*> no such host
-Error,NotIgnored,reconciler error error failed to reconcile manifests failed to do kubectl apply unable to connect to the server context deadline exceeded client.timeout exceeded while awaiting headers exit status <*> name <*> namespace <*> reconciler group <*> reconciler kind pack
-Error,NotIgnored,<*> <*> <*> i control logicalsessioncachereap failed to reap transaction table notyetinitialized replication has not yet been configured
-Error,Ignored,failed to get node and cloud machine uid map for metrics failed to get machine data as no machine s are cached. cluster <*>
-Error,Ignored,failed to get node name and machine map failed to get machine data as no machine s are cached. cluster <*>
-Error,Ignored,failed to process health for node <*> failed to get machine data as no machine s are cached. cluster <*>
-Error,Ignored,failed to unmarshal output for command init output error unexpected end of json input
-Error,Ignored,failed calling webhook failing open <*> failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
-Error,Ignored,failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
-Error,NotIgnored,level error time <*> <*> <*> caller <*> <*> msg pvcupdated queryvolume failed with err rpc error code internal desc queryallvolume failed for queryfilter dynamicdata volumeids names containerclusterids <*> storagepolicyid datastores labels compliancestatus datastoreaccessibilitystatus cursor <nil> healthstatus . err serverfaultcode nopermission stacktrace <*> n <*> <*> <*> n <*> <*>
-Error,NotIgnored,event <*> kind persistentvolumeclaim namespace <*> name <*> uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason provisioningfailed failed to provision volume with storageclass <*> rpc error code internal desc failed to create volume. error serverfaultcode nopermission
-Error,NotIgnored,rejected by webhook <*> errors.statuserror errstatus <*> typemeta <*> kind apiversion listmeta <*> selflink resourceversion continue remainingitemcount <*> nil status failure message admission webhook <*> denied the request spec forbidden vspherefailuredomainspec is immutable reason spec forbidden vspherefailuredomainspec is immutable details <*> nil code <*>
-Error,Ignored,flexvolume driver call failed executable <*> args init error fork/exec <*> no such file or directory output
-Error,Ignored,<*> <*> watch of <*> kind caliconodestatus ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind ipclaim ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind ipaddress ended with internal error occurred etcdserver no leader
-Error,Ignored,<*> <*> watch of <*> kind ipreservation ended with internal error occurred etcdserver no leader
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind caliconodestatus etcdserver leader changed reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind ipreservation etcdserver leader changed reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind ipaddress etcdserver leader changed reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind ipclaim etcdserver leader changed reinitializing...
-Error,NotIgnored,level info time <*> <*> <*> caller syncer/metadatasyncer.go <*> msg csi full sync failed with error rpc error code internal desc queryallvolume failed for queryfilter dynamicdata volumeids names containerclusterids <*> storagepolicyid datastores labels compliancestatus datastoreaccessibilitystatus cursor <nil> healthstatus . err serverfaultcode nopermission
-Error,NotIgnored,error syncing claim <*> failed to provision volume with storageclass <*> rpc error code internal desc failed to create volume. error serverfaultcode nopermission
-Error,NotIgnored,level error time <*> <*> <*> caller <*> <*> msg queryallvolume failed for queryfilter dynamicdata volumeids names containerclusterids <*> storagepolicyid datastores labels compliancestatus datastoreaccessibilitystatus cursor <nil> healthstatus . err serverfaultcode nopermission stacktrace <*> n <*> <*> <*> n <*> <*> <*> n <*> <*>
-Error,NotIgnored,error while looking for vm <*> byname in vc <*> and datacenter bellevue dell no vm found
-Error,NotIgnored,error while looking for vm <*> byip in vc <*> and datacenter bellevue dell no vm found
-Error,NotIgnored,level error time <*> <*> <*> caller volume/manager.go <*> msg cns queryallvolume failed from vcenter <*> with err serverfaultcode nopermission stacktrace <*> *defaultmanager <*> n <*> <*> <*> *defaultmanager <*> n <*> <*> <*> n <*> <*> <*> n <*> <*> <*> n <*> <*>
-Error,NotIgnored,should not happen failed to update managedfields err failed to convert new object <*> kind replicaset to smd typed errors n <*> name <*> <*> duplicate entries for key name ssa_bios_keyname n <*> name <*> <*> duplicate entries for key name ilo_base_path n <*> name <*> <*> duplicate entries for key name ssa_base_path versionkind <*> kind
-Error,NotIgnored,should not happen failed to update managedfields err failed to convert new object <*> kind deployment to smd typed errors n <*> name <*> <*> duplicate entries for key name ssa_bios_keyname n <*> name <*> <*> duplicate entries for key name ilo_base_path n <*> name <*> <*> duplicate entries for key name ssa_base_path versionkind <*> kind
-Error,NotIgnored,reconciler error error failed to retrieve vspheremachinetemplate external object <*> <*> <*> etcdserver request timed out name <*> namespace <*> reconciler group <*> reconciler kind kubeadmcontrolplane
-Error,NotIgnored,reconciler error error failed to retrieve libvirtmachinetemplate external object <*> <*> <*> etcdserver request timed out name <*> namespace <*> reconciler group <*> reconciler kind kubeadmcontrolplane
-Error,Ignored,<*> <*> <*> <*> w | etcdserver failed to revoke <*> etcdserver request timed out
-Error,Ignored,proccessing pack <*> to get conditions readyforinstall true <*> <*> <*> <*> <*> utc <*> <*> <*> <*> <*> utc packreadyforinstall pack ready for install ready true <*> <*> <*> <*> <*> utc <*> <*> <*> <*> <*> utc packservicesready pack services are ready error false <*> <*> <*> <*> <*> utc <*> <*> <*> <*> <*> utc manifestinstallsuccess manifests reconciled successfully cluster <*>
-Error,Ignored,proccessing pack <*> to get conditions installed true <*> <*> <*> <*> <*> utc <*> <*> <*> <*> <*> utc installsuccess pack install success error false <*> <*> <*> <*> <*> utc <*> <*> <*> <*> <*> utc installsuccess pack install success upgradeavailable false <*> <*> <*> <*> <*> utc <*> <*> <*> <*> <*> utc actionsuccess pack install or upgrade success cluster <*>
-Error,Ignored,failed to watch <*> get https <*> <*> true resourceversion <*> timeout <*> timeoutseconds <*> watch true http2 client connection <*>
-Error,Ignored,failed to watch <*> failed to list <*> get https <*> <*> <*> timeout <*> context deadline exceeded
-Error,Ignored,ignoring ip address reason failed to validate ip addr fe80 <*> <*> fe85 <*> <*>
-Error,Ignored,aug <*> <*> <*> <*> error hongo_meta_read_repo.go <*> *hongometareadrepo .isuidexist unable to get the metadata for the uid migrateedgehostprofiles due to resourcenotfound metadata archive migrateedgehostprofiles is not found
-Error,Ignored,aug <*> <*> <*> <*> error hongo_meta_read_repo.go <*> *hongometareadrepo .isuidexist unable to get the metadata for the uid migrateuserstoprofilesv1 due to resourcenotfound metadata archive migrateuserstoprofilesv1 is not found
-Error,NotIgnored,failed request post <*> error code service unavailable details <html>
-Error,NotIgnored,retrying <*> request post <*> failed request post <*> error code service unavailable details <html>
-Error,NotIgnored,failed to get auth token for service jet. code service unavailable details <html> r n<head><title>503 service temporarily unavailable</title></head> r n<body> r <*> service temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n message <*> service temporarily unavailable ref
-Error,NotIgnored,failed to get auth token code service unavailable details <html> r n<head><title>503 service temporarily unavailable</title></head> r n<body> r <*> service temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n message <*> service temporarily unavailable ref
-Error,Ignored,aug <*> <*> <*> <*> error harchive_client.go <*> unable to get the mongo client initdbfailure failed to init the db with given config
-Error,Ignored,aug <*> <*> <*> <*> error mgmt_service.go <*> *mgmtservice .updatespectromgmtupgradestatus unable to get the spectro mgmt due to initdbfailure failed to init the db with given config
-Error,Ignored,aug <*> <*> <*> <*> info mgmt_services_factory.go <*> unable to initialize database service due to initdbfailure failed to init the db with given config
-Error,NotIgnored,retrying <*> request patch <*> uid <*> failed request get <*> uid <*> manifestuid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> failed request patch <*> uid <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> failed request get <*> uid <*> manifestuid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> failed request get <*> uid <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request patch <*> uid <*> retrying <*> request get <*> uid <*> failed request get <*> uid error read connection reset by peer
-Error,NotIgnored,retrying <*> request patch <*> uid <*> retrying <*> request get <*> uid <*> manifestuid failed request get <*> uid <*> manifestuid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> manifestuid failed request get <*> uid <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> manifestuid failed request get <*> uid <*> manifestuid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> manifestuid failed request patch <*> uid <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> servicename <*> failed request get <*> servicename <*> error read connection reset by peer
-Error,NotIgnored,failed request get <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> manifestuid failed request get <*> uid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid failed request get <*> uid <*> manifestuid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> failed request get <*> uid <*> error read connection reset by peer
-Error,NotIgnored,failed request patch <*> uid <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> failed request get <*> uid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> manifestuid failed request get <*> registryname error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> registryname failed request get <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid failed request get <*> uid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid failed request get <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> failed request get <*> token error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> token failed request get <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> failed request get <*> uid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> failed request get <*> uid <*> manifestuid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> manifestuid failed request get <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> failed request get <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> failed request get <*> registryname error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> registryname failed request get <*> uid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid failed request get <*> uid <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> uid <*> failed request get <*> token error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> token failed request patch <*> uid <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request patch <*> uid <*> failed request get <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> registryname failed request get <*> registryname error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> registryname failed request patch <*> uid <*> error read connection reset by peer
-Error,NotIgnored,retrying <*> request patch <*> uid <*> failed request get <*> registryname error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> registryname failed request get <*> uid <*> manifestuid error read connection reset by peer
-Error,NotIgnored,failed request get <*> uid <*> manifestuid error read connection reset by peer
-Error,NotIgnored,retrying <*> request get <*> failed request patch <*> uid <*> error read connection reset by peer
-Error,NotIgnored,failed request get <*> servicename <*> error read connection reset by peer
-Error,Ignored,failed to sync additional pack manifests read connection reset by peer
-Error,Ignored,failed to process spc read connection reset by peer
-Error,Ignored,failed to get service images registry read connection reset by peer
-Error,Ignored,failed request get <*> registryname error read connection reset by peer
-Error,Ignored,failed to fetch manifest with uid <*> for pack namespace. read connection reset by peer
-Error,Ignored,failed to fetch manifest with uid <*> for pack active-gateway. read connection reset by peer
-Error,Ignored,failed to find registry with name <*> read connection reset by peer
-Error,Ignored,retrying <*> request patch <*> uid <*> failed request patch <*> uid <*> error read connection reset by peer
-Error,Ignored,failed to connect to url error get https <*> read tcp <*> <*> <*> read connection reset by peer url <*>
-Error,Ignored,error <*> probing plugins error creating flexvolume plugin from directory nodeagent~uds skipping. error unexpected end of json input
-Error,Ignored,deletion of namespace <*> failed unable to retrieve the complete list of server apis <*> the server is currently unable to handle the request unexpected items still remain in namespace <*> for gvr <*> resource pods
-Error,Ignored,deletion of namespace <*> failed unable to retrieve the complete list of server apis <*> the server is currently unable to handle the request
-Error,Ignored,can t enable xdp acceleration. error kernel is too old have <*> but want at least <*>
-Error,Ignored,failed to delete route error no such process ifacename <*> ifaceregex <*> ipversion <*>
-Error,Ignored,interface was deleted during operation filtering error error netlink update operation failed ifacename <*> ifaceregex <*> ipversion <*>
-Error,Ignored,aug <*> <*> <*> <*> error mgmt_upgrade_service.go <*> *hubbleupgradeservice <*> unable to find the <*> configmap will go ahead with the flow
-Error,Ignored,aug <*> <*> <*> <*> error version.go <*> unable to find the last app version as no configmap <*> found due to configmaps <*> not found.
-Error,Ignored,aug <*> <*> <*> <*> error upgrade.go <*> *upgradeservice .isconfigmapexists unable to find the configmap <*> due to configmaps <*> not found. rechecking for configmap
-Error,Ignored,aug <*> <*> <*> <*> error mgmt_health_service.go <*> *healthservice .shouldhubblestop error finding the configmap <*> due to configmaps <*> not found. stopping the hubble services
-Error,Ignored,<*> <*> <*> <*> ignoring error command map drop packvalues <*> error namespacenotfound ns not found
-Error,Ignored,<*> <*> <*> <*> attemp <*> error command map drop packvalues <*> error namespacenotfound ns not found
-Error,Ignored,<*> <*> <*> <*> executing <*> <*> db hubbledb collection command map create error_logs
-Error,Ignored,<*> <*> <*> <*> executing <*> index db hubbledb collection error_logs command map metadata.creationtimestamp <*> map expireafterseconds <*>
-Error,Ignored,<*> <*> <*> <*> executing <*> <*> db hubbledb collection command map converttocapped error_logs size <*>
-Error,NotIgnored,aug <*> <*> <*> <*> error overlord_read_repo.go <*> *mongooverlordreadrepo .findoverlordbyname reqid <*> finding the overlord by name failed. resourcenotfound private gateway matching value <*> system private gateway is not found
-Error,Ignored,aug <*> <*> <*> <*> error mgmt_service.go <*> *mgmtservice .updatespectromgmtupgradestatus unable to get the spectro mgmt due to resourcenotfound resource not found for the type systems
-Error,Ignored,aug <*> <*> <*> <*> error hongo_meta_read_repo.go <*> *hongometareadrepo .getmetaarchive unable to get the metadata from the archive aclmeta due to resourcenotfound metadata archive <*> is not found
-Error,Ignored,aug <*> <*> <*> <*> error mgmt_monitor_services.go <*> *monitorservice <*> unable to initialise the nats token due to resourcenotfound resource not found for the type systems
-Error,Ignored,aug <*> <*> <*> <*> error sys_accounts.go <*> failed to get the system certificate due to resourcenotfound resource not found for the type system
-Error,Ignored,aug <*> <*> <*> <*> error err_logger.go <*> reqid <*> resource not found for the type system code resourcenotfound mtd get projectuid ref <*> tenantuid uri <*> useruid sysadmin 
-Error,Ignored,aug <*> <*> <*> <*> error err_logger.go <*> reqid <*> unable to find the pack properties of field clientconfig code packpropertiesnotfound mtd get projectuid ref <*> tenantuid uri <*> clientconfig layer k8s resolvemacros true useruid ally 
-Error,Ignored,aug <*> <*> <*> <*> error mgmt_repo.go <*> *mgmtconfigrepo .getspectromgmt unable to get spectro mgmt doc due to resourcenotfound resource not found for the type systems
-Error,Ignored,aug <*> <*> <*> <*> error mgmt_monitor_services.go <*> *monitorservice .watchnasdeployment unable to initialise the nats token due to resourcenotfound resource not found for the type systems
-Error,NotIgnored,aug <*> <*> <*> <*> error metadata_service.go <*> *metadataservice .updatelastmodifiedtime failed to update last modified timestamp for installer <*> due to dbupdateerror update to installers failed caused by mongo no documents in result
-Error,NotIgnored,should not happen failed to update managedfields err failed to convert new object <*> kind deployment to smd typed <*> name <*> <*> duplicate entries for key name releasenamespace versionkind <*> kind
-Error,NotIgnored,should not happen failed to update managedfields err failed to convert new object <*> kind replicaset to smd typed <*> name <*> <*> duplicate entries for key name store_threadpool_size versionkind <*> kind
-Error,NotIgnored,should not happen failed to update managedfields err failed to convert new object <*> kind deployment to smd typed <*> name <*> <*> duplicate entries for key name store_threadpool_size versionkind <*> kind
-Error,NotIgnored,condition spectrocluster <*> condition type imagecustomizationdone status false lastprobetime <*> <*> <*> lasttransitiontime <*> <*> <*> reason failure message failed to create spectro-ansible playbook failed to update cloudconfigstatus failed to import image <*> to host <*> failed to get libvirt identity endpoint failed to get ssh secret for host <*> secret not found
-Error,NotIgnored,reconciler error error failed to create image on cloud failed to create spectro-ansible playbook failed to update cloudconfigstatus failed to import image <*> to host <*> failed to get libvirt identity endpoint failed to get ssh secret for host <*> secret not found name <*> namespace <*> reconciler group <*> reconciler kind spectrocluster
-Error,Ignored,aug <*> <*> <*> <*> error err_logger.go <*> reqid <*> machines <*> is not found code resourcenotfound configuid <*> machinepoolname master-pool machineuid <*> mtd get projectuid ref <*> tenantuid uri <*> useruid ally 
-Error,Ignored,aug <*> <*> <*> <*> error machine_service.go <*> *machineservice .deletemachine unable to delete machine resourcenotfound machine health <*> is not found
-Error,Ignored,runtime.errorstring runtime error invalid memory address or nil pointer dereference
-Error,Ignored,panic runtime error invalid memory address or nil pointer dereference
-Error,Ignored,aug <*> <*> <*> <*> error acl_context.go <*> unable to get acl meta due to missing user context
-Error,Ignored,aug <*> <*> <*> <*> error <*> <*> <*> <*> authentication error for app healthz
-Error,Ignored,<*> <*> <*> <*> <*> <*> <*> <*> get <*> <*> filters severity%3dwarningorseverity%3dnormalorseverity%3derror http/2.0 <*> <*> https <*> <*> windows nt <*> win64 <*> <*> khtml like gecko <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> sysadmin
-Error,Ignored,<*> <*> <*> <*> <*> <*> <*> <*> get <*> <*> filters severity%3dwarningorseverity%3dnormalorseverity%3derror http/2.0 <*> <*> https <*> <*> windows nt <*> win64 <*> <*> khtml like gecko <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> sysadmin
-Error,Ignored,<*> <*> <*> <*> <*> <*> <*> <*> get <*> <*> limit <*> filters severity%3dwarningorseverity%3dnormalorseverity%3derror http/2.0 <*> <*> https <*> <*> windows nt <*> win64 <*> <*> khtml like gecko <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> <*> sysadmin
-Error,Ignored,aug <*> <*> <*> <*> error mgmt_service.go <*> *mgmtservice .checkspectromgmtupgrade failed to update the spectro mgmt upgrade status due to resourcenotfound resource not found for the type systems
-Error,Ignored,aug <*> <*> <*> <*> error mgmt_service.go <*> *mgmtservice .checkspectromgmtupgrade failed to update the spectro mgmt upgrade status due to initdbfailure failed to init the db with given config
-Error,Ignored,aug <*> <*> <*> <*> error system_service.go <*> *systemservice <*> validation failed for default syscconfig datavalidationerror shouldnotempty accesskey should be not be empty secretkey should be not be empty accoutid should be not be empty
-Error,Ignored,aug <*> <*> <*> <*> error system_service.go <*> *systemservice <*> validation failed for default syscconfig datavalidationerror shouldnotempty imageshostendpoint should be not be empty
-Error,Ignored,aug <*> <*> <*> <*> error system_service.go <*> *systemservice <*> validation failed for default syscconfig datavalidationerror shouldnotempty username should be not be empty password should be not be empty smtpserver should be not be empty from should be not be empty
-Error,Ignored,aug <*> <*> <*> <*> error system_service.go <*> *systemservice <*> validation failed for default syscconfig datavalidationerror shouldnotempty entityid should be not be empty audienceurl should be not be empty acsurlroot should be not be empty
-Error,Ignored,<*> <*> <*> i storage <*> createcollection hubbledb.error_logs with generated uuid <*> and options
-Error,Ignored,<*> <*> <*> i storage conn430 dropcollection hubbledb.error_logs <*> <*> storage engine will take ownership of <*> collection with optime ts timestamp <*> <*> t <*> and commit timestamp timestamp 0 0
-Error,Ignored,<*> <*> <*> i index <*> index build starting on hubbledb.error_logs properties v <*> key metadata.creationtimestamp <*> name metadata.creationtimestamp_1 ns hubbledb.error_logs expireafterseconds <*> using method hybrid
-Error,Ignored,<*> <*> <*> i index <*> index build done building index metadata.creationtimestamp_1 on ns hubbledb.error_logs
-Error,Ignored,<*> <*> <*> i index <*> index build done building index _id_ on ns hubbledb.error_logs
-Error,Ignored,<*> <*> <*> i command conn430 renamecollectionforcommand rename <*> to hubbledb.error_logs and drop hubbledb.error_logs.
-Error,Ignored,<*> <*> <*> i storage conn430 finishing collection drop for hubbledb.error_logs <*> .
-Error,Ignored,<*> <*> <*> i storage conn430 deferring table drop for index _id_ on collection hubbledb.error_logs. _id_ <*> . ident <*> commit timestamp timestamp <*> <*>
-Error,Ignored,<*> <*> <*> i storage conn430 deferring table drop for index metadata.creationtimestamp_1 on collection hubbledb.error_logs. metadata.creationtimestamp_1 <*> . ident <*> commit timestamp timestamp <*> <*>
-Error,Ignored,<*> <*> <*> i storage conn430 deferring table drop for collection hubbledb.error_logs <*> . ident <*> commit timestamp timestamp <*> <*>
-Error,Ignored,<*> <*> <*> i sharding conn430 marking collection hubbledb.error_logs as collection version <unsharded>
-Error,Ignored,<*> <*> <*> i storage conn430 renamecollection renaming collection <*> from <*> to hubbledb.error_logs
-Error,Ignored,<*> <*> <*> i storage timestampmonitor completing drop for ident <*> ns hubbledb.error_logs. _id_ with drop timestamp timestamp <*> <*>
-Error,Ignored,<*> <*> <*> i storage timestampmonitor completing drop for ident <*> ns hubbledb.error_logs. metadata.creationtimestamp_1 with drop timestamp timestamp <*> <*>
-Error,Ignored,<*> <*> <*> i storage timestampmonitor completing drop for ident <*> ns hubbledb.error_logs with drop timestamp timestamp <*> <*>
-Error,Ignored,getlasterrormodes
-Error,Ignored,getlasterrordefaults w <*> wtimeout 0
-Error,Ignored,aug <*> <*> <*> <*> error tenant_repo.go <*> *tenantrepo .findtenantbyorganization reqid <*> finding the tenant by organization failed. resourcenotfound resource not found for the type tenant
-Error,Ignored,unable to fetch associated secret error secret <*> not found certificate namespace <*> name <*> resource_kind validatingwebhookconfiguration resource_name <*> resource_namespace resource_version <*> secret namespace <*> name <*>
-Error,Ignored,unable to fetch associated certificate error <*> <*> not found certificate namespace <*> name <*> resource_kind customresourcedefinition resource_name <*> resource_namespace resource_version <*>
-Error,Ignored,unable to fetch associated certificate error <*> <*> not found certificate namespace <*> name <*> resource_kind mutatingwebhookconfiguration resource_name <*> resource_namespace resource_version <*>
-Error,Ignored,unable to fetch associated secret error secret <*> not found certificate namespace <*> name <*> resource_kind customresourcedefinition resource_name <*> resource_namespace resource_version <*> secret namespace <*> name <*>
-Error,Ignored,unable to fetch associated secret error secret <*> not found certificate namespace <*> name <*> resource_kind mutatingwebhookconfiguration resource_name <*> resource_namespace resource_version <*> secret namespace <*> name <*>
-Error,Ignored,error message warning <*> cronjob is deprecated in <*> unavailable in <*> use batch/v1 cronjob
-Error,Ignored,error message warning <*> <*> is deprecated in <*> unavailable in <*> use <*> <*>
-Error,Ignored,error message unable to connect to the server context deadline exceeded client.timeout exceeded while awaiting headers
-Error,NotIgnored,<*> <*> <*> <*>  <*> 0m failed to connect to nats nats no servers available for connection
-Error,Ignored,final error received removing pvc <*> from claims in progress
-Error,NotIgnored,failed running prebind plugin err binding volumes timed out waiting for the condition plugin volumebinding pod <*>
-Error,NotIgnored,error scheduling pod retrying err running prebind plugin volumebinding binding volumes timed out waiting for the condition pod <*>
-Error,Ignored,failed to set annotations <*> to configuration <*> webhook <*> mutated false for audit <*> it has already been set to configuration <*> webhook <*> mutated true
-Error,Ignored,starting informer informer cache.sharedindexinformer indexer <*> <*> controller <*> nil processor *cache.sharedprocessor <*> cachemutationdetector cache.dummymutationdetector listerwatcher <*> <*> objecttype <*> <*> resynccheckperiod 0 defaulteventhandlerresyncperiod 0 clock <*> <*> started false stopped false startedlock sync.mutex state 0 sema <*> blockdeltas sync.mutex state 0 sema <*> watcherrorhandler <*> nil
-Error,Ignored,>>>>>>>>>>>>>>>>> event type added for pack <*> packstatus digest sha256 <*> conditions type installed status true lastprobetime <*> <*> <*> lasttransitiontime <*> <*> <*> reason installsuccess message pack install success type error status false lastprobetime <*> <*> <*> lasttransitiontime <*> <*> <*> reason installsuccess message pack install success type upgradeavailable status false lastprobetime <*> <*> <*> lasttransitiontime <*> <*> <*> reason actionsuccess message pack install or upgrade success cluster <*>
-Error,Ignored,<*> <*> <*> warning <*> <*> <*> <*> grpc server.processunaryrpc failed to write status connection error desc transport is closing
-Error,Ignored,couldn t reconcile node routes error listing routes unable to find route table for aws cluster prod3
-Error,Ignored,loading openapi spec for <*> failed with openapi spec does not exist
-Error,Ignored,failed calling webhook <*> expected response.uid <*> got
-Error,Ignored,<*> <*> <*> <*> <*> <*> <*> i | embed rejected connection from <*> <*> error eof servername
-Error,Ignored,failed calling webhook failing open <*> failed calling webhook <*> expected response.uid <*> got
-Error,Ignored,<*> <*> <*> <*> <*> <*> <*> w | etcdserver failed to send out heartbeat on time exceeded the <*> timeout for <*> to <*>
-Error,Ignored,auditing failed of request encoding failed <*> kind deleteoptions is unstructured and is not suitable for converting to <*>
-Error,Ignored,auditing failed of request encoding failed no kind scale is registered for version <*> in scheme <*> <*>
-Error,NotIgnored,reconciler error error error creating azuremanagedcontrolplane <*> failed to reconcile managed cluster resource group failed to create resource <*> service group failed to get desired parameters for group <*> failed to get rg <*> resources.groupsclient#get failure sending request statuscode 0 <*> original error context deadline exceeded name tf-test namespace <*> reconciler group <*> reconciler kind azuremanagedcontrolplane
-Error,NotIgnored,<*> <*> <*> <*> <*> <*> <*> w | etcdserver read-only range request key <*> with result error context canceled took too long <*> to execute
-Error,NotIgnored,error deleting general security groups for awsmanagedcontrolplane error failed to describe cluster-owned security groups in vpc <*> requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> name <*> namespace <*>
-Error,NotIgnored,reconciler error error failed to describe cluster-owned security groups in vpc <*> requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> controller awsmanagedcontrolplane name <*> namespace <*>
-Error,NotIgnored,error deleting network for awsmanagedcontrolplane error failed to describe route tables in vpc <*> failed to describe route tables in vpc <*> requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> name <*> namespace <*>
-Error,NotIgnored,reconciler error error failed to describe route tables in vpc <*> failed to describe route tables in vpc <*> requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> controller awsmanagedcontrolplane name <*> namespace <*>
-Error,NotIgnored,error deleting network for awsmanagedcontrolplane error failed to describe internet gateways in vpc <*> requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> name <*> namespace <*>
-Error,NotIgnored,reconciler error error failed to describe internet gateways in vpc <*> requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> controller awsmanagedcontrolplane name <*> namespace <*>
-Error,NotIgnored,error deleting network for awsmanagedcontrolplane error failed to query ec2 for vpcs requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> name <*> namespace <*>
-Error,NotIgnored,reconciler error error failed to query ec2 for vpcs requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> controller awsmanagedcontrolplane name <*> namespace <*>
-Error,NotIgnored,error deleting network for awsmanagedcontrolplane error failed to describe <*> gateways with vpc id <*> requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> name <*> namespace <*>
-Error,NotIgnored,reconciler error error failed to describe <*> gateways with vpc id <*> requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> controller awsmanagedcontrolplane name <*> namespace <*>
-Error,NotIgnored,error deleting network for awsmanagedcontrolplane error failed to delete vpc <*> dependencyviolation the vpc <*> has dependencies and cannot be deleted. n tstatus code <*> request id <*> name <*> namespace <*>
-Error,NotIgnored,reconciler error error failed to delete vpc <*> dependencyviolation the vpc <*> has dependencies and cannot be deleted. n tstatus code <*> request id <*> controller awsmanagedcontrolplane name <*> namespace <*>
-Error,NotIgnored,error deleting network for awsmanagedcontrolplane error failed to describe route tables in vpc <*> requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> name <*> namespace <*>
-Error,NotIgnored,reconciler error error failed to describe route tables in vpc <*> requestlimitexceeded request limit exceeded. n tstatus code <*> request id <*> controller awsmanagedcontrolplane name <*> namespace <*>
-Error,Ignored,failed to get spectro cluster code resourcenotfound details <nil> message cluster <*> is not found ref <*> cluster <*>
-Error,Ignored,failed to get cloud type from spectro cluster code resourcenotfound details <nil> message cluster <*> is not found ref <*> cluster <*>
-Error,Ignored,failed to initialize cloud orchestrator code resourcenotfound details <nil> message cluster <*> is not found ref <*> cluster <*>
-Error,Ignored,unable to authenticate the request due to an error invalid bearer token token has been invalidated
-Error,Ignored,error building openapi models for <*> error <*> has invalid property anyof
-Error,Ignored,error <*> has invalid property anyof
-Error,Ignored,error proxying data from backend to client tls use of closed connection
-Error,NotIgnored,error deleting network for awsmanagedcontrolplane error failed to detach internet gateway <*> dependencyviolation network <*> has some mapped public address es . please unmap those public address es before detaching the gateway. n tstatus code <*> request id <*> name <*> namespace <*>
-Error,NotIgnored,reconciler error error failed to detach internet gateway <*> dependencyviolation network <*> has some mapped public address es . please unmap those public address es before detaching the gateway. n tstatus code <*> request id <*> controller awsmanagedcontrolplane name <*> namespace <*>
-Error,Ignored,failed to extract job list etcdserver leader changed
-Error,Ignored,re-evaluated workload endpoint status adminup true failed true known true operup true status error workloadendpointid proto.workloadendpointid orchestratorid k8s workloadid <*> endpointid eth0
-Error,Ignored,reporting combined status. id proto.workloadendpointid orchestratorid k8s workloadid <*> endpointid eth0 status error
-Error,Ignored,failed to get local addresses during proxy sync route ip+net no such network interface assuming external ips are not local
-,Ignored,event occurred object <*> kind endpoints apiversion <*> type warning reason failedtoupdateendpoint message failed to update endpoint <*> operation cannot be fulfilled on endpoints configserver-service the object has been modified please apply your changes to the latest version and try again
-,Ignored,event occurred object <*> kind endpoints apiversion <*> type warning reason failedtoupdateendpoint message failed to update endpoint <*> operation cannot be fulfilled on endpoints system-service the object has been modified please apply your changes to the latest version and try again
-Error,Ignored,error deleting network for awsmanagedcontrolplane error error patching conditions the condition clustersecuritygroupsready was modified by a different process and this caused a merge/changecondition conflict <*> n t... <*> <*> identical fields n tseverity info n tlasttransitiontime time s <*> <*> <*> <*> <*> utc <*> treason deleting n+ treason deleted n tmessage n n name <*> namespace <*>
-Error,Ignored,watch error received from upstream listroot <*> error too old resource version 4 <*>
-Error,Ignored,reconciler error error error patching conditions the condition clustersecuritygroupsready was modified by a different process and this caused a merge/changecondition conflict <*> n ttype clustersecuritygroupsready n tstatus false n tseverity info <*> tlasttransitiontime <*> time s <*> <*> <*> <*> <*> utc n+ tlasttransitiontime <*> time s <*> <*> <*> <*> <*> utc <*> treason deleting n+ treason deleted n tmessage n n controller awsmanagedcontrolplane name <*> namespace <*>
-Error,Ignored,reconciler error error error patching conditions the condition clustersecuritygroupsready was modified by a different process and this caused a merge/changecondition conflict <*> n t... <*> <*> identical fields n tseverity info n tlasttransitiontime time s <*> <*> <*> <*> <*> utc <*> treason deleting n+ treason deleted n tmessage n n controller awsmanagedcontrolplane name <*> namespace <*>
-Error,Ignored,error deleting network for awsmanagedcontrolplane error error patching conditions the condition clustersecuritygroupsready was modified by a different process and this caused a merge/changecondition conflict <*> n ttype clustersecuritygroupsready n tstatus false n tseverity info <*> tlasttransitiontime <*> time s <*> <*> <*> <*> <*> utc n+ tlasttransitiontime <*> time s <*> <*> <*> <*> <*> utc <*> treason deleting n+ treason deleted n tmessage n n name <*> namespace <*>
-Error,Ignored,failed to parse failed to parse logs for pod in namespace as no suitable regex filter is found cluster <*>
-Error,Ignored,couldn t reconcile node routes error listing routes unable to find route table for aws cluster prod2
-Error,Ignored,apiserver received an error that is not an <*> <*> s context canceled
-Error,Ignored,apiserver received an error that is not an <*> rpctypes.etcderror code 0xe desc etcdserver leader changed
-Error,Ignored,apiserver received an error that is not an <*> rpctypes.etcderror code 0xe desc etcdserver request timed out
-Error,Ignored,apiserver received an error that is not an <*> rpctypes.etcderror code 0xe desc etcdserver request timed out possibly due to previous leader failure
-Error,Ignored,failed to watch <*> failed to list <*> get https <*> <*> <*> resourceversion 0 <*> tls handshake timeout
-Error,Ignored,failed to watch <*> failed to list <*> get https <*> <*> <*> limit <*> resourceversion 0 <*> tls handshake timeout
-Error,NotIgnored,failed request patch <*> uid <*> error code service unavailable details <html>
-Error,NotIgnored,failed to update spectroclusterstatusconditions code service unavailable msg <*> service temporarily unavailable ref details <html> r n<head><title>503 service temporarily unavailable</title></head> r n<body> r <*> service temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n cluster <*>
-Error,NotIgnored,failed to push status conditions code service unavailable details <html> r n<head><title>503 service temporarily unavailable</title></head> r n<body> r <*> service temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n message <*> service temporarily unavailable ref cluster <*>
-Error,NotIgnored,failed to process spectro cluster status event code service unavailable details <html> r n<head><title>503 service temporarily unavailable</title></head> r n<body> r <*> service temporarily <*> r n<hr><center>nginx</center> r n</body> r <*> r n message <*> service temporarily unavailable ref cluster <*>
-Error,Ignored,couldn t reconcile node routes error listing routes unable to find route table for aws cluster <*>
-,Ignored,unable to get kubecontrollersconfiguration default error etcdserver leader changed
-,Ignored,<*> <*> <*> <*> e | etcdserver publish error etcdserver request timed out possibly due to connection <*>
-,Ignored,failed to extract cronjobs list etcdserver request timed out
-,Ignored,failed to update lock etcdserver request timed out
-,Ignored,deletion of namespace <*> failed etcdserver leader changed
-,Ignored,error deleting general security groups for awsmanagedcontrolplane error etcdserver request timed out name <*> namespace <*>
-,Ignored,reconciler error error etcdserver request timed out controller awsmanagedcontrolplane name <*> namespace <*>
-,Ignored,error deleting network for awsmanagedcontrolplane error etcdserver request timed out name <*> namespace <*>
-,Ignored,failed to update spectroclusterstatuscondition code resourcenotfound msg cluster <*> is not found ref <*> details <nil> cluster <*>
-,Ignored,failed to update spectroclusterstatusconditions code resourcenotfound msg cluster <*> is not found ref <*> details <nil> cluster <*>
-,Ignored,failed to push status conditions code resourcenotfound details <nil> message cluster <*> is not found ref <*> cluster <*>
-,Ignored,failed to process spectro cluster status event code resourcenotfound details <nil> message cluster <*> is not found ref <*> cluster <*>
-,Ignored,failed to update cluster condition code resourcenotfound details <nil> message cluster <*> is not found ref <*> cluster <*>
-,Ignored,failed to fetch spectrocluster definitionscode resourcenotfound msg cluster <*> is not found ref <*> details <nil> cluster <*>
-,NotIgnored,retrying <*> request patch <*> uid <*> failed request patch <*> uid <*> error code service unavailable details <html>
-,Ignored,failed to list pods in namespace <*> etcdserver leader changed cluster <*>
-,Ignored,failed to get logs for namespace <*> etcdserver leader changed cluster <*>
-,Ignored,failed to collect pod logs etcdserver leader changed cluster <*>
-,Ignored,failed to get log lines failed to parse logs cluster <*>
-,Ignored,failed to process logs failed to parse logs cluster <*>
-,Ignored,reconciler error error unable to install crd unable to update version config map operation cannot be fulfilled on configmaps <*> the object has been modified please apply your changes to the latest version and try again controller spectrocluster name <*> namespace <*>
-,Ignored,storing endpoint status update ipversion <*> status error workload proto.workloadendpointid orchestratorid k8s workloadid <*> endpointid eth0
-,Ignored,endpoint is in error will report error id proto.workloadendpointid orchestratorid k8s workloadid <*> endpointid eth0 ipversion <*> status error
-Error,Ignored,<*> <*> <*> retrying <*> request put <*> configuid <*> machinepoolname <*> machineuid failed request put <*> configuid <*> machinepoolname <*> machineuid error code toomanyrequests details <nil> message too many requests put <*> ref
-Error,Ignored,<*> <*> <*> <*> readiness probe failed get http <*> <*> dial tcp <*> <*> connect connection refused
-Error,Ignored,<*> <*> <*> 4 readiness probe failed get http <*> <*> context deadline exceeded client.timeout exceeded while awaiting headers
-Error,Ignored,<*> <*> <*> retrying <*> request put <*> configuid <*> machinepoolname <*> machineuid failed request get <*> configuid <*> machinepoolname <*> machineuid error code toomanyrequests details <nil> message too many requests get <*> ref
-Error,Ignored,<*> <*> <*> retrying <*> request get <*> configuid <*> machinepoolname <*> machineuid failed request get <*> configuid <*> machinepoolname <*> machineuid error code toomanyrequests details <nil> message too many requests get <*> ref
-Error,Ignored,<*> <*> <*> retrying <*> request get <*> configuid <*> machinepoolname <*> machineuid failed request put <*> configuid <*> machinepoolname <*> machineuid error code toomanyrequests details <nil> message too many requests put <*> ref
-Error,Ignored,error retrieving resource lock <*> get https <*> <*> http2 server sent goaway and closed the connection laststreamid <*> errcode no_error debug
-Error,Ignored,healthz check failed statuses
-Error,NotIgnored,<*> <*> <*> <*> failed to create cluster domains status object for driver pxd failed to get clusterid for the driver get http <*> <*> dial tcp <*> <*> connect connection refused next retry in <*>
-Error,Ignored,failed calling webhook failing open <*> failed calling webhook <*> post https <*> <*> <*> context deadline exceeded
-Error,Ignored,rejected by webhook <*> errors.statuserror errstatus <*> typemeta <*> kind apiversion listmeta <*> selflink resourceversion continue remainingitemcount <*> nil status failure message admission webhook <*> denied the request the custom resource cannot be deleted because it contains unwanted key and value reason the custom resource cannot be deleted because it contains unwanted key and value details <*> nil code <*>
-Error,Ignored,rejected by webhook <*> errors.statuserror errstatus <*> typemeta <*> kind apiversion listmeta <*> selflink resourceversion continue remainingitemcount <*> nil status failure message admission webhook <*> denied the request the configmap contains unwanted key and value reason the configmap contains unwanted key and value details <*> nil code <*>
-Error,Ignored,failed to discover group <*> error the server is currently unable to handle the request
-Error,Ignored,sync <*> failed with internal error occurred failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
-Error,NotIgnored,rejected by webhook <*> errors.statuserror errstatus <*> typemeta <*> kind apiversion listmeta <*> selflink resourceversion continue remainingitemcount <*> nil status failure message admission webhook <*> denied the request this webhook denies all requests reason details <*> nil code <*>
-Error,NotIgnored,rejected by webhook <*> errors.statuserror errstatus <*> typemeta <*> kind apiversion listmeta <*> selflink resourceversion continue remainingitemcount <*> nil status failure message admission webhook <*> denied the request the custom resource contains unwanted data reason the custom resource contains unwanted data details <*> nil code <*>
-Error,Ignored,<*> <*> <*> <*> e | rafthttp failed to read <*> on stream msgapp <*> context canceled
-Error,Ignored,<*> <*> <*> <*> e | rafthttp failed to read <*> on stream message context canceled
-Error,Ignored,event occurred object <*> kind replicaset apiversion <*> type warning reason failedcreate message error creating internal error occurred failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
-Error,Ignored,failed calling webhook <*> post https <*> <*> <*> context deadline exceeded
-Error,Ignored,error proxying data from client to backend write tcp <*> <*> <*> write broken pipe
-Error,NotIgnored,caller level.go <*> error <*> error occurred n t* failed to join <*> no installed keys could decrypt the message n n expected <*> joined 0 level error msg partial join op memberdiscovery ts <*> <*> <*>
-Error,Ignored,error getting nodes failed to get nodes for the driver get http <*> <*> dial tcp <*> <*> connect connection refused
-Error,Ignored,grpc addrconn.createtransport failed to connect to https <*> <*> <nil> 0 <nil> . err connection error desc transport authentication handshake failed read tcp <*> <*> <*> read connection reset by peer . reconnecting...
-Error,Ignored,error retrieving resource lock <*> get https <*> <*> <*> stream error stream id <*> internal_error client.timeout exceeded while awaiting headers
-Error,Ignored,could not retrieve px node status error get http <*> <*> dial tcp <*> <*> connect connection refused
-Error,Ignored,failed to watch <*> failed to list <*> get https <*> <*> metadata.name%3dconfig limit <*> resourceversion 0 dial tcp <*> <*> i/o timeout
-Error,Ignored,failed to watch <*> failed to list <*> get https <*> <*> <*> resourceversion 0 dial tcp <*> <*> connect no route to host
-Error,Ignored,event occurred object <*> kind replicaset apiversion <*> type warning reason failedcreate message error creating internal error occurred failed calling webhook <*> post https <*> <*> <*> eof
-Error,NotIgnored,caller net.go <*> component memberlist level error msg memberlist failed to receive no installed keys could decrypt the message from <*> <*> ts <*> <*> <*>
-Error,NotIgnored,caller level.go <*> error creating ndp responder for <*> listen ip6 <*> fe80 ecee eeff feee <*> bind cannot assign requested address interface <*> level error msg failed to create ndp responder op createndpresponder ts <*> <*> <*>
-Error,Ignored,caller level.go <*> error <*> error occurred n t* failed to join <*> dial tcp <*> <*> connect connection refused n n expected <*> joined 0 level error msg partial join op memberdiscovery ts <*> <*> <*>
-,Ignored,error retrieving resource lock <*> the server was unable to return a response in the time allotted but may still be processing the request get <*> <*>
-,Ignored,error looking up in-cluster authentication configuration the server was unable to return a response in the time allotted but may still be processing the request get configmaps <*>
-,Ignored,failed predicate on node <*> node s had taints that the pod didn t tolerate
-,Ignored,deletion of <*> failed because of a conflict going to retry
-,Ignored,guaranteedupdate of <*> failed because of a conflict going to retry
-,Ignored,transport loopywriter.run returning. connection error desc transport is closing
-,Ignored,http verb get uri <*> <*> latency <*> useragent <*> linux/amd64 <*> <*> sig-apps cronjob should delete failed finished jobs with limit of one job srcip <*> <*> resp <*>
-,Ignored,http verb delete uri <*> latency <*> useragent <*> linux/amd64 <*> <*> sig-apps cronjob should delete failed finished jobs with limit of one job srcip <*> <*> resp <*>
-,Ignored,http verb post uri <*> latency <*> useragent <*> linux/amd64 <*> <*> sig-apps cronjob should delete failed finished jobs with limit of one job srcip <*> <*> resp <*>
-,Ignored,http verb get uri <*> metadata.name%3ddefault limit <*> resourceversion 0 latency <*> useragent <*> linux/amd64 <*> <*> sig-apps cronjob should delete failed finished jobs with limit of one job srcip <*> <*> resp <*>
-,Ignored,http verb get uri <*> true fieldselector metadata.name%3ddefault resourceversion <*> timeout <*> timeoutseconds <*> watch true latency <*> useragent <*> linux/amd64 <*> <*> sig-apps cronjob should delete failed finished jobs with limit of one job srcip <*> <*> resp 0
-,Ignored,http verb get uri <*> latency <*> useragent <*> linux/amd64 <*> <*> sig-apps cronjob should delete failed finished jobs with limit of one job srcip <*> <*> resp <*>
-,Ignored,http verb get uri <*> true fieldselector metadata.name%3ddefault resourceversion <*> timeout <*> timeoutseconds <*> watch true latency <*> useragent <*> linux/amd64 <*> <*> sig-storage pod disks should be able to delete a <*> pd without error srcip <*> <*> resp 0
-,Ignored,http verb delete uri <*> latency <*> useragent <*> linux/amd64 <*> <*> sig-storage pod disks should be able to delete a <*> pd without error srcip <*> <*> resp <*>
-,Ignored,http verb delete uri <*> latency <*> useragent <*> linux/amd64 <*> <*> <*> serversideapply should ignore conflict errors if force apply is used srcip <*> <*> resp <*>
-,Ignored,http verb post uri <*> latency <*> useragent <*> linux/amd64 <*> <*> <*> serversideapply should ignore conflict errors if force apply is used srcip <*> <*> resp <*>
-,Ignored,http verb get uri <*> metadata.name%3ddefault limit <*> resourceversion 0 latency <*> useragent <*> linux/amd64 <*> <*> <*> serversideapply should ignore conflict errors if force apply is used srcip <*> <*> resp <*>
-,Ignored,http verb get uri <*> true fieldselector metadata.name%3ddefault resourceversion <*> timeout <*> timeoutseconds <*> watch true latency <*> useragent <*> linux/amd64 <*> <*> <*> serversideapply should ignore conflict errors if force apply is used srcip <*> <*> resp 0
-,Ignored,http verb patch uri <*> apply_test latency <*> useragent <*> linux/amd64 <*> <*> <*> serversideapply should ignore conflict errors if force apply is used srcip <*> <*> resp <*>
-,Ignored,http verb patch uri <*> latency <*> useragent <*> linux/amd64 <*> <*> <*> serversideapply should ignore conflict errors if force apply is used srcip <*> <*> resp <*>
-,Ignored,http verb patch uri <*> apply_test force true latency <*> useragent <*> linux/amd64 <*> <*> <*> serversideapply should ignore conflict errors if force apply is used srcip <*> <*> resp <*>
-,Ignored,http verb get uri <*> latency <*> useragent <*> linux/amd64 <*> <*> <*> serversideapply should ignore conflict errors if force apply is used srcip <*> <*> resp <*>
-,Ignored,http verb post uri <*> latency <*> useragent <*> linux/amd64 <*> <*> sig-storage pod disks should be able to delete a <*> pd without error srcip <*> <*> resp <*>
-,Ignored,http verb get uri <*> metadata.name%3ddefault limit <*> resourceversion 0 latency <*> useragent <*> linux/amd64 <*> <*> sig-storage pod disks should be able to delete a <*> pd without error srcip <*> <*> resp <*>
-,Ignored,http verb get uri <*> latency <*> useragent <*> linux/amd64 <*> <*> sig-storage pod disks should be able to delete a <*> pd without error srcip <*> <*> resp <*>
-,Ignored,http verb get uri <*> spec.unschedulable%3dfalse latency <*> useragent <*> linux/amd64 <*> <*> sig-storage pod disks should be able to delete a <*> pd without error srcip <*> <*> resp <*>
-,Ignored,failed to generate initial serving certificate retrying... error failed verifying ca keypair tls failed to find any pem data in certificate input interval <*>
-,Ignored,health check failed as certificatesource is unhealthy
-,Ignored,caller level.go <*> error <*> errors occurred n t* failed to join <*> no installed keys could decrypt the message n t* failed to join <*> no installed keys could decrypt the message n n expected <*> joined 0 level error msg partial join op memberdiscovery ts <*> <*> <*>
-,Ignored,error initializing lighthouse config. timed out performing task
-,Ignored,> attempt to use docker as container handler failed error <*> not a socket-file
-,Ignored,could not enable portworx-reboot error exit status <*> out failed to connect to bus no data available nfailed to connect to bus no data available n
-,Ignored,could create systemd service error could not enable portworx-reboot exit status <*>
-,Ignored,<*> portworx <*> failed to build px filesystem dependency...
-,Ignored,<*> portworx <*> failed to load px filesystem dependencies for kernel <*>
-,Ignored,<*> systemd <*> portworx.service failed with result exit-code .
-,Ignored,unexpected error when reading response body <*> request canceled client.timeout or context cancellation while reading body
-,Ignored,error retrieving resource lock <*> unexpected error when reading response body. please retry. original error <*> request canceled client.timeout or context cancellation while reading body
-,NotIgnored,error creating spec for volume <*> pod wordpress <*> <*> error processing pvc wordpress <*> <*> pvc <*> has non-bound phase pending or empty <*>
-,NotIgnored,error creating spec for volume data pod wordpress <*> <*> error processing pvc wordpress <*> <*> pvc <*> has non-bound phase pending or empty <*>
-,Ignored,sync <*> failed with internal error occurred failed calling webhook <*> post https <*> <*> <*> eof
-,Ignored,failed calling webhook failing closed <*> failed calling webhook <*> post https <*> <*> <*> eof
-,Ignored,failed to establish connection to csi driver context deadline exceeded
-,Ignored,<*> <*> <*> <*> i | rafthttp peer <*> became inactive message send to peer failed
-,NotIgnored,failed to create govmomi client. err serverfaultcode cannot complete login due to an incorrect user name or password.
-,Ignored,hit error connecting to datastore <*> retry error etcdserver request timed out
-,Ignored,failed to check if actions openstorage.io.action.storagepool/expand openstorage.io.action.storagepool/rebalance are licensed due to head http <*> <*> autcapacitymanagement dial tcp <*> <*> connect connection refused file portworx.go <*> fn synclicenses
-,Ignored,failed to scrape all the objects from the system error connecting to grpc server <*> <*> connection timed out file engine.go <*> component <*>
-,Ignored,failed to create node client to check pool expansion status. err error connecting to grpc server <*> <*> connection timed out file portworx.go <*>
-,Ignored,healthz check failed checker webhook-ready error op get url https <*> <*> err op dial net tcp source null addr ip <*> port <*> zone err syscall connect err <*>
-,Ignored,failed to scrape node err get https <*> <*> true read tcp <*> <*> <*> read connection reset by peer node <*>
-Error,Ignored,retrying <*> request post <*> failed request get <*> uid error an unknown error occurred. context deadline exceeded
-Error,Ignored,retrying <*> request get <*> uid failed request get <*> token error an unknown error occurred. context deadline exceeded
-Error,Ignored,retrying <*> request get <*> token failed request get <*> uid error an unknown error occurred. context deadline exceeded
-Error,Ignored,failed request get <*> token error an unknown error occurred. eof
-Error,Ignored,failed to refresh auth token. getting new auth token for service ally. an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,failed request post <*> error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout
-Error,Ignored,retrying <*> request post <*> failed request post <*> error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout
-Error,Ignored,retrying <*> request get <*> token failed request get <*> uid error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
-Error,Ignored,failed request get <*> registryname error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
-Error,Ignored,failed request get <*> token error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout
-Error,Ignored,retrying <*> request get <*> uid failed request get <*> uid error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout
-Error,Ignored,failed request patch <*> uid <*> error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
-Error,Ignored,retrying <*> request patch <*> uid <*> failed request get <*> uid error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
-Error,Ignored,retrying <*> request get <*> uid failed request patch <*> uid <*> error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
-Error,Ignored,retrying <*> request get <*> token failed request patch <*> uid <*> error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
-Error,Ignored,retrying <*> request patch <*> uid <*> retrying <*> request get <*> token failed request get <*> uid error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
-Error,Ignored,retrying <*> request post <*> failed request patch <*> uid <*> error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
-Error,Ignored,failed to update spectroclusterstatusconditions code unknownerror msg an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out ref details <nil> cluster <*>
-Error,Ignored,failed to push status conditions an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out cluster <*>
-Error,Ignored,failed to process spectro cluster status event an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out cluster <*>
-Error,Ignored,failed to fetch spectrocluster definitionscode unknownerror msg an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out ref details <nil> cluster <*>
-Error,Ignored,failed to get spectrocluster from hubble an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out cluster <*>
-Error,Ignored,successfully audited failed to get spectrocluster from hubble. an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out error cluster <*>
-Error,Ignored,failed to run orchestration task an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out cluster <*>
-Error,Ignored,failed request get <*> uid error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout
-Error,Ignored,failed to get ally auth token an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout cluster <*>
-Error,Ignored,retrying <*> request get <*> token failed request get <*> registryname error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
-Error,Ignored,retrying <*> request get <*> registryname failed request patch <*> uid <*> error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> connect connection timed out
-Error,Ignored,retrying <*> request get <*> servicename <*> failed request get <*> uid error an unknown error occurred. context deadline exceeded
-Error,Ignored,retrying <*> request patch <*> uid <*> failed request get <*> servicename <*> error an unknown error occurred. context deadline exceeded
-Error,Ignored,retrying <*> request patch <*> uid <*> failed request get <*> token error an unknown error occurred. context deadline exceeded
-Error,NotIgnored,failed to get pack object error <*> prometheus-operator not found spectrocluster <*>
-Error,NotIgnored,upgrade agent failed to get latest version for service ally. an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout cluster <*>
-Error,Ignored,failed to refresh auth token. getting new auth token for service ally. code unauthorizedaccess details <nil> message invalid authorization token specified ref cluster <*>
-Error,NotIgnored,failed to acquire auth token for service ally. code unknownerror msg an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout ref details <nil> cluster <*>
-Error,NotIgnored,failed to fetch latest version for service ally . code unknownerror msg an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout ref details <nil> cluster <*>
-Error,Ignored,failed to watch <*> the server could not find the requested resource
-Error,NotIgnored,unable to lookup or create cluster certificates error etcdserver leader changed cluster <*> name <*> namespace <*> reconciler group <*> reconciler kind kubeadmcontrolplane
-Error,Ignored,failed to acquire auth token for service ally. code unknownerror msg an unknown error occurred. context deadline exceeded ref details <nil> cluster <*>
-Error,Ignored,failed to fetch pack registry with uid <*> code unknownerror msg an unknown error occurred. context deadline exceeded ref details <nil> cluster <*>
-Error,Ignored,failed to refresh ally auth token code unknownerror msg an unknown error occurred. context deadline exceeded ref details <nil> cluster <*>
-Error,Ignored,failed to fetch helm registry with uid <*> code unknownerror msg an unknown error occurred. context deadline exceeded ref details <nil> cluster <*>
-Error,Ignored,apiserver received an error that is not an <*> <*> s http2 stream closed http2 stream closed
-Error,Ignored,retrying <*> request post <*> failed request post <*> error an unknown error occurred. context deadline exceeded
-Error,NotIgnored,could not replicate object to other namespaces error replicated <*> to 0 out of <*> namespaces <*> error occurred n t* failed to replicate secret <*> -> <*> failed to update secret <*> secrets <*> already exists failed to update secret <*> secrets <*> already exists n n kind secret resource <*>
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirthost etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirtsocketidentity etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephobjectstoreuser etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirtclustertemplate etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephobjectstore etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind objectbucketclaim etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephblockpoolradosnamespace etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephbuckettopic etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirtmanageddisk etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephfilesystem etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephclient etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirtmachinetemplate etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind objectbucket etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephrbdmirror etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirttlsidentity etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephfilesystemmirror etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephblockpool etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephbucketnotification etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirthostpcidevice etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephobjectzonegroup etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirtsshidentity etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephobjectzone etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirtcluster etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephfilesystemsubvolumegroup etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind libvirtmachine etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephobjectrealm etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephnfs etcdserver request timed out reinitializing...
-Error,Ignored,cacher *unstructured.unstructured unexpected listandwatch error failed to list <*> kind cephcluster etcdserver request timed out reinitializing...
-Error,Ignored,failed creating mandatory flowcontrol settings failed getting prioritylevelconfiguration exempt due to etcdserver request timed out will retry later
-Error,Ignored,failed to apply registry server secret in palette an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,successfully audited failed to apply registry server secret in palette an unknown error occurred. context deadline exceeded error cluster <*>
-Error,Ignored,failed to get auth token for service ally. an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,failed to get pack registry with uid <*> an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,operation cannot be fulfilled on <*> <*> storageerror invalid object code 4 key <*> resourceversion 0 additionalerrormsg precondition failed uid in precondition <*> uid in object meta
-Error,NotIgnored,retrying <*> request get <*> servicename <*> failed request get <*> servicename <*> error an unknown error occurred. context deadline exceeded
-Error,NotIgnored,retrying <*> request get <*> servicename <*> failed request get <*> servicename <*> error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout
-Error,NotIgnored,retrying <*> request get <*> uid failed request get <*> servicename <*> error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout
-Error,NotIgnored,retrying <*> request post <*> retrying <*> request patch <*> uid <*> failed request get <*> uid error an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout
-Error,NotIgnored,retrying <*> request post <*> retrying <*> request get <*> uid failed request post <*> error an unknown error occurred. context deadline exceeded
-Error,NotIgnored,should not happen failed to update managedfields err failed to convert new object <*> kind replicaset to smd typed <*> name <*> <*> duplicate entries for key name releasenamespace versionkind <*> kind
-Error,Ignored,<*> failed with unable to find a custom resource client for <*> <*> <*> not found
-Error,Ignored,failed to watch <*> failed to list <*> the server could not find the requested resource
-Error,NotIgnored,reconciler error error etcdserver leader changed name <*> namespace <*> reconciler group <*> reconciler kind kubeadmcontrolplane
-Error,Ignored,failed to get registry credentials an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,failed to retry auth operation an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,failed to get helm registry with uid <*> an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,failed to run orchestration task an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,retrying <*> request get <*> token failed request get <*> token error an unknown error occurred. context deadline exceeded
-Error,Ignored,failed to get ally auth token an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,failed to validate auth token an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,failed to get http transport an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,failed to get cluster client an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,upgrade agent failed to get latest version for service ally. an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,upgrade agent failed to check update required in cluster agent an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,upgrade agent failed to check version upgrade an unknown error occurred. context deadline exceeded cluster <*>
-Error,Ignored,upgrade agent failed to check version upgrade an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout cluster <*>
-Error,Ignored,upgrade agent failed to check update required in cluster agent an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout cluster <*>

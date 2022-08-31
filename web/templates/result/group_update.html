@@ -26,8 +26,10 @@
 
   <label for="error_type">Predict Error Type</label>
   <select name="error_type" id="error_type">
-    <option value="NoError" {% if request.form['error_type'] == 'NoError' or group['error_type']  == 'NoError' %}selected{% endif %}>Not an Error</option> 
     <option value="Ignored" {% if request.form['error_type'] == 'Ignored' or group['error_type']  == 'Ignored' %}selected{% endif %}>Can Be Ignored</option> 
+    <option value="NotIgnored" {% if request.form['error_type'] == 'NotIgnored' or group['error_type']  == 'NotIgnored' %}selected{% endif %}>Shouldn't Be Ignored</option> 
+   
+    <option value="NoError" {% if request.form['error_type'] == 'NoError' or group['error_type']  == 'NoError' %}selected{% endif %}>Not an Error</option> 
     <option value="ConnectionError" {% if request.form['error_type'] == 'ConnectionError' or group['error_type']  == 'ConnectionError' %}selected{% endif %}>Connection Error</option>  
     <option value="ServerError" {% if request.form['error_type'] == 'ServerError' or group['error_type']  == 'ServerError' %}selected{% endif %}>Server Error</option>  
     <option value="DataError" {% if request.form['error_type'] == 'DataError' or group['error_type'] == 'DataError' %}selected{% endif %}>Data Error</option>

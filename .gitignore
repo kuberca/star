@@ -3,3 +3,6 @@ model
 sqlite3.bin
 sqlite3.bin-journal
 __pycache__
+bk-0803/
+error_type_cla.bin
+error_type_cla.vec

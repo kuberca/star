@@ -24,10 +24,21 @@
       </tr>
 
       {% for error_type, details in summary.items() %}
+      {% if error_type == '' %}
       <tr>
-        <td><a class="action" href="{{ url_for('result.groups', error_type=error_type) }}">{{ error_type }}</a></td>
+        <td><a class="action" href="{{ url_for('result.groups', error_type=error_type) }}">{% if error_type == '' %} Undefined {% else %} {{ error_type }} {% endif %}</a></td>
         <td>{{ details }} </td>
       </tr>
+      {% endif %}
+      {% endfor %}
+
+      {% for error_type, details in summary.items() %}
+      {% if error_type != '' %}
+      <tr>
+        <td><a class="action" href="{{ url_for('result.groups', error_type=error_type) }}">{% if error_type == '' %} Undefined {% else %} {{ error_type }} {% endif %}</a></td>
+        <td>{{ details }} </td>
+      </tr>
+      {% endif %}
       {% endfor %}
     </table>  
   </section>
@@ -36,6 +47,7 @@
 
   <button type="button" class="collapsible">Unresolved Group</button>
   <section class="groupsec">
+    <a class="action" href="{{ url_for('result.resolve_all') }}">Resolve All</a>
     {% for group in groups %}
       <article class="result">
         <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}, <b>Label</b>: {{ group['label'] }}, <b>Error Type</b>: {{ group['error_type'] }}</p>
@@ -64,7 +76,7 @@
   <hr>
 
   <button type="button" class="collapsible">Resolved Group</button>
-  <section class="groupsec">
+  <section class="groupsechide">
     {% for group in resolved_groups %}
       <article class="result">
         <p class="body"><b>Group Id</b>: {{ group['group_id'] }}, <b>Templates num</b>: {{ group['results']|length }}, <b>Label</b>: {{ group['label'] }}, <b>Error Type</b>: {{ group['error_type'] }}</p>
