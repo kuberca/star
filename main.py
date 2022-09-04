@@ -15,7 +15,7 @@ with app.app_context():
     result.start_backend()
 
 def run():
-    app.run(debug=True, use_reloader=False)
+    app.run(debug=True, use_reloader=False, host="0.0.0.0", port=5001)
 
 
 if __name__ == "__main__":

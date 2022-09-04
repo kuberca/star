@@ -19,6 +19,8 @@ class ErrorTypeNLP:
     def __init__(self, model_file: str):
         if not path.isfile(model_file):
             raise Exception(f"Model file {model_file} not found.")
+        else:
+            print("loading model file for ErrorTypeNLP: ", model_file)
 
         self.model = fasttext.load_model(model_file)
 

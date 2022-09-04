@@ -1,2 +1,3 @@
+include fb.csv
 graft web
 global-exclude *.pyc

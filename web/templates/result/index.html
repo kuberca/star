@@ -7,7 +7,7 @@
 
   <a class="action" href="{{ url_for('result.resolved') }}">Resolved </a>
 
-  <a class="action" href="{{ url_for('result.groups') }}">Groups </a>
+  <a class="action" href="{{ url_for('result.groups', error_type='NotIgnored') }}">Groups </a>
 
   <a class="action" href="{{ url_for('result.cleanup') }}">Cleanup All Data</a>
   

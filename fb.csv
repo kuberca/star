@@ -554,7 +554,7 @@ Error,NotIgnored,failed to acquire auth token for service ally. code unknownerro
 Error,NotIgnored,condition spectrocluster <*> condition type imagecustomizationdone status false lastprobetime <*> <*> <*> lasttransitiontime <*> <*> <*> reason failure message failed to create spectro-ansible playbook failed to update cloudconfigstatus failed to check if ova is deployed unable to find virtual machine failed to get govmomi finder with datacenter <*>
 Error,NotIgnored,reconciler error error failed to create image on cloud failed to create spectro-ansible playbook failed to update cloudconfigstatus failed to initialize govc manager post https <*> dial tcp lookup <*> on <*> <*> server misbehaving name <*> namespace <*> reconciler group <*> reconciler kind spectrocluster
 Error,Ignored,error calculation sha for image <*> latest exit status <*>
-Error,Ignored,failed calling webhook failing closed <*> failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
+,Ignored,failed calling webhook failing closed <*> failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
 Error,NotIgnored,internal error occurred failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
 Error,NotIgnored,error syncing job internal error occurred failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused
 Error,NotIgnored,target has failed health check marking for remediation cluster <*> name <*> namespace <*> reconciler group <*> reconciler kind machinehealthcheck message reason nodenotfound target <*>
@@ -1281,7 +1281,7 @@ Error,Ignored,loading openapi spec for <*> failed with openapi spec does not exi
 Error,Ignored,failed calling webhook <*> expected response.uid <*> got
 Error,Ignored,<*> <*> <*> <*> <*> <*> <*> i | embed rejected connection from <*> <*> error eof servername
 Error,Ignored,failed calling webhook failing open <*> failed calling webhook <*> expected response.uid <*> got
-Error,Ignored,<*> <*> <*> <*> <*> <*> <*> w | etcdserver failed to send out heartbeat on time exceeded the <*> timeout for <*> to <*>
+,Ignored,<*> <*> <*> <*> <*> <*> <*> w | etcdserver failed to send out heartbeat on time exceeded the <*> timeout for <*> to <*>
 Error,Ignored,auditing failed of request encoding failed <*> kind deleteoptions is unstructured and is not suitable for converting to <*>
 Error,Ignored,auditing failed of request encoding failed no kind scale is registered for version <*> in scheme <*> <*>
 Error,NotIgnored,reconciler error error error creating azuremanagedcontrolplane <*> failed to reconcile managed cluster resource group failed to create resource <*> service group failed to get desired parameters for group <*> failed to get rg <*> resources.groupsclient#get failure sending request statuscode 0 <*> original error context deadline exceeded name tf-test namespace <*> reconciler group <*> reconciler kind azuremanagedcontrolplane
@@ -1541,3 +1541,38 @@ Error,Ignored,upgrade agent failed to check update required in cluster agent an 
 Error,Ignored,upgrade agent failed to check version upgrade an unknown error occurred. context deadline exceeded cluster <*>
 Error,Ignored,upgrade agent failed to check version upgrade an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout cluster <*>
 Error,Ignored,upgrade agent failed to check update required in cluster agent an unknown error occurred. proxyconnect tcp dial tcp <*> <*> i/o timeout cluster <*>
+Error,Ignored,event <*> kind endpoints namespace <*> name configserver-service uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason failedtoupdateendpoint failed to update endpoint <*> operation cannot be fulfilled on endpoints configserver-service the object has been modified please apply your changes to the latest version and try again
+Error,Ignored,unable to parse crd file continue to next error couldn t get version/kind json parse error json cannot unmarshal array into go value of type struct apiversion string json apiversion omitempty kind string json kind omitempty spectrocluster namespace <*> name <*> failed file <*>
+Error,Ignored,event <*> kind endpoints namespace <*> name system-service uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason failedtoupdateendpoint failed to update endpoint <*> operation cannot be fulfilled on endpoints system-service the object has been modified please apply your changes to the latest version and try again
+Error,Ignored,<*> <*> <*> and error exit status <*>
+Error,Ignored,execution failed. failed to execute command <*> print-logs.sh . exit status <*>
+Error,Ignored,failed to execute task exit status <*> to run cmd exec task <*>
+Error,Ignored,aws error cloudformation spectrocluster namespace <*> name <*> code validationerror error validationerror stack with id <*> does not exist n tstatus code <*> request id <*> region <*>
+Error,Ignored,error spectrocluster namespace <*> name <*> message warning resource serviceaccounts/default is missing the <*> annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create <*> or kubectl apply. the missing annotation will be patched automatically.
+Error,Ignored,failed to run command <*> print-logs.sh . exit status <*>
+Error,NotIgnored,reconciler error error failed to reconcile machine pool for awsmanagedmachinepool <*> failed to wait for nodegroup to be active failed to wait for eks nodegroup <*> resourcenotready failed waiting for successful resource state name <*> namespace <*> reconciler group <*> reconciler kind awsmanagedmachinepool
+Error,Ignored,failed to apply log fetch broadcast job internal error occurred failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused cluster <*>
+Error,Ignored,apiserver received an error that is not an <*> <*> s resourceversion should not be set on objects to be created
+Error,Ignored,http tls handshake error from <*> <*> eof
+Error,Ignored,<*> <*> <*> <*> <*> <*> <*> no error handler specified with the subscriber. going with default error handler
+Error,Ignored,<*> <*> <*> <*> <*> <*> <*> w | <*> <*> error qget failed etcdserver request timed out status code <*>
+Error,NotIgnored,kubeconfig not available retry later spectrocluster namespace <*> name <*> more info failed to create target client from configcontent get https <*> <*> dial tcp lookup <*> on <*> <*> no such host
+Error,NotIgnored,reconciler error error failed to pivot move resource back failed to pause capi cluster error updating the pause status for <*> kind <*> internal error occurred failed calling webhook <*> post https <*> <*> <*> no endpoints available for service <*> controller spectrocluster name <*> namespace <*>
+Error,Ignored,failed to create broadcast job <*> internal error occurred failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused cluster <*>
+Error,Ignored,failed to apply log fetch broadcast manifest crd fileinternal error occurred failed calling webhook <*> post https <*> <*> <*> dial tcp <*> <*> connect connection refused cluster <*>
+Error,Ignored,event <*> resource machinepools event type modified name <*> infratype awsmanagedmachinepool infratypename <*> status failed cluster <*>
+Error,Ignored,failed calling webhook failing closed <*> failed calling webhook <*> expected response.uid <*> got
+,Ignored,error syncing endpoint slices for service <*> retrying. error failed to update <*> endpointslice for service <*> operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
+,Ignored,event <*> kind service namespace <*> name system-service uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason failedtoupdateendpointslices error updating endpoint slices for service <*> failed to update <*> endpointslice for service <*> operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
+,Ignored,event <*> kind endpoints namespace <*> name timeseries-service uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason failedtoupdateendpoint failed to update endpoint <*> operation cannot be fulfilled on endpoints timeseries-service the object has been modified please apply your changes to the latest version and try again
+,Ignored,event <*> kind service namespace <*> name hutil-service uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason failedtoupdateendpointslices error updating endpoint slices for service <*> failed to update <*> endpointslice for service <*> operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
+,Ignored,event <*> kind endpoints namespace <*> name event-service uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason failedtoupdateendpoint failed to update endpoint <*> operation cannot be fulfilled on endpoints event-service the object has been modified please apply your changes to the latest version and try again
+,Ignored,event <*> kind endpoints namespace <*> name hashboard-service uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason failedtoupdateendpoint failed to update endpoint <*> operation cannot be fulfilled on endpoints hashboard-service the object has been modified please apply your changes to the latest version and try again
+,Ignored,event <*> kind service namespace <*> name hashboard-service uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason failedtoupdateendpointslices error updating endpoint slices for service <*> failed to update <*> endpointslice for service <*> operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
+,Ignored,event <*> kind endpoints namespace <*> name cloud-service uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason failedtoupdateendpoint failed to update endpoint <*> operation cannot be fulfilled on endpoints cloud-service the object has been modified please apply your changes to the latest version and try again
+,Ignored,event <*> kind service namespace <*> name cloud-service uid <*> apiversion <*> resourceversion <*> fieldpath type warning reason failedtoupdateendpointslices error updating endpoint slices for service <*> failed to update <*> endpointslice for service <*> operation cannot be fulfilled on <*> <*> the object has been modified please apply your changes to the latest version and try again
+Error,Ignored,http tls handshake error from <*> <*> unexpected eof
+Error,Ignored,http tls handshake error from <*> <*> tls client offered only unsupported versions <*>
+Error,Ignored,failed to run command <*> print-logs.sh with output ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Error,Ignored,failed to process watch event eventtype 0 name <*> watchsource 0 task <*> not found not found
+Error,Ignored,reconciler error error unable to get kcp <*> <*> <*> not found controller spectrocluster name <*> namespace <*>

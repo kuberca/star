@@ -6,7 +6,7 @@
   <a class="action" href="{{ url_for('result.upload') }}">Upload Log File </a>
 
   <a class="action" href="{{ url_for('result.templates') }}">Log Templates </a>
-  <a class="action" href="{{ url_for('result.groups') }}">Groups </a>
+  <a class="action" href="{{ url_for('result.groups', error_type='NotIgnored') }}">Groups </a>
 
 
 {% endblock %}

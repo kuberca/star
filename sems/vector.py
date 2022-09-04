@@ -14,6 +14,7 @@ from scipy import spatial
 class Vector:
     def __init__(self, model_file: str) -> None:
         if os.path.exists(model_file):
+            print("loading model file for Vector: ", model_file)
             self.model = fasttext.load_model(model_file)
         else:
             raise Exception("Model file does not exist")

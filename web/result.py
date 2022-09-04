@@ -232,6 +232,6 @@ def start_backend():
     print("start backend")
     global server
     cfg = {}
-    cfg["drain3"]={"config_file":"drain3.ini", "persist_dir":".", "model_file":"data/star.cla.bin"}
+    cfg["drain3"]={"config_file":"drain3.ini", "persist_dir":".", "model_file":"model/star.cla.bin"}
     server = Server(config=cfg)
     # server.start_in_bg()

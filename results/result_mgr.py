@@ -27,7 +27,7 @@ class ResultMgr:
         self.grouper = Grouper(self.store, self.model_file)
 
         # error_type classifier
-        self.error_type_model_file = "./error_type_cla/error_type_cla.bin"
+        self.error_type_model_file = "./model/error_type_cla.bin"
         self.error_type_model = ErrorTypeNLP(self.error_type_model_file)
 
     # add results into storage
@@ -49,7 +49,7 @@ class ResultMgr:
         if res is None:
             # check if exist in resolved db
             res = self.get_resolved(result.template_id, result.context_id)
-            
+
         if res is not None:
             # result already saved to unresolved db previously
             res.count += 1

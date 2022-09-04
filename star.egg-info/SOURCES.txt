@@ -1,5 +1,6 @@
 MANIFEST.in
 README.md
+fb.csv
 setup.py
 config/__init__.py
 config/config.py
@@ -31,6 +32,7 @@ star.egg-info/top_level.txt
 web/__init__.py
 web/api.py
 web/result.py
+web/static/script.js
 web/static/style.css
 web/templates/base.html
 web/templates/result/detail.html
